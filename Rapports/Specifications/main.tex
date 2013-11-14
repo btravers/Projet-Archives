@@ -1,0 +1,1674 @@
+\documentclass[a4paper]{article}
+
+\usepackage[francais]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{comment}
+\usepackage{float}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{colortbl}
+
+
+
+
+
+\title{\bsc{INSA} de Rennes \\ Département Informatique \\ \bigskip \hrule \bigskip Système d'annotation et de navigation dans des images d'archives \\ \bigskip Rapport de spécification fonctionnelle \bigskip \hrule}
+\author{Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, \\ Clément \bsc{Leboullenger}, Thomas \bsc{François}, Benoit \bsc{Travers}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\section*{Introduction}
+
+\section{Analyse du besoin}
+\subsection{Projet xxx (nom appli)}
+\todo{Présenter le projet ce qu'il doit faire ainsi que l'équipe}
+
+\subsection{Mise en valeur des documents de guerre}
+\todo{Expliquer vite fait pourquoi ces docs, en mettre un de chaque en photo, dire que leur présentation est faite dans le rapport de pré-étude (notamment pour le registre)}
+\subsubsection{Le registre matricule militaire}
+\subsubsection{Les tables des registres matricules militaires}
+
+\subsection{Différents types d'utilisateurs}
+\todo{Cas d'utilisation global a mettre en "pseudo intro" et Story board dans chaque user}
+\subsubsection{Amateur}
+\subsubsection{Utilisateur expérimenté}
+\subsubsection{Archiviste}
+
+\subsection{Fonctionnalités attendues par les utilisateurs}
+\subsubsection{Visualisation et Navigation dans les documents}
+\subsubsection{Annotation des documents}
+\subsubsection{Exploitation et Recherche des annotations}
+
+\section{Architecture générale}
+\subsection{Client - PixelSense}
+\subsection{Serveur - }
+\subsection{Base de données - MySql}
+\subsection{Relation client serveur}
+
+\section{Spécifications fonctionnelles du système}
+
+\subsection{Authentification}
+
+L'authentification comprend les fonctionnalités qui permettront aux utilisateurs de s'identifier afin d'accéder à leurs données propres ainsi qu'aux fonctionnalités auxquelles ils auront un accès d'utilisation. Par exemple, un utilisateur non identifié ne pourra pas annoter un document, tandis qu'un utilisateur identifié aurra l'autorisation d'annoter un document tel un registre matricule militaire ou une table des registres.
+
+\subsubsection{Fonction SA01 - Inscription}
+
+L’inscription permet à l’utilisateur de s’enregistrer pour accéder à l’ensemble des fonctionnalités de l’application (pour visualiser ou annoter n’importe quel document). Il devra rentrer diverses informations; un identifiant, un mot de passe ainsi qu’un e-mail valide qui seront stockés sur la base de données prévue pour l’application. Par la suite, ses informations lui seront utiles pour s’identifier sur l’application afin qu’il accède à ses propres données dans le but qu’il puisse les gérer (ajouter une annotation, la modifier ou la supprimer).
+    
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SA01 - Inscription}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
+   		\hline
+   			-1 & Un utilisateur non identifié veut s'inscrire à l'application.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
+   		\hline
+   			-1 & L'utilisateur confirme son inscription et a rempli les informations demandées.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
+   		\hline
+   			-1 & Un identifiant\\
+        	-2 & Un mot de passe\\ 
+        	-3 & Une adresse e-mail\\ 
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
+  		\hline
+   			-1 & Vérification de l'unicité de l'identifiant et de l'adresse e-mail dans la base de données.\\
+        	-2 & Ajout de l'utilisateur (ses informations identifiant, mot de passe et e-mail) dans la base de données si succès de la vérification.\\
+        	-3 & Refus de l'utilisateur si échec de la vérification.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
+   		\hline
+   			-1 & Envoi d'une demande de confirmation sur l'e-mail indiqué si succès.\\
+            -2 & Renvoi d'un nouveau formulaire d'inscription si échec.\\
+   		\hline
+	\end{tabular}
+  \caption{Fonction SA01 - Inscription}
+  \normalsize
+  \label{tab: inscription}
+\end{table}
+    
+    
+\subsubsection{Fonction SA02 - Connexion}
+
+La connexion permet à l’utilisateur de s’identifier pour accéder à l’ensemble des fonctionnalités de l’application. Pour ce faire, il devra compléter son identifiant et son mot de passe. Si ces informations se révèlent être correctes, l’utilisateur peut accéder à ses anciennes annotations, les modifier, les supprimer ou il peut annoter de nouveaux documents.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SA02 - Connexion}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
+   		\hline
+   			-1 & Un utilisateur non identifié veut s'identifier\\
+   		\hline
+   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
+   		\hline
+   			-1 & L'utilisateur demande à se connecter, complète les informations demandées puis valide.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
+   		\hline
+   			-1 & Un identifiant\\
+        	-2 & Un mot de passe\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
+  		\hline
+   			-1 & Vérification de l’existence de l'utilisateur dans la base de données.\\
+        	-2 & Chargement des données de l'utilisateur si succès de la vérification.\\
+        	-3 & Refus de la connexion si échec de la vérification.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
+   		\hline
+   			-1 & Renvoi vers la page précédant la connexion si succès.\\
+            -2 & Renvoi d'un nouveau formulaire de connexion si échec.\\
+   		\hline
+	\end{tabular}
+  \caption{Fonction SA02 - Connexion}
+  \normalsize
+  \label{tab: connexion}
+\end{table}
+
+\subsection{Visualisation des documents}
+
+Les images numérisées ne seront pas paramétrées pour un affichage optimal sur l’application, celle-ci devra donc proposer une fonctionnalité proposant la modification de l’affichage d’une image, et non une modification de l’image en elle-même afin de ne pas dégrader l’image originale. En effet, l’image originale peut être d’une taille trop petite ou trop grande, sombre ou mal cadrée, celle-ci dépendant de la qualité l’appareil qui l’a numérisée. Pour faciliter la manipulation de l’affichage de l’image sur l’application, différents outils seront proposés à l’utilisateur : un zoom, une modification du contraste, de la luminosité, d’un effet négatif, de translation en abscisse et ordonnée et de rotation. Pour permettre la conservation des paramètres d’affichage favoris de l’utilisateur, celui-ci pourra les sauvegarder afin d’éviter une manipulation répétitive de ces paramètres. Aussi, un retour à l’état original de l’affichage sera disponible dans le cas où l’utilisateur n’arrive plus à un affichage correct.
+
+D'ailleurs, l'application étant destinée à être tactile, ces fonctionnalités de modification seront accessibles par un raccourci "mouvement", c'est-à-dire que l'utilisateur pourra avec seulement un mouvement de ses doigts exécuter une modification de l'image. Cependant, ces fonctionnalités devront être également accessibles à partir d'une barre d'outils afin de permettre à l'utilisateur de connaître les paramètres qu'il modifient et aussi dans le cas ou l'utilisateur ne sait quel mouvement exécuté.
+
+\subsubsection{Fonction SB01 - Zoom}
+
+Le zoom d'une image permet d'améliorer la lisibilité du document, il permet à l'utilisateur d'agrandir ou de rétricir le document. L'utilisateur pourra paramétrer son zoom selon le pourcentage de la taille de l'image d'origine. Le pourcentage autorisera une modification de 20\% jusqu'à 300\% de la taille de l'image d'origine.
+\todo{Question : Faut-il déjà limiter les paramètres ou bien est-ce destiné à la conception ?}
+
+Raccourci mouvement : L'utilisateur colle ses doigts sur une zone de l'image, et les écarte pour agrandir la zone, mouvement inverse pour un rétrécissement.
+\todo{Question : Doit-on aussi préciser les mouvements pour le tactile ?}
+\todo{Question : Pour le plan du coup il faut peut être dire avant que l'application sera tactile, donc Architecture Générale à mettre avant ? }
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB01 - Fonction Zoom}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut zoomer ou dezoomer une image qu'il visionne. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur valide son zoom après l'avoir configuré. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Une image \\
+        	-2 & Un zoom exprimé en pourcentage de la taille de l'image d'origine \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'affichage de l'image est modifié (agrandi ou rétréci), selon le pourcentage de la taille de l'image d'origine. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'affichage de l'image modifié \\
+   		\hline
+	\end{tabular}
+  \caption{SB01 - Fonction Zoom}
+  \normalsize
+  \label{tab:visu_img_zoom}
+\end{table}
+
+
+\subsubsection{Fonction SB02 - Translation}
+
+La translation en abscisse et ordonnée d'une image permet de déplacer l'image par rapport à un certain repère et obtenir ainsi le centrage à l'écran d'une zone partielle ou entière du document. Cette fonctionnalité est destinée à recadrer correctement une image dans le but d'afficher une zone qui intéresserait l'utilisateur.
+
+Raccourci mouvement : L'utilisateur pointe l'image avec un doigt en marquant une pause (pour un effet long), puis est invité à déplacer l'image en déplaçant son doigt.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB02 - Fonction Translation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut déplacer une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur sélectionne l'image et la translate en x et en y par rapport à un repère. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Un repère \\
+        	-3 & Une translation en x et en y \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est déplacée par rapport au repère et aux translations \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image déplacée \\
+   		\hline
+	\end{tabular}
+  \caption{SB02 - Fonction Translation}
+  \normalsize
+  \label{tab:visu_img_translation}
+\end{table}
+
+\subsubsection{Fonction SB03 - Rotation}
+
+La rotation d'une image permet de faire pivoter l'image dans l'objectif de consulter un objet comme une phrase ou un mot qui serait écrit de travers.
+
+Raccourci mouvement : L'utilisateur positionne deux doigt sur l'image et effectue un mouvement circulaire dans un sens horaire ou anti-horaire.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB03 - Fonction Rotation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut pivoter une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur paramètre son angle de rotation et confirme sa rotation. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Un angle de rotation \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est pivotée selon l'angle de rotation \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image pivotée \\
+   		\hline
+	\end{tabular}
+  \caption{SB03 - Fonction Rotation}
+  \normalsize
+  \label{tab:visu_img_rotation}
+\end{table}
+
+
+\subsubsection{Fonction SB04 - Contraste}
+
+Contraster une image permet de renforcer la différenciation entre les couleurs foncés et les couleurs clairs dans le but d'améliorer la lisibilité de l'image.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB04 - Fonction Contraste}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut contraster une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur paramètre son contraste et le confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Un contraste \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est contrastée selon le contraste donné en paramètre \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image contrastée \\
+   		\hline
+	\end{tabular}
+  \caption{SB04 - Fonction Contraste}
+  \normalsize
+  \label{tab:visu_img_contraste}
+\end{table}
+
+
+
+\subsubsection{Fonction SB05 - Luminosité}
+
+
+Augmenter ou diminuer la luminosité d'une image améliorer la netteté et donc la lisibilité de l'image.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB05 - Fonction Luminosité}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut augmenter ou diminuer la luminosité d'une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur sa luminosité et confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Une luminosité \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est modifiée selon la luminosité donnée en paramètre \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image modifiée \\
+   		\hline
+	\end{tabular}
+  \caption{SB05 - Fonction Luminosité}
+  \normalsize
+  \label{tab:visu_img_luminosite}
+\end{table}
+
+
+\subsubsection{Fonction SB06 - Négatif}
+\todo{Nécessaire ou pas ?}
+
+
+\subsubsection{Fonction SB07 - Défaire / Refaire}
+
+Lorsque l'utilisateur hésite quant à sa modification de l'image, il paraît nécessaire que celui-ci puisse annuler, défaire son changement pour revenir à l'état précédent de l'image. Aussi, il pourra refaire son changement s'il le souhaite, ce sont des raccourcis efficaces qui évite plusieurs manipulations par l'utilisateur.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB07 - Fonction Défaire / Refaire}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut annuler ou refaire sa manipulation de l'image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Une action \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image défait ou refait l'action \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image modifiée \\
+   		\hline
+	\end{tabular}
+  \caption{SB07 - Fonction Défaire / Refaire}
+  \normalsize
+  \label{tab:visu_img_undo_redo}
+\end{table}
+
+
+
+\subsubsection{Fonction SB08 - Sauvegarder les paramètres}
+
+L'utilisateur pourra sauvegarder ses paramètres préférentiels dans un raccourci, afin d'éviter de répéter différentes manipulations lorqu'il consulte plusieurs images. Celui-ci pourra donc refaire toutes ses manipulations en une seule actio, augmentant l'efficacité d'utilisation de l'application.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB08 - Fonction Sauvegarder les paramètres}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur souhaite conserver les paramètres actuels. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une liste d'action \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'application conserve en local cette liste d'action \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Un raccourci permettant d'exécuter les actions stockées dans la liste \\
+   		\hline
+	\end{tabular}
+  \caption{SB08 - Fonction Sauvegarder les paramètres}
+  \normalsize
+  \label{tab:visu_img_save_parameters}
+\end{table}
+
+
+\subsection{Navigation entre les documents}
+
+\subsubsection{Fonction SC01 - Naviguer dans une m\^eme table}
+
+La table est un ensemble de pages, qui recensent chacunes des dizaines d'individus. Ici, le but est simpement de permettre une navigation rapide entre des pages adjacentes (page suivante ou page pr\'ec\'edente).
+
+Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite pour aller \`a l'image pr\'ec\'edente, ou de droite \`a gauche pour aller \`a la suivante.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC01 - Naviguer dans une m\^eme table}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut acc\'eder \`a une page adjacente de la table. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur effectue le raccourci mouvement puis rel\^ache. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Une page de la table \\
+        	-2 & Un sens de d\'eplacement \\ 
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Associer une page au couple \{page actuelle, sens de d\'eplacement\}.  \\
+        	-2 & V\'erifier que la page demand\'ee existe. \\
+        	-3 & Afficher la page demand\'ee et la d\'efinir comme page actuelle. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de la page demand\'ee. \\
+   		\hline
+	\end{tabular}
+  \caption{SC01 - Naviguer dans une table}
+  \normalsize
+  \label{tab:naviguer_table_unique}
+\end{table}
+
+
+\subsubsection{Fonction SC02 - Naviguer entre deux tables}
+
+Pour un utilisateur, il peut être intéressant de pouvoir naviguer rapidement de table en table, par exemple lorsqu'il recherche une personne dont il connaït le nom mais pas l'année d'entrée eb service. Dans ce cas, il va établir une fourchette contenant les années qu'il estime possibles, et parcourir les tables correspondant à ces années. Les tables seront classées par ordre chronologique (une par année), ainsi navuguer vers l'année suivante reviendra à naviguer vers la table suivante.
+
+De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque table, trouver la page correspondant au nom de l'individu (clasés par ordre alphabétique). C'est pourquoi il paraît utile de proposer à l'utilisateur de naviguer vers une autre année, tout en essayant d'atteindre directement la page qui l'intéresse. En partant du principe que la distribution des noms de famille alphabétiquement parlant est à peu près identique d'une année sur l'autre, on peut ainsi définir une fontion proportionnelle. Par exeple, en étant à la page 6/30 de la table de l'année N, on se retrouvera à la page 4/20 de l'année N+1.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC02 - Naviguer entre deux tables}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut acc\'eder \`a une table adjacente à la table actuelle. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Une page de la table \\
+        	-2 & Le nombre de pages de la table \\ 
+            -3 & Le sens de déplacement (année suivante ou précédente). \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Associer une table au couple \{table actuelle, sens de d\'eplacement\}.  \\
+        	-2 & V\'erifier que la table demand\'ee existe. \\
+        	-3 & Déterminer la page à atteindre en fonction du ratio \{numéro de page/nombre de page\} de la page de départ et du nombre de pages de la table à atteindre. \\
+            -4 & Afficher la table visée à la bonne page. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de la table demand\'ee. \\
+   		\hline
+	\end{tabular}
+  \caption{SC02 - Naviguer entre deux tables}
+  \normalsize
+  \label{tab:naviguer_deux_tables}
+\end{table}
+\newpage
+
+\subsubsection{Fonction SC03 - Naviguer entre deux registres}
+
+Pour certains utilisateurs, qui annotent de nombreux registres quasiment "à la chaîne", la fonctionnalité de navigation entre des registres adjacents est indispensable. Cette navigation entre deux registres sera très proche de la navigation entre deux pages adjacentes d'une table.
+
+Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes d'une table. L'utilisateur fait glisser son doigt de gauche \`a droite pour aller \`a l'image pr\'ec\'edente, ou de droite \`a gauche pour aller \`a la suivante.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Naviguer entre deux registres adjacents}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut acc\'eder \`a un registre adjacent au registre actuel. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur effectue le raccourci mouvement puis rel\^ache. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Un registre \\
+        	-2 & Un sens de d\'eplacement \\ 
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Associer un registre au couple \{registre actuel, sens de d\'eplacement\}.  \\
+        	-2 & V\'erifier que le regsitre demand\'e existe. \\
+        	-3 & Afficher le registre demand\'e et le d\'efinir comme registre actuel. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage du registre demand\'e. \\
+   		\hline
+	\end{tabular}
+  \caption{SC03 - Naviguer entre deux registres}
+  \normalsize
+  \label{tab:naviguer_deux_registres}
+\end{table}
+
+\subsubsection{Fonction SC04 - Naviguer d'une table à un registre}
+
+Lorsqu'un uilisateur recherche un individu dont il connaît le nom et la date d'engagement, la méthode d'accès la plus intuitive est de trouver cet individu dans la table correspondante, afin de récupérer son numéro matricule et ainsi de le retrouver dans les registres. Afin d'éviter à l'utilisateur des allers-retours entre ces différents types de documents, nous allons proposer une fonctionnalité qui fera directement le lien entre une table et un registre.
+
+Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure : où un autre utilisateur a déjà lié ce numéro de matricule à un registre, auquel cas on renvoie ce registre. Dans l'autre cas, si on ne peut lier le numéro de matricule à un registre, alors on lance une recherche sur le numéro de matricule. 
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC04 - Naviguer d'une table à un registre}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut acc\'eder \`a un registre à partir d'une table. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique dans la table sur la ligne de l'individu qui l'intéresse, puis annote son numéro de matricule. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Une table \\
+        	-2 & Un numéro de registre \\ 
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Voir si un lien existe déjà entre le couple \{numéro de matricule, année de la table\} et un registre.  \\
+        	-2 & Si oui, afficher le registre correspondant. \\
+        	-3 & Si non, lancer une recherche sur le numéro de matricule et l'année. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage du registre demand\'e s'il est trouvé. \\
+            -2 & Requête pour une recherche sur le numéro de matricule et l'année sinon. \\
+   		\hline
+	\end{tabular}
+  \caption{SC04 - Naviguer d'une table à un registre}
+  \normalsize
+  \label{tab:naviguer_table_registre}
+\end{table}
+\newpage
+
+\subsection{Annotation}
+
+
+
+\subsubsection{Fonction SD01 - Annoter une table}
+
+
+L'annotation de table permet de cr\'eer un lien avec les registres. En annotant le num\'ero de matricule et le nom associ\'e, on cr\'e\'e un pivot. Ce pivot peut \^etre temporaire si le registre associ\'e n'a pas \'et\'e annot\'e, sinon le pivot est valide (registre annot\'e).\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD01 - Annoter une table}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut annoter une ligne d'une table. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Nom et pr\'enoms \\
+        	-2 & Num\'ero de matricule \\ 
+        	-3 & Zone de d\'elimitation de l'annotation (rectangle) \\
+            -4 & Liste des annotations d\'ej\`a associ\'ees \`a cette ligne \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Ajout dans la base de donn\'ees. \\
+        	-2 & V\'erifier si une annotation correspond d\'ej\`a \`a cette ligne \\
+        	-3 & Cr\'eation d'un pivot \\
+            -4 & Ajout du document annot\'e dans le dossier mes annotations. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de l'annotation. \\
+            -2 & Pivot \\
+   		\hline
+	\end{tabular}
+  \caption{SD01 - Annoter une table}
+  \normalsize
+  \label{tab:annoter_table}
+\end{table}
+
+\subsubsection{Fonction SD02 - Annoter un registre}
+
+Un utilisateur visualise un registre et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Différents types d’annotation peuvent être suggérées, l’utilisateur aura le choix entre sélectionner type d’annotation ou en faire une autre. Il doit ensuite remplir l’annotation et la valider. Elle sera ensuite enregistrée sur la base de données.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD02 - Annoter un registre}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Visualisation d’une image et utilisateur connecté\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur clique sur ce qu’il souhaite annoter sur l’image\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Détection du type de l’annotation en fonction de la position de la zone précédente afin de proposer plusieurs types d’annotations\\
+            -2 & Choix du type de l’annotation \\
+			-3 & Choix de l’annotation obligatoire \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Sauvegarde de l’annotation dans la base de données\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Ajoute l’annotation à la liste des annotations du document (elle va apparaitre dans la fenêtre des annotations en haut à droite)\\
+			-2 & Visualisation de l’image\\
+   		\hline
+	\end{tabular}
+  \caption{SD02 - Annoter un registre}
+  \normalsize
+  \label{tab:annoter_registre}
+\end{table}
+
+\subsubsection{Fonction SD03 - Annotation libre sur registres}
+Il arrive tr\`es souvant que des informations concernant le soldat se placent n'importe o\`u, et qu'elles ne rentrent pas dans le cadre des cat\'egories. L'annotation libre permet de placer dans une endroit quelconque une annotation. \\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD03 - Annotation libre sur registres}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut annoter une zone qui ne peut pas \^etre li\'ee \`a une cat\'egorie. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Texte \\
+        	-3 & Zone de d\'elimitation de l'annotation (rectangle) \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Ajout d'une entr\'ee dans la base de donn\'ees \\
+            -2 & Ajout du document annot\'e dans le dossier mes annotations \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de l'annotation. \\
+   		\hline
+	\end{tabular}
+  \caption{SD03 - Annotation libre sur registres}
+  \normalsize
+  \label{tab:annotation_libre}
+\end{table}
+
+\subsubsection{Fonction SD04 - Annoter grâce à un raccourci}
+L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela il doit déplacer un bouton raccourci à l’endroit voulu, ce qui permet de créer une annotation à cet endroit avec un type prédéfini par ce raccourci.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD04 - Annoter grâce à un raccourci}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & L’utilisateur souhaite utiliser un raccourci pour annoter une image\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur commence à appuyer sur un raccourci\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur place le raccourci à l’endroit voulu\\
+			-2 & Fait apparaitre une fenêtre avec le champ type déjà remplis\\
+			-3 & L’utilisateur rentre l’annotation\\
+			-4 & L’utilisateur valide l’annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Sauvegarde l’annotation dans la base de données\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Ajoute l’annotation à la liste des annotations du document (elle va apparaitre dans la fenêtre des annotations en haut à droite)\\
+   		\hline
+	\end{tabular}
+  \caption{SD04 - Annoter grâce à un raccourci}
+  \normalsize
+  \label{tab:utiliser_raccourci}
+\end{table}
+
+\subsubsection{Fonction SD05 - Gestion des cat\'egories d'annotation}
+
+\todo{A revoir si on met en dur les annotations ou non}
+
+L'objectif est de pouvoir cr\'eer de mani\`ere automatique des pivots. Pour ce faire il est n\'ecessaire de cr\'eer des cat\'egories. Les informations li\'ees avec une cat\'egorie pouront \^etre utilis\'ees pour la cr\'eation automatique d'une fiche r\'ecapitulative pour un soldat.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD05 - Gestion des cat\'egories d'annotation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut annoter une information (table ou registre). \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur s\'electionne une cat\'egorie lors d'une annotation. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Annotation (texte, zone de d\'elimitation)\\
+        	-2 & Cat\'egorie de l'annotation \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Ajout dans la fiche r\'ecapitulative du soldat l'information \\
+        	-2 & Cr\'eation d'un pivot si possible \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de l'annotation. \\
+            -2 & Affichage de la fiche du soldat. \\
+            -3 & Pivot \\
+   		\hline
+	\end{tabular}
+  \caption{SD05 - Gestion des cat\'egories d'annotation}
+  \normalsize
+  \label{tab:gestion_categorie}
+\end{table}
+
+
+\subsubsection{Fonction SD06 - Marquer des documents}
+
+
+Le but de marquer un document est de pouvoir le retrouver facilement. Il est possible de les classer dans différents dossier, mes favoris, todo (mes annotations est automatique). Ces dossiers sont sp\'ecifiques \`a chaque utilisateur.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Marquer des documents}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut conserver un document pour le retrouver facilement. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton pour marquer le document, et il choisi le dossier. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Document, table ou registre\\
+        	-2 & Dossier, mes favoris, todo \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Ajout d'une entr\'ee dans la base de donn\'ees \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage du document dans le dossier correspondant. \\
+   		\hline
+	\end{tabular}
+  \caption{SD06 - Marquer des documents}
+  \normalsize
+  \label{tab:marquer_documents}
+\end{table}
+
+
+\subsubsection{Fonction SD07 - Affichage d'une fiche soldat}
+
+Le but de la fiche soldat est d'exploiter au maximum les annotations d'un registre. Gr\^ace aux cat\'egories, il est possible de g\'en\'erer automatiquement une fiche avec toutes les informations importantes. De plus, cette fiche va servir de checklist des annotations \`a faire.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD07 - Affichage d'une fiche soldat}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur consulte un registre, la fiche soldat est affich\'ee en m\^eme temps. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur navigue sur un registre. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Registre \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Recherche dans la base de donn\'ees \\
+            -2 & G\'en\'eration de la fiche \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de la fiche. \\
+   		\hline
+	\end{tabular}
+  \caption{SD07 - Affichage d'une fiche soldat}
+  \normalsize
+  \label{tab:affichage_fiche_soldat}
+\end{table}
+
+
+\subsubsection{Fonction SD08 - Visualiser les positions de toutes les annotations}
+Les annotations apparaissent à droite de l’écran lorsque l’on visualise une image. Cliquer sur la fenêtre des annotations fait apparaitre les positions de toutes les annotations. Ces positions sont représentées par des points. Cliquer sur l’image (sans cliquer sur les points) permet de masquer ces positions et de mettre fin à la visualisation des annotations.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD08 - Visualiser les positions de toutes les annotations}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur souhaite voir les annotations liées à l’image en cours de visualisation\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur clique sur la fenêtre des annotations\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur clique sur la fenêtre des annotations\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Fait apparaitre la position de chaque annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Visualisation de l’image et de ses annotations\\
+   		\hline
+	\end{tabular}
+  \caption{SD08 - Visualiser les positions de toutes les annotations}
+  \normalsize
+  \label{tab:visualiser_position_annotation}
+\end{table}
+
+\subsubsection{Fonction SD08 - Masquer les positions des annotations}
+TODO.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD08 - Masquer les positions des annotations}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+	\end{tabular}
+  \caption{SD08 - Masquer les positions des annotations}
+  \normalsize
+  \label{tab:masquer_position_annotation}
+\end{table}
+
+\subsubsection{Fonction SD09 - Sélectionner une annotation sur un document}
+Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation dans la fenêtre ou sur un point en particulier la sélectionne et fait apparaître une fenêtre contenant les deux champs de l’annotation (l’annotation et son type). Quand une annotation est sélectionnée, le point de la position de l’annotation est plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparait. Cliquer sur l’image (sans cliquer sur un point) permet de désélectionner l’annotation et de masquer la visualisation des annotations.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD09 - Sélectionner une annotation sur un document}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut visualiser la position d’une annotation en particulier\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & Cliquer sur une annotation dans la fenêtre des annotations en haut à droite\\
+            -2 & Cliquer sur la position d'une annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Cliquer sur une annotation dans la fenêtre des annotations en haut à droite\\
+            -2 & Cliquer sur la position d'une annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Fait apparaitre la position de chaque annotation\\
+			-2 & Désélectionne l’ancienne annotation sélectionnée\\
+			-3 & Fait apparaitre la position de l’annotation sélectionnée en plus gros\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Visualisation de l’image et de ses annotations\\
+   		\hline
+	\end{tabular}
+  \caption{SD09 - Sélectionner une annotation sur un document}
+  \normalsize
+  \label{tab:selectionner_annotation}
+\end{table}
+
+\subsubsection{Fonction SD10 - Désélectionner une annotation sur un document}
+TODO.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD09 - Désélectionner une annotation sur un document}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+	\end{tabular}
+  \caption{SD10 - Désélectionner une annotation sur un document}
+  \normalsize
+  \label{tab:deselectionner_annotation}
+\end{table}
+
+
+\subsubsection{Fonction SD10 - Glisser dans le tableau des annotations}
+Si les annotations sont trop nombreuses, on peut faire glisser ses annotations vers le bas ou vers le haut afin de pouvoir accéder à toutes les annotations réalisées.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD10 - Glisser dans le tableau des annotations}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut visualiser les annotations réalisées\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & Rester appuyé sur la fenêtre annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Appuyer et glisser son doigt vers le haut ou le bas\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Faire descendre ou monter les annotations dans la fenêtre jusqu’au relâchement du doigt\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Aucun changement\\
+   		\hline
+	\end{tabular}
+  \caption{SD10 - Glisser dans le tableau des annotations}
+  \normalsize
+  \label{tab:glisser_tab_annotation}
+\end{table}
+
+\subsubsection{Fonction SD11 - Modification de la position d’une annotation}
+Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation (c’est-à-dire qu’il l’a lui-même créée, ou qu’il l’a récupérée d’un autre utilisateur) peut modifier sa position.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD11 - Modification de la position d’une annotation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & L’utilisateur veut modifier la position d’une annotation\\
+			-2 & L’utilisateur a sélectionner l’annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur déplace l’annotation en maintenant son doigt appuyé\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur commence à déplacer l’annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L’utilisateur relâche le point\\
+			-2 & Modification de la position de l’annotation dans la base de données\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Visualisation de l’image et de ses annotations, avec sélection de l’annotation\\
+   		\hline
+	\end{tabular}
+  \caption{SD11 - Modification de la position d’une annotation}
+  \normalsize
+  \label{tab:modification_position_annotation}
+\end{table}
+
+\subsubsection{Fonction SD12 - Modification du champ d’une annotation}
+Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation son type ou l’annotation elle-même.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD12 - Modification du champ d’une annotation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & L’utilisateur veut modifier les champs d’une annotation\\
+			-2 & L’utilisateur a sélectionné l’annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur commence à modifier un des deux champs\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur modifie un des deux champs\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L’utilisateur valide la modification\\
+            -2 & Modification du champ dans la base de données\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Visualisation de l’image et de ses annotations, avec sélection de l’annotation\\
+   		\hline
+	\end{tabular}
+  \caption{SD12 - Modification du champ d’une annotation}
+  \normalsize
+  \label{tab:modification_champ_annotation}
+\end{table}
+
+\subsubsection{Fonction SD13 - Suppression d'une annotation}
+Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut la supprimer.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD13 - Suppression d'une annotation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & L’utilisateur veut supprimer une annotation\\
+			-2 & L’utilisateur a sélectionné l’annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur déplace l’annotation vers une corbeille\\
+			-2 & L’utilisateur clique sur Suppr ou sur un bouton supprimer\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & L’utilisateur confirme la suppression\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Suppression de l’annotation dans la base de données\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Supprime l’annotation de la liste des annotations du document\\
+			-2 & Visualisation de l’image et de ses annotations\\
+   		\hline
+	\end{tabular}
+  \caption{SD13 - Suppression d'une annotation}
+  \normalsize
+  \label{tab:supprimer_annotation}
+\end{table}
+
+\subsection{Recherche}
+
+\subsubsection{Fonction SE01 - Rechercher un nom dans les tables}
+
+L'utilisateur veut trouver le ou les RMM de personnes dont il a le nom. Il peut dans ce cas effectuer une recherche dans les tables grâce à ce nom. Si ce nom a déjà été annoté, l'application propose à l'utilisateur les pages des tables pertinentes. Toutefois ce nom n'est pas toujours repertorié dans les annotations liées aux tables. Si jamais aucune annotation de ce nom existe, l'application propose pour chaque table (chaque année) la page comportant l'annotation du nom la plus proche. Si aucune annotation existe la page ayant le plus de chance d'être la bonne (en suivant l'ordre alphabétique) est proposée.
+\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SE01 - Rechercher un nom dans les tables}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut trouver un patronyme dans les tables. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Nom \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+  			-1 & Vérification de la validité des champs renseignés. \\
+   			-2 & Recherche dans la base de données en fonction des champs renseignés. \\
+        	-3 & Affichage des pages qui correspondent à la recherche. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Les pages qui correspondent à la recherche. \\
+   		\hline
+	\end{tabular}
+  \caption{SE01 - Rechercher un nom dans les tables}
+  \normalsize
+  \label{tab:SE01}
+\end{table}
+
+\subsubsection{Fonction SE02 - Rechercher des RMM grâce aux annotations générales}
+
+L'utilisateur veut trouver un ou des RMM, non pas en les parcourant un par un mais en utilisant les informations déjà annotées.
+\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SE02 - Rechercher des RMM grâce aux annotations générales}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut trouver un RMM en puisant dans la base de données des annotations. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Nom et prénom \\
+        	-2 & Date de naissance ou classe \\ 
+        	-3 & Lieu de recrutement \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+  			-1 & Vérification de la validité des champs renseignés. \\
+   			-2 & Recherche dans la base de données en fonction des champs renseignés. \\
+        	-3 & Affichage des RMM qui correspondent à la recherche. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Les RMM préalablement annotés qui correspondent à la recherche. \\
+   		\hline
+	\end{tabular}
+  \caption{SE02 - Rechercher des RMM grâce aux annotations générales}
+  \normalsize
+  \label{tab:SE02}
+\end{table}
+
+\subsubsection{Fonction SE03 - Rechercher des RMM grâce aux annotations personnelles}
+
+Comme pour la fonction précedente, l'utilisateur veut trouver un ou des RMM en puisant dans la base de données des annotations. En revanche, la recherche ne se fera cette fois que sur les annotations de cet utilisateur. 
+\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SE03 - Rechercher des RMM grâce aux annotations personnelles}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut trouver un RMM en puisant dans la base de données des informations qu'il a annoté. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Nom et prénom \\
+        	-2 & Date de naissance ou classe \\ 
+        	-3 & Lieu de recrutement \\ 
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+  			-1 & Vérification de la validité des champs renseignés. \\
+   			-2 & Recherche dans la base de données en fonction des champs renseignés. \\
+        	-3 & Affichage des RMM qui correspondent à la recherche. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Les RMM préalablement annotés qui correspondent à la recherche. \\
+   		\hline
+	\end{tabular}
+  \caption{SE03 - Rechercher des RMM grâce aux annotations générales}
+  \normalsize
+  \label{tab:SE03}
+\end{table}
+
+\subsubsection{Fonction SE04 - Rechercher un RMM par son numéro matricule.}
+
+L'utilisateur veut trouver un RMM uniquement avec son numéro matricule, sans renseigner son nom, son prénom,\ldots La recherche se fait alors de la même façon que pour les tables : si l'annotation du numéro matricule existe, le RMM est renvoyé. Si l'annotation n'existe pas, l'application estime quel RMM doit être renvoyé en fonction des annotations qui lui sont proches et du nombre d'images.
+\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SE04 - Rechercher un RMM par son numéro matricule}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut trouver un RMM grâce à son numéro matricule. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Numéro matricule \\
+            -2 & Année \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+  			-1 & Vérification de la validité des champs renseignés. \\
+   			-2 & Recherche dans la base de données en fonction des champs renseignés. \\
+        	-3 & Affichage des pages qui correspondent à la recherche. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Les RMM qui correspondent à la recherche. \\
+   		\hline
+	\end{tabular}
+  \caption{SE04 - Rechercher un RMM par son numéro matricule}
+  \normalsize
+  \label{tab:SE04}
+\end{table}
+
+\subsubsection{Fonction SE05 - Rechercher selon un pivot.}
+
+L'utilisateur souhaite obtenir des informations autour de la guerre, par exemple les soldats médaillés ou les blessés à la bataille de la Marne. L'application lui fournit alors, en plus des RMM qui correspondent à sa recherche, des statistiques sur les informations renseignés (nombre de médaillés, \ldots).
+\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SE05 - Rechercher selon un pivot.}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut trouver des RMM autour d'un pivot. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Médailles \\
+            -2 & Régiments \\
+            -3 & Blessés \\
+            -4 & Batailles \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+  			-1 & Vérification de la validité des champs renseignés. \\
+   			-2 & Recherche dans la base de données en fonction des champs renseignés. \\
+            -3 & Calcul de statistiques grâce aux résultats de la recherche. \\
+        	-4 & Affichage des pages qui correspondent à la recherche. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Les RMM qui correspondent à la recherche. \\
+            -2 & Les statistiques. \\
+   		\hline
+	\end{tabular}
+  \caption{SE05 - Rechercher selon un pivot.}
+  \normalsize
+  \label{tab:SE05}
+\end{table}
+
+\subsection{Gestion des raccourcis et des favoris}
+
+\subsubsection{Fonction SF01 - Créer un raccourci}
+TODO.\\
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD15 - Créer un raccourci}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+	\end{tabular}
+  \caption{SD15 - Créer un raccourci}
+  \normalsize
+  \label{tab:creer_raccourci}
+\end{table}
+
+
+\subsubsection{Fonction SF02 - Supprimer un raccourci}
+TODO.\\
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD16 - Supprimer un raccourci}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & ...\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & ...\\
+   		\hline
+	\end{tabular}
+  \caption{SD16 - Supprimer un raccourci}
+  \normalsize
+  \label{tab:supprimer_raccourci}
+\end{table}
+
+\subsubsection{Fonction SF03 - Marquer une image comme favori}
+\subsubsection{Fonction SF04 - Créer un dossier de favoris}
+\subsubsection{Fonction SF05 - Supprimer un fichier favori}
+\subsubsection{Fonction SF06 - Déplacer un fichier dans un dossier de favoris}
+
+\subsection{Administration}
+    
+    
+\subsubsection{Fonction SG01 - Gestion des utilisateurs}
+
+Les utilisateurs sont divisés en trois groupes : les utilisateurs simples, les modérateurs et les administrateurs. Les utilisateurs simples sont les utilisateurs authentifiés de l'application et ont accès à tous les outils d'annotation. Les modérateurs sont des utilisateurs simples qui ont la possibilité de supprimer certains utilisateurs ou de désactiver la visibilité de leurs annotations. Enfin les administrateurs sont des modérateurs capables de changer le status des utilisateurs. Les administrateurs et les modérateurs n'étant pas obligatoirement des informaticiens, il est donc necéssaire de concevoir une interface pour la gestion des utilisateurs.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG01 - Gestion des utilisateurs}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
+   		\hline
+   			-1 & L'utilisateur a le status d'administrateur ou de modérateur.\\
+        	-2 & L'utilisateur souhaite accéder à la page de gestion d'utilisateur.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
+   		\hline
+   			-1 & L'utilisateur administrateur ou modérateur demande à accéder à la page de gestion des utilisateurs.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
+   		\hline
+   			-1 & Aucun\\ 
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
+  		\hline
+   			-1 & Chargement des utilisateurs présents dans la base de données.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
+   		\hline
+   			-1 & Renvoi vers la page de gestion des utilisateurs.\\
+            -2 & Renvoi d'une erreur si échec.\\
+   		\hline
+	\end{tabular}
+  \caption{Fonction SG01 - Gestion des utilisateurs}
+  \normalsize
+  \label{tab: gestion_des_utilisateurs}
+\end{table}
+
+    
+\subsubsection{Fonction SG02 - Supprimer un ou des utilisateurs}
+
+Les modérateurs peuvent supprimer un utilisateur de la base. Ceci se fait au travers de la page de gestion des utilisateurs. Le modérateur sélectionne les utilisateurs qu'il souhaite supprimer puis il les supprime.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG02 - Supprimer un ou des utilisateurs}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
+   		\hline
+   			-1 & L'utilisateur a le status de modérateur.\\
+        	-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite supprimer une liste d'utilisateurs.\\
+        
+   		\hline
+   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
+   		\hline
+   			-1 & L'utilisateur modérateur sélectionne un ou des utilisateurs de la liste et les supprime.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
+   		\hline
+   			-1 & Une liste d'utilisateurs\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
+  		\hline
+   			-1 & Suppression des utilisateurs de la base de donnée.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
+   		\hline
+   			-1 & Renvoi vers la page de gestion des utilisateurs.\\
+        	-2 & Renvoi d'une erreur si échec.\\ 
+   		\hline
+	\end{tabular}
+  \caption{Fonction SG02 - Supprimer un ou des utilisateurs}
+  \normalsize
+  \label{tab: supprimmer_utilisateur}
+\end{table}
+
+
+\subsubsection{Fonction SG03 - Desactiver les annotations d'un ou plusieurs utilisateur}
+
+Les annotations de certains utilisateurs peuvent induire en erreur d'autres utilisateurs. Pour éviter cela, les modérateurs doivent avoir la possibilité de désactiver les annotations de certains utilisateurs sans pour autant les banir. Cette désactivation empêche la visibilité des annoations par les autres utilisateurs. Un administrateur a la possibilité d'effectuer cette action via la page de gestion des utilisateurs. 
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG03 - Desactiver les annotations d'un ou plusieurs utilisateur}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
+   		\hline
+   			-1 & L'utilisateur a le status de modérateur.\\
+        	-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite désactiver la visibilité des annocations d'une liste d'utilisateurs.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
+   		\hline
+   			-1 & L'utilisateur modérateur sélectionne un ou des utilisateurs de la liste et désactive la visibilité de leurs annotations.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
+   		\hline
+   			-1 & Une liste d'utilisateurs\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
+  		\hline
+   			-1 & Un champ "visiblité" de la base de donnée est mis à faux pour les utilisateurs en question.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
+   		\hline
+   			-1 & Renvoi vers la page de gestion des utilisateurs.\\
+        	-2 & Renvoi d'une erreur si échec.\\
+   		\hline
+	\end{tabular}
+  \caption{Fonction SG03 - Desactiver les annotations d'un ou plusieurs utilisateur}
+  \normalsize
+  \label{tab: desactiver_utilisateur}
+\end{table}
+
+
+\subsubsection{Fonction SG04 - Changer le rang d'un utilisateur}
+
+Les équipes de modérateurs et d'administrateurs doivent pouvoir évoluer au fil du temps. Pour cela, un administrateur peut changer le rang d'un utilisateur dans l'objectif de le promouvoir modérateur ou administrateur mais il a aussi la possiblité de lui retirer ses droits de modérateur ou d'administrateur si celui-ci les possède.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG04 - Changer le rang d'un utilisateur}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
+   		\hline
+   			-1 & L'utilisateur a le status d'administrateur.\\
+        	-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite changer le rang d'un utilisateur.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
+   		\hline
+   			-1 & L'utilisateur administrateur sélectionne un utilisateur de la liste et choisi son nouveau rang.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
+   		\hline
+   			-1 & Un utilisateur\\
+            -2 & Un rang\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
+  		\hline
+   			-1 & Le nouveau rang écrase l'ancien rang de l'utilisateur dans la base de donnée.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
+   		\hline
+   			-1 & Renvoi vers la page de gestion des utilisateurs.\\
+        	-2 & Renvoi d'une erreur si échec.\\
+   		\hline
+	\end{tabular}
+  \caption{Fonction SG04 - Changer le rang d'un utilisateur}
+  \normalsize
+  \label{tab: promouvoir_utilisateur}
+\end{table}
+
+\newpage
+\section*{Conclusion}
+
+
+\end{document}
