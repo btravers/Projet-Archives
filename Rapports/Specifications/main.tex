@@ -60,7 +60,32 @@
 
 \subsection{Authentification}
 
-L'authentification comprend les fonctionnalités qui permettront aux utilisateurs de s'identifier afin d'accéder à leurs données propres ainsi qu'aux fonctionnalités auxquelles ils auront un accès d'utilisation. Par exemple, un utilisateur non identifié ne pourra pas annoter un document, tandis qu'un utilisateur identifié aurra l'autorisation d'annoter un document tel un registre matricule militaire ou une table des registres.
+Un utilisateur, souhaitant simplement consulter les tables et les RMM, n'est pas obligé de s'authentifier. Cependant, si celui-ci souhaite bénéficier des outils d'annotation et de favoris, il devra impérativement s'authentifié. En effet, les annotations sont associées à un utilisateur, ce qui permettra, par la suite, de faciliter la modération.
+
+\subsubsection{Statuts des utilisateurs}
+
+Un utilisateur n'a pas besoin d'être authentifié pour utiliser notre système. Cependant l'authentification permet à l'utilisateur d'accéder à des fonctionnalités supplémentaires. Aussi, nous allons retrouver plusieurs statuts parmi les utilisateurs authentifiés. La table \ref{tab:profils} résume les différents statuts avec les droits qui leurs sont associés. 
+
+\begin{table}[H]
+	\centering
+		\small
+			\begin{tabular}{|c|p{7cm}|}
+				\hline
+					\rowcolor{lightgray}\textbf{Statut} & \textbf{Droits} \\
+				\hline
+					Utilisateur non-connecté & Rechercher un document, naviguer dans les documents, visualiser un document avec ses annotations \\
+				\hline
+					Utilisateur basique & Droits d'un utilisateur non-connecté, annoter un document, visualiser les annotations d'un autre utilisateur pour un document donné, utilisation de favoris \\
+				\hline
+					Modérateur & Droits d'un utilisateur non-connecté, supprimer un utilisateur basique\\
+				\hline
+					Administrateur & Droits d'un modérateur, supprimer un modérateur, supprimer un administrateur, modifier le statut d'un utilisateur \\
+				\hline
+			\end{tabular}
+			\caption{Profils des utilisateurs}
+		\normalsize
+	\label{tab:profils}
+\end{table}
 
 \subsubsection{Fonction SA01 - Inscription}
 
@@ -1504,51 +1529,12 @@ TODO.\\
 \subsubsection{Fonction SF06 - Déplacer un fichier dans un dossier de favoris}
 
 \subsection{Administration}
-    
-    
-\subsubsection{Fonction SG01 - Gestion des utilisateurs}
 
-Les utilisateurs sont divisés en trois groupes : les utilisateurs simples, les modérateurs et les administrateurs. Les utilisateurs simples sont les utilisateurs authentifiés de l'application et ont accès à tous les outils d'annotation. Les modérateurs sont des utilisateurs simples qui ont la possibilité de supprimer certains utilisateurs ou de désactiver la visibilité de leurs annotations. Enfin les administrateurs sont des modérateurs capables de changer le status des utilisateurs. Les administrateurs et les modérateurs n'étant pas obligatoirement des informaticiens, il est donc necéssaire de concevoir une interface pour la gestion des utilisateurs.
+Comme nous avons pu le voir précédemment, les utilisateurs authentifiés sont divisés en 3 catégories : les utilisateurs basiques, les modérateurs et les administrateurs. Les modérateurs sont présents dans l'objectif de supprimer un utilisateur basique ou de masquer les annotations de certains utilisateurs. Quant à l'administrateur, il a les droits du modérateur mais ils ont aussi la possibilité de modifier le statut des utilisateurs et de supprimer tout type d'utilisateur, y-compris les modérateurs et administrateurs. Afin de permettre la gestion des utilisateurs, il existera une interface d'administration.
 
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG01 - Gestion des utilisateurs}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
-   		\hline
-   			-1 & L'utilisateur a le status d'administrateur ou de modérateur.\\
-        	-2 & L'utilisateur souhaite accéder à la page de gestion d'utilisateur.\\
-   		\hline
-   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
-   		\hline
-   			-1 & L'utilisateur administrateur ou modérateur demande à accéder à la page de gestion des utilisateurs.\\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
-   		\hline
-   			-1 & Aucun\\ 
-   		\hline
-   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
-  		\hline
-   			-1 & Chargement des utilisateurs présents dans la base de données.\\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
-   		\hline
-   			-1 & Renvoi vers la page de gestion des utilisateurs.\\
-            -2 & Renvoi d'une erreur si échec.\\
-   		\hline
-	\end{tabular}
-  \caption{Fonction SG01 - Gestion des utilisateurs}
-  \normalsize
-  \label{tab: gestion_des_utilisateurs}
-\end{table}
+\subsubsection{Fonction SG02 - Supprimer un ou des utilisateurs basiques}
 
-    
-\subsubsection{Fonction SG02 - Supprimer un ou des utilisateurs}
-
-Les modérateurs peuvent supprimer un utilisateur de la base. Ceci se fait au travers de la page de gestion des utilisateurs. Le modérateur sélectionne les utilisateurs qu'il souhaite supprimer puis il les supprime.
+Les modérateurs peuvent supprimer un utilisateur basique de la base de données. Ceci se fait au travers de la page de gestion des utilisateurs. Le modérateur sélectionne les utilisateurs qu'il souhaite supprimer puis il les supprime.
 
 \begin{table}[H]
   \centering
@@ -1560,16 +1546,16 @@ Les modérateurs peuvent supprimer un utilisateur de la base. Ceci se fait au tr
    			\multicolumn{2}{|l|}{Condition de déclenchement} \\
    		\hline
    			-1 & L'utilisateur a le status de modérateur.\\
-        	-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite supprimer une liste d'utilisateurs.\\
+        			-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite supprimer une liste d'utilisateurs basiques.\\
         
    		\hline
    			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
    		\hline
-   			-1 & L'utilisateur modérateur sélectionne un ou des utilisateurs de la liste et les supprime.\\
+   			-1 & L'utilisateur modérateur sélectionne un ou des utilisateurs basiques et les supprime.\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'opération} \\
    		\hline
-   			-1 & Une liste d'utilisateurs\\
+   			-1 & Une liste d'utilisateurs basiques\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'opération} \\
   		\hline
@@ -1578,12 +1564,12 @@ Les modérateurs peuvent supprimer un utilisateur de la base. Ceci se fait au tr
    			\multicolumn{2}{|l|}{Sortants de l'opération} \\
    		\hline
    			-1 & Renvoi vers la page de gestion des utilisateurs.\\
-        	-2 & Renvoi d'une erreur si échec.\\ 
+        			-2 & Renvoi d'une erreur si échec.\\ 
    		\hline
 	\end{tabular}
-  \caption{Fonction SG02 - Supprimer un ou des utilisateurs}
+  \caption{Fonction SG02 - Supprimer un ou des utilisateurs basiques}
   \normalsize
-  \label{tab: supprimmer_utilisateur}
+  \label{tab: supprimmer_utilisateur_basique}
 \end{table}
 
 
@@ -1626,8 +1612,46 @@ Les annotations de certains utilisateurs peuvent induire en erreur d'autres util
   \label{tab: desactiver_utilisateur}
 \end{table}
 
+\subsubsection{Fonction SG04 - Supprimer un ou des utilisateurs ayant le statut de modérateur ou administrateur}
 
-\subsubsection{Fonction SG04 - Changer le rang d'un utilisateur}
+Les administrateurs peuvent, en plus de supprimer un utilisateur basique, supprimer un utilisateur ayant le statut de modérateur ou administrateur. Ceci se fait toujours au travers de la page de gestion des utilisateurs. L'administrateur sélectionne les utilisateurs qu'il souhaite supprimer puis il confirme sa demande.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG02 - Supprimer un ou des utilisateurs}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de déclenchement} \\
+   		\hline
+   			-1 & L'utilisateur a le status d'administrateur.\\
+        			-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite supprimer une liste d'utilisateurs.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
+   		\hline
+   			-1 & L'utilisateur administrateur sélectionne un ou des utilisateurs basiques et les supprime.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'opération} \\
+   		\hline
+   			-1 & Une liste d'utilisateurs\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'opération} \\
+  		\hline
+   			-1 & Suppression des utilisateurs de la base de donnée.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'opération} \\
+   		\hline
+   			-1 & Renvoi vers la page de gestion des utilisateurs.\\
+        			-2 & Renvoi d'une erreur si échec.\\ 
+   		\hline
+	\end{tabular}
+  \caption{Fonction SG02 - Supprimer un ou des utilisateurs, quelque soit son statut}
+  \normalsize
+  \label{tab: supprimmer_utilisateur}
+\end{table}
+
+\subsubsection{Fonction SG05 - Changer le rang d'un utilisateur}
 
 Les équipes de modérateurs et d'administrateurs doivent pouvoir évoluer au fil du temps. Pour cela, un administrateur peut changer le rang d'un utilisateur dans l'objectif de le promouvoir modérateur ou administrateur mais il a aussi la possiblité de lui retirer ses droits de modérateur ou d'administrateur si celui-ci les possède.
 
