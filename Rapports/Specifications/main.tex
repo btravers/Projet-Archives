@@ -171,307 +171,6 @@ La connexion permet à l’utilisateur de s’identifier pour accéder à l’en
   \label{tab: connexion}
 \end{table}
 
-\subsection{Visualisation des documents}
-
-Les images numérisées ne seront pas paramétrées pour un affichage optimal sur l’application, celle-ci devra donc proposer une fonctionnalité proposant la modification de l’affichage d’une image, et non une modification de l’image en elle-même afin de ne pas dégrader l’image originale. En effet, l’image originale peut être d’une taille trop petite ou trop grande, sombre ou mal cadrée, celle-ci dépendant de la qualité l’appareil qui l’a numérisée. Pour faciliter la manipulation de l’affichage de l’image sur l’application, différents outils seront proposés à l’utilisateur : un zoom, une modification du contraste, de la luminosité, d’un effet négatif, de translation en abscisse et ordonnée et de rotation. Pour permettre la conservation des paramètres d’affichage favoris de l’utilisateur, celui-ci pourra les sauvegarder afin d’éviter une manipulation répétitive de ces paramètres. Aussi, un retour à l’état original de l’affichage sera disponible dans le cas où l’utilisateur n’arrive plus à un affichage correct.
-
-D'ailleurs, l'application étant destinée à être tactile, ces fonctionnalités de modification seront accessibles par un raccourci "mouvement", c'est-à-dire que l'utilisateur pourra avec seulement un mouvement de ses doigts exécuter une modification de l'image. Cependant, ces fonctionnalités devront être également accessibles à partir d'une barre d'outils afin de permettre à l'utilisateur de connaître les paramètres qu'il modifient et aussi dans le cas ou l'utilisateur ne sait quel mouvement exécuté.
-
-\subsubsection{Fonction SB01 - Zoom}
-
-Le zoom d'une image permet d'améliorer la lisibilité du document, il permet à l'utilisateur d'agrandir ou de rétricir le document. L'utilisateur pourra paramétrer son zoom selon le pourcentage de la taille de l'image d'origine. Le pourcentage autorisera une modification de 20\% jusqu'à 300\% de la taille de l'image d'origine.
-\todo{Question : Faut-il déjà limiter les paramètres ou bien est-ce destiné à la conception ?}
-
-Raccourci mouvement : L'utilisateur colle ses doigts sur une zone de l'image, et les écarte pour agrandir la zone, mouvement inverse pour un rétrécissement.
-\todo{Question : Doit-on aussi préciser les mouvements pour le tactile ?}
-\todo{Question : Pour le plan du coup il faut peut être dire avant que l'application sera tactile, donc Architecture Générale à mettre avant ? }
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB01 - Fonction Zoom}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & Un utilisateur veut zoomer ou dezoomer une image qu'il visionne. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur valide son zoom après l'avoir configuré. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-   			-1 & Une image \\
-        	-2 & Un zoom exprimé en pourcentage de la taille de l'image d'origine \\ 	
-        \hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'affichage de l'image est modifié (agrandi ou rétréci), selon le pourcentage de la taille de l'image d'origine. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & L'affichage de l'image modifié \\
-   		\hline
-	\end{tabular}
-  \caption{SB01 - Fonction Zoom}
-  \normalsize
-  \label{tab:visu_img_zoom}
-\end{table}
-
-
-\subsubsection{Fonction SB02 - Translation}
-
-La translation en abscisse et ordonnée d'une image permet de déplacer l'image par rapport à un certain repère et obtenir ainsi le centrage à l'écran d'une zone partielle ou entière du document. Cette fonctionnalité est destinée à recadrer correctement une image dans le but d'afficher une zone qui intéresserait l'utilisateur.
-
-Raccourci mouvement : L'utilisateur pointe l'image avec un doigt en marquant une pause (pour un effet long), puis est invité à déplacer l'image en déplaçant son doigt.
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB02 - Fonction Translation}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & Un utilisateur veut déplacer une image. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur sélectionne l'image et la translate en x et en y par rapport à un repère. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-        	-1 & Une image \\
-   			-2 & Un repère \\
-        	-3 & Une translation en x et en y \\ 	
-        \hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'image est déplacée par rapport au repère et aux translations \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & L'image déplacée \\
-   		\hline
-	\end{tabular}
-  \caption{SB02 - Fonction Translation}
-  \normalsize
-  \label{tab:visu_img_translation}
-\end{table}
-
-\subsubsection{Fonction SB03 - Rotation}
-
-La rotation d'une image permet de faire pivoter l'image dans l'objectif de consulter un objet comme une phrase ou un mot qui serait écrit de travers.
-
-Raccourci mouvement : L'utilisateur positionne deux doigt sur l'image et effectue un mouvement circulaire dans un sens horaire ou anti-horaire.
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB03 - Fonction Rotation}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & Un utilisateur veut pivoter une image. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur paramètre son angle de rotation et confirme sa rotation. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-        	-1 & Une image \\
-   			-2 & Un angle de rotation \\ 	
-        \hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'image est pivotée selon l'angle de rotation \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & L'image pivotée \\
-   		\hline
-	\end{tabular}
-  \caption{SB03 - Fonction Rotation}
-  \normalsize
-  \label{tab:visu_img_rotation}
-\end{table}
-
-
-\subsubsection{Fonction SB04 - Contraste}
-
-Contraster une image permet de renforcer la différenciation entre les couleurs foncés et les couleurs clairs dans le but d'améliorer la lisibilité de l'image.
-
-Raccourci mouvement : aucun.
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB04 - Fonction Contraste}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & Un utilisateur veut contraster une image. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur paramètre son contraste et le confirme. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-        	-1 & Une image \\
-   			-2 & Un contraste \\ 	
-        \hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'image est contrastée selon le contraste donné en paramètre \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & L'image contrastée \\
-   		\hline
-	\end{tabular}
-  \caption{SB04 - Fonction Contraste}
-  \normalsize
-  \label{tab:visu_img_contraste}
-\end{table}
-
-
-
-\subsubsection{Fonction SB05 - Luminosité}
-
-
-Augmenter ou diminuer la luminosité d'une image améliorer la netteté et donc la lisibilité de l'image.
-
-Raccourci mouvement : aucun.
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB05 - Fonction Luminosité}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & Un utilisateur veut augmenter ou diminuer la luminosité d'une image. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur sa luminosité et confirme. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-        	-1 & Une image \\
-   			-2 & Une luminosité \\ 	
-        \hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'image est modifiée selon la luminosité donnée en paramètre \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & L'image modifiée \\
-   		\hline
-	\end{tabular}
-  \caption{SB05 - Fonction Luminosité}
-  \normalsize
-  \label{tab:visu_img_luminosite}
-\end{table}
-
-
-\subsubsection{Fonction SB06 - Négatif}
-\todo{Nécessaire ou pas ?}
-
-
-\subsubsection{Fonction SB07 - Défaire / Refaire}
-
-Lorsque l'utilisateur hésite quant à sa modification de l'image, il paraît nécessaire que celui-ci puisse annuler, défaire son changement pour revenir à l'état précédent de l'image. Aussi, il pourra refaire son changement s'il le souhaite, ce sont des raccourcis efficaces qui évite plusieurs manipulations par l'utilisateur.
-
-Raccourci mouvement : aucun.
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB07 - Fonction Défaire / Refaire}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & Un utilisateur veut annuler ou refaire sa manipulation de l'image. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur confirme. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-        	-1 & Une image \\
-   			-2 & Une action \\ 	
-        \hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'image défait ou refait l'action \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & L'image modifiée \\
-   		\hline
-	\end{tabular}
-  \caption{SB07 - Fonction Défaire / Refaire}
-  \normalsize
-  \label{tab:visu_img_undo_redo}
-\end{table}
-
-
-
-\subsubsection{Fonction SB08 - Sauvegarder les paramètres}
-
-L'utilisateur pourra sauvegarder ses paramètres préférentiels dans un raccourci, afin d'éviter de répéter différentes manipulations lorqu'il consulte plusieurs images. Celui-ci pourra donc refaire toutes ses manipulations en une seule actio, augmentant l'efficacité d'utilisation de l'application.
-
-Raccourci mouvement : aucun.
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB08 - Fonction Sauvegarder les paramètres}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & Un utilisateur souhaite conserver les paramètres actuels. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur confirme. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-        	-1 & Une liste d'action \\ 	
-        \hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'application conserve en local cette liste d'action \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & Un raccourci permettant d'exécuter les actions stockées dans la liste \\
-   		\hline
-	\end{tabular}
-  \caption{SB08 - Fonction Sauvegarder les paramètres}
-  \normalsize
-  \label{tab:visu_img_save_parameters}
-\end{table}
-
 
 \subsection{Navigation entre les documents}
 
@@ -1527,6 +1226,309 @@ TODO.\\
 \subsubsection{Fonction SF04 - Créer un dossier de favoris}
 \subsubsection{Fonction SF05 - Supprimer un fichier favori}
 \subsubsection{Fonction SF06 - Déplacer un fichier dans un dossier de favoris}
+
+
+\subsection{Visualisation des documents}
+
+Les images numérisées ne seront pas paramétrées pour un affichage optimal sur l’application, celle-ci devra donc proposer une fonctionnalité proposant la modification de l’affichage d’une image, et non une modification de l’image en elle-même afin de ne pas dégrader l’image originale. En effet, l’image originale peut être d’une taille trop petite ou trop grande, sombre ou mal cadrée, celle-ci dépendant de la qualité l’appareil qui l’a numérisée. Pour faciliter la manipulation de l’affichage de l’image sur l’application, différents outils seront proposés à l’utilisateur : un zoom, une modification du contraste, de la luminosité, d’un effet négatif, de translation en abscisse et ordonnée et de rotation. Pour permettre la conservation des paramètres d’affichage favoris de l’utilisateur, celui-ci pourra les sauvegarder afin d’éviter une manipulation répétitive de ces paramètres. Aussi, un retour à l’état original de l’affichage sera disponible dans le cas où l’utilisateur n’arrive plus à un affichage correct.
+
+D'ailleurs, l'application étant destinée à être tactile, ces fonctionnalités de modification seront accessibles par un raccourci "mouvement", c'est-à-dire que l'utilisateur pourra avec seulement un mouvement de ses doigts exécuter une modification de l'image. Cependant, ces fonctionnalités devront être également accessibles à partir d'une barre d'outils afin de permettre à l'utilisateur de connaître les paramètres qu'il modifient et aussi dans le cas ou l'utilisateur ne sait quel mouvement exécuté.
+
+
+\subsubsection{Fonction SB01 - Zoom}
+
+Le zoom d'une image permet d'améliorer la lisibilité du document, il permet à l'utilisateur d'agrandir ou de rétricir le document. L'utilisateur pourra paramétrer son zoom selon le pourcentage de la taille de l'image d'origine. Le pourcentage autorisera une modification de 20\% jusqu'à 300\% de la taille de l'image d'origine.
+\todo{Question : Faut-il déjà limiter les paramètres ou bien est-ce destiné à la conception ?}
+
+Raccourci mouvement : L'utilisateur colle ses doigts sur une zone de l'image, et les écarte pour agrandir la zone, mouvement inverse pour un rétrécissement.
+\todo{Question : Doit-on aussi préciser les mouvements pour le tactile ?}
+\todo{Question : Pour le plan du coup il faut peut être dire avant que l'application sera tactile, donc Architecture Générale à mettre avant ? }
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB01 - Fonction Zoom}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut zoomer ou dezoomer une image qu'il visionne. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur valide son zoom après l'avoir configuré. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Une image \\
+        	-2 & Un zoom exprimé en pourcentage de la taille de l'image d'origine \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'affichage de l'image est modifié (agrandi ou rétréci), selon le pourcentage de la taille de l'image d'origine. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'affichage de l'image modifié \\
+   		\hline
+	\end{tabular}
+  \caption{SB01 - Fonction Zoom}
+  \normalsize
+  \label{tab:visu_img_zoom}
+\end{table}
+
+
+\subsubsection{Fonction SB02 - Translation}
+
+La translation en abscisse et ordonnée d'une image permet de déplacer l'image par rapport à un certain repère et obtenir ainsi le centrage à l'écran d'une zone partielle ou entière du document. Cette fonctionnalité est destinée à recadrer correctement une image dans le but d'afficher une zone qui intéresserait l'utilisateur.
+
+Raccourci mouvement : L'utilisateur pointe l'image avec un doigt en marquant une pause (pour un effet long), puis est invité à déplacer l'image en déplaçant son doigt.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB02 - Fonction Translation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut déplacer une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur sélectionne l'image et la translate en x et en y par rapport à un repère. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Un repère \\
+        	-3 & Une translation en x et en y \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est déplacée par rapport au repère et aux translations \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image déplacée \\
+   		\hline
+	\end{tabular}
+  \caption{SB02 - Fonction Translation}
+  \normalsize
+  \label{tab:visu_img_translation}
+\end{table}
+
+\subsubsection{Fonction SB03 - Rotation}
+
+La rotation d'une image permet de faire pivoter l'image dans l'objectif de consulter un objet comme une phrase ou un mot qui serait écrit de travers.
+
+Raccourci mouvement : L'utilisateur positionne deux doigt sur l'image et effectue un mouvement circulaire dans un sens horaire ou anti-horaire.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB03 - Fonction Rotation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut pivoter une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur paramètre son angle de rotation et confirme sa rotation. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Un angle de rotation \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est pivotée selon l'angle de rotation \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image pivotée \\
+   		\hline
+	\end{tabular}
+  \caption{SB03 - Fonction Rotation}
+  \normalsize
+  \label{tab:visu_img_rotation}
+\end{table}
+
+
+\subsubsection{Fonction SB04 - Contraste}
+
+Contraster une image permet de renforcer la différenciation entre les couleurs foncés et les couleurs clairs dans le but d'améliorer la lisibilité de l'image.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB04 - Fonction Contraste}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut contraster une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur paramètre son contraste et le confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Un contraste \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est contrastée selon le contraste donné en paramètre \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image contrastée \\
+   		\hline
+	\end{tabular}
+  \caption{SB04 - Fonction Contraste}
+  \normalsize
+  \label{tab:visu_img_contraste}
+\end{table}
+
+
+
+\subsubsection{Fonction SB05 - Luminosité}
+
+
+Augmenter ou diminuer la luminosité d'une image améliorer la netteté et donc la lisibilité de l'image.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB05 - Fonction Luminosité}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut augmenter ou diminuer la luminosité d'une image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur sa luminosité et confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Une luminosité \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image est modifiée selon la luminosité donnée en paramètre \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image modifiée \\
+   		\hline
+	\end{tabular}
+  \caption{SB05 - Fonction Luminosité}
+  \normalsize
+  \label{tab:visu_img_luminosite}
+\end{table}
+
+
+\subsubsection{Fonction SB06 - Négatif}
+\todo{Nécessaire ou pas ?}
+
+
+\subsubsection{Fonction SB07 - Défaire / Refaire}
+
+Lorsque l'utilisateur hésite quant à sa modification de l'image, il paraît nécessaire que celui-ci puisse annuler, défaire son changement pour revenir à l'état précédent de l'image. Aussi, il pourra refaire son changement s'il le souhaite, ce sont des raccourcis efficaces qui évite plusieurs manipulations par l'utilisateur.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB07 - Fonction Défaire / Refaire}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut annuler ou refaire sa manipulation de l'image. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une image \\
+   			-2 & Une action \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'image défait ou refait l'action \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & L'image modifiée \\
+   		\hline
+	\end{tabular}
+  \caption{SB07 - Fonction Défaire / Refaire}
+  \normalsize
+  \label{tab:visu_img_undo_redo}
+\end{table}
+
+
+
+\subsubsection{Fonction SB08 - Sauvegarder les paramètres}
+
+L'utilisateur pourra sauvegarder ses paramètres préférentiels dans un raccourci, afin d'éviter de répéter différentes manipulations lorqu'il consulte plusieurs images. Celui-ci pourra donc refaire toutes ses manipulations en une seule actio, augmentant l'efficacité d'utilisation de l'application.
+
+Raccourci mouvement : aucun.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB08 - Fonction Sauvegarder les paramètres}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur souhaite conserver les paramètres actuels. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur confirme. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+        	-1 & Une liste d'action \\ 	
+        \hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & L'application conserve en local cette liste d'action \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Un raccourci permettant d'exécuter les actions stockées dans la liste \\
+   		\hline
+	\end{tabular}
+  \caption{SB08 - Fonction Sauvegarder les paramètres}
+  \normalsize
+  \label{tab:visu_img_save_parameters}
+\end{table}
 
 \subsection{Administration}
 
