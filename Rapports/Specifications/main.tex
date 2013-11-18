@@ -174,7 +174,11 @@ La connexion permet à l’utilisateur de s’identifier pour accéder à l’en
 
 \subsection{Navigation entre les documents}
 
-\subsubsection{Fonction SC01 - Naviguer dans une m\^eme table}
+\subsubsection{Navigation dans une table}
+
+La table est l'un des deux documents de base de notre projet. En effet, même si la finalité des utilisateurs de notre solution est d'annoter des registres, la manière la plus intuitive d'accéder à ces registres est de passer par les tables. C'est pour celà que nous devons proposer une solution de navigation simple et intuitive au sein de tables.
+
+\subsubsubsection{Fonction SC01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}
 
 La table est un ensemble de pages, qui recensent chacunes des dizaines d'individus. Ici, le but est simpement de permettre une navigation rapide entre des pages adjacentes (page suivante ou page pr\'ec\'edente).
 
@@ -185,7 +189,7 @@ Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite 
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC01 - Naviguer dans une m\^eme table}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -213,11 +217,50 @@ Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite 
 	\end{tabular}
   \caption{SC01 - Naviguer dans une table}
   \normalsize
+  \label{tab:naviguer_table_unique_adjacent}
+\end{table}
+
+\subsubsubsection{Fonction SC02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}
+
+Afin de navguer facilement dans les tables, la navigation vers les pages adjacentes ne suffit pas. En effet, si l'utilisateur veut atteindre une page éloigné de la page courante, par exemple la 20ème page en partant du début de la table, il  ne doit pas être obligé de répéter 20 fois l'action "aller à la page suivante". Cette fonctionnalité son numéro.  de sélectionner la page qu'on désire atteindre, en renseignant simplement
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut acc\'eder \`a une page de la table. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur entre le numéro de la page à atteindre et valide. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & La table courante. \\
+        	-2 & Le numéro de la page à atteindre. \\ 
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Associer une page au couple \{table, numéro de page\}.  \\
+        	-2 & V\'erifier que la page demand\'ee existe. \\
+        	-3 & Afficher la page demand\'ee et la d\'efinir comme page actuelle. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de la page demand\'ee. \\
+   		\hline
+	\end{tabular}
+  \caption{SC02 - Naviguer dans une table jusqu'à une page numérotée}
+  \normalsize
   \label{tab:naviguer_table_unique}
 \end{table}
 
 
-\subsubsection{Fonction SC02 - Naviguer entre deux tables}
+\subsubsection{Fonction SC03 - Naviguer entre deux tables}
 
 Pour un utilisateur, il peut être intéressant de pouvoir naviguer rapidement de table en table, par exemple lorsqu'il recherche une personne dont il connaït le nom mais pas l'année d'entrée eb service. Dans ce cas, il va établir une fourchette contenant les années qu'il estime possibles, et parcourir les tables correspondant à ces années. Les tables seront classées par ordre chronologique (une par année), ainsi navuguer vers l'année suivante reviendra à naviguer vers la table suivante.
 
@@ -228,7 +271,7 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC02 - Naviguer entre deux tables}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Naviguer entre deux tables}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -256,13 +299,17 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
    			-1 & Affichage de la table demand\'ee. \\
    		\hline
 	\end{tabular}
-  \caption{SC02 - Naviguer entre deux tables}
+  \caption{SC03 - Naviguer entre deux tables}
   \normalsize
   \label{tab:naviguer_deux_tables}
 \end{table}
 \newpage
 
-\subsubsection{Fonction SC03 - Naviguer entre deux registres}
+\subsubsection{Naviguer entre deux registres}
+
+Même si la navigation au sein des tables est primordiale, il ne faut pas négliger la possibilité que certains utilisateurs annotent des registres "à la chaîne", parfois sans même passer par les tables. Il faut donc que notre solution propose aussi une solution de navigation entre les registres.
+
+\subsubsubsection{Fonction SC04 - Naviguer entre deux registres adjacents}
 
 Pour certains utilisateurs, qui annotent de nombreux registres quasiment "à la chaîne", la fonctionnalité de navigation entre des registres adjacents est indispensable. Cette navigation entre deux registres sera très proche de la navigation entre deux pages adjacentes d'une table.
 
@@ -273,7 +320,7 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Naviguer entre deux registres adjacents}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC04 - Naviguer entre deux registres adjacents}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -299,23 +346,68 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
    			-1 & Affichage du registre demand\'e. \\
    		\hline
 	\end{tabular}
-  \caption{SC03 - Naviguer entre deux registres}
+  \caption{SC04 - Naviguer entre deux registres}
   \normalsize
-  \label{tab:naviguer_deux_registres}
+  \label{tab:naviguer_deux_registres_adjacents}
 \end{table}
 
-\subsubsection{Fonction SC04 - Naviguer d'une table à un registre}
+\subsubsubsection{Fonction SC05 - Naviguer entre deux registres numérotés}
+
+Dans notre base d'images de registres, celles-ci sont classées par numéros de matricule. Cependant, à cause des vues multiples dues aux retombes et aux éventuelles absences de certains registres, numéro de matricule et numéro d'image ne correspondent pas forcément. Cependant, certains utilisateurs peuvent vouloir accéder rapidement à un registre en ne connaissant que le numéro de l'image, par exemple sur les conseils d'un ami. Ainsi, en entrant le numéro souhaité, on accède directement à l'image correspondante.
+
+\begin{table}[H]
+  \centering
+   \small
+  \begin{tabular}{|c|p{12cm}|}
+      \hline
+        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC05 - Naviguer entre deux registres numérotés}} \\
+      \hline
+        \multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+      \hline
+      -1 & Un utilisateur veut acc\'eder \`a un registre via son numéro. \\
+      \hline
+        \multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+      \hline
+        -1 & L'utilisateur indique le numéro de l'image souhaitée. \\
+      \hline
+        \multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+      \hline
+        -1 & Un dossier d'image \\
+          -2 & Un numéro d'image \\ 
+      \hline
+        \multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+      \hline
+        -1 & Associer une image au couple \{dossier d'images actuel, numéro d'image\}.  \\
+          -2 & V\'erifier que l'image' demand\'ee existe. \\
+          -3 & Afficher l'image' demand\'ee et définir le registre comme registre actuel. \\
+      \hline
+        \multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+      \hline
+        -1 & Affichage de l'image demand\'ee. \\
+      \hline
+  \end{tabular}
+  \caption{SC05 - Naviguer entre deux registres numérotés}
+  \normalsize
+  \label{tab:naviguer_deux_registres_numerotes}
+\end{table}
+
+
+\subsubsection{Naviguer d'une table à un registre}
 
 Lorsqu'un uilisateur recherche un individu dont il connaît le nom et la date d'engagement, la méthode d'accès la plus intuitive est de trouver cet individu dans la table correspondante, afin de récupérer son numéro matricule et ainsi de le retrouver dans les registres. Afin d'éviter à l'utilisateur des allers-retours entre ces différents types de documents, nous allons proposer une fonctionnalité qui fera directement le lien entre une table et un registre.
 
 Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure : où un autre utilisateur a déjà lié ce numéro de matricule à un registre, auquel cas on renvoie ce registre. Dans l'autre cas, si on ne peut lier le numéro de matricule à un registre, alors on lance une recherche sur le numéro de matricule. 
+
+\subsubsubsection{Fonction SC06 - Naviguer d'une table à un registre inconnu}
+
+Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouver le registre correspondant, c'est à dire que ce dernier n'a pas été annoté. 
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC04 - Naviguer d'une table à un registre}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC06 - Naviguer d'une table à un registre inconnu}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -332,19 +424,57 @@ Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'i
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Voir si un lien existe déjà entre le couple \{numéro de matricule, année de la table\} et un registre.  \\
-        	-2 & Si oui, afficher le registre correspondant. \\
-        	-3 & Si non, lancer une recherche sur le numéro de matricule et l'année. \\
+   			-1 & Associer une requête de recherche au couple \{année de la table, numéro de registre\} \\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Affichage du registre demand\'e s'il est trouvé. \\
-            -2 & Requête pour une recherche sur le numéro de matricule et l'année sinon. \\
+   			-1 & Renvoi et traitement de la recherche \\
    		\hline
 	\end{tabular}
-  \caption{SC04 - Naviguer d'une table à un registre}
+  \caption{SC06 - Naviguer d'une table à un registre inconnu}
   \normalsize
-  \label{tab:naviguer_table_registre}
+  \label{tab:naviguer_table_registre_inconnu}
+\end{table}
+\newpage
+
+
+\subsubsubsection{Fonction SC07 - Naviguer d'une table à un registre connu}
+
+Ici, on se place dans le cas où le numéro de matricule permet de trouver le registre correspondant, car ce dernier a déjà été annoté.
+
+\begin{table}[H]
+  \centering
+   \small
+  \begin{tabular}{|c|p{12cm}|}
+      \hline
+        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC07 - Naviguer d'une table à un registre connu}} \\
+      \hline
+        \multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+      \hline
+      -1 & Un utilisateur veut acc\'eder \`a un registre à partir d'une table. \\
+      \hline
+        \multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+      \hline
+        -1 & L'utilisateur clique dans la table sur la ligne de l'individu qui l'intéresse, puis annote son numéro de matricule. \\
+      \hline
+        \multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+      \hline
+        -1 & Une table \\
+          -2 & Un numéro de registre \\ 
+      \hline
+        \multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+      \hline
+        -1 & Trouver le registre correspondant au couple \{numéro de matricule, année de la table\} \\
+          -2 & Afficher le registre correspondant. \\
+      \hline
+        \multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+      \hline
+        -1 & Affichage du registre demand\'e \\
+      \hline
+  \end{tabular}
+  \caption{SC07 - Naviguer d'une table à un registre connu}
+  \normalsize
+  \label{tab:naviguer_table_registre_connu}
 \end{table}
 \newpage
 
