@@ -36,8 +36,24 @@
 
 \subsection{Mise en valeur des documents de guerre}
 \todo{Expliquer vite fait pourquoi ces docs, en mettre un de chaque en photo, dire que leur présentation est faite dans le rapport de pré-étude (notamment pour le registre)}
+
+L'application étant destiné au centenaire de la guerre 14-18, deux types de documents nous intéresse particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents étaient des documents militaires mais qui ont été donnés aux archives, ce sont les seules archives militaires que les archives possèdent.
+
 \subsubsection{Le registre matricule militaire}
+Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe[\ref{sec:annexe 1}], est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver l'état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.
+
+\`A la lumière du centenaire de la guerre 1914-1918, ces RMM prennent un intérêt particulier. En effet, ils permettent de déterminer quels soldats ont pris part à cette guerre, quelles batailles ils ont menées, et quel destin ils y ont trouvé. En bref, la mise en valeur du centenaire passe en grande partie par la mise en valeur de ces documents, qui seront mis en ligne par les archives d'Ille et Vilaine pour l'occasion.\\
+
+Le Registre Matricule Militaire est le document de base de notre projet, afin de mieux le comprendre, celui-ci, étant divisé en plusieurs parties, est expliqué plus en détails dans notre rapport de pré-étude (ref à mettre).
+
+Pour le RMM, il devra être possible, à travers l'application, de tout annoter, de n'importe quelles informations présentes dans le RMM jusqu'à l'annotation personnelle. 
+
 \subsubsection{Les tables des registres matricules militaires}
+La table des RMM représente la liste de tous les registres présents dans un volume. Elle est triée par ordre alphabétique et permet donc de retrouver facilement un RMM grâce au numéro matricule qui sont eux classés en ordre numérique. Vous trouverez un exemple en annexe[\ref{sec:annexe 2}] où l'on peut trouver le matricule et donc le RMM de l'individu nommé Onen[\ref{sec:annexe 1}].
+
+Ces tables nous seront utiles pour la rapidité de recherche de l'information. En effet, le numéro matricule est un moyen de recherche efficace puisqu'ils sont rangés, dans un volume, en ordre numérique. 
+
+L'objectif de l'application sera d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant la zone du numéro matricule "cliquable" tel un lien hypertexte.
 
 \subsection{Différents types d'utilisateurs}
 \todo{Cas d'utilisation global a mettre en "pseudo intro" et Story board dans chaque user}
@@ -184,7 +200,7 @@ La connexion permet à l’utilisateur de s’identifier pour accéder à l’en
 
 La table est l'un des deux documents de base de notre projet. En effet, même si la finalité des utilisateurs de notre solution est d'annoter des registres, la manière la plus intuitive d'accéder à ces registres est de passer par les tables. C'est pour celà que nous devons proposer une solution de navigation simple et intuitive au sein de tables.
 
-\subsubsubsection{Fonction SC01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}
+\subsubsection{Fonction SC01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}
 
 La table est un ensemble de pages, qui recensent chacunes des dizaines d'individus. Ici, le but est simpement de permettre une navigation rapide entre des pages adjacentes (page suivante ou page pr\'ec\'edente).
 
@@ -226,7 +242,7 @@ Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite 
   \label{tab:naviguer_table_unique_adjacent}
 \end{table}
 
-\subsubsubsection{Fonction SC02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}
+\subsubsection{Fonction SC02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}
 
 Afin de navguer facilement dans les tables, la navigation vers les pages adjacentes ne suffit pas. En effet, si l'utilisateur veut atteindre une page éloigné de la page courante, par exemple la 20ème page en partant du début de la table, il  ne doit pas être obligé de répéter 20 fois l'action "aller à la page suivante". Cette fonctionnalité son numéro.  de sélectionner la page qu'on désire atteindre, en renseignant simplement
 \begin{table}[H]
@@ -315,7 +331,7 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
 
 Même si la navigation au sein des tables est primordiale, il ne faut pas négliger la possibilité que certains utilisateurs annotent des registres "à la chaîne", parfois sans même passer par les tables. Il faut donc que notre solution propose aussi une solution de navigation entre les registres.
 
-\subsubsubsection{Fonction SC04 - Naviguer entre deux registres adjacents}
+\subsubsection{Fonction SC04 - Naviguer entre deux registres adjacents}
 
 Pour certains utilisateurs, qui annotent de nombreux registres quasiment "à la chaîne", la fonctionnalité de navigation entre des registres adjacents est indispensable. Cette navigation entre deux registres sera très proche de la navigation entre deux pages adjacentes d'une table.
 
@@ -357,7 +373,7 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
   \label{tab:naviguer_deux_registres_adjacents}
 \end{table}
 
-\subsubsubsection{Fonction SC05 - Naviguer entre deux registres numérotés}
+\subsubsection{Fonction SC05 - Naviguer entre deux registres numérotés}
 
 Dans notre base d'images de registres, celles-ci sont classées par numéros de matricule. Cependant, à cause des vues multiples dues aux retombes et aux éventuelles absences de certains registres, numéro de matricule et numéro d'image ne correspondent pas forcément. Cependant, certains utilisateurs peuvent vouloir accéder rapidement à un registre en ne connaissant que le numéro de l'image, par exemple sur les conseils d'un ami. Ainsi, en entrant le numéro souhaité, on accède directement à l'image correspondante.
 
@@ -404,7 +420,7 @@ Lorsqu'un uilisateur recherche un individu dont il connaît le nom et la date d'
 
 Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure : où un autre utilisateur a déjà lié ce numéro de matricule à un registre, auquel cas on renvoie ce registre. Dans l'autre cas, si on ne peut lier le numéro de matricule à un registre, alors on lance une recherche sur le numéro de matricule. 
 
-\subsubsubsection{Fonction SC06 - Naviguer d'une table à un registre inconnu}
+\subsubsection{Fonction SC06 - Naviguer d'une table à un registre inconnu}
 
 Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouver le registre correspondant, c'est à dire que ce dernier n'a pas été annoté. 
 
@@ -444,7 +460,7 @@ Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouve
 \newpage
 
 
-\subsubsubsection{Fonction SC07 - Naviguer d'une table à un registre connu}
+\subsubsection{Fonction SC07 - Naviguer d'une table à un registre connu}
 
 Ici, on se place dans le cas où le numéro de matricule permet de trouver le registre correspondant, car ce dernier a déjà été annoté.
 
@@ -1830,5 +1846,21 @@ Les équipes de modérateurs et d'administrateurs doivent pouvoir évoluer au fi
 \newpage
 \section*{Conclusion}
 
+\appendix
 
+\section{Vue compl\`ete d'un RMM}
+\label{sec:annexe 1}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{RMM.JPG}
+\end{figure}
+
+\section{Table de RMM - Saint-Malo 1899}
+\label{sec:annexe 2}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Table_Onen.png}
+\end{figure}
 \end{document}
