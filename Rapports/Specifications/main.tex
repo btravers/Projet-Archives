@@ -79,11 +79,15 @@ Contrairement à l'amateur, l'utilisateur ecpérimenté vient souvent aux archiv
 \subsubsection{Archiviste}
 
 \section{Architecture générale}
+Dans cette section, nous allons détailler quelles technologies et quelle architecture nous allons employer pour mettre en place notre application.
+
 \subsection{Client - PixelSense}
 \subsection{Serveur - }
 Le serveur va être le centre du système. En effet, c'est à lui de faire le lien entre le client et les données. Son but sera de fournir les fichiers d'images, les tables et RMM ainsi que les données associées grâce à la base de données.
 
-Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, cela correspond aux besoins. Ce service web fournira un ensemble de fonctions qui permetteront de récupérer facilement les données stockées à distance. De plus une API rend simple le développement sur plusieurs type de plateforme, les programmeurs n'ont pas besoin de connaître les détails de la logique interne.
+Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, cela correspond aux besoins. Ce service web fournira un ensemble de fonctions qui permetteront de récupérer facilement les données stockées à distance. De plus une API rend simple le développement sur plusieurs type de plateforme, les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architeture doit être élastique en termes de volume de données, le volume d'image est très important.
+
+Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est un style d'architecture adapté au web, il ne s'agit pas d'un protocole mais de concepts en surcouche d'un langage prévu pour le web. Le principal avantage est plus simple à développer et à entretenir.
 \subsection{Base de données - MySql}
 La base de donn\'ees va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
 
