@@ -723,44 +723,6 @@ L'objectif est de pouvoir cr\'eer de mani\`ere automatique des pivots. Pour ce f
 \end{table}
 
 
-\subsubsection{Fonction SD06 - Marquer des documents}
-
-
-Le but de marquer un document est de pouvoir le retrouver facilement. Il est possible de les classer dans différents dossier, mes favoris, todo (mes annotations est automatique). Ces dossiers sont sp\'ecifiques \`a chaque utilisateur.\\
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Marquer des documents}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   		-1 & Un utilisateur veut conserver un document pour le retrouver facilement. \\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & L'utilisateur clique sur le bouton pour marquer le document, et il choisi le dossier. \\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-   			-1 & Document, table ou registre\\
-        	-2 & Dossier, mes favoris, todo \\
-   		\hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & Ajout d'une entr\'ee dans la base de donn\'ees \\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & Affichage du document dans le dossier correspondant. \\
-   		\hline
-	\end{tabular}
-  \caption{SD06 - Marquer des documents}
-  \normalsize
-  \label{tab:marquer_documents}
-\end{table}
 
 
 \subsubsection{Fonction SD07 - Affichage d'une fiche soldat}
@@ -1173,11 +1135,223 @@ TODO.\\
   \label{tab:supprimer_raccourci}
 \end{table}
 
-\subsubsection{Fonction SF03 - Marquer une image comme favori}
-\subsubsection{Fonction SF04 - Créer un dossier de favoris}
-\subsubsection{Fonction SF05 - Supprimer un fichier favori}
-\subsubsection{Fonction SF06 - Déplacer un fichier dans un dossier de favoris}
 
+
+\subsubsection{Fonction SF01 - Marquer un document}
+Le but de marquer un document (soit une table, soit un RMM) est de pouvoir d'y accéder plus tard et donc de le retrouver facilement. Il est possible de les classer dans différents dossiers que l'utilisateur pourra créer ou supprimer. Ces dossiers sont sp\'ecifiques \`a chaque utilisateur, ils en sont propriétaires. Aussi, lors qu'un utilisateur annote un document, un dossier non supprimable sera crée qui servira de répertoire de tous les documents qu'il a déjà annotés. 
+
+Ces enregistrements seront stockés sous forme de lien, c'est-à-dire l'utilisateur crée en fait un lien vers le document marqué.
+
+Pour marquer le document via l'application l'utilisateur devra : (se référencer àa la future interface)... .\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Marquer un document}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut conserver un document pour le retrouver facilement. \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur clique sur le bouton "Marquer ce document", et indique le dossier où il veut l'enregistrer. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Document, (table ou RMM)\\
+        		-2 & Dossier\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Ajout d'une entr\'ee dans la base de donn\'ees .\\
+			-2 & Création d'un lien pour l'utilisateur relié au document marqué.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage du lien dans le dossier correspondant. \\
+   		\hline
+	\end{tabular}
+  \caption{SD06 - Marquer un document}
+  \normalsize
+  \label{tab:marquer_document}
+\end{table}
+
+\subsubsection{Fonction SF04 - Créer un dossier}
+L'utilisateur pourra créer et supprimer autant de dossiers qu'il le souhaite, cependant trois cas sont particulieurs : le dossier qui répertorie toutes ses annotations ne pourra pas être modifié ou supprimé, le dossier ".." représente le dossier père, celui-ci ne pourra être modifié ou supprimé, le dossier "Corbeille" n'est pas un dossier, il ne pourra pas être modifié ou supprimé. Aussi, il ne pourra pas créer un dossier existant.
+
+Utilisation : l'utilisateur sélectionne grâce à son doigt "Nouveau dossier", il lui choisit un nom, le dossier est crée.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=4cm,height=9cm]{interface_mesdocuments.png}
+\caption{Interface de gestion des documents}
+\label{fig:interface_mesdocuments}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Créer un dossier}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur appuie sur "Nouveau dossier". \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur choisit un nom et valide. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Dossier parent.\\
+        		-2 & Nom\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Ajout d'une entr\'ee dans la base de donn\'ees. \\
+			-2 & Création du nouveau dossier. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Le dossier créé. \\
+   		\hline
+	\end{tabular}
+  \caption{SD06 - Créer un dossier}
+  \normalsize
+  \label{tab:creer_document}
+\end{table}
+
+\subsubsection{Fonction SF04 - Renommer un document}
+L'utilisateur pourra renommer ses documents à sa guise (sauf "..", "Mes annotations" et "Corbeille"). Cependant, aucun doublon ne sera toléré.
+
+Utilisation : 
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Renommer un document}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut renommer un document.\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur  \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Document (dossier, table ou RMM)\\
+        		-2 & Chaîne représentant le nouveau nom\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Vérification de l'unicité du nom. \\
+			-2 & Si valide, remplacement du nom dans la base. \\
+			-3 & Si échec, envoi d'un message d'erreur. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Si valide, le dossier renommé. \\
+			-2 & Si échec, une boîte de dialogue contenant le message d'erreur. \\
+   		\hline
+	\end{tabular}
+  \caption{SD06 - Renommer un document}
+  \normalsize
+  \label{tab:renommer_document}
+\end{table}
+
+\subsubsection{Fonction SF06 - Déplacer un document dans un dossier}
+L'utilisateur pourra déplacer s'il le souhaite un document (dossier, table ou RMM) dans un dossier.
+
+Utilisation : l'utilisateur effectue un appui long sur le document choisi, le déplace, en restant appuyé, dans un dossier.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Déplacer un document}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur déplace un document.\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur relâche la pression sur un dossier.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Document (dossier, table ou RMM)\\
+        		-2 & Dossier\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Vérification de l'unicité du nom. \\
+			-2 & Si valide, déplace le document dans le dossier. \\
+			-3 & Si échec, envoi d'un message d'erreur. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Si valide, le dossier déplacé. \\
+			-2 & Si échec, une boîte de dialogue contenant le message d'erreur. \\
+   		\hline
+	\end{tabular}
+  \caption{SD06 - Déplacer un document}
+  \normalsize
+  \label{tab:deplacer_document}
+\end{table}
+
+\subsubsection{Fonction SF05 - Supprimer un document}
+La suppression fonctionne comme un déplacement, seulement, le document doit être déplacer dans la Corbeille, une boîte de confirmation est envoyée à l'utilisateur.
+Si l'utilisateur supprime un dossier, tous les documents présents sont supprimés.
+Il est impossible de supprimer le dossier "..", "Mes annotations" et "Corbeille".
+
+Utilisation : l'utilisateur effectue un appui long sur le document choisi, le déplace, en restant appuyé, vers la Corbeille.
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Supprimer un document}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur déplace un document vers la Corbeille.\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur confirme sa suppression.\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Document (dossier, table ou RMM)\\
+        		-2 & Corbeille\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Si dossier, efface tous les sous documents. \\
+			-2 & Si document, efface le document. \\
+			-3 & Envoi d'un message d'information. \\		
+		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Message d'information. \\
+   		\hline
+	\end{tabular}
+  \caption{SD06 - Supprimer un document}
+  \normalsize
+  \label{tab:supprimer_document}
+\end{table}
 
 \subsection{Recherche}
 
