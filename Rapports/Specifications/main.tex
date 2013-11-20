@@ -213,7 +213,7 @@ La connexion permet à l’utilisateur de s’identifier pour accéder à l’en
 
 La table est l'un des deux documents de base de notre projet. En effet, même si la finalité des utilisateurs de notre solution est d'annoter des registres, la manière la plus intuitive d'accéder à ces registres est de passer par les tables. C'est pour celà que nous devons proposer une solution de navigation simple et intuitive au sein de tables.
 
-\subsubsection{Fonction SC01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}
+\subsubsection{Fonction SB01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}
 
 La table est un ensemble de pages, qui recensent chacunes des dizaines d'individus. Ici, le but est simpement de permettre une navigation rapide entre des pages adjacentes (page suivante ou page pr\'ec\'edente).
 
@@ -224,7 +224,7 @@ Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite 
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -250,12 +250,12 @@ Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite 
    			-1 & Affichage de la page demand\'ee. \\
    		\hline
 	\end{tabular}
-  \caption{SC01 - Naviguer dans une table}
+  \caption{SB01 - Naviguer dans une table}
   \normalsize
   \label{tab:naviguer_table_unique_adjacent}
 \end{table}
 
-\subsubsection{Fonction SC02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}
+\subsubsection{Fonction SB02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}
 
 Afin de navguer facilement dans les tables, la navigation vers les pages adjacentes ne suffit pas. En effet, si l'utilisateur veut atteindre une page éloigné de la page courante, par exemple la 20ème page en partant du début de la table, il  ne doit pas être obligé de répéter 20 fois l'action "aller à la page suivante". Cette fonctionnalité son numéro.  de sélectionner la page qu'on désire atteindre, en renseignant simplement
 \begin{table}[H]
@@ -263,7 +263,7 @@ Afin de navguer facilement dans les tables, la navigation vers les pages adjacen
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -289,13 +289,13 @@ Afin de navguer facilement dans les tables, la navigation vers les pages adjacen
    			-1 & Affichage de la page demand\'ee. \\
    		\hline
 	\end{tabular}
-  \caption{SC02 - Naviguer dans une table jusqu'à une page numérotée}
+  \caption{SB02 - Naviguer dans une table jusqu'à une page numérotée}
   \normalsize
   \label{tab:naviguer_table_unique}
 \end{table}
 
 
-\subsubsection{Fonction SC03 - Naviguer entre deux tables}
+\subsubsection{Fonction SB03 - Naviguer entre deux tables}
 
 Pour un utilisateur, il peut être intéressant de pouvoir naviguer rapidement de table en table, par exemple lorsqu'il recherche une personne dont il connaït le nom mais pas l'année d'entrée eb service. Dans ce cas, il va établir une fourchette contenant les années qu'il estime possibles, et parcourir les tables correspondant à ces années. Les tables seront classées par ordre chronologique (une par année), ainsi navuguer vers l'année suivante reviendra à naviguer vers la table suivante.
 
@@ -306,7 +306,7 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Naviguer entre deux tables}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB03 - Naviguer entre deux tables}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -334,7 +334,7 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
    			-1 & Affichage de la table demand\'ee. \\
    		\hline
 	\end{tabular}
-  \caption{SC03 - Naviguer entre deux tables}
+  \caption{SB03 - Naviguer entre deux tables}
   \normalsize
   \label{tab:naviguer_deux_tables}
 \end{table}
@@ -344,7 +344,7 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
 
 Même si la navigation au sein des tables est primordiale, il ne faut pas négliger la possibilité que certains utilisateurs annotent des registres "à la chaîne", parfois sans même passer par les tables. Il faut donc que notre solution propose aussi une solution de navigation entre les registres.
 
-\subsubsection{Fonction SC04 - Naviguer entre deux registres adjacents}
+\subsubsection{Fonction SB04 - Naviguer entre deux registres adjacents}
 
 Pour certains utilisateurs, qui annotent de nombreux registres quasiment "à la chaîne", la fonctionnalité de navigation entre des registres adjacents est indispensable. Cette navigation entre deux registres sera très proche de la navigation entre deux pages adjacentes d'une table.
 
@@ -355,7 +355,7 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC04 - Naviguer entre deux registres adjacents}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB04 - Naviguer entre deux registres adjacents}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -381,12 +381,12 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
    			-1 & Affichage du registre demand\'e. \\
    		\hline
 	\end{tabular}
-  \caption{SC04 - Naviguer entre deux registres}
+  \caption{SB04 - Naviguer entre deux registres}
   \normalsize
   \label{tab:naviguer_deux_registres_adjacents}
 \end{table}
 
-\subsubsection{Fonction SC05 - Naviguer entre deux registres numérotés}
+\subsubsection{Fonction SB05 - Naviguer entre deux registres numérotés}
 
 Dans notre base d'images de registres, celles-ci sont classées par numéros de matricule. Cependant, à cause des vues multiples dues aux retombes et aux éventuelles absences de certains registres, numéro de matricule et numéro d'image ne correspondent pas forcément. Cependant, certains utilisateurs peuvent vouloir accéder rapidement à un registre en ne connaissant que le numéro de l'image, par exemple sur les conseils d'un ami. Ainsi, en entrant le numéro souhaité, on accède directement à l'image correspondante.
 
@@ -395,7 +395,7 @@ Dans notre base d'images de registres, celles-ci sont classées par numéros de 
    \small
   \begin{tabular}{|c|p{12cm}|}
       \hline
-        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC05 - Naviguer entre deux registres numérotés}} \\
+        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB05 - Naviguer entre deux registres numérotés}} \\
       \hline
         \multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
       \hline
@@ -421,7 +421,7 @@ Dans notre base d'images de registres, celles-ci sont classées par numéros de 
         -1 & Affichage de l'image demand\'ee. \\
       \hline
   \end{tabular}
-  \caption{SC05 - Naviguer entre deux registres numérotés}
+  \caption{SB05 - Naviguer entre deux registres numérotés}
   \normalsize
   \label{tab:naviguer_deux_registres_numerotes}
 \end{table}
@@ -433,7 +433,7 @@ Lorsqu'un uilisateur recherche un individu dont il connaît le nom et la date d'
 
 Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure : où un autre utilisateur a déjà lié ce numéro de matricule à un registre, auquel cas on renvoie ce registre. Dans l'autre cas, si on ne peut lier le numéro de matricule à un registre, alors on lance une recherche sur le numéro de matricule. 
 
-\subsubsection{Fonction SC06 - Naviguer d'une table à un registre inconnu}
+\subsubsection{Fonction SB06 - Naviguer d'une table à un registre inconnu}
 
 Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouver le registre correspondant, c'est à dire que ce dernier n'a pas été annoté. 
 
@@ -442,7 +442,7 @@ Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouve
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC06 - Naviguer d'une table à un registre inconnu}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB06 - Naviguer d'une table à un registre inconnu}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -466,14 +466,14 @@ Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouve
    			-1 & Renvoi et traitement de la recherche \\
    		\hline
 	\end{tabular}
-  \caption{SC06 - Naviguer d'une table à un registre inconnu}
+  \caption{SB06 - Naviguer d'une table à un registre inconnu}
   \normalsize
   \label{tab:naviguer_table_registre_inconnu}
 \end{table}
 \newpage
 
 
-\subsubsection{Fonction SC07 - Naviguer d'une table à un registre connu}
+\subsubsection{Fonction SB07 - Naviguer d'une table à un registre connu}
 
 Ici, on se place dans le cas où le numéro de matricule permet de trouver le registre correspondant, car ce dernier a déjà été annoté.
 
@@ -482,7 +482,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le re
    \small
   \begin{tabular}{|c|p{12cm}|}
       \hline
-        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC07 - Naviguer d'une table à un registre connu}} \\
+        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB07 - Naviguer d'une table à un registre connu}} \\
       \hline
         \multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
       \hline
@@ -507,7 +507,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le re
         -1 & Affichage du registre demand\'e \\
       \hline
   \end{tabular}
-  \caption{SC07 - Naviguer d'une table à un registre connu}
+  \caption{SB07 - Naviguer d'une table à un registre connu}
   \normalsize
   \label{tab:naviguer_table_registre_connu}
 \end{table}
@@ -517,7 +517,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le re
 
 
 
-\subsubsection{Fonction SD01 - Annoter une table}
+\subsubsection{Fonction SC01 - Annoter une table}
 
 
 L'annotation de table permet de cr\'eer un lien avec les registres. En annotant le num\'ero de matricule et le nom associ\'e, on cr\'e\'e un pivot. Ce pivot peut \^etre temporaire si le registre associ\'e n'a pas \'et\'e annot\'e, sinon le pivot est valide (registre annot\'e).\\
@@ -527,7 +527,7 @@ L'annotation de table permet de cr\'eer un lien avec les registres. En annotant 
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD01 - Annoter une table}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC01 - Annoter une table}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -557,12 +557,12 @@ L'annotation de table permet de cr\'eer un lien avec les registres. En annotant 
             -2 & Pivot \\
    		\hline
 	\end{tabular}
-  \caption{SD01 - Annoter une table}
+  \caption{SC01 - Annoter une table}
   \normalsize
   \label{tab:annoter_table}
 \end{table}
 
-\subsubsection{Fonction SD02 - Annoter un registre}
+\subsubsection{Fonction SC02 - Annoter un registre}
 
 Un utilisateur visualise un registre et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Différents types d’annotation peuvent être suggérées, l’utilisateur aura le choix entre sélectionner type d’annotation ou en faire une autre. Il doit ensuite remplir l’annotation et la valider. Elle sera ensuite enregistrée sur la base de données.\\
 
@@ -571,7 +571,7 @@ Un utilisateur visualise un registre et souhaite annoter son contenu. Pour faire
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD02 - Annoter un registre}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC02 - Annoter un registre}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -597,12 +597,12 @@ Un utilisateur visualise un registre et souhaite annoter son contenu. Pour faire
 			-2 & Visualisation de l’image\\
    		\hline
 	\end{tabular}
-  \caption{SD02 - Annoter un registre}
+  \caption{SC02 - Annoter un registre}
   \normalsize
   \label{tab:annoter_registre}
 \end{table}
 
-\subsubsection{Fonction SD03 - Annotation libre sur registres}
+\subsubsection{Fonction SC03 - Annotation libre sur registres}
 Il arrive tr\`es souvant que des informations concernant le soldat se placent n'importe o\`u, et qu'elles ne rentrent pas dans le cadre des cat\'egories. L'annotation libre permet de placer dans une endroit quelconque une annotation. \\
 
 \begin{table}[H]
@@ -610,7 +610,7 @@ Il arrive tr\`es souvant que des informations concernant le soldat se placent n'
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD03 - Annotation libre sur registres}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Annotation libre sur registres}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -635,12 +635,12 @@ Il arrive tr\`es souvant que des informations concernant le soldat se placent n'
    			-1 & Affichage de l'annotation. \\
    		\hline
 	\end{tabular}
-  \caption{SD03 - Annotation libre sur registres}
+  \caption{SC03 - Annotation libre sur registres}
   \normalsize
   \label{tab:annotation_libre}
 \end{table}
 
-\subsubsection{Fonction SD04 - Annoter grâce à un raccourci}
+\subsubsection{Fonction SC04 - Annoter grâce à un raccourci}
 L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela il doit déplacer un bouton raccourci à l’endroit voulu, ce qui permet de créer une annotation à cet endroit avec un type prédéfini par ce raccourci.\\
 
 \begin{table}[H]
@@ -648,7 +648,7 @@ L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD04 - Annoter grâce à un raccourci}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC04 - Annoter grâce à un raccourci}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -674,12 +674,12 @@ L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela
    			-1 & Ajoute l’annotation à la liste des annotations du document (elle va apparaitre dans la fenêtre des annotations en haut à droite)\\
    		\hline
 	\end{tabular}
-  \caption{SD04 - Annoter grâce à un raccourci}
+  \caption{SC04 - Annoter grâce à un raccourci}
   \normalsize
   \label{tab:utiliser_raccourci}
 \end{table}
 
-\subsubsection{Fonction SD05 - Gestion des cat\'egories d'annotation}
+\subsubsection{Fonction SC05 - Gestion des cat\'egories d'annotation}
 
 \todo{A revoir si on met en dur les annotations ou non}
 
@@ -690,7 +690,7 @@ L'objectif est de pouvoir cr\'eer de mani\`ere automatique des pivots. Pour ce f
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD05 - Gestion des cat\'egories d'annotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC05 - Gestion des cat\'egories d'annotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -717,7 +717,7 @@ L'objectif est de pouvoir cr\'eer de mani\`ere automatique des pivots. Pour ce f
             -3 & Pivot \\
    		\hline
 	\end{tabular}
-  \caption{SD05 - Gestion des cat\'egories d'annotation}
+  \caption{SC05 - Gestion des cat\'egories d'annotation}
   \normalsize
   \label{tab:gestion_categorie}
 \end{table}
@@ -725,7 +725,7 @@ L'objectif est de pouvoir cr\'eer de mani\`ere automatique des pivots. Pour ce f
 
 
 
-\subsubsection{Fonction SD07 - Affichage d'une fiche soldat}
+\subsubsection{Fonction SC06 - Affichage d'une fiche soldat}
 
 Le but de la fiche soldat est d'exploiter au maximum les annotations d'un registre. Gr\^ace aux cat\'egories, il est possible de g\'en\'erer automatiquement une fiche avec toutes les informations importantes. De plus, cette fiche va servir de checklist des annotations \`a faire.\\
 
@@ -734,7 +734,7 @@ Le but de la fiche soldat est d'exploiter au maximum les annotations d'un regist
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD07 - Affichage d'une fiche soldat}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC06 - Affichage d'une fiche soldat}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -758,13 +758,13 @@ Le but de la fiche soldat est d'exploiter au maximum les annotations d'un regist
    			-1 & Affichage de la fiche. \\
    		\hline
 	\end{tabular}
-  \caption{SD07 - Affichage d'une fiche soldat}
+  \caption{SC06 - Affichage d'une fiche soldat}
   \normalsize
   \label{tab:affichage_fiche_soldat}
 \end{table}
 
 
-\subsubsection{Fonction SD08 - Visualiser les positions de toutes les annotations}
+\subsubsection{Fonction SC07 - Visualiser les positions de toutes les annotations}
 Les annotations apparaissent à droite de l’écran lorsque l’on visualise une image. Cliquer sur la fenêtre des annotations fait apparaitre les positions de toutes les annotations. Ces positions sont représentées par des points. Cliquer sur l’image (sans cliquer sur les points) permet de masquer ces positions et de mettre fin à la visualisation des annotations.\\
 
 \begin{table}[H]
@@ -772,7 +772,7 @@ Les annotations apparaissent à droite de l’écran lorsque l’on visualise un
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD08 - Visualiser les positions de toutes les annotations}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC07 - Visualiser les positions de toutes les annotations}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -795,12 +795,12 @@ Les annotations apparaissent à droite de l’écran lorsque l’on visualise un
    			-1 & Visualisation de l’image et de ses annotations\\
    		\hline
 	\end{tabular}
-  \caption{SD08 - Visualiser les positions de toutes les annotations}
+  \caption{SC07 - Visualiser les positions de toutes les annotations}
   \normalsize
   \label{tab:visualiser_position_annotation}
 \end{table}
 
-\subsubsection{Fonction SD08 - Masquer les positions des annotations}
+\subsubsection{Fonction SC08 - Masquer les positions des annotations}
 TODO.\\
 
 \begin{table}[H]
@@ -808,7 +808,7 @@ TODO.\\
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD08 - Masquer les positions des annotations}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC08 - Masquer les positions des annotations}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -831,12 +831,12 @@ TODO.\\
    			-1 & ...\\
    		\hline
 	\end{tabular}
-  \caption{SD08 - Masquer les positions des annotations}
+  \caption{SC08 - Masquer les positions des annotations}
   \normalsize
   \label{tab:masquer_position_annotation}
 \end{table}
 
-\subsubsection{Fonction SD09 - Sélectionner une annotation sur un document}
+\subsubsection{Fonction SC09 - Sélectionner une annotation sur un document}
 Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation dans la fenêtre ou sur un point en particulier la sélectionne et fait apparaître une fenêtre contenant les deux champs de l’annotation (l’annotation et son type). Quand une annotation est sélectionnée, le point de la position de l’annotation est plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparait. Cliquer sur l’image (sans cliquer sur un point) permet de désélectionner l’annotation et de masquer la visualisation des annotations.\\
 
 \begin{table}[H]
@@ -844,7 +844,7 @@ Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation dan
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD09 - Sélectionner une annotation sur un document}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC09 - Sélectionner une annotation sur un document}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -871,12 +871,12 @@ Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation dan
    			-1 & Visualisation de l’image et de ses annotations\\
    		\hline
 	\end{tabular}
-  \caption{SD09 - Sélectionner une annotation sur un document}
+  \caption{SC09 - Sélectionner une annotation sur un document}
   \normalsize
   \label{tab:selectionner_annotation}
 \end{table}
 
-\subsubsection{Fonction SD10 - Désélectionner une annotation sur un document}
+\subsubsection{Fonction SC10 - Désélectionner une annotation sur un document}
 TODO.\\
 
 \begin{table}[H]
@@ -884,7 +884,7 @@ TODO.\\
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD09 - Désélectionner une annotation sur un document}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC10 - Désélectionner une annotation sur un document}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -907,13 +907,13 @@ TODO.\\
    			-1 & ...\\
    		\hline
 	\end{tabular}
-  \caption{SD10 - Désélectionner une annotation sur un document}
+  \caption{SC10 - Désélectionner une annotation sur un document}
   \normalsize
   \label{tab:deselectionner_annotation}
 \end{table}
 
 
-\subsubsection{Fonction SD10 - Glisser dans le tableau des annotations}
+\subsubsection{Fonction SC11 - Glisser dans le tableau des annotations}
 Si les annotations sont trop nombreuses, on peut faire glisser ses annotations vers le bas ou vers le haut afin de pouvoir accéder à toutes les annotations réalisées.\\
 
 \begin{table}[H]
@@ -921,7 +921,7 @@ Si les annotations sont trop nombreuses, on peut faire glisser ses annotations v
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD10 - Glisser dans le tableau des annotations}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC11 - Glisser dans le tableau des annotations}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -944,12 +944,12 @@ Si les annotations sont trop nombreuses, on peut faire glisser ses annotations v
    			-1 & Aucun changement\\
    		\hline
 	\end{tabular}
-  \caption{SD10 - Glisser dans le tableau des annotations}
+  \caption{SC11 - Glisser dans le tableau des annotations}
   \normalsize
   \label{tab:glisser_tab_annotation}
 \end{table}
 
-\subsubsection{Fonction SD11 - Modification de la position d’une annotation}
+\subsubsection{Fonction SC12 - Modification de la position d’une annotation}
 Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation (c’est-à-dire qu’il l’a lui-même créée, ou qu’il l’a récupérée d’un autre utilisateur) peut modifier sa position.\\
 
 \begin{table}[H]
@@ -957,7 +957,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD11 - Modification de la position d’une annotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC12 - Modification de la position d’une annotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -982,12 +982,12 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    			-1 & Visualisation de l’image et de ses annotations, avec sélection de l’annotation\\
    		\hline
 	\end{tabular}
-  \caption{SD11 - Modification de la position d’une annotation}
+  \caption{SC12 - Modification de la position d’une annotation}
   \normalsize
   \label{tab:modification_position_annotation}
 \end{table}
 
-\subsubsection{Fonction SD12 - Modification du champ d’une annotation}
+\subsubsection{Fonction SC13 - Modification du champ d’une annotation}
 Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation son type ou l’annotation elle-même.\\
 
 \begin{table}[H]
@@ -995,7 +995,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD12 - Modification du champ d’une annotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC13 - Modification du champ d’une annotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1020,12 +1020,12 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    			-1 & Visualisation de l’image et de ses annotations, avec sélection de l’annotation\\
    		\hline
 	\end{tabular}
-  \caption{SD12 - Modification du champ d’une annotation}
+  \caption{SC13 - Modification du champ d’une annotation}
   \normalsize
   \label{tab:modification_champ_annotation}
 \end{table}
 
-\subsubsection{Fonction SD13 - Suppression d'une annotation}
+\subsubsection{Fonction SC14 - Suppression d'une annotation}
 Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut la supprimer.\\
 
 \begin{table}[H]
@@ -1033,7 +1033,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD13 - Suppression d'une annotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC14 - Suppression d'une annotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1059,19 +1059,19 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 			-2 & Visualisation de l’image et de ses annotations\\
    		\hline
 	\end{tabular}
-  \caption{SD13 - Suppression d'une annotation}
+  \caption{SC14 - Suppression d'une annotation}
   \normalsize
   \label{tab:supprimer_annotation}
 \end{table}
 
-\subsubsection{Fonction SF01 - Créer un raccourci}
+\subsubsection{Fonction SD01 - Créer un raccourci}
 TODO.\\
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD15 - Créer un raccourci}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD01 - Créer un raccourci}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1094,20 +1094,20 @@ TODO.\\
    			-1 & ...\\
    		\hline
 	\end{tabular}
-  \caption{SD15 - Créer un raccourci}
+  \caption{SD01 - Créer un raccourci}
   \normalsize
   \label{tab:creer_raccourci}
 \end{table}
 
 
-\subsubsection{Fonction SF02 - Supprimer un raccourci}
+\subsubsection{Fonction SD02 - Supprimer un raccourci}
 TODO.\\
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD16 - Supprimer un raccourci}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD02 - Supprimer un raccourci}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1130,14 +1130,14 @@ TODO.\\
    			-1 & ...\\
    		\hline
 	\end{tabular}
-  \caption{SD16 - Supprimer un raccourci}
+  \caption{SD02 - Supprimer un raccourci}
   \normalsize
   \label{tab:supprimer_raccourci}
 \end{table}
 
 
 
-\subsubsection{Fonction SF01 - Marquer un document}
+\subsubsection{Fonction SD03 - Marquer un document}
 Le but de marquer un document (soit une table, soit un RMM) est de pouvoir d'y accéder plus tard et donc de le retrouver facilement. Il est possible de les classer dans différents dossiers que l'utilisateur pourra créer ou supprimer. Ces dossiers sont sp\'ecifiques \`a chaque utilisateur, ils en sont propriétaires. Aussi, lors qu'un utilisateur annote un document, un dossier non supprimable sera crée qui servira de répertoire de tous les documents qu'il a déjà annotés. 
 
 Ces enregistrements seront stockés sous forme de lien, c'est-à-dire l'utilisateur crée en fait un lien vers le document marqué.
@@ -1149,7 +1149,7 @@ Pour marquer le document via l'application l'utilisateur devra : (se référence
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Marquer un document}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD03 - Marquer un document}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1174,12 +1174,12 @@ Pour marquer le document via l'application l'utilisateur devra : (se référence
    			-1 & Affichage du lien dans le dossier correspondant. \\
    		\hline
 	\end{tabular}
-  \caption{SD06 - Marquer un document}
+  \caption{SD03 - Marquer un document}
   \normalsize
   \label{tab:marquer_document}
 \end{table}
 
-\subsubsection{Fonction SF04 - Créer un dossier}
+\subsubsection{Fonction SD04 - Créer un dossier}
 L'utilisateur pourra créer et supprimer autant de dossiers qu'il le souhaite, cependant trois cas sont particulieurs : le dossier qui répertorie toutes ses annotations ne pourra pas être modifié ou supprimé, le dossier ".." représente le dossier père, celui-ci ne pourra être modifié ou supprimé, le dossier "Corbeille" n'est pas un dossier, il ne pourra pas être modifié ou supprimé. Aussi, il ne pourra pas créer un dossier existant.
 
 Utilisation : l'utilisateur sélectionne grâce à son doigt "Nouveau dossier", il lui choisit un nom, le dossier est crée.
@@ -1196,7 +1196,7 @@ Utilisation : l'utilisateur sélectionne grâce à son doigt "Nouveau dossier", 
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Créer un dossier}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD04 - Créer un dossier}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1221,12 +1221,12 @@ Utilisation : l'utilisateur sélectionne grâce à son doigt "Nouveau dossier", 
    			-1 & Le dossier créé. \\
    		\hline
 	\end{tabular}
-  \caption{SD06 - Créer un dossier}
+  \caption{SD04 - Créer un dossier}
   \normalsize
   \label{tab:creer_document}
 \end{table}
 
-\subsubsection{Fonction SF04 - Renommer un document}
+\subsubsection{Fonction SD05 - Renommer un document}
 L'utilisateur pourra renommer ses documents à sa guise (sauf "..", "Mes annotations" et "Corbeille"). Cependant, aucun doublon ne sera toléré.
 
 Utilisation : 
@@ -1236,7 +1236,7 @@ Utilisation :
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Renommer un document}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD05 - Renommer un document}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1263,12 +1263,12 @@ Utilisation :
 			-2 & Si échec, une boîte de dialogue contenant le message d'erreur. \\
    		\hline
 	\end{tabular}
-  \caption{SD06 - Renommer un document}
+  \caption{SD05 - Renommer un document}
   \normalsize
   \label{tab:renommer_document}
 \end{table}
 
-\subsubsection{Fonction SF06 - Déplacer un document dans un dossier}
+\subsubsection{Fonction SD06 - Déplacer un document dans un dossier}
 L'utilisateur pourra déplacer s'il le souhaite un document (dossier, table ou RMM) dans un dossier.
 
 Utilisation : l'utilisateur effectue un appui long sur le document choisi, le déplace, en restant appuyé, dans un dossier.
@@ -1310,7 +1310,7 @@ Utilisation : l'utilisateur effectue un appui long sur le document choisi, le d�
   \label{tab:deplacer_document}
 \end{table}
 
-\subsubsection{Fonction SF05 - Supprimer un document}
+\subsubsection{Fonction SD07 - Supprimer un document}
 La suppression fonctionne comme un déplacement, seulement, le document doit être déplacer dans la Corbeille, une boîte de confirmation est envoyée à l'utilisateur.
 Si l'utilisateur supprime un dossier, tous les documents présents sont supprimés.
 Il est impossible de supprimer le dossier "..", "Mes annotations" et "Corbeille".
@@ -1322,7 +1322,7 @@ Utilisation : l'utilisateur effectue un appui long sur le document choisi, le d�
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD06 - Supprimer un document}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SD07 - Supprimer un document}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1348,7 +1348,7 @@ Utilisation : l'utilisateur effectue un appui long sur le document choisi, le d�
    			-1 & Message d'information. \\
    		\hline
 	\end{tabular}
-  \caption{SD06 - Supprimer un document}
+  \caption{SD07 - Supprimer un document}
   \normalsize
   \label{tab:supprimer_document}
 \end{table}
@@ -1572,7 +1572,7 @@ Les images numérisées ne seront pas paramétrées pour un affichage optimal su
 D'ailleurs, l'application étant destinée à être tactile, ces fonctionnalités de modification seront accessibles par un raccourci "mouvement", c'est-à-dire que l'utilisateur pourra avec seulement un mouvement de ses doigts exécuter une modification de l'image. Cependant, ces fonctionnalités devront être également accessibles à partir d'une barre d'outils afin de permettre à l'utilisateur de connaître les paramètres qu'il modifient et aussi dans le cas ou l'utilisateur ne sait quel mouvement exécuté.
 
 
-\subsubsection{Fonction SB01 - Zoom}
+\subsubsection{Fonction SF01 - Zoom}
 
 Le zoom d'une image permet d'améliorer la lisibilité du document, il permet à l'utilisateur d'agrandir ou de rétricir le document. L'utilisateur pourra paramétrer son zoom selon le pourcentage de la taille de l'image d'origine. Le pourcentage autorisera une modification de 20\% jusqu'à 300\% de la taille de l'image d'origine.
 \todo{Question : Faut-il déjà limiter les paramètres ou bien est-ce destiné à la conception ?}
@@ -1586,7 +1586,7 @@ Raccourci mouvement : L'utilisateur colle ses doigts sur une zone de l'image, et
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB01 - Fonction Zoom}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SF01 - Fonction Zoom}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1610,13 +1610,13 @@ Raccourci mouvement : L'utilisateur colle ses doigts sur une zone de l'image, et
    			-1 & L'affichage de l'image modifié \\
    		\hline
 	\end{tabular}
-  \caption{SB01 - Fonction Zoom}
+  \caption{SF01 - Fonction Zoom}
   \normalsize
   \label{tab:visu_img_zoom}
 \end{table}
 
 
-\subsubsection{Fonction SB02 - Translation}
+\subsubsection{Fonction SF02 - Translation}
 
 La translation en abscisse et ordonnée d'une image permet de déplacer l'image par rapport à un certain repère et obtenir ainsi le centrage à l'écran d'une zone partielle ou entière du document. Cette fonctionnalité est destinée à recadrer correctement une image dans le but d'afficher une zone qui intéresserait l'utilisateur.
 
@@ -1627,7 +1627,7 @@ Raccourci mouvement : L'utilisateur pointe l'image avec un doigt en marquant une
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB02 - Fonction Translation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SF02 - Fonction Translation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1652,12 +1652,12 @@ Raccourci mouvement : L'utilisateur pointe l'image avec un doigt en marquant une
    			-1 & L'image déplacée \\
    		\hline
 	\end{tabular}
-  \caption{SB02 - Fonction Translation}
+  \caption{SF02 - Fonction Translation}
   \normalsize
   \label{tab:visu_img_translation}
 \end{table}
 
-\subsubsection{Fonction SB03 - Rotation}
+\subsubsection{Fonction SF03 - Rotation}
 
 La rotation d'une image permet de faire pivoter l'image dans l'objectif de consulter un objet comme une phrase ou un mot qui serait écrit de travers.
 
@@ -1668,7 +1668,7 @@ Raccourci mouvement : L'utilisateur positionne deux doigt sur l'image et effectu
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB03 - Fonction Rotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SF03 - Fonction Rotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1692,13 +1692,13 @@ Raccourci mouvement : L'utilisateur positionne deux doigt sur l'image et effectu
    			-1 & L'image pivotée \\
    		\hline
 	\end{tabular}
-  \caption{SB03 - Fonction Rotation}
+  \caption{SF03 - Fonction Rotation}
   \normalsize
   \label{tab:visu_img_rotation}
 \end{table}
 
 
-\subsubsection{Fonction SB04 - Contraste}
+\subsubsection{Fonction SF04 - Contraste}
 
 Contraster une image permet de renforcer la différenciation entre les couleurs foncés et les couleurs clairs dans le but d'améliorer la lisibilité de l'image.
 
@@ -1709,7 +1709,7 @@ Raccourci mouvement : aucun.
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB04 - Fonction Contraste}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SF04 - Fonction Contraste}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1733,14 +1733,14 @@ Raccourci mouvement : aucun.
    			-1 & L'image contrastée \\
    		\hline
 	\end{tabular}
-  \caption{SB04 - Fonction Contraste}
+  \caption{SF04 - Fonction Contraste}
   \normalsize
   \label{tab:visu_img_contraste}
 \end{table}
 
 
 
-\subsubsection{Fonction SB05 - Luminosité}
+\subsubsection{Fonction SF05 - Luminosité}
 
 
 Augmenter ou diminuer la luminosité d'une image améliorer la netteté et donc la lisibilité de l'image.
@@ -1752,7 +1752,7 @@ Raccourci mouvement : aucun.
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB05 - Fonction Luminosité}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SF05 - Fonction Luminosité}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1776,17 +1776,12 @@ Raccourci mouvement : aucun.
    			-1 & L'image modifiée \\
    		\hline
 	\end{tabular}
-  \caption{SB05 - Fonction Luminosité}
+  \caption{SF05 - Fonction Luminosité}
   \normalsize
   \label{tab:visu_img_luminosite}
 \end{table}
 
-
-\subsubsection{Fonction SB06 - Négatif}
-\todo{Nécessaire ou pas ?}
-
-
-\subsubsection{Fonction SB07 - Défaire / Refaire}
+\subsubsection{Fonction SF06 - Défaire / Refaire}
 
 Lorsque l'utilisateur hésite quant à sa modification de l'image, il paraît nécessaire que celui-ci puisse annuler, défaire son changement pour revenir à l'état précédent de l'image. Aussi, il pourra refaire son changement s'il le souhaite, ce sont des raccourcis efficaces qui évite plusieurs manipulations par l'utilisateur.
 
@@ -1797,7 +1792,7 @@ Raccourci mouvement : aucun.
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB07 - Fonction Défaire / Refaire}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SF06 - Fonction Défaire / Refaire}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1821,14 +1816,14 @@ Raccourci mouvement : aucun.
    			-1 & L'image modifiée \\
    		\hline
 	\end{tabular}
-  \caption{SB07 - Fonction Défaire / Refaire}
+  \caption{SF06 - Fonction Défaire / Refaire}
   \normalsize
   \label{tab:visu_img_undo_redo}
 \end{table}
 
 
 
-\subsubsection{Fonction SB08 - Sauvegarder les paramètres}
+\subsubsection{Fonction SF07 - Sauvegarder les paramètres}
 
 L'utilisateur pourra sauvegarder ses paramètres préférentiels dans un raccourci, afin d'éviter de répéter différentes manipulations lorqu'il consulte plusieurs images. Celui-ci pourra donc refaire toutes ses manipulations en une seule actio, augmentant l'efficacité d'utilisation de l'application.
 
@@ -1839,7 +1834,7 @@ Raccourci mouvement : aucun.
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB08 - Fonction Sauvegarder les paramètres}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SF07 - Fonction Sauvegarder les paramètres}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1862,7 +1857,7 @@ Raccourci mouvement : aucun.
    			-1 & Un raccourci permettant d'exécuter les actions stockées dans la liste \\
    		\hline
 	\end{tabular}
-  \caption{SB08 - Fonction Sauvegarder les paramètres}
+  \caption{SF07 - Fonction Sauvegarder les paramètres}
   \normalsize
   \label{tab:visu_img_save_parameters}
 \end{table}
@@ -1871,7 +1866,7 @@ Raccourci mouvement : aucun.
 
 Comme nous avons pu le voir précédemment, les utilisateurs authentifiés sont divisés en 3 catégories : les utilisateurs basiques, les modérateurs et les administrateurs. Les modérateurs sont présents dans l'objectif de supprimer un utilisateur basique ou de masquer les annotations de certains utilisateurs. Quant à l'administrateur, il a les droits du modérateur mais ils ont aussi la possibilité de modifier le statut des utilisateurs et de supprimer tout type d'utilisateur, y-compris les modérateurs et administrateurs. Afin de permettre la gestion des utilisateurs, il existera une interface d'administration.
 
-\subsubsection{Fonction SG02 - Supprimer un ou des utilisateurs basiques}
+\subsubsection{Fonction SG01 - Supprimer un ou des utilisateurs basiques}
 
 Les modérateurs peuvent supprimer un utilisateur basique de la base de données. Ceci se fait au travers de la page de gestion des utilisateurs. Le modérateur sélectionne les utilisateurs qu'il souhaite supprimer puis il les supprime.
 
@@ -1880,7 +1875,7 @@ Les modérateurs peuvent supprimer un utilisateur basique de la base de données
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG02 - Supprimer un ou des utilisateurs}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG01 - Supprimer un ou des utilisateurs}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de déclenchement} \\
    		\hline
@@ -1906,13 +1901,13 @@ Les modérateurs peuvent supprimer un utilisateur basique de la base de données
         			-2 & Renvoi d'une erreur si échec.\\ 
    		\hline
 	\end{tabular}
-  \caption{Fonction SG02 - Supprimer un ou des utilisateurs basiques}
+  \caption{Fonction SG01 - Supprimer un ou des utilisateurs basiques}
   \normalsize
   \label{tab: supprimmer_utilisateur_basique}
 \end{table}
 
 
-\subsubsection{Fonction SG03 - Desactiver les annotations d'un ou plusieurs utilisateur}
+\subsubsection{Fonction SG02 - Desactiver les annotations d'un ou plusieurs utilisateur}
 
 Les annotations de certains utilisateurs peuvent induire en erreur d'autres utilisateurs. Pour éviter cela, les modérateurs doivent avoir la possibilité de désactiver les annotations de certains utilisateurs sans pour autant les banir. Cette désactivation empêche la visibilité des annoations par les autres utilisateurs. Un administrateur a la possibilité d'effectuer cette action via la page de gestion des utilisateurs. 
 
@@ -1921,7 +1916,7 @@ Les annotations de certains utilisateurs peuvent induire en erreur d'autres util
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG03 - Desactiver les annotations d'un ou plusieurs utilisateur}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG02 - Desactiver les annotations d'un ou plusieurs utilisateur}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de déclenchement} \\
    		\hline
@@ -1946,12 +1941,12 @@ Les annotations de certains utilisateurs peuvent induire en erreur d'autres util
         	-2 & Renvoi d'une erreur si échec.\\
    		\hline
 	\end{tabular}
-  \caption{Fonction SG03 - Desactiver les annotations d'un ou plusieurs utilisateur}
+  \caption{Fonction SG02 - Desactiver les annotations d'un ou plusieurs utilisateur}
   \normalsize
   \label{tab: desactiver_utilisateur}
 \end{table}
 
-\subsubsection{Fonction SG04 - Supprimer un ou des utilisateurs ayant le statut de modérateur ou administrateur}
+\subsubsection{Fonction SG03 - Supprimer un ou des utilisateurs ayant le statut de modérateur ou administrateur}
 
 Les administrateurs peuvent, en plus de supprimer un utilisateur basique, supprimer un utilisateur ayant le statut de modérateur ou administrateur. Ceci se fait toujours au travers de la page de gestion des utilisateurs. L'administrateur sélectionne les utilisateurs qu'il souhaite supprimer puis il confirme sa demande.
 
@@ -1960,7 +1955,7 @@ Les administrateurs peuvent, en plus de supprimer un utilisateur basique, suppri
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG02 - Supprimer un ou des utilisateurs}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG03 - Supprimer un ou des utilisateurs}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de déclenchement} \\
    		\hline
@@ -1985,12 +1980,12 @@ Les administrateurs peuvent, en plus de supprimer un utilisateur basique, suppri
         			-2 & Renvoi d'une erreur si échec.\\ 
    		\hline
 	\end{tabular}
-  \caption{Fonction SG02 - Supprimer un ou des utilisateurs, quelque soit son statut}
+  \caption{Fonction SG03 - Supprimer un ou des utilisateurs, quelque soit son statut}
   \normalsize
   \label{tab: supprimmer_utilisateur}
 \end{table}
 
-\subsubsection{Fonction SG05 - Changer le rang d'un utilisateur}
+\subsubsection{Fonction SG04 - Changer le rang d'un utilisateur}
 
 Les équipes de modérateurs et d'administrateurs doivent pouvoir évoluer au fil du temps. Pour cela, un administrateur peut changer le rang d'un utilisateur dans l'objectif de le promouvoir modérateur ou administrateur mais il a aussi la possiblité de lui retirer ses droits de modérateur ou d'administrateur si celui-ci les possède.
 
