@@ -340,13 +340,13 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
 \end{table}
 \newpage
 
-\subsubsection{Naviguer entre deux registres}
+\subsubsection{Naviguer entre deux RMM}
 
 Même si la navigation au sein des tables est primordiale, il ne faut pas négliger la possibilité que certains utilisateurs annotent des registres "à la chaîne", parfois sans même passer par les tables. Il faut donc que notre solution propose aussi une solution de navigation entre les registres.
 
-\subsubsection{Fonction SB04 - Naviguer entre deux registres adjacents}
+\subsubsection{Fonction SB04 - Naviguer entre deux RMM adjacents}
 
-Pour certains utilisateurs, qui annotent de nombreux registres quasiment "à la chaîne", la fonctionnalité de navigation entre des registres adjacents est indispensable. Cette navigation entre deux registres sera très proche de la navigation entre deux pages adjacentes d'une table.
+Pour certains utilisateurs, qui annotent de nombreux RMM quasiment "à la chaîne", la fonctionnalité de navigation entre des RMM adjacents est indispensable. Cette navigation entre deux RMM sera très proche de la navigation entre deux pages adjacentes d'une table.
 
 Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes d'une table. L'utilisateur fait glisser son doigt de gauche \`a droite pour aller \`a l'image pr\'ec\'edente, ou de droite \`a gauche pour aller \`a la suivante.
 
@@ -355,11 +355,11 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB04 - Naviguer entre deux registres adjacents}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB04 - Naviguer entre deux RMM adjacents}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   		-1 & Un utilisateur veut acc\'eder \`a un registre adjacent au registre actuel. \\
+   		-1 & Un utilisateur veut acc\'eder \`a un RMM adjacent au RMM actuel. \\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
@@ -367,39 +367,39 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & Un registre \\
+   			-1 & Un RMM \\
         	-2 & Un sens de d\'eplacement \\ 
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Associer un registre au couple \{registre actuel, sens de d\'eplacement\}.  \\
-        	-2 & V\'erifier que le regsitre demand\'e existe. \\
-        	-3 & Afficher le registre demand\'e et le d\'efinir comme registre actuel. \\
+   			-1 & Associer un RMM au couple \{RMM actuel, sens de d\'eplacement\}.  \\
+        	-2 & V\'erifier que le RMM demand\'e existe. \\
+        	-3 & Afficher le RMM demand\'e et le d\'efinir comme registre actuel. \\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Affichage du registre demand\'e. \\
+   			-1 & Affichage du RMM demand\'e. \\
    		\hline
 	\end{tabular}
-  \caption{SB04 - Naviguer entre deux registres}
+  \caption{SB04 - Naviguer entre deux RMM}
   \normalsize
   \label{tab:naviguer_deux_registres_adjacents}
 \end{table}
 
-\subsubsection{Fonction SB05 - Naviguer entre deux registres numérotés}
+\subsubsection{Fonction SB05 - Naviguer entre deux RMM numérotés}
 
-Dans notre base d'images de registres, celles-ci sont classées par numéros de matricule. Cependant, à cause des vues multiples dues aux retombes et aux éventuelles absences de certains registres, numéro de matricule et numéro d'image ne correspondent pas forcément. Cependant, certains utilisateurs peuvent vouloir accéder rapidement à un registre en ne connaissant que le numéro de l'image, par exemple sur les conseils d'un ami. Ainsi, en entrant le numéro souhaité, on accède directement à l'image correspondante.
+Dans notre base d'images de RMM, celles-ci sont classées par numéros de matricule. Cependant, à cause des vues multiples dues aux retombes et aux éventuelles absences de certains RMM, numéro de matricule et numéro d'image ne correspondent pas forcément. Cependant, certains utilisateurs peuvent vouloir accéder rapidement à un RMM en ne connaissant que le numéro de l'image, par exemple sur les conseils d'un ami. Ainsi, en entrant le numéro souhaité, on accède directement à l'image correspondante.
 
 \begin{table}[H]
   \centering
    \small
   \begin{tabular}{|c|p{12cm}|}
       \hline
-        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB05 - Naviguer entre deux registres numérotés}} \\
+        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB05 - Naviguer entre deux RMM numérotés}} \\
       \hline
         \multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
       \hline
-      -1 & Un utilisateur veut acc\'eder \`a un registre via son numéro. \\
+      -1 & Un utilisateur veut acc\'eder \`a un RMM via son numéro. \\
       \hline
         \multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
       \hline
@@ -414,39 +414,39 @@ Dans notre base d'images de registres, celles-ci sont classées par numéros de 
       \hline
         -1 & Associer une image au couple \{dossier d'images actuel, numéro d'image\}.  \\
           -2 & V\'erifier que l'image' demand\'ee existe. \\
-          -3 & Afficher l'image' demand\'ee et définir le registre comme registre actuel. \\
+          -3 & Afficher l'image' demand\'ee et définir le RMM comme RMM actuel. \\
       \hline
         \multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
       \hline
         -1 & Affichage de l'image demand\'ee. \\
       \hline
   \end{tabular}
-  \caption{SB05 - Naviguer entre deux registres numérotés}
+  \caption{SB05 - Naviguer entre deux RMM numérotés}
   \normalsize
   \label{tab:naviguer_deux_registres_numerotes}
 \end{table}
 
 
-\subsubsection{Naviguer d'une table à un registre}
+\subsubsection{Naviguer d'une table à un RMM}
 
-Lorsqu'un uilisateur recherche un individu dont il connaît le nom et la date d'engagement, la méthode d'accès la plus intuitive est de trouver cet individu dans la table correspondante, afin de récupérer son numéro matricule et ainsi de le retrouver dans les registres. Afin d'éviter à l'utilisateur des allers-retours entre ces différents types de documents, nous allons proposer une fonctionnalité qui fera directement le lien entre une table et un registre.
+Lorsqu'un uilisateur recherche un individu dont il connaît le nom et la date d'engagement, la méthode d'accès la plus intuitive est de trouver cet individu dans la table correspondante, afin de récupérer son numéro matricule et ainsi de le retrouver dans les registres. Afin d'éviter à l'utilisateur des allers-retours entre ces différents types de documents, nous allons proposer une fonctionnalité qui fera directement le lien entre une table et un RMM.
 
-Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure : où un autre utilisateur a déjà lié ce numéro de matricule à un registre, auquel cas on renvoie ce registre. Dans l'autre cas, si on ne peut lier le numéro de matricule à un registre, alors on lance une recherche sur le numéro de matricule. 
+Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure : où un autre utilisateur a déjà lié ce numéro de matricule à un RMM, auquel cas on renvoie ce registre. Dans l'autre cas, si on ne peut lier le numéro de matricule à un RMM, alors on lance une recherche sur le numéro de matricule. 
 
-\subsubsection{Fonction SB06 - Naviguer d'une table à un registre inconnu}
+\subsubsection{Fonction SB06 - Naviguer d'une table à un RMM inconnu}
 
-Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouver le registre correspondant, c'est à dire que ce dernier n'a pas été annoté. 
+Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouver le RMM correspondant, c'est à dire que ce dernier n'a pas été annoté. 
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB06 - Naviguer d'une table à un registre inconnu}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB06 - Naviguer d'une table à un RMM inconnu}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   		-1 & Un utilisateur veut acc\'eder \`a un registre à partir d'une table. \\
+   			-1 & Un utilisateur veut acc\'eder \`a un registre à partir d'une table. \\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
@@ -455,7 +455,7 @@ Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouve
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
    			-1 & Une table \\
-        	-2 & Un numéro de registre \\ 
+        			-2 & Un numéro de registre \\ 
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
@@ -466,23 +466,23 @@ Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouve
    			-1 & Renvoi et traitement de la recherche \\
    		\hline
 	\end{tabular}
-  \caption{SB06 - Naviguer d'une table à un registre inconnu}
+  \caption{SB06 - Naviguer d'une table à un RMM inconnu}
   \normalsize
   \label{tab:naviguer_table_registre_inconnu}
 \end{table}
 \newpage
 
 
-\subsubsection{Fonction SB07 - Naviguer d'une table à un registre connu}
+\subsubsection{Fonction SB07 - Naviguer d'une table à un RMM connu}
 
-Ici, on se place dans le cas où le numéro de matricule permet de trouver le registre correspondant, car ce dernier a déjà été annoté.
+Ici, on se place dans le cas où le numéro de matricule permet de trouver le RMM correspondant, car ce dernier a déjà été annoté.
 
 \begin{table}[H]
   \centering
    \small
   \begin{tabular}{|c|p{12cm}|}
       \hline
-        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB07 - Naviguer d'une table à un registre connu}} \\
+        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SB07 - Naviguer d'une table à un RMM connu}} \\
       \hline
         \multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
       \hline
@@ -507,7 +507,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le re
         -1 & Affichage du registre demand\'e \\
       \hline
   \end{tabular}
-  \caption{SB07 - Naviguer d'une table à un registre connu}
+  \caption{SB07 - Naviguer d'une table à un RMM connu}
   \normalsize
   \label{tab:naviguer_table_registre_connu}
 \end{table}
@@ -562,16 +562,16 @@ L'annotation de table permet de cr\'eer un lien avec les registres. En annotant 
   \label{tab:annoter_table}
 \end{table}
 
-\subsubsection{Fonction SC02 - Annoter un registre}
+\subsubsection{Fonction SC02 - Annoter un RMM}
 
-Un utilisateur visualise un registre et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Différents types d’annotation peuvent être suggérées, l’utilisateur aura le choix entre sélectionner type d’annotation ou en faire une autre. Il doit ensuite remplir l’annotation et la valider. Elle sera ensuite enregistrée sur la base de données.\\
+Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Différents types d’annotation peuvent être suggérées, l’utilisateur aura le choix entre sélectionner le type d’annotation ou en faire une autre. Il doit ensuite remplir l’annotation et la valider. Elle sera ensuite enregistrée sur la base de données.\\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC02 - Annoter un registre}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC02 - Annoter un RMM}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -597,20 +597,20 @@ Un utilisateur visualise un registre et souhaite annoter son contenu. Pour faire
 			-2 & Visualisation de l’image\\
    		\hline
 	\end{tabular}
-  \caption{SC02 - Annoter un registre}
+  \caption{SC02 - Annoter un RMM}
   \normalsize
   \label{tab:annoter_registre}
 \end{table}
 
-\subsubsection{Fonction SC03 - Annotation libre sur registres}
-Il arrive tr\`es souvant que des informations concernant le soldat se placent n'importe o\`u, et qu'elles ne rentrent pas dans le cadre des cat\'egories. L'annotation libre permet de placer dans une endroit quelconque une annotation. \\
+\subsubsection{Fonction SC03 - Annotation libre sur des RMM}
+Il arrive tr\`es souvant que des informations concernant le soldat se placent n'importe o\`u, et qu'elles ne rentrent pas dans le cadre des cat\'egories. L'annotation libre permet de placer dans un endroit quelconque une annotation. \\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Annotation libre sur registres}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Annotation libre sur des RMM}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
