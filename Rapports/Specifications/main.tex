@@ -31,11 +31,11 @@
 \section*{Introduction}
 
 	Les Archives départementales d'Ille-et-Vilaine sont en charge de la collecte, du classement, de la conservation et de la communication des archives qui constituent une grande partie du patrimoine historique écrit du département. 
-\`A l'approche du centenaire de la Première Guerre Mondiale, les Archives, en collaboration avec l'\bsc{INSA} de Rennes, ont choisi de proposer aux étudiants en quatrième année du département informatique un sujet de mise en valeur des documents li\'es \`a la Grande Guerre.
+\`À l'approche du centenaire de la Première Guerre Mondiale, les Archives, en collaboration avec l'\bsc{INSA} de Rennes, ont choisi de proposer aux étudiants en quatrième année du département informatique un sujet de mise en valeur des documents li\'es \`a la Grande Guerre.
 
-	L'objectif du projet est de construire un outil d'annotations semi-auto\-matique des documents liés au recrutement militaire concernant cette période. L'outil doit permettre à un utilisateur, visiteur des archives, d'associer lecture et annotation du document avec l'image numérisée qui lui correspond. En plus de naviguer et d'annoter les images, l'usager peut utiliser ces annotations pour rechercher des documents, par exemple trouver une personne grâce a son nom.\\
+	L'objectif du projet est de construire un outil d'annotations semi-auto\-matiques des documents liés au recrutement militaire concernant cette période. L'outil doit permettre à un utilisateur, visiteur des archives, d'associer lecture et annotation du document avec l'image numérisée qui lui correspond. En plus de naviguer et d'annoter les images, l'usager peut utiliser ces annotations pour rechercher des documents, par exemple trouver une personne grâce a son nom.\\
 	
-	Ce rapport de spécification fonctionnelle reprend brièvement les notions importantes abordées dans le rapport de pré-étude, avant de décrire grossièrement l'architecture générale choisie pour la réalisation de ce système. Finalement, la majeure partie de ce rapport est consacrée à la description des spécifications fonctionnelles.
+	Ce rapport de spécifications fonctionnelles reprend brièvement les notions importantes abordées dans le rapport de pré-étude, avant de décrire grossièrement l'architecture générale choisie pour la réalisation de ce système. Finalement, la majeure partie de ce rapport est consacrée à la description des spécifications fonctionnelles.
 
 \newpage
 
@@ -46,7 +46,7 @@
 \subsection{Mise en valeur des documents de guerre}
 \todo{Expliquer vite fait pourquoi ces docs, en mettre un de chaque en photo, dire que leur présentation est faite dans le rapport de pré-étude (notamment pour le registre)}
 
-L'application étant destiné au centenaire de la guerre 14-18, deux types de documents nous intéresse particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents étaient des documents militaires mais qui ont été donnés aux archives, ce sont les seules archives militaires que les archives possèdent.
+L'application étant destinée au centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents étaient des documents militaires mais qui ont été donnés aux archives, ce sont les seuls documents militaires que les archives possèdent.
 
 \subsubsection{Le registre matricule militaire}
 Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe[\ref{sec:annexe 1}], est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver l'état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.
@@ -55,10 +55,10 @@ Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en
 
 Le Registre Matricule Militaire est le document de base de notre projet, afin de mieux le comprendre, celui-ci, étant divisé en plusieurs parties, est expliqué plus en détails dans notre rapport de pré-étude (ref à mettre).
 
-Pour le RMM, il devra être possible, à travers l'application, de tout annoter, de n'importe quelles informations présentes dans le RMM jusqu'à l'annotation personnelle. 
+Pour le RMM, il devra être possible, à travers l'application, de tout annoter, de n'importe quelle information présente dans le RMM jusqu'à l'annotation personnelle. 
 
 \subsubsection{Les tables des registres matricules militaires}
-La table des RMM représente la liste de tous les registres présents dans un volume. Elle est triée par ordre alphabétique et permet donc de retrouver facilement un RMM grâce au numéro matricule qui sont eux classés en ordre numérique. Vous trouverez un exemple en annexe[\ref{sec:annexe 2}] où l'on peut trouver le matricule et donc le RMM de l'individu nommé Onen[\ref{sec:annexe 1}].
+La table des RMM représente la liste de tous les registres présents dans un volume. Elle est triée par ordre alphabétique et permet donc de retrouver facilement un RMM, qui sont eux classés par numéros matricules croissants. Vous trouverez un exemple en annexe[\ref{sec:annexe 2}] où l'on peut trouver le matricule et donc le RMM de l'individu nommé Onen[\ref{sec:annexe 1}].
 
 Ces tables nous seront utiles pour la rapidité de recherche de l'information. En effet, le numéro matricule est un moyen de recherche efficace puisqu'ils sont rangés, dans un volume, en ordre numérique. 
 
@@ -74,7 +74,7 @@ Le premier utilisateur type est l'amateur. C'est une personne qui vient rarement
 Lorsque ces utilisateurs arrivent sur la page d'accueil de l'application, il faut donc qu'ils soient capables de naviguer dans les documents directement. Ils ont besoin d'une fonctionnalité pour aller chercher une table en fonction de son année et de la commune d'où elle vient. Une fois qu'il a accédé à un registre matricule, l'amateur lit le document et les annotations apportées par les autres usagers, sans annoter lui même. En effet, il ne se sert pas assez des documents des archives pour avoir besoin de noter des informations dont il aurait besoin plus tard. Si cet usager veut trouver un registre, il pourra effectuer une recherche grâce aux annotations des autres utilisateurs. Il pourra ainsi chercher un registre selon le nom, le prénom, la profession, \ldots
 
 \subsubsection{Utilisateur expérimenté}
-Contrairement à l'amateur, l'utilisateur ecpérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consulté et annoté. Cet utilisateur se connectera, souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annoté et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il pourra en revanche annoter les registres qu'il consulte. Pour ça, il peut partir du document vierge et annoter en artant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (si il en existe).
+Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consultés et annotés. Cet utilisateur se connectera, souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annotés et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il aura en revanche aussi la possibilité d'annoter les registres qu'il consulte. Pour cela, il peut choisir un document vierge et annoter en partant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (s'il en existe).
 
 \subsubsection{Archiviste}
 
@@ -83,16 +83,16 @@ Contrairement à l'amateur, l'utilisateur ecpérimenté vient souvent aux archiv
 \subsection{Serveur - }
 Le serveur va être le centre du système. En effet, c'est à lui de faire le lien entre le client et les données. Son but sera de fournir les fichiers d'images, les tables et RMM ainsi que les données associées grâce à la base de données.
 
-Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, cela correspond aux besoins. Ce service web fournira un ensemble de fonctions qui permetteront de récupérer facilement les données stockées à distance. De plus une API rend simple le développement sur plusieurs type de plateforme, les programmeurs n'ont pas besoin de connaître les détails de la logique interne.
+Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne.
 \subsection{Base de données - MySql}
 La base de donn\'ees va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
 
-L'application devra \^etre fonctionnelle sur une base de données Oracle mais non disponible lors développement du projet. MySQL sera donc utilisé, il sera important de garder une compatibilité pour pouvoir transférer la version final de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne marche que sur MySQL pour faciliter le transfert.
+L'application devra \^etre fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé, il sera important de garder une compatibilité pour pouvoir transférer la version final de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne marche que sur MySQL pour faciliter le transfert.
 \subsection{Relation client serveur}
 
 \subsection{Schéma de navigation}
 
-L’application possédera 5 principales interfaces / écrans dont voici le schéma de navigation[\ref{fig:navigation}]. On y retrouve une interface d'accueil permettant à l'utilisateur de s'authentifier, l'interface de recherche qui facilitent la recherche de tables et de RMM, l'interface de gestion des documents, ainsi que deux interfaces de visualisation, une pour les tables et une autre pour les RMM.
+L’application possédera cinq principales interfaces / écrans dont voici le schéma de navigation[\ref{fig:navigation}]. On y retrouve une interface d'accueil permettant à l'utilisateur de s'authentifier, l'interface de recherche qui facilite la recherche de tables et de RMM, l'interface de gestion des documents, ainsi que deux interfaces de visualisation, une pour les tables et une autre pour les RMM.
 
 \begin{figure}[H]
 \centering
@@ -101,7 +101,7 @@ L’application possédera 5 principales interfaces / écrans dont voici le sch�
 \label{fig:navigation}
 \end{figure}
 
-Lorsque l’utilisateur commencera a utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui présentera deux fonctionnalités : s’enregistrer ou bien s’identifier. Aussi, les écrans de recherche et de gestion devront être accessible à partir de n’importe quel autre écran, hormis le cas particulier pour la gestion qui ne pourra être accessible à partir de l’écran d’accueil seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessible à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.
+Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. Aussi, les écrans de recherche et de gestion devront être accessibles à partir de n’importe quel autre écran, hormis le cas particulier pour la gestion des documents. Elle sera accessible à partir de l’écran d’accueil seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessible à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.
 
 \section{Spécifications fonctionnelles du système}
 
@@ -111,7 +111,7 @@ Un utilisateur, souhaitant simplement consulter les tables et les RMM, n'est pas
 
 \subsubsection{Statuts des utilisateurs}
 
-Un utilisateur n'a pas besoin d'être authentifié pour utiliser notre système. Cependant l'authentification permet à l'utilisateur d'accéder à des fonctionnalités supplémentaires. Aussi, nous allons retrouver plusieurs statuts parmi les utilisateurs authentifiés. La table \ref{tab:profils} résume les différents statuts avec les droits qui leurs sont associés. 
+Un utilisateur n'a pas besoin d'être authentifié pour utiliser notre système. Cependant l'authentification permet à l'utilisateur d'accéder à des fonctionnalités supplémentaires. Aussi, nous allons retrouver plusieurs statuts parmi les utilisateurs authentifiés. La table \ref{tab:profils} résume les différents statuts avec les droits qui leur sont associés. 
 
 \begin{table}[H]
 	\centering
