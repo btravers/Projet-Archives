@@ -79,11 +79,16 @@ Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archiv
 \subsubsection{Archiviste}
 
 \section{Architecture générale}
+Dans cette section, nous allons détailler quelles technologies et quelle architecture nous allons employer pour mettre en place notre application.
+
 \subsection{Client - PixelSense}
 \subsection{Serveur - }
 Le serveur va être le centre du système. En effet, c'est à lui de faire le lien entre le client et les données. Son but sera de fournir les fichiers d'images, les tables et RMM ainsi que les données associées grâce à la base de données.
 
-Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne.
+Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architeture doit être élastique en termes de volume de données, le volume d'image est très important.
+
+Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est un style d'architecture adapté au web, il ne s'agit pas d'un protocole mais de concepts en surcouche d'un langage prévu pour le web. Le principal avantage est plus simple à développer et à entretenir.
+
 \subsection{Base de données - MySql}
 La base de donn\'ees va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
 
@@ -109,30 +114,16 @@ Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retr
 
 Un utilisateur, souhaitant simplement consulter les tables et les RMM, n'est pas obligé de s'authentifier. Cependant, si celui-ci souhaite bénéficier des outils d'annotation et de favoris, il devra impérativement s'authentifié. En effet, les annotations sont associées à un utilisateur, ce qui permettra, par la suite, de faciliter la modération.
 
-\subsubsection{Statuts des utilisateurs}
+\subsubsection{Page d'accueil} 
 
-Un utilisateur n'a pas besoin d'être authentifié pour utiliser notre système. Cependant l'authentification permet à l'utilisateur d'accéder à des fonctionnalités supplémentaires. Aussi, nous allons retrouver plusieurs statuts parmi les utilisateurs authentifiés. La table \ref{tab:profils} résume les différents statuts avec les droits qui leur sont associés. 
+La page d'accueil est la première page que les utilisateurs verront. C'est pourquoi, cette page devra contenir les accès à toutes les fonctionnalités principales de notre application. Parmi ces fonctionnalités se trouvent celles liées à l'authentification. L'inscription à notre système se fera depuis l'écran d'accueil alors que la connexion pourra se faire quelque soit la page que l'utilisateur visualise. La figure \ref{fig:accueil} illustre l'écran d'accueil que pourra voir un utilisateur ne s'étant pas authentifié.
 
-\begin{table}[H]
-	\centering
-		\small
-			\begin{tabular}{|c|p{7cm}|}
-				\hline
-					\rowcolor{lightgray}\textbf{Statut} & \textbf{Droits} \\
-				\hline
-					Utilisateur non-connecté & Rechercher un document, naviguer dans les documents, visualiser un document avec ses annotations \\
-				\hline
-					Utilisateur basique & Droits d'un utilisateur non-connecté, annoter un document, visualiser les annotations d'un autre utilisateur pour un document donné, utilisation de favoris \\
-				\hline
-					Modérateur & Droits d'un utilisateur non-connecté, supprimer un utilisateur basique\\
-				\hline
-					Administrateur & Droits d'un modérateur, supprimer un modérateur, supprimer un administrateur, modifier le statut d'un utilisateur \\
-				\hline
-			\end{tabular}
-			\caption{Profils des utilisateurs}
-		\normalsize
-	\label{tab:profils}
-\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{accueil.png}
+\caption{Ecran d'accueil de notre application sur PixelSense}
+\label{fig:accueil}
+\end{figure}
 
 \subsubsection{Fonction SA01 - Inscription}
 
@@ -216,6 +207,31 @@ La connexion permet à l’utilisateur de s’identifier pour accéder à l’en
   \caption{Fonction SA02 - Connexion}
   \normalsize
   \label{tab: connexion}
+\end{table}
+
+\subsubsection{Statuts des utilisateurs}
+
+Un utilisateur n'a pas besoin d'être authentifié pour utiliser notre système. Cependant l'authentification permet à l'utilisateur d'accéder à des fonctionnalités supplémentaires. Aussi, nous allons retrouver plusieurs statuts parmi les utilisateurs authentifiés. La table \ref{tab:profils} résume les différents statuts avec les droits qui leur sont associés. 
+
+\begin{table}[H]
+	\centering
+		\small
+			\begin{tabular}{|c|p{7cm}|}
+				\hline
+					\rowcolor{lightgray}\textbf{Statut} & \textbf{Droits} \\
+				\hline
+					Utilisateur non-connecté & Rechercher un document, naviguer dans les documents, visualiser un document avec ses annotations \\
+				\hline
+					Utilisateur basique & Droits d'un utilisateur non-connecté, annoter un document, visualiser les annotations d'un autre utilisateur pour un document donné, utilisation de favoris \\
+				\hline
+					Modérateur & Droits d'un utilisateur non-connecté, supprimer un utilisateur basique\\
+				\hline
+					Administrateur & Droits d'un modérateur, supprimer un modérateur, supprimer un administrateur, modifier le statut d'un utilisateur \\
+				\hline
+			\end{tabular}
+			\caption{Profils des utilisateurs}
+		\normalsize
+	\label{tab:profils}
 \end{table}
 
 
