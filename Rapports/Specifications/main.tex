@@ -82,7 +82,13 @@ Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archiv
 Dans cette section, nous allons détailler quelles technologies et quelle architecture nous allons employer pour mettre en place notre application.
 
 \subsection{Client - PixelSense}
-\subsection{Serveur - }
+Le client sera développé sur la table Microsoft PixelSense. Il s'agit d'un écran 40 pouces tactile (supporte plus de 50 entrées) full HD. La table fonctionne sur une version pour système embarqué de Windows 7. 
+
+Le SDK fourni tout ce qui est nécessaire pour la création d'interface utilisateur complexe. Il s'agit de Controls Box entièrement modulable, déplacable et pivotable. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples touchés pour déplacer et tourner l'image. Le langage de programmation est le C# et il est possible d'utiliser la puissance du framework .NET.
+
+Développer sur ce type de plateforme va donner une image neuve des archives, les surfaces tactiles sont extrêmement à la mode et la taille de l'écran est impressionnante.
+
+\subsection{Serveur - API}
 Le serveur va être le centre du système. En effet, c'est à lui de faire le lien entre le client et les données. Son but sera de fournir les fichiers d'images, les tables et RMM ainsi que les données associées grâce à la base de données.
 
 Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architeture doit être élastique en termes de volume de données, le volume d'image est très important.
@@ -93,7 +99,6 @@ Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est 
 La base de donn\'ees va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
 
 L'application devra \^etre fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé, il sera important de garder une compatibilité pour pouvoir transférer la version final de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne marche que sur MySQL pour faciliter le transfert.
-\subsection{Relation client serveur}
 
 \subsection{Schéma de navigation}
 
