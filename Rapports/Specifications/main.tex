@@ -76,8 +76,8 @@ Lorsque ces utilisateurs arrivent sur la page d'accueil de l'application, il fau
 \subsubsection{Utilisateur expérimenté}
 Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consultés et annotés. Cet utilisateur se connectera, souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annotés et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il aura en revanche aussi la possibilité d'annoter les registres qu'il consulte. Pour cela, il peut choisir un document vierge et annoter en partant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (s'il en existe).
 
-\subsubsection{Archiviste}
 
+\newpage
 \section{Architecture générale}
 Dans cette section, nous allons détailler quelles technologies et quelle architecture nous allons employer pour mettre en place notre application.
 
@@ -108,6 +108,7 @@ L’application possédera cinq principales interfaces / écrans dont voici le s
 
 Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. Aussi, les écrans de recherche et de gestion devront être accessibles à partir de n’importe quel autre écran, hormis le cas particulier pour la gestion des documents. Elle sera accessible à partir de l’écran d’accueil seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessible à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.
 
+\newpage
 \section{Spécifications fonctionnelles du système}
 
 \subsection{Authentification}
@@ -366,7 +367,7 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
   \normalsize
   \label{tab:naviguer_deux_tables}
 \end{table}
-\newpage
+
 
 \subsubsection{Naviguer entre deux RMM}
 
@@ -498,7 +499,7 @@ Ici, on se place dans le cas où le numéro de matricule ne permet pas de trouve
   \normalsize
   \label{tab:naviguer_table_registre_inconnu}
 \end{table}
-\newpage
+
 
 
 \subsubsection{Fonction SB07 - Naviguer d'une table à un RMM connu}
@@ -539,7 +540,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le RM
   \normalsize
   \label{tab:naviguer_table_registre_connu}
 \end{table}
-\newpage
+
 
 \subsection{Annotation}
 
