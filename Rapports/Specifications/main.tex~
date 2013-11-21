@@ -42,8 +42,7 @@
 \section{Analyse du besoin}
 \subsection{Projet xxx (nom appli)}
 \todo{Présenter le projet ce qu'il doit faire ainsi que l'équipe}
-	Dans le cadre des projets de 4éme année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM). Ces annotations doivent être à la fois simples et rapides à créer. Il sera important pouvoir visualiser des images correctement afin de pouvoir les annoter correctement. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Sachant que notre application sera conçue pour fonctionner sur une table Microsoft PixelSense, nous utiliserons donc des émulateurs pour le développement du projet.
-	Notre équipe est composée de 6 élèves ingénieurs de 4éme année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, \\ Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale, l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
+
 \subsection{Mise en valeur des documents de guerre}
 \todo{Expliquer vite fait pourquoi ces docs, en mettre un de chaque en photo, dire que leur présentation est faite dans le rapport de pré-étude (notamment pour le registre)}
 
@@ -552,7 +551,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le RM
 
 \subsection{Annotation}
 
-	Une annotation est caractérisée par 3 attributs : sa position sur le RMM, sa catégorie et son texte. Par exemple, si on veut annoter la nom d’un RMM, cette annotation aura pour catégorie « Nom » et pour texte le nom de la personne et se situera au niveau de son nom sur le RMM. Les catégories ne seront pas libres, l’utilisateur pourra seulement sélectionner la catégorie parmi une liste de catégorie.
+
 
 \subsubsection{Fonction SC01 - Annoter une table}
 
@@ -601,7 +600,7 @@ L'annotation de table permet de cr\'eer un lien avec les registres. En annotant 
 
 \subsubsection{Fonction SC02 - Annoter un RMM}
 
-Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Une catégorie d’annotation sera suggérée. Si l’utilisateur veut créer une annotation sans catégorie particulière, il peut choisir la catégorie « Autre catégorie ». Il doit ensuite remplir le texte de l’annotation et la valider. Les annotations faites sur un RMM met à jour la fiche d’identité associé au RMM. Elle sera ensuite enregistrée sur la base de données.\\
+Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Différents types d’annotation peuvent être suggérées, l’utilisateur aura le choix entre sélectionner le type d’annotation ou en faire une autre. Il doit ensuite remplir l’annotation et la valider. Elle sera ensuite enregistrée sur la base de données.\\
 
 \begin{table}[H]
   \centering
@@ -612,7 +611,7 @@ Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & L'utilisateur visualise un RMM et est connecté\\
+   			-1 & Visualisation d’une image et utilisateur connecté\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
@@ -620,9 +619,9 @@ Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & Détection possible du type de l’annotation en fonction de la position de l'annotation afin de pré-remplir la catégorie d’annotation\\
-            -2 & Choix de la catégorie de l’annotation \\
-			-3 & Choix du texte de l’annotation obligatoire \\
+   			-1 & Détection du type de l’annotation en fonction de la position de la zone précédente afin de proposer plusieurs types d’annotations\\
+            -2 & Choix du type de l’annotation \\
+			-3 & Choix de l’annotation obligatoire \\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
@@ -630,7 +629,7 @@ Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Ajoute l’annotation à la liste des annotations du document (elle va apparaitre dans la fiche d’identité du RMM\\
+   			-1 & Ajoute l’annotation à la liste des annotations du document (elle va apparaitre dans la fenêtre des annotations en haut à droite)\\
 			-2 & Visualisation de l’image\\
    		\hline
 	\end{tabular}
@@ -639,46 +638,46 @@ Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela
   \label{tab:annoter_registre}
 \end{table}
 
-\subsubsection{Fonction SC03 - Annoter un RMM en cliquant sur la fiche identité}
-Une deuxième façon d’annoter un RMM est d’utiliser des annotations pré-remplie en cliquant sur l’annotation voulue au niveau de la fiche d’identité.\\
+\subsubsection{Fonction SC03 - Annotation libre sur des RMM}
+Il arrive tr\`es souvant que des informations concernant le soldat se placent n'importe o\`u, et qu'elles ne rentrent pas dans le cadre des cat\'egories. L'annotation libre permet de placer dans un endroit quelconque une annotation. \\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 -  Annoter un RMM en cliquant sur la fiche identité}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC03 - Annotation libre sur des RMM}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   		-1 & L'utilisateur visualise un RMM et est connecté\\
+   		-1 & Un utilisateur veut annoter une zone qui ne peut pas \^etre li\'ee \`a une cat\'egorie. \\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur clique sur ce qu’il souhaite annoter au niveau de la fiche d’identité\\
+   			-1 & L'utilisateur clique sur le bouton correspondant. \\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-        	-1 & Choix du texte de l’annotation obligatoire\\
+   			-1 & Texte \\
+        	-3 & Zone de d\'elimitation de l'annotation (rectangle) \\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Sauvegarde de l’annotation dans la base de données\\
-
+   			-1 & Ajout d'une entr\'ee dans la base de donn\'ees \\
+            -2 & Ajout du document annot\'e dans le dossier mes annotations \\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Ajoute l’annotation à la liste des annotations du document, elle va apparaitre dans
-la fiche d’identité du RMM\\
+   			-1 & Affichage de l'annotation. \\
    		\hline
 	\end{tabular}
-  \caption{SC03 - Annoter un RMM en cliquant sur la fiche identité}
+  \caption{SC03 - Annotation libre sur registres}
   \normalsize
-  \label{tab:annotation_fiche}
+  \label{tab:annotation_libre}
 \end{table}
 
 \subsubsection{Fonction SC04 - Annoter grâce à un raccourci}
-L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela il doit déplacer un bouton raccourci à l’endroit voulu, ce qui permet de créer une annotation à cet endroit avec une catégorie prédéfinie par ce raccourci.\\
+L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela il doit déplacer un bouton raccourci à l’endroit voulu, ce qui permet de créer une annotation à cet endroit avec un type prédéfini par ce raccourci.\\
 
 \begin{table}[H]
   \centering
@@ -698,8 +697,8 @@ L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
    			-1 & L’utilisateur place le raccourci à l’endroit voulu\\
-			-2 & Fait apparaitre une fenêtre avec la catégorie déjà remplie\\
-			-3 & L’utilisateur rentre le texte de l’annotation\\
+			-2 & Fait apparaitre une fenêtre avec le champ type déjà remplis\\
+			-3 & L’utilisateur rentre l’annotation\\
 			-4 & L’utilisateur valide l’annotation\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
@@ -708,7 +707,7 @@ L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Ajoute l’annotation à la liste des annotations du document elle va apparaitre dans la fiche d’identité du RMM\\
+   			-1 & Ajoute l’annotation à la liste des annotations du document (elle va apparaitre dans la fenêtre des annotations en haut à droite)\\
    		\hline
 	\end{tabular}
   \caption{SC04 - Annoter grâce à un raccourci}
@@ -716,16 +715,62 @@ L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela
   \label{tab:utiliser_raccourci}
 \end{table}
 
-\subsubsection{Fonction SC05 - Affichage d'une fiche d'identité d'un soldat}
+\subsubsection{Fonction SC05 - Gestion des cat\'egories d'annotation}
 
-Le but de la fiche d'identité d'un soldat est d'exploiter au maximum les annotations d'un registre. Gr\^ace aux cat\'egories, il est possible de g\'en\'erer automatiquement une fiche avec toutes les informations importantes. De plus, cette fiche va servir de checklist des annotations \`a faire et pouvant \^etre faite.\\
+\todo{A revoir si on met en dur les annotations ou non}
+
+L'objectif est de pouvoir cr\'eer de mani\`ere automatique des pivots. Pour ce faire il est n\'ecessaire de cr\'eer des cat\'egories. Les informations li\'ees avec une cat\'egorie pouront \^etre utilis\'ees pour la cr\'eation automatique d'une fiche r\'ecapitulative pour un soldat.\\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC05 - Affichage d'une fiche d'identité d'un soldat}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC05 - Gestion des cat\'egories d'annotation}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   		-1 & Un utilisateur veut annoter une information (table ou registre). \\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & L'utilisateur s\'electionne une cat\'egorie lors d'une annotation. \\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Annotation (texte, zone de d\'elimitation)\\
+        	-2 & Cat\'egorie de l'annotation \\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Ajout dans la fiche r\'ecapitulative du soldat l'information \\
+        	-2 & Cr\'eation d'un pivot si possible \\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Affichage de l'annotation. \\
+            -2 & Affichage de la fiche du soldat. \\
+            -3 & Pivot \\
+   		\hline
+	\end{tabular}
+  \caption{SC05 - Gestion des cat\'egories d'annotation}
+  \normalsize
+  \label{tab:gestion_categorie}
+\end{table}
+
+
+
+
+\subsubsection{Fonction SC06 - Affichage d'une fiche soldat}
+
+Le but de la fiche soldat est d'exploiter au maximum les annotations d'un registre. Gr\^ace aux cat\'egories, il est possible de g\'en\'erer automatiquement une fiche avec toutes les informations importantes. De plus, cette fiche va servir de checklist des annotations \`a faire.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC06 - Affichage d'une fiche soldat}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -749,33 +794,33 @@ Le but de la fiche d'identité d'un soldat est d'exploiter au maximum les annota
    			-1 & Affichage de la fiche. \\
    		\hline
 	\end{tabular}
-  \caption{SC05 - Affichage d'une fiche d'identité d'un soldat}
+  \caption{SC06 - Affichage d'une fiche soldat}
   \normalsize
-  \label{tab:affichage_fiche}
+  \label{tab:affichage_fiche_soldat}
 \end{table}
 
 
-\subsubsection{Fonction SC06 - Afficher les positions de toutes les annotations}
-Les annotations apparaissent à droite de l’écran lorsque l’on visualise une image. Cliquer sur la case à cocher en haut à droite de l’interface permet d’afficher ou de masquer les annotations. Ces positions sont représentées par des points sur le document.\\
+\subsubsection{Fonction SC07 - Visualiser les positions de toutes les annotations}
+Les annotations apparaissent à droite de l’écran lorsque l’on visualise une image. Cliquer sur la fenêtre des annotations fait apparaitre les positions de toutes les annotations. Ces positions sont représentées par des points. Cliquer sur l’image (sans cliquer sur les points) permet de masquer ces positions et de mettre fin à la visualisation des annotations.\\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC06 - Afficher les positions de toutes les annotations}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC07 - Visualiser les positions de toutes les annotations}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & Un utilisateur visualise un RMM et les annotations sont masquées\\
+   			-1 & Un utilisateur souhaite voir les annotations liées à l’image en cours de visualisation\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur clique sur la case à cocher\\
+   			-1 & L’utilisateur clique sur la fenêtre des annotations\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur clique sur la case à cocher\\
+   			-1 & L’utilisateur clique sur la fenêtre des annotations\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
@@ -786,56 +831,56 @@ Les annotations apparaissent à droite de l’écran lorsque l’on visualise un
    			-1 & Visualisation de l’image et de ses annotations\\
    		\hline
 	\end{tabular}
-  \caption{SC06 - Afficher les positions de toutes les annotations}
+  \caption{SC07 - Visualiser les positions de toutes les annotations}
   \normalsize
   \label{tab:visualiser_position_annotation}
 \end{table}
 
-\subsubsection{Fonction SC07 - Masquer les positions des annotations}
-De la même manière la position des annotations peuvent être masquées.\\
+\subsubsection{Fonction SC08 - Masquer les positions des annotations}
+TODO.\\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC07 - Masquer les positions des annotations}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC08 - Masquer les positions des annotations}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & Un utilisateur visualise un RMM et les annotations sont visibles\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur clique sur la case à cocher\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur clique sur la case à cocher\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Masque la position de chaque annotation\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Visualisation de l’image\\
+   			-1 & ...\\
    		\hline
 	\end{tabular}
-  \caption{SC07 - Masquer les positions des annotations}
+  \caption{SC08 - Masquer les positions des annotations}
   \normalsize
   \label{tab:masquer_position_annotation}
 \end{table}
 
-\subsubsection{Fonction SC08 - Sélectionner une annotation sur un document}
-Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au niveau de la fiche d’identité ou sur un point en particulier (si on a affiché les annotations) la sélectionne. Quand une annotation est sélectionnée, le point de la position de l’annotation est plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparait.\\
+\subsubsection{Fonction SC09 - Sélectionner une annotation sur un document}
+Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation dans la fenêtre ou sur un point en particulier la sélectionne et fait apparaître une fenêtre contenant les deux champs de l’annotation (l’annotation et son type). Quand une annotation est sélectionnée, le point de la position de l’annotation est plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparait. Cliquer sur l’image (sans cliquer sur un point) permet de désélectionner l’annotation et de masquer la visualisation des annotations.\\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC08 - Sélectionner une annotation sur un document}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC09 - Sélectionner une annotation sur un document}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -843,17 +888,17 @@ Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au 
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & Cliquer sur une annotation au niveau de la fiche d’identité\\
-            -2 & Cliquer sur la position d'une annotation si on a affiché les annotations\\
+   			-1 & Cliquer sur une annotation dans la fenêtre des annotations en haut à droite\\
+            -2 & Cliquer sur la position d'une annotation\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & Cliquer sur une annotation au niveau de la fiche d’identité\\
+   			-1 & Cliquer sur une annotation dans la fenêtre des annotations en haut à droite\\
             -2 & Cliquer sur la position d'une annotation\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Fait apparaitre la position de chaque annotation et coche la case associée\\
+   			-1 & Fait apparaitre la position de chaque annotation\\
 			-2 & Désélectionne l’ancienne annotation sélectionnée\\
 			-3 & Fait apparaitre la position de l’annotation sélectionnée en plus gros\\
    		\hline
@@ -862,49 +907,85 @@ Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au 
    			-1 & Visualisation de l’image et de ses annotations\\
    		\hline
 	\end{tabular}
-  \caption{SC08 - Sélectionner une annotation sur un document}
+  \caption{SC09 - Sélectionner une annotation sur un document}
   \normalsize
   \label{tab:selectionner_annotation}
 \end{table}
 
-\subsubsection{Fonction SC09 - Désélectionner une annotation sur un document}
-Décocher la case associée à l’affichage permet de désélectionner une annotation tout en masquant celles-ci.\\
+\subsubsection{Fonction SC10 - Désélectionner une annotation sur un document}
+TODO.\\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC09 - Désélectionner une annotation sur un document}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC10 - Désélectionner une annotation sur un document}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & Un utilisateur veut désélectionner une annotation\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur masque les annotations\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur masque les annotations\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Désélectionne l’annotation\\
-			-2 & Masque les annotations\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Visualisation de l’image\\
+   			-1 & ...\\
    		\hline
 	\end{tabular}
-  \caption{SC09 - Désélectionner une annotation sur un document}
+  \caption{SC10 - Désélectionner une annotation sur un document}
   \normalsize
   \label{tab:deselectionner_annotation}
 \end{table}
 
-\subsubsection{Fonction SC10 - Modification de la position d’une annotation}
+
+\subsubsection{Fonction SC11 - Glisser dans le tableau des annotations}
+Si les annotations sont trop nombreuses, on peut faire glisser ses annotations vers le bas ou vers le haut afin de pouvoir accéder à toutes les annotations réalisées.\\
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC11 - Glisser dans le tableau des annotations}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
+   		\hline
+   			-1 & Un utilisateur veut visualiser les annotations réalisées\\
+   		\hline
+   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
+   		\hline
+   			-1 & Rester appuyé sur la fenêtre annotation\\
+   		\hline
+   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
+   		\hline
+   			-1 & Appuyer et glisser son doigt vers le haut ou le bas\\
+   		\hline
+   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
+  		\hline
+   			-1 & Faire descendre ou monter les annotations dans la fenêtre jusqu’au relâchement du doigt\\
+   		\hline
+   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
+   		\hline
+   			-1 & Aucun changement\\
+   		\hline
+	\end{tabular}
+  \caption{SC11 - Glisser dans le tableau des annotations}
+  \normalsize
+  \label{tab:glisser_tab_annotation}
+\end{table}
+
+\subsubsection{Fonction SC12 - Modification de la position d’une annotation}
 Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation (c’est-à-dire qu’il l’a lui-même créée, ou qu’il l’a récupérée d’un autre utilisateur) peut modifier sa position.\\
 
 \begin{table}[H]
@@ -912,12 +993,12 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC10 - Modification de la position d’une annotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC12 - Modification de la position d’une annotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
    			-1 & L’utilisateur veut modifier la position d’une annotation\\
-			-2 & L’utilisateur a sélectionné l’annotation\\
+			-2 & L’utilisateur a sélectionner l’annotation\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
@@ -937,50 +1018,50 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    			-1 & Visualisation de l’image et de ses annotations, avec sélection de l’annotation\\
    		\hline
 	\end{tabular}
-  \caption{SC10 - Modification de la position d’une annotation}
+  \caption{SC12 - Modification de la position d’une annotation}
   \normalsize
   \label{tab:modification_position_annotation}
 \end{table}
 
-\subsubsection{Fonction SC11 - Modification du texte d’une annotation}
-Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut modifier son texte au niveau de la fiche d'indentité. Il est impossible de modifier la catégorie d'une annotation, l'utilisateur devra supprimer et recréer l'annotation s'il souhaite changer de catégorie.\\
+\subsubsection{Fonction SC13 - Modification du champ d’une annotation}
+Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation son type ou l’annotation elle-même.\\
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC11 - Modification du champ d’une annotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC13 - Modification du champ d’une annotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & L’utilisateur veut modifier le texte d'une annotation\\
-			-2 & L’utilisateur a sélectionné cette annotation\\
+   			-1 & L’utilisateur veut modifier les champs d’une annotation\\
+			-2 & L’utilisateur a sélectionné l’annotation\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur commence à modifier un le texte de l'annotation au niveau de la fiche d'identité\\
+   			-1 & L’utilisateur commence à modifier un des deux champs\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & L’utilisateur modifie le texte de l'annotation\\
+   			-1 & L’utilisateur modifie un des deux champs\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
    			-1 & L’utilisateur valide la modification\\
-            -2 & Modification du texte de l'annotation dans la base de données\\
+            -2 & Modification du champ dans la base de données\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
    			-1 & Visualisation de l’image et de ses annotations, avec sélection de l’annotation\\
    		\hline
 	\end{tabular}
-  \caption{SC11 - Modification du champ d’une annotation}
+  \caption{SC13 - Modification du champ d’une annotation}
   \normalsize
   \label{tab:modification_champ_annotation}
 \end{table}
 
-\subsubsection{Fonction SC12 - Suppression d'une annotation}
+\subsubsection{Fonction SC14 - Suppression d'une annotation}
 Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut la supprimer.\\
 
 \begin{table}[H]
@@ -988,7 +1069,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC12 - Suppression d'une annotation}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC14 - Suppression d'une annotation}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
@@ -1014,90 +1095,13 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 			-2 & Visualisation de l’image et de ses annotations\\
    		\hline
 	\end{tabular}
-  \caption{SC12 - Suppression d'une annotation}
+  \caption{SC14 - Suppression d'une annotation}
   \normalsize
   \label{tab:supprimer_annotation}
 \end{table}
 
-\subsubsection{Fonction SC13 - Consulter des fiches d’identités et en sélectionner une}
-Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est intéressante on peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la sélection de la fiche on peut revenir à la visualisation du RMM précédant. Une fois la fiche copiée, on peut modifier ou supprimer les annotations.
-La maquette suivant illustre l’interface permettant de sélectionner une fiche d’identité.\\
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC13 - Consulter des fiches d’identités et en sélectionner une}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & un utilisateur veut consulter les fiches d’identités pour en sélectionner une\\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 & l’utilisateur clique sur « consulter fiche d’identité » et arrive sur l'interface de visualisation des fiches d'identités\\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-   			-1 & L’utilisateur visualise des fiches d’identités en les faisant défiler\\
-			-2 & L'utilisateur en sélectionne une\\
-   		\hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & L'utilisateur sélectionne une fiche\\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & visualisation du RMM avec les annotations de la fiche sélectionnée\\
-   		\hline
-	\end{tabular}
-  \caption{SC13 - Consulter des fiches d’identités et en sélectionner une}
-  \normalsize
-  \label{tab:consulter_fiche}
-\end{table}
-
-\subsubsection{Fonction SC14 - Copier une fiche d’identité}
-Quand une fiche est sélectionnée, on peut la désélectionner et faire apparaitre nos anciennes annotations.
-Copier une fiche d’identité permet de s’approprier toutes les annotations d’un utilisateur sur un RMM, mais supprime aussi toutes les annotations que possédait l’utilisateur avant la copie. Pour cela, l’utilisateur doit cliquer sur « copier fiche d’identité » après avoir sélectionné une fiche.\\
-
-\begin{table}[H]
-  \centering
-   \small
-	\begin{tabular}{|c|p{12cm}|}
-   		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{SC14 - Copier une fiche d’identité}} \\
-   		\hline
-   			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
-   		\hline
-   			-1 & un utilisateur veut copier la fiche d’identité qu’il visualise après l'avoir sélectionnée\\
-   		\hline
-   			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
-   		\hline
-   			-1 &  l’utilisateur clique sur « copier fiche d’identité »\\
-   		\hline
-   			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
-   		\hline
-   			-1 &  l’utilisateur clique sur « copier fiche d’identité »\\
-   		\hline
-   			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
-  		\hline
-   			-1 & supprime les éventuelles anciennes annotations\\
-			-2 & sauvegarde toutes les annotations sur la base de données et rafraichi la fiche d’identité\\
-   		\hline
-   			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
-   		\hline
-   			-1 & visualisation du RMM avec les nouvelles annotations\\
-   		\hline
-	\end{tabular}
-  \caption{SC14 - Copier une fiche d’identité}
-  \normalsize
-  \label{tab:copier_fiche}
-\end{table}
-
-
 \subsubsection{Fonction SD01 - Créer un raccourci}
-Un raccourci peut aussi être créé, pour annoter plusieurs fois des personnes ayant appartenu à une même famille par exemple. Pour cela un doit simplement cliquer sur « créer un raccourci » dans la barre des raccourcis en bas de l’interface.\\
+TODO.\\
 \begin{table}[H]
   \centering
    \small
@@ -1107,24 +1111,23 @@ Un raccourci peut aussi être créé, pour annoter plusieurs fois des personnes 
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & un utilisateur connecté veut créer un raccourci\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & un utilisateur clique sur l'icône « créer un raccourci »\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 & Choix de l'icône du raccourci\\
-			-2 & Sélection de la catégorie du raccourci\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Création du raccourci\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Rafraichir la barre des raccourcis\\
+   			-1 & ...\\
    		\hline
 	\end{tabular}
   \caption{SD01 - Créer un raccourci}
@@ -1134,7 +1137,7 @@ Un raccourci peut aussi être créé, pour annoter plusieurs fois des personnes 
 
 
 \subsubsection{Fonction SD02 - Supprimer un raccourci}
-Si un raccourci n’est pas utilisé, il peut être intéressant pour l’utilisateur de le supprimer afin de gagner en visibilité. Il suffit pour cela de prendre et de mettre ce raccourci vers une corbeille.\\
+TODO.\\
 \begin{table}[H]
   \centering
    \small
@@ -1144,23 +1147,23 @@ Si un raccourci n’est pas utilisé, il peut être intéressant pour l’utilis
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & un utilisateur connecté veut supprimer un raccourci\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & un utilisateur déplace le raccourci vers la corbeille\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 &  un utilisateur déplace le raccourci vers la corbeille\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & supprimer la raccourci\\
+   			-1 & ...\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & rafraichir la barre des raccourcis\\
+   			-1 & ...\\
    		\hline
 	\end{tabular}
   \caption{SD02 - Supprimer un raccourci}
