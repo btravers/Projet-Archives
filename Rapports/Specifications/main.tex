@@ -40,12 +40,13 @@
 \newpage
 
 \section{Analyse du besoin}
+
 \subsection{Projet xxx (nom appli)}
-\todo{Présenter le projet ce qu'il doit faire ainsi que l'équipe}
+
 	Dans le cadre des projets de 4éme année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM). Ces annotations doivent être à la fois simples et rapides à créer. Il sera important pouvoir visualiser des images correctement afin de pouvoir les annoter correctement. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Sachant que notre application sera conçue pour fonctionner sur une table Microsoft PixelSense, nous utiliserons donc des émulateurs pour le développement du projet.
 	Notre équipe est composée de 6 élèves ingénieurs de 4éme année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, \\ Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale, l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
+	
 \subsection{Mise en valeur des documents de guerre}
-\todo{Expliquer vite fait pourquoi ces docs, en mettre un de chaque en photo, dire que leur présentation est faite dans le rapport de pré-étude (notamment pour le registre)}
 
 L'application étant destinée au centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents étaient des documents militaires mais qui ont été donnés aux archives, ce sont les seuls documents militaires que les archives possèdent.
 
@@ -66,7 +67,7 @@ Ces tables nous seront utiles pour la rapidité de recherche de l'information. E
 L'objectif de l'application sera d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant la zone du numéro matricule "cliquable" tel un lien hypertexte.
 
 \subsection{Différents types d'utilisateurs}
-\todo{Cas d'utilisation global a mettre en "pseudo intro" et Story board dans chaque user}
+
 L'application sera utilisé par plusieurs types d'usagers. Un utilisateur ponctuel et un habitué des archives n'auront pas forcément la même approche des documents. Nous allons donc détailler les comportements types des usagers.
 
 \subsubsection{Amateur}
@@ -85,7 +86,7 @@ Dans cette section, nous allons détailler quelles technologies et quelle archit
 \subsection{Client - PixelSense}
 Le client sera développé sur la table Microsoft PixelSense. Il s'agit d'un écran 40 pouces tactile (supporte plus de 50 entrées) full HD. La table fonctionne sur une version pour système embarqué de Windows 7. 
 
-Le SDK fourni tout ce qui est nécessaire pour la création d'interface utilisateur complexe. Il s'agit de Controls Box entièrement modulable, déplacable et pivotable. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples touchés pour déplacer et tourner l'image. Le langage de programmation est le C# et il est possible d'utiliser la puissance du framework .NET.
+Le SDK fourni tout ce qui est nécessaire pour la création d'interface utilisateur complexe. Il s'agit de Controls Box entièrement modulable, déplacable et pivotable. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples touchés pour déplacer et tourner l'image. Le langage de programmation est le C\# et il est possible d'utiliser la puissance du framework .NET.
 
 Développer sur ce type de plateforme va donner une image neuve des archives, les surfaces tactiles sont extrêmement à la mode et la taille de l'écran est impressionnante.
 
@@ -600,6 +601,15 @@ L'annotation de table permet de cr\'eer un lien avec les registres. En annotant 
 \end{table}
 
 \subsubsection{Fonction SC02 - Annoter un RMM}
+
+La maquette suivante présente l'interface d'annotation de RMM afin d'avoir une vue d'ensemble et de bien comprendre comment l'annotation se déroule. On y visualise un RMM. L'interface possède une barre de visualisation au dessus, une barre de raccourci en bas, un menu mes documents à gauche et enfin une fiche d'identité qui synthétise toutes les annotations concernant le document. Les points représentent des annotations. Il est possible de visualiser et de copier les annotations d'autres utilisateur via les boutons pour consulter et copier des fiches d'identités. Nous expliquerons chacun de ces points au fur et à mesure.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{maquette_annotation.png}
+\caption{Interface pour annoter un RMM}
+\label{fig:annotation}
+\end{figure}
 
 Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Une catégorie d’annotation sera suggérée. Si l’utilisateur veut créer une annotation sans catégorie particulière, il peut choisir la catégorie « Autre catégorie ». Il doit ensuite remplir le texte de l’annotation et la valider. Les annotations faites sur un RMM met à jour la fiche d’identité associé au RMM. Elle sera ensuite enregistrée sur la base de données.\\
 
@@ -1402,7 +1412,7 @@ Afin d'offrir le maximum de flexibilité, la recherche pourra être effectué su
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{rechercheRMM.png}
+\includegraphics[width=\textwidth]{rechercheRegistres.png}
 \caption{Interface de recherche dans les RMM}
 \label{fig:rechercheRMM}
 \end{figure}
@@ -1627,11 +1637,8 @@ D'ailleurs, l'application étant destinée à être tactile, ces fonctionnalité
 \subsubsection{Fonction SF01 - Zoom}
 
 Le zoom d'une image permet d'améliorer la lisibilité du document, il permet à l'utilisateur d'agrandir ou de rétricir le document. L'utilisateur pourra paramétrer son zoom selon le pourcentage de la taille de l'image d'origine. Le pourcentage autorisera une modification de 20\% jusqu'à 300\% de la taille de l'image d'origine.
-\todo{Question : Faut-il déjà limiter les paramètres ou bien est-ce destiné à la conception ?}
 
 Raccourci mouvement : L'utilisateur colle ses doigts sur une zone de l'image, et les écarte pour agrandir la zone, mouvement inverse pour un rétrécissement.
-\todo{Question : Doit-on aussi préciser les mouvements pour le tactile ?}
-\todo{Question : Pour le plan du coup il faut peut être dire avant que l'application sera tactile, donc Architecture Générale à mettre avant ? }
 
 \begin{table}[H]
   \centering
