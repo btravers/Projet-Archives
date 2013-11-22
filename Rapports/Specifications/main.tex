@@ -93,14 +93,14 @@ Développer sur ce type de plateforme va donner une image neuve des archives, le
 \subsection{Serveur - API}
 Le serveur va être le centre du système. En effet, c'est à lui de faire le lien entre le client et les données. Son but sera de fournir les fichiers d'images, les tables et RMM ainsi que les données associées grâce à la base de données.
 
-Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architeture doit être élastique en termes de volume de données, le volume d'image est très important.
+Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architecture doit être élastique en termes de volume de données, le volume d'image est très important.
 
 Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est un style d'architecture adapté au web, il ne s'agit pas d'un protocole mais de concepts en surcouche d'un langage prévu pour le web. Le principal avantage est plus simple à développer et à entretenir.
 
 \subsection{Base de données - MySql}
-La base de donn\'ees va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
+La base de données va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
 
-L'application devra \^etre fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé, il sera important de garder une compatibilité pour pouvoir transférer la version final de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne marche que sur MySQL pour faciliter le transfert.
+L'application devra être fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé, il sera important de garder une compatibilité pour pouvoir transférer la version final de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne marche que sur MySQL pour faciliter le transfert.
 
 \subsection{Schéma de navigation}
 
@@ -1031,7 +1031,14 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 
 \subsubsection{Fonction SC13 - Consulter des fiches d’identités et en sélectionner une}
 Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est intéressante on peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la sélection de la fiche on peut revenir à la visualisation du RMM précédant. Une fois la fiche copiée, on peut modifier ou supprimer les annotations.
-La maquette suivant illustre l’interface permettant de sélectionner une fiche d’identité.\\
+La maquette suivante illustre l’interface permettant de sélectionner une fiche d’identité.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{maquette_fiche_identite.png}
+\caption{Interface pour la visualisation de fiche d'identité}
+\label{fig:fiche_identite}
+\end{figure}
 
 \begin{table}[H]
   \centering
