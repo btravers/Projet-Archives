@@ -88,14 +88,14 @@ Le client sera développé sur la table Microsoft PixelSense. Il s'agit d'un éc
 
 Le SDK fourni tout ce qui est nécessaire pour la création d'interface utilisateur complexe. Il s'agit de Controls Box entièrement modulable, déplacable et pivotable. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples touchés pour déplacer et tourner l'image. Le langage de programmation est le C\# et il est possible d'utiliser la puissance du framework .NET.
 
-Développer sur ce type de plateforme va donner une image neuve des archives, les surfaces tactiles sont extrêmement à la mode et la taille de l'écran est impressionnante.
+Développer sur ce type de plateforme va donner une image neuve des archives, les surfaces tactiles sont extrêmement à la mode. De plus, travailler sur cette plateforme va nous apprendre des technologies nouvelles.
 
 \subsection{Serveur - API}
 Le serveur va être le centre du système. En effet, c'est à lui de faire le lien entre le client et les données. Son but sera de fournir les fichiers d'images, les tables et RMM ainsi que les données associées grâce à la base de données.
 
 Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architecture doit être élastique en termes de volume de données, le volume d'image est très important.
 
-Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est un style d'architecture adapté au web, il ne s'agit pas d'un protocole mais de concepts en surcouche d'un langage prévu pour le web. Le principal avantage est plus simple à développer et à entretenir.
+Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est un style d'architecture adapté au web, il ne s'agit pas d'un protocole mais de concepts en surcouche d'un langage prévu pour le web. Le principal avantage de l'API est qu'il est plus simple de développer et d'entretenir le serveur.
 
 \subsection{Base de données - MySql}
 La base de données va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
