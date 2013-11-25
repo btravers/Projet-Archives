@@ -245,7 +245,7 @@ Un utilisateur n'a pas besoin d'être authentifié pour utiliser notre système.
 
 \subsection{Navigation entre les documents}
 
-La navigation est l'un des éléments indispensables de notre projet. En effet, il est impossible d'annoter des documents si on ne posssède pas la capacité de les parcourir. Les fonctionnalités que nous avons l'intention de dvelopper nous semblent être un bon compromis, afin d'éviter d'avoir une navigation trop simpliste, ou au contraire une navigation avec trop d'options, qui deviendrait ainsi laborieuse. 
+La navigation est l'un des éléments indispensables de notre projet. En effet, il est impossible d'annoter des documents si on ne posssède pas la capacité de les parcourir. Les fonctionnalités que nous avons l'intention de développer nous semblent être un bon compromis, afin d'éviter d'avoir une navigation trop simpliste, ou au contraire une navigation avec trop d'options qui deviendrait laborieuse. 
 
 \subsubsection{Navigation dans une table}
 
@@ -295,7 +295,7 @@ Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite 
 
 \subsubsection{Fonction SB02 - Naviguer dans une m\^eme table jusqu'à une page numérotée}
 
-Afin de navguer facilement dans les tables, la navigation vers les pages adjacentes ne suffit pas. En effet, si l'utilisateur veut atteindre une page éloigné de la page courante, par exemple la 20ème page en partant du début de la table, il  ne doit pas être obligé de répéter 20 fois l'action "aller à la page suivante". Cette fonctionnalité son numéro.  de sélectionner la page qu'on désire atteindre, en renseignant simplement
+Afin de naviguer facilement dans les tables, la navigation vers les pages adjacentes ne suffit pas. En effet, si l'utilisateur veut atteindre une page éloignée de la page courante, par exemple la 20ème page en partant du début de la table, il  ne doit pas être obligé de répéter 20 fois l'action "aller à la page suivante". Cette fonctionnalité permet de sélectionner la page qu'on désire atteindre, en renseignant simplement son numéro.
 \begin{table}[H]
   \centering
    \small
@@ -335,9 +335,9 @@ Afin de navguer facilement dans les tables, la navigation vers les pages adjacen
 
 \subsubsection{Fonction SB03 - Naviguer entre deux tables}
 
-Pour un utilisateur, il peut être intéressant de pouvoir naviguer rapidement de table en table, par exemple lorsqu'il recherche une personne dont il connaït le nom mais pas l'année d'entrée eb service. Dans ce cas, il va établir une fourchette contenant les années qu'il estime possibles, et parcourir les tables correspondant à ces années. Les tables seront classées par ordre chronologique (une par année), ainsi navuguer vers l'année suivante reviendra à naviguer vers la table suivante.
+Pour un utilisateur, il peut être intéressant de pouvoir naviguer rapidement de table en table, par exemple lorsqu'il recherche une personne dont il connaît le nom mais pas l'année d'entrée en service. Dans ce cas, il va établir une fourchette contenant les années qu'il estime possibles, et parcourir les tables correspondant à ces années. Les tables seront classées par ordre chronologique (une par année), ainsi naviguer vers l'année suivante reviendra à naviguer vers la table suivante.
 
-De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque table, trouver la page correspondant au nom de l'individu (clasés par ordre alphabétique). C'est pourquoi il paraît utile de proposer à l'utilisateur de naviguer vers une autre année, tout en essayant d'atteindre directement la page qui l'intéresse. En partant du principe que la distribution des noms de famille alphabétiquement parlant est à peu près identique d'une année sur l'autre, on peut ainsi définir une fontion proportionnelle. Par exeple, en étant à la page 6/30 de la table de l'année N, on se retrouvera à la page 4/20 de l'année N+1.
+De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque table, trouver la page correspondant au nom de l'individu (classés par ordre alphabétique). C'est pourquoi il paraît utile de proposer à l'utilisateur de naviguer vers une autre année, tout en essayant d'atteindre directement la page qui l'intéresse. En partant du principe que la distribution des noms de famille alphabétiquement parlant est à peu près identique d'une année sur l'autre, on peut ainsi définir une fontion proportionnelle. Par exeple, en étant à la page 6/30 de la table de l'année N, on se retrouvera à la page 4/20 de l'année N+1.
 
 \begin{table}[H]
   \centering
@@ -380,7 +380,7 @@ De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque 
 
 \subsubsection{Naviguer entre deux RMM}
 
-Même si la navigation au sein des tables est primordiale, il ne faut pas négliger la possibilité que certains utilisateurs annotent des registres "à la chaîne", parfois sans même passer par les tables. Il faut donc que notre solution propose aussi une solution de navigation entre les registres.
+Même si la navigation au sein des tables est primordiale, il ne faut pas négliger la possibilité que certains utilisateurs annotent des registres "à la chaîne", parfois sans même passer par les tables. Il faut donc que notre solution propose aussi une possibilité de navigation entre les registres.
 
 \subsubsection{Fonction SB04 - Naviguer entre deux RMM adjacents}
 
@@ -426,7 +426,7 @@ Raccourci mouvement : Identique à celui de la navigation entre pages adjacentes
 
 \subsubsection{Fonction SB05 - Naviguer entre deux RMM numérotés}
 
-Dans notre base d'images de RMM, celles-ci sont classées par numéros de matricule. Cependant, à cause des vues multiples dues aux retombes et aux éventuelles absences de certains RMM, numéro de matricule et numéro d'image ne correspondent pas forcément. Cependant, certains utilisateurs peuvent vouloir accéder rapidement à un RMM en ne connaissant que le numéro de l'image, par exemple sur les conseils d'un ami. Ainsi, en entrant le numéro souhaité, on accède directement à l'image correspondante.
+Dans notre base d'images de RMM, celles-ci sont classées par numéro de matricule. Cependant, à cause des vues multiples dues aux retombes et aux éventuelles absences de certains RMM, numéro de matricule et numéro d'image ne correspondent pas forcément. Cependant, certains utilisateurs peuvent vouloir accéder rapidement à un RMM en ne connaissant que le numéro de l'image, par exemple sur les conseils d'un ami. Ainsi, en entrant le numéro souhaité, on accède directement à l'image correspondante.
 
 \begin{table}[H]
   \centering
