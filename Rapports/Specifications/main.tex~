@@ -2094,21 +2094,9 @@ Les équipes de modérateurs et d'administrateurs doivent pouvoir évoluer au fi
 \newpage
 \section*{Conclusion}
 
-Dans la perspective du centenaire de la guerre 14-18, ce projet a pour objectif de concevoir un outil en ligne multi-utilisateurs de navigation et d'annotation des RMM sur un support tactile.
+Dans la perspective du centenaire de la guerre 14-18, ce projet a pour objectif de concevoir un outil de navigation, d'annotation et de recherche dans les RMM.
 
-Cette phase de spécifications avait pour objectif de nous faire réfléchir plus en profondeur aux fonctionnalités proposées par notre solution. Ce document sera notre référence pour les prochaines phases. En effet, la charge de travail nécessaire à la réalisation de chaque spécification peut maintenant être quantifiée, dans l'objectif de planifier notre phase de conception et de développement.
-
-Afin de répondre au mieux au sujet, nous avons évidemment gardé les deux fonctionnalités de base que sont la navigation et l'annotation. Aussi, nous avons décidé d'en ajouter une troisième : la recherche de documents. En effet, en plus de réutiliser les annotations, ce système va permettre à un utilisateur de trouver plus efficacement un registre qu'il souhaite consulter ou annoter. L'application offrira plusieurs outils afin d'améliorer la visualisation et donc la lisibilité des différents documents, comme le zoom ou la rotation. Enfin les utilisateurs auront la possibilité de s'authentifier et de gérer leurs documents favoris grâce à un accès personnel.
-
-Depuis le commencement du projet, nous travaillons en collaboration avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales
-d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit. Aussi, nous bénéficions du suivi de Mme Karen Février, chef de projet chez ATOS, sur l'aspect gestion de projet. Nous souhaitons garder ces relations pour la suite du projet, qui nous offrent l'opportunité de travailler avec des professionnels.
-
-Notre prochaine tâche se focalisera sur la planification de chaque fonctionnalité afin de préparer au mieux les phases de conception et de développement.
-
-
-
-
-
+Cette phase de spécifications fonctionnelles nous a permis de formuler précisément les fonctionnalités à développer, ainsi que les interactions qui peuvent exister entre les différentes fonctionnalités. A l'issu de ce rapport, nous avons aussi une idée de l'architecture générale qu'utilisera notre système. A présent, il va être nécessaire de chiffrer le temps de réalisation de ces fonctionnalités dans l'objectif de planifier la conception et le développement de notre système.
 
 \appendix
 
