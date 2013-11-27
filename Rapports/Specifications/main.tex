@@ -36,6 +36,8 @@
 	L'objectif du projet est de construire un outil d'annotations semi-auto\-matiques des documents liés au recrutement militaire concernant cette période. L'outil doit permettre à un utilisateur, visiteur des archives, d'associer lecture et annotation du document avec l'image numérisée qui lui correspond. En plus de naviguer et d'annoter les images, l'usager peut utiliser ces annotations pour rechercher des documents, par exemple trouver une personne grâce a son nom.\\
 	
 	Ce rapport de spécifications fonctionnelles reprend brièvement les notions importantes abordées dans le rapport de pré-étude, avant de décrire grossièrement l'architecture générale choisie pour la réalisation de ce système. Finalement, la majeure partie de ce rapport est consacrée à la description des spécifications fonctionnelles.
+	
+	Ce travail a fait l'objet d'échanges réguliers avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit, et Me. Karen Février, chef de projet chez ATOS, qui nous offre un suivi sur l'aspect gestion de projet ainsi que sur la rédaction des documents.
 
 \newpage
 
@@ -43,13 +45,13 @@
 
 \subsection{Projet : ArchiPoilus}
 
-	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM) numérisé. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images correctement afin de pouvoir les annoter correctement. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.
+	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM) numérisés ainsi que leurs tables associées. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images correctement afin de pouvoir les annoter correctement. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.\\
 	
-	Notre équipe est composée de 6 élèves ingénieurs de 4éme année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons toutefois prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale, l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
+	Notre équipe est composée de 6 élèves ingénieurs de 4éme année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons toutefois prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale; l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
 	
 \subsection{Mise en valeur des documents de guerre}
 
-L'application étant destinée à être utilisée dans le cadre du centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents étaient des documents militaires mais qui ont été donnés aux archives : ce sont donc les seuls documents militaires que les archives possèdent.
+L'application étant destinée à être utilisée dans le cadre du centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents ont été donnés aux archives par l'armée, ce sont les seuls documents militaires que les archives possèdent.
 
 \subsubsection{Le registre matricule militaire}
 Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe \ref{sec:annexe 1}, est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver l'état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.
@@ -65,7 +67,7 @@ La table des RMM représente la liste de tous les registres présents dans un vo
 
 Ces tables nous seront utiles pour la rapidité de recherche de l'information. En effet, le numéro matricule est un moyen de recherche efficace puisqu'ils sont rangés, dans un volume, en ordre numérique. 
 
-L'objectif de l'application sera d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant donc la zone du numéro matricule "cliquable" tel un lien hypertexte.
+L'objectif de l'application sera donc d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant donc la zone du numéro matricule "cliquable" tel un lien hypertexte, on appelera ce type de lien un pivot.
 
 \subsection{Différents types d'utilisateurs}
 
@@ -77,7 +79,7 @@ Le premier utilisateur type est l'amateur. C'est une personne qui vient rarement
 Lorsque ces utilisateurs arrivent sur la page d'accueil de l'application, il faut donc qu'ils soient capables de naviguer dans les documents directement. Ils ont besoin d'une fonctionnalité pour aller chercher une table en fonction de son année et de la commune d'où elle vient. Une fois qu'il a accédé à un registre matricule, l'amateur lit le document et les annotations apportées par les autres usagers, sans annoter lui même. En effet, il ne se sert pas assez des documents des archives pour avoir besoin de noter des informations dont il aurait besoin plus tard. Si cet usager veut trouver un registre, il pourra effectuer une recherche grâce aux annotations des autres utilisateurs. Il pourra ainsi chercher un registre selon le nom, le prénom, la profession, \ldots
 
 \subsubsection{Utilisateur expérimenté}
-Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consultés et annotés. Cet utilisateur se connectera, souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annotés et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il aura en revanche aussi la possibilité d'annoter les registres qu'il consulte. Pour cela, il peut choisir un document vierge et annoter en partant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (s'il en existe).
+Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consultés et annotés. Cet utilisateur se connectera, souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annotés et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il aura en revanche aussi la possibilité d'annoter les registres qu'il consulte. Pour cela, il peut choisir un document vierge et annoter en partant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (s'il en existe). Toutefois, il ne pourra modifier les annotations des autres utilisateurs.
 
 
 \newpage
@@ -114,7 +116,7 @@ L’application possédera cinq principales interfaces / écrans dont voici le s
 \label{fig:navigation}
 \end{figure}
 
-Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. Aussi, les écrans de recherche et de gestion devront être accessibles à partir de n’importe quel autre écran, hormis le cas particulier de la gestion des documents. Elle sera accessible à partir de l’écran d’accueil seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessibles à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.
+Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. Aussi, un écran de recherche devra être accessible à partir de n’importe quel autre écran permettant à l'utilisateur d'effectuer une recherche. Les écrans de gestion des documents ne seront accessibles seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessibles à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.
 
 \newpage
 \section{Spécifications fonctionnelles du système}
