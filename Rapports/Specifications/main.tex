@@ -87,7 +87,7 @@ Dans cette section, nous allons détailler quelles technologies et quelle archit
 \subsection{Client - PixelSense}
 Le client sera développé sur la table Microsoft PixelSense. Il s'agit d'un écran 40 pouces tactile (supporte plus de 50 entrées) full HD. La table fonctionne sur une version pour système embarqué Windows 7. 
 
-Le SDK fournit tout ce qui est nécessaire pour la création d'interface utilisateur complexes. Il s'agit de Controls Box entièrement modulables, déplaçables et pivotables. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples toucher pour déplacer et tourner l'image. Le langage de programmation est le C\# et il est possible d'utiliser la puissance du framework .NET.
+Le SDK fournit tout ce qui est nécessaire pour la création d'interfaces utilisateur complexes. Il s'agit de Controls Box entièrement modulables, déplaçables et pivotables. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples toucher pour déplacer et tourner l'image. Le langage de programmation est le C\# et il est possible d'utiliser la puissance du framework .NET.
 
 Développer sur ce type de plateforme va donner une image neuve des archives, les surfaces tactiles étant extrêmement à la mode. De plus, travailler sur cette plateforme va nous permettre d'apprendre et maîtriser des technologies nouvelles.
 
@@ -101,7 +101,7 @@ Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est 
 \subsection{Base de données - MySql}
 La base de données va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
 
-L'application devra être fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé : il sera important de garder une compatibilité pour pouvoir transférer la version finale de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne fonctionne que sur MySQL pour faciliter le transfert.
+L'application devra être fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé : il sera important de garder une compatibilité pour pouvoir transférer la version finale de l'application sur un serveur Oracle. Il s'agit en particulier d'éviter d'utiliser des fonctions qui ne fonctionne que sur MySQL pour faciliter le transfert.
 
 \subsection{Schéma de navigation}
 
