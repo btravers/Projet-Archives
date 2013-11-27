@@ -81,6 +81,17 @@ Lorsque ces utilisateurs arrivent sur la page d'accueil de l'application, il fau
 \subsubsection{Utilisateur expérimenté}
 Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consultés et annotés. Cet utilisateur se connectera, souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annotés et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il aura en revanche aussi la possibilité d'annoter les registres qu'il consulte. Pour cela, il peut choisir un document vierge et annoter en partant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (s'il en existe). Toutefois, il ne pourra modifier les annotations des autres utilisateurs.
 
+\subsection{Différents niveaux de privilèges}
+En plus de s'adresser à différents utilisateurs, notre application proposera plusieurs niveaux de privilèges, allant de l'utilisateur simple à l'administrateur, en passant par le modérateur. Vous trouverez ci-dessous un schéma représentant les différentes actions réalisables selon le niveau de privilèges possédé (figure \ref{privileges}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{UseCaseDiagramm.png}
+\caption{Schéma des différents niveaux de privilèges}
+\label{fig:privileges}
+\end{figure}
+
+
 
 \newpage
 \section{Architecture générale}
@@ -556,7 +567,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le RM
 
 \subsection{Annotation}
 
-	Une annotation est caractérisée par 3 attributs : sa position sur le RMM, sa catégorie et son texte. Par exemple, si on veut annoter le nom d’un RMM, cette annotation aura pour catégorie « Nom » et pour texte le nom de la personne et se situera au niveau de son nom sur le RMM. Les catégories ne seront pas libres, l’utilisateur pourra seulement sélectionner la catégorie parmi une liste de catégorie.
+	Une annotation est caractérisée par 3 attributs : sa position sur le RMM, sa catégorie et son texte. Par exemple, si on veut annoter le nom d’un RMM, cette annotation aura pour catégorie « Nom » et pour texte le nom de la personne et se situera au niveau de son nom sur le RMM. Les catégories ne seront pas libres, l’utilisateur pourra seulement sélectionner la catégorie parmi une liste de catégories.
 
 \subsubsection{Fonction SC01 - Annoter une table}
 
