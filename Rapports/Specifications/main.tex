@@ -45,7 +45,7 @@
 
 \subsection{Projet : ArchiPoilus}
 
-	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM) numérisés ainsi que leurs tables associées. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images correctement afin de pouvoir les annoter correctement. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.\\
+	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM) numérisés ainsi que leurs tables associées. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images afin de pouvoir les annoter. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.\\
 	
 	Notre équipe est composée de 6 élèves ingénieurs de 4éme année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons toutefois prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale; l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
 	
@@ -852,7 +852,7 @@ De même la position des annotations peuvent être masquées.\\
 \end{table}
 
 \subsubsection{Fonction SC08 - Sélectionner une annotation sur un document}
-Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au niveau de la fiche d’identité ou sur un point en particulier (si on a affiché les annotations) la sélectionne. Quand une annotation est sélectionnée, le point de la position de l’annotation est plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparaît.\\
+Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au niveau de la fiche d’identité ou sur la position d'une annotation (si on a affiché les annotations) la sélectionne. Quand une annotation est sélectionnée, le point, qui correspond à la position de cette annotation, devient plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparaît.\\
 
 \begin{table}[H]
   \centering
@@ -1044,7 +1044,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 \end{table}
 
 \subsubsection{Fonction SC13 - Consulter des fiches d’identités et en sélectionner une}
-Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est jugée intéressante on peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la sélection de la fiche on peut revenir à la visualisation du RMM précédant. Une fois la fiche copiée, on peut modifier ou supprimer les annotations.
+Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est jugée intéressante on peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la consultation des fiches, on peut annuler cette consultation et revenir à la visualisation du RMM précédant. Une fois la fiche copiée, on peut modifier ou supprimer les annotations.
 La maquette suivante illustre l’interface permettant de sélectionner une fiche d’identité.\\
 
 \begin{figure}[H]
