@@ -43,28 +43,29 @@
 
 \subsection{Projet : ArchiPoilus}
 
-	Dans le cadre des projets de 4éme année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM). Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images correctement afin de pouvoir les annoter correctement. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Sachant que notre application sera conçue pour fonctionner sur une table Microsoft PixelSense, nous utiliserons donc des émulateurs pour le développement du projet.
-	Notre équipe est composée de 6 élèves ingénieurs de 4éme année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale, l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
+	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM) numérisé. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images correctement afin de pouvoir les annoter correctement. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.
+	
+	Notre équipe est composée de 6 élèves ingénieurs de 4éme année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons toutefois prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale, l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
 	
 \subsection{Mise en valeur des documents de guerre}
 
-L'application étant destinée au centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents étaient des documents militaires mais qui ont été donnés aux archives, ce sont les seuls documents militaires que les archives possèdent.
+L'application étant destinée à être utilisée dans le cadre du centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents étaient des documents militaires mais qui ont été donnés aux archives : ce sont donc les seuls documents militaires que les archives possèdent.
 
 \subsubsection{Le registre matricule militaire}
-Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe[\ref{sec:annexe 1}], est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver l'état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.
+Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe \ref{sec:annexe 1}, est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver l'état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.
 
-\`A la lumière du centenaire de la guerre 1914-1918, ces RMM prennent un intérêt particulier. En effet, ils permettent de déterminer quels soldats ont pris part à cette guerre, quelles batailles ils ont menées, et quel destin ils y ont trouvé. En bref, la mise en valeur du centenaire passe en grande partie par la mise en valeur de ces documents, qui seront mis en ligne par les archives d'Ille et Vilaine pour l'occasion.\\
+\`A la lumière du centenaire de la guerre 1914-1918, ces RMM prennent un intérêt particulier. En effet, ils permettent de déterminer quels soldats ont pris part à cette guerre, quelles batailles ils ont menées, et quel destin ils y ont trouvé. En bref, la mise en lumière du centenaire passe en grande partie par la mise en valeur de ces documents, qui seront mis en ligne par les archives d'Ille et Vilaine pour l'occasion.\\
 
-Le Registre Matricule Militaire est le document de base de notre projet, afin de mieux le comprendre, celui-ci, étant divisé en plusieurs parties, est expliqué plus en détails dans notre rapport de pré-étude (ref à mettre).
+Le Registre Matricule Militaire est le document de base de notre projet. Afin de mieux le comprendre, celui-ci, étant divisé en plusieurs parties, est expliqué plus en détails dans notre rapport de pré-étude.
 
 Pour le RMM, il devra être possible, à travers l'application, de tout annoter, de n'importe quelle information présente dans le RMM jusqu'à l'annotation personnelle. 
 
 \subsubsection{Les tables des registres matricules militaires}
-La table des RMM représente la liste de tous les registres présents dans un volume. Elle est triée par ordre alphabétique et permet donc de retrouver facilement un RMM, qui sont eux classés par numéros matricules croissants. Vous trouverez un exemple en annexe[\ref{sec:annexe 2}] où l'on peut trouver le matricule et donc le RMM de l'individu nommé Onen[\ref{sec:annexe 1}].
+La table des RMM représente la liste de tous les registres présents dans un volume. Elle est triée par ordre alphabétique et permet donc de retrouver facilement un RMM, qui sont eux classés par numéros matricules croissants. Vous trouverez un exemple en annexe \ref{sec:annexe 2} où l'on peut trouver le matricule et donc le RMM de l'individu nommé Onen (annexe \ref{sec:annexe 1}).
 
 Ces tables nous seront utiles pour la rapidité de recherche de l'information. En effet, le numéro matricule est un moyen de recherche efficace puisqu'ils sont rangés, dans un volume, en ordre numérique. 
 
-L'objectif de l'application sera d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant la zone du numéro matricule "cliquable" tel un lien hypertexte.
+L'objectif de l'application sera d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant donc la zone du numéro matricule "cliquable" tel un lien hypertexte.
 
 \subsection{Différents types d'utilisateurs}
 
@@ -84,27 +85,27 @@ Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archiv
 Dans cette section, nous allons détailler quelles technologies et quelle architecture nous allons employer pour mettre en place notre application.
 
 \subsection{Client - PixelSense}
-Le client sera développé sur la table Microsoft PixelSense. Il s'agit d'un écran 40 pouces tactile (supporte plus de 50 entrées) full HD. La table fonctionne sur une version pour système embarqué de Windows 7. 
+Le client sera développé sur la table Microsoft PixelSense. Il s'agit d'un écran 40 pouces tactile (supporte plus de 50 entrées) full HD. La table fonctionne sur une version pour système embarqué Windows 7. 
 
-Le SDK fourni tout ce qui est nécessaire pour la création d'interface utilisateur complexe. Il s'agit de Controls Box entièrement modulable, déplacable et pivotable. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples touchés pour déplacer et tourner l'image. Le langage de programmation est le C\# et il est possible d'utiliser la puissance du framework .NET.
+Le SDK fournit tout ce qui est nécessaire pour la création d'interface utilisateur complexes. Il s'agit de Controls Box entièrement modulables, déplaçables et pivotables. Par exemple lorsqu'un utilisateur souhaite montrer une image à une personne se situant de l'autre coté de la table, il suffit de simples toucher pour déplacer et tourner l'image. Le langage de programmation est le C\# et il est possible d'utiliser la puissance du framework .NET.
 
-Développer sur ce type de plateforme va donner une image neuve des archives, les surfaces tactiles sont extrêmement à la mode. De plus, travailler sur cette plateforme va nous apprendre des technologies nouvelles.
+Développer sur ce type de plateforme va donner une image neuve des archives, les surfaces tactiles étant extrêmement à la mode. De plus, travailler sur cette plateforme va nous permettre d'apprendre et maîtriser des technologies nouvelles.
 
 \subsection{Serveur - API}
 Le serveur va être le centre du système. En effet, c'est à lui de faire le lien entre le client et les données. Son but sera de fournir les fichiers d'images, les tables et RMM ainsi que les données associées grâce à la base de données.
 
-Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architecture doit être élastique en termes de volume de données, le volume d'image est très important.
+Seule une connexion unilatérale type serveur web sera nécessaire. Le serveur n'a aucune requête à faire auprès du client. C'est pourquoi nous avons décidé de créer une API codée en PHP, qui suffit à répondre aux besoins. Ce service web fournira un ensemble de fonctions qui permettront de récupérer facilement les données stockées à distance. De plus, une API facilite le développement sur plusieurs types de plateforme, car les programmeurs n'ont pas besoin de connaître les détails de la logique interne. L'architecture doit être élastique en termes de volume de données, puisque le volume d'images est très important.
 
-Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est un style d'architecture adapté au web, il ne s'agit pas d'un protocole mais de concepts en surcouche d'un langage prévu pour le web. Le principal avantage de l'API est qu'il est plus simple de développer et d'entretenir le serveur.
+Nous avons choisi de suivre l'architecture REST pour créer notre API. REST est un style d'architecture adapté au web. Il ne s'agit pas d'un protocole mais de concepts en surcouche d'un langage prévu pour le web. Le principal avantage de l'API est qu'il est plus simple de développer et d'entretenir le serveur.
 
 \subsection{Base de données - MySql}
 La base de données va permettre de stocker toutes les informations persistantes de l'application. Il sera nécessaire de conserver des informations relatives aux utilisateurs, aux annotations ainsi qu'aux images des tables et RMM.
 
-L'application devra être fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé, il sera important de garder une compatibilité pour pouvoir transférer la version final de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne marche que sur MySQL pour faciliter le transfert.
+L'application devra être fonctionnelle sur une base de données Oracle qui est utilisée par les Archives, mais non disponible lors du développement du projet. MySQL sera donc utilisé : il sera important de garder une compatibilité pour pouvoir transférer la version finale de l'application sur un serveur Oracle. Il s'agit d'éviter d'utiliser des fonctions qui ne fonctionne que sur MySQL pour faciliter le transfert.
 
 \subsection{Schéma de navigation}
 
-L’application possédera cinq principales interfaces / écrans dont voici le schéma de navigation[\ref{fig:navigation}]. On y retrouve une interface d'accueil permettant à l'utilisateur de s'authentifier, l'interface de recherche qui facilite la recherche de tables et de RMM, l'interface de gestion des documents, ainsi que deux interfaces de visualisation, une pour les tables et une autre pour les RMM.
+L’application possédera cinq principales interfaces / écrans dont voici le schéma de navigation (figure \ref{fig:navigation}). On y retrouve une interface d'accueil permettant à l'utilisateur de s'authentifier, l'interface de recherche qui facilite la recherche de tables et de RMM, l'interface de gestion des documents, ainsi que deux interfaces de visualisation, une pour les tables et une autre pour les RMM.
 
 \begin{figure}[H]
 \centering
@@ -113,7 +114,7 @@ L’application possédera cinq principales interfaces / écrans dont voici le s
 \label{fig:navigation}
 \end{figure}
 
-Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. Aussi, les écrans de recherche et de gestion devront être accessibles à partir de n’importe quel autre écran, hormis le cas particulier pour la gestion des documents. Elle sera accessible à partir de l’écran d’accueil seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessible à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.
+Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. Aussi, les écrans de recherche et de gestion devront être accessibles à partir de n’importe quel autre écran, hormis le cas particulier de la gestion des documents. Elle sera accessible à partir de l’écran d’accueil seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessibles à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.
 
 \newpage
 \section{Spécifications fonctionnelles du système}
@@ -124,7 +125,7 @@ Un utilisateur, souhaitant simplement consulter les tables et les RMM, n'est pas
 
 \subsubsection{Page d'accueil} 
 
-La page d'accueil est la première page que les utilisateurs verront. C'est pourquoi, cette page devra contenir les accès à toutes les fonctionnalités principales de notre application. Parmi ces fonctionnalités se trouvent celles liées à l'authentification. L'inscription à notre système se fera depuis l'écran d'accueil alors que la connexion pourra se faire quelque soit la page que l'utilisateur visualise. La figure \ref{fig:accueil} illustre l'écran d'accueil que pourra voir un utilisateur ne s'étant pas authentifié.
+La page d'accueil est la première page que les utilisateurs verront. C'est pourquoi cette page devra contenir les accès à toutes les fonctionnalités principales de notre application. Parmi ces fonctionnalités se trouvent celles liées à l'authentification. L'inscription à notre système se fera depuis l'écran d'accueil alors que la connexion pourra se faire quelle que soit la page que l'utilisateur visualise. La figure \ref{fig:accueil} illustre l'écran d'accueil que pourra voir un utilisateur ne s'étant pas authentifié.
 
 \begin{figure}[H]
 \centering
@@ -135,7 +136,7 @@ La page d'accueil est la première page que les utilisateurs verront. C'est pour
 
 \subsubsection{Fonction SA01 - Inscription}
 
-L’inscription permet à l’utilisateur de s’enregistrer pour accéder à l’ensemble des fonctionnalités de l’application (pour visualiser ou annoter n’importe quel document). Il devra rentrer diverses informations; un identifiant, un mot de passe ainsi qu’un e-mail valide qui seront stockés sur la base de données prévue pour l’application. Par la suite, ses informations lui seront utiles pour s’identifier sur l’application afin qu’il accède à ses propres données dans le but qu’il puisse les gérer (ajouter une annotation, la modifier ou la supprimer).
+L’inscription permet à l’utilisateur de s’enregistrer pour accéder à l’ensemble des fonctionnalités de l’application (pour visualiser ou annoter n’importe quel document). Il devra renseigner diverses informations : un identifiant, un mot de passe ainsi qu’un e-mail valide qui seront stockés sur la base de données prévue pour l’application. Par la suite, ces informations lui seront utiles pour s’identifier sur l’application afin qu’il accède à ses propres données qu’il gèrera (ajouter une annotation, la modifier ou la supprimer).
     
 \begin{table}[H]
   \centering
@@ -249,13 +250,13 @@ La navigation est l'un des éléments indispensables de notre projet. En effet, 
 
 \subsubsection{Navigation dans une table}
 
-La table est l'un des deux documents de base de notre projet. En effet, même si la finalité des utilisateurs de notre solution est d'annoter des registres, la manière la plus intuitive d'accéder à ces registres est de passer par les tables. C'est pour celà que nous devons proposer une solution de navigation simple et intuitive au sein de tables.
+La table est l'un des deux documents de base de notre projet. En effet, même si la finalité des utilisateurs de notre solution est d'annoter des registres, la manière la plus intuitive d'accéder à ces registres est de passer par les tables. C'est pour cela que nous devons proposer une solution de navigation simple et intuitive au sein de tables.
 
-\subsubsection{Fonction SB01 - Naviguer dans une m\^eme table jusqu'à une page adjacente}
+\subsubsection{Fonction SB01 - Naviguer dans une même table jusqu'à une page adjacente}
 
-La table est un ensemble de pages, qui recensent chacunes des dizaines d'individus. Ici, le but est simpement de permettre une navigation rapide entre des pages adjacentes (page suivante ou page pr\'ec\'edente).
+La table est un ensemble de pages qui recensent chacune des dizaines d'individus. Ici, le but est simplement de permettre une navigation rapide entre des pages adjacentes (page suivante ou page pr\'ec\'edente).
 
-Raccourci mouvement : L'utilisateur fait glisser son doigt de gauche \`a droite pour aller \`a l'image pr\'ec\'edente, ou de droite \`a gauche pour aller \`a la suivante.
+Raccourci mouvement : l'utilisateur fait glisser son doigt de gauche \`a droite pour aller \`a l'image pr\'ec\'edente, ou de droite \`a gauche pour aller \`a la suivante.
 
 \begin{table}[H]
   \centering
@@ -335,9 +336,9 @@ Afin de naviguer facilement dans les tables, la navigation vers les pages adjace
 
 \subsubsection{Fonction SB03 - Naviguer entre deux tables}
 
-Pour un utilisateur, il peut être intéressant de pouvoir naviguer rapidement de table en table, par exemple lorsqu'il recherche une personne dont il connaît le nom mais pas l'année d'entrée en service. Dans ce cas, il va établir une fourchette contenant les années qu'il estime possibles, et parcourir les tables correspondant à ces années. Les tables seront classées par ordre chronologique (une par année), ainsi naviguer vers l'année suivante reviendra à naviguer vers la table suivante.
+Pour un utilisateur, il peut être intéressant de pouvoir naviguer rapidement de table en table, par exemple lorsqu'il recherche une personne dont il connaît le nom mais pas l'année d'entrée en service. Dans ce cas, il va établir une fourchette contenant les années qu'il estime possibles, et parcourir les tables correspondant à ces années. Les tables seront classées par ordre chronologique (une par année). Ainsi, naviguer vers l'année suivante reviendra à naviguer vers la table suivante.
 
-De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque table, trouver la page correspondant au nom de l'individu (classés par ordre alphabétique). C'est pourquoi il paraît utile de proposer à l'utilisateur de naviguer vers une autre année, tout en essayant d'atteindre directement la page qui l'intéresse. En partant du principe que la distribution des noms de famille alphabétiquement parlant est à peu près identique d'une année sur l'autre, on peut ainsi définir une fontion proportionnelle. Par exeple, en étant à la page 6/30 de la table de l'année N, on se retrouvera à la page 4/20 de l'année N+1.
+De plus, si on cherche un nom précis, il est fastidieux de devoir, pour chaque table, trouver la page correspondant au nom de l'individu étant classés par ordre alphabétique. C'est pourquoi il paraît utile de proposer à l'utilisateur de naviguer vers une autre année, tout en essayant d'atteindre directement la page qui l'intéresse. En partant du principe que la distribution des noms de famille alphabétiquement parlant est à peu près identique d'une année sur l'autre, on peut ainsi définir une fonction proportionnelle. Par exemple, en étant à la page 6/30 de la table de l'année N, on se retrouvera à la page 4/20 de l'année N+1.
 
 \begin{table}[H]
   \centering
@@ -451,8 +452,8 @@ Dans notre base d'images de RMM, celles-ci sont classées par numéro de matricu
         \multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
       \hline
         -1 & Associer une image au couple \{dossier d'images actuel, numéro d'image\}.  \\
-          -2 & V\'erifier que l'image' demand\'ee existe. \\
-          -3 & Afficher l'image' demand\'ee et définir le RMM comme RMM actuel. \\
+          -2 & V\'erifier que l'image demand\'ee existe. \\
+          -3 & Afficher l'image demand\'ee et définir le RMM comme RMM actuel. \\
       \hline
         \multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
       \hline
@@ -469,7 +470,7 @@ Dans notre base d'images de RMM, celles-ci sont classées par numéro de matricu
 
 Lorsqu'un uilisateur recherche un individu dont il connaît le nom et la date d'engagement, la méthode d'accès la plus intuitive est de trouver cet individu dans la table correspondante, afin de récupérer son numéro matricule et ainsi de le retrouver dans les registres. Afin d'éviter à l'utilisateur des allers-retours entre ces différents types de documents, nous allons proposer une fonctionnalité qui fera directement le lien entre une table et un RMM.
 
-Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure : où un autre utilisateur a déjà lié ce numéro de matricule à un RMM, auquel cas on renvoie ce registre. Dans l'autre cas, si on ne peut lier le numéro de matricule à un RMM, alors on lance une recherche sur le numéro de matricule. 
+Pour cela, l'utilisateur devra simplement annoter le numéro de matricule de l'individu qui l'intéresse dans la table (et éventuellement ses nom/prénoms), puis le système se chargera de trouver le registre demandé. Il y a deux cas de figure. Soit un autre utilisateur a déjà lié ce numéro de matricule à un RMM, auquel cas on renvoie ce registre soit on ne peut lier le numéro de matricule à un RMM, alors on lance une recherche sur le numéro de matricule. 
 
 \subsubsection{Fonction SB06 - Naviguer d'une table à un RMM inconnu}
 
@@ -553,7 +554,7 @@ Ici, on se place dans le cas où le numéro de matricule permet de trouver le RM
 
 \subsection{Annotation}
 
-	Une annotation est caractérisée par 3 attributs : sa position sur le RMM, sa catégorie et son texte. Par exemple, si on veut annoter la nom d’un RMM, cette annotation aura pour catégorie « Nom » et pour texte le nom de la personne et se situera au niveau de son nom sur le RMM. Les catégories ne seront pas libres, l’utilisateur pourra seulement sélectionner la catégorie parmi une liste de catégorie.
+	Une annotation est caractérisée par 3 attributs : sa position sur le RMM, sa catégorie et son texte. Par exemple, si on veut annoter le nom d’un RMM, cette annotation aura pour catégorie « Nom » et pour texte le nom de la personne et se situera au niveau de son nom sur le RMM. Les catégories ne seront pas libres, l’utilisateur pourra seulement sélectionner la catégorie parmi une liste de catégorie.
 
 \subsubsection{Fonction SC01 - Annoter une table}
 
@@ -602,7 +603,7 @@ L'annotation de table permet de cr\'eer un lien avec les registres. En annotant 
 
 \subsubsection{Fonction SC02 - Annoter un RMM}
 
-La maquette suivante présente l'interface d'annotation de RMM afin d'avoir une vue d'ensemble et de bien comprendre comment l'annotation se déroule. On y visualise un RMM. L'interface possède une barre de visualisation au dessus, une barre de raccourci en bas, un menu mes documents à gauche et enfin une fiche d'identité qui synthétise toutes les annotations concernant le document. Les points représentent des annotations. Il est possible de visualiser et de copier les annotations d'autres utilisateur via les boutons pour consulter et copier des fiches d'identités. Nous expliquerons chacun de ces points au fur et à mesure.
+La maquette illustrée par la figure \ref{fig:annotation} présente l'interface d'annotation de RMM afin d'avoir une vue d'ensemble et de bien comprendre comment l'annotation se déroule. On y visualise un RMM. L'interface possède une barre de visualisation au dessus, une barre de raccourci en bas, un menu "mes documents" à gauche et enfin une fiche d'identité qui synthétise toutes les annotations concernant le document. Les points représentent des annotations. Il est possible de visualiser et de copier les annotations d'autres utilisateurs via les boutons adéquats pour consulter et copier des fiches d'identités. Nous expliquerons chacun de ces points au fur et à mesure.
 
 \begin{figure}[H]
 \centering
@@ -611,7 +612,7 @@ La maquette suivante présente l'interface d'annotation de RMM afin d'avoir une 
 \label{fig:annotation}
 \end{figure}
 
-Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Une catégorie d’annotation sera suggérée. Si l’utilisateur veut créer une annotation sans catégorie particulière, il peut choisir la catégorie « Autre catégorie ». Il doit ensuite remplir le texte de l’annotation et la valider. Les annotations faites sur un RMM met à jour la fiche d’identité associé au RMM. Elle sera ensuite enregistrée sur la base de données.\\
+Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela, il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Une catégorie d’annotation sera suggérée. Si l’utilisateur veut créer une annotation sans catégorie particulière, il peut choisir la catégorie « Autre catégorie ». Il doit ensuite remplir le texte de l’annotation et la valider. Les annotations faites sur un RMM met à jour la fiche d’identité associé au RMM. Elle sera ensuite enregistrée sur la base de données.\\
 
 \begin{table}[H]
   \centering
@@ -650,7 +651,7 @@ Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela
 \end{table}
 
 \subsubsection{Fonction SC03 - Annoter un RMM en cliquant sur la fiche identité}
-Une deuxième façon d’annoter un RMM est d’utiliser des annotations pré-remplie en cliquant sur l’annotation voulue au niveau de la fiche d’identité.\\
+Une deuxième façon d’annoter un RMM est d’utiliser des annotations pré-remplies en cliquant sur l’annotation voulue au niveau de la fiche d’identité.\\
 
 \begin{table}[H]
   \centering
@@ -678,7 +679,7 @@ Une deuxième façon d’annoter un RMM est d’utiliser des annotations pré-re
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & Ajoute l’annotation à la liste des annotations du document, elle va apparaitre dans
+   			-1 & Ajoute l’annotation à la liste des annotations du document, elle va apparaître dans
 la fiche d’identité du RMM\\
    		\hline
 	\end{tabular}
@@ -708,7 +709,7 @@ L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
    			-1 & L’utilisateur place le raccourci à l’endroit voulu\\
-			-2 & Fait apparaitre une fenêtre avec la catégorie déjà remplie\\
+			-2 & Fait apparaître une fenêtre avec la catégorie déjà remplie\\
 			-3 & L’utilisateur rentre le texte de l’annotation\\
 			-4 & L’utilisateur valide l’annotation\\
    		\hline
@@ -728,7 +729,7 @@ L’utilisateur souhaite utiliser un raccourci pour annoter une image. Pour cela
 
 \subsubsection{Fonction SC05 - Affichage d'une fiche d'identité d'un soldat}
 
-Le but de la fiche d'identité d'un soldat est d'exploiter au maximum les annotations d'un registre. Gr\^ace aux cat\'egories, il est possible de g\'en\'erer automatiquement une fiche avec toutes les informations importantes. De plus, cette fiche va servir de checklist des annotations \`a faire et pouvant \^etre faite.\\
+Le but de la fiche d'identité d'un soldat est d'exploiter au maximum les annotations d'un registre. Gr\^ace aux cat\'egories, il est possible de g\'en\'erer automatiquement une fiche avec toutes les informations importantes. De plus, cette fiche va servir de checklist des annotations \`a faire et pouvant \^etre faites.\\
 
 \begin{table}[H]
   \centering
@@ -789,7 +790,7 @@ Les annotations apparaissent à droite de l’écran lorsque l’on visualise un
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Fait apparaitre la position de chaque annotation\\
+   			-1 & Fait apparaître la position de chaque annotation\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
@@ -802,7 +803,7 @@ Les annotations apparaissent à droite de l’écran lorsque l’on visualise un
 \end{table}
 
 \subsubsection{Fonction SC07 - Masquer les positions des annotations}
-De la même manière la position des annotations peuvent être masquées.\\
+De même la position des annotations peuvent être masquées.\\
 
 \begin{table}[H]
   \centering
@@ -838,7 +839,7 @@ De la même manière la position des annotations peuvent être masquées.\\
 \end{table}
 
 \subsubsection{Fonction SC08 - Sélectionner une annotation sur un document}
-Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au niveau de la fiche d’identité ou sur un point en particulier (si on a affiché les annotations) la sélectionne. Quand une annotation est sélectionnée, le point de la position de l’annotation est plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparait.\\
+Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au niveau de la fiche d’identité ou sur un point en particulier (si on a affiché les annotations) la sélectionne. Quand une annotation est sélectionnée, le point de la position de l’annotation est plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparaît.\\
 
 \begin{table}[H]
   \centering
@@ -863,9 +864,9 @@ Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au 
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & Fait apparaitre la position de chaque annotation et coche la case associée\\
+   			-1 & Fait apparaître la position de chaque annotation et coche la case associée\\
 			-2 & Désélectionne l’ancienne annotation sélectionnée\\
-			-3 & Fait apparaitre la position de l’annotation sélectionnée en plus gros\\
+			-3 & Fait apparaître la position de l’annotation sélectionnée en plus gros\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
@@ -953,7 +954,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 \end{table}
 
 \subsubsection{Fonction SC11 - Modification du texte d’une annotation}
-Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut modifier son texte au niveau de la fiche d'indentité. Il est impossible de modifier la catégorie d'une annotation, l'utilisateur devra supprimer et recréer l'annotation s'il souhaite changer de catégorie.\\
+Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut modifier son texte au niveau de la fiche d'indentité. Il est impossible de modifier la catégorie d'une annotation : l'utilisateur devra supprimer et recréer l'annotation s'il souhaite changer de catégorie.\\
 
 \begin{table}[H]
   \centering
@@ -1030,7 +1031,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 \end{table}
 
 \subsubsection{Fonction SC13 - Consulter des fiches d’identités et en sélectionner une}
-Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est intéressante on peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la sélection de la fiche on peut revenir à la visualisation du RMM précédant. Une fois la fiche copiée, on peut modifier ou supprimer les annotations.
+Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est jugée intéressante on peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la sélection de la fiche on peut revenir à la visualisation du RMM précédant. Une fois la fiche copiée, on peut modifier ou supprimer les annotations.
 La maquette suivante illustre l’interface permettant de sélectionner une fiche d’identité.\\
 
 \begin{figure}[H]
@@ -1049,11 +1050,11 @@ La maquette suivante illustre l’interface permettant de sélectionner une fich
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & un utilisateur veut consulter les fiches d’identités pour en sélectionner une\\
+   			-1 & Un utilisateur veut consulter les fiches d’identités pour en sélectionner une\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & l’utilisateur clique sur « consulter fiche d’identité » et arrive sur l'interface de visualisation des fiches d'identités\\
+   			-1 & L’utilisateur clique sur « consulter fiche d’identité » et arrive sur l'interface de visualisation des fiches d'identités\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
@@ -1066,7 +1067,7 @@ La maquette suivante illustre l’interface permettant de sélectionner une fich
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & visualisation du RMM avec les annotations de la fiche sélectionnée\\
+   			-1 & Visualisation du RMM avec les annotations de la fiche sélectionnée\\
    		\hline
 	\end{tabular}
   \caption{SC13 - Consulter des fiches d’identités et en sélectionner une}
@@ -1075,7 +1076,7 @@ La maquette suivante illustre l’interface permettant de sélectionner une fich
 \end{table}
 
 \subsubsection{Fonction SC14 - Copier une fiche d’identité}
-Quand une fiche est sélectionnée, on peut la désélectionner et faire apparaitre nos anciennes annotations.
+Quand une fiche est sélectionnée, on peut la désélectionner et faire apparaître nos anciennes annotations.
 Copier une fiche d’identité permet de s’approprier toutes les annotations d’un utilisateur sur un RMM, mais supprime aussi toutes les annotations que possédait l’utilisateur avant la copie. Pour cela, l’utilisateur doit cliquer sur « copier fiche d’identité » après avoir sélectionné une fiche.\\
 
 \begin{table}[H]
@@ -1087,24 +1088,24 @@ Copier une fiche d’identité permet de s’approprier toutes les annotations d
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & un utilisateur veut copier la fiche d’identité qu’il visualise après l'avoir sélectionnée\\
+   			-1 & Un utilisateur veut copier la fiche d’identité qu’il visualise après l'avoir sélectionnée\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 &  l’utilisateur clique sur « copier fiche d’identité »\\
+   			-1 &  L’utilisateur clique sur « copier fiche d’identité »\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 &  l’utilisateur clique sur « copier fiche d’identité »\\
+   			-1 &  L’utilisateur clique sur « copier fiche d’identité »\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & supprime les éventuelles anciennes annotations\\
-			-2 & sauvegarde toutes les annotations sur la base de données et rafraichi la fiche d’identité\\
+   			-1 & Supprime les éventuelles anciennes annotations\\
+			-2 & Sauvegarde toutes les annotations sur la base de données et rafraichi la fiche d’identité\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & visualisation du RMM avec les nouvelles annotations\\
+   			-1 & Visualisation du RMM avec les nouvelles annotations\\
    		\hline
 	\end{tabular}
   \caption{SC14 - Copier une fiche d’identité}
@@ -1114,7 +1115,7 @@ Copier une fiche d’identité permet de s’approprier toutes les annotations d
 
 
 \subsubsection{Fonction SD01 - Créer un raccourci}
-Un raccourci peut aussi être créé, pour annoter plusieurs fois des personnes ayant appartenu à une même famille par exemple. Pour cela un doit simplement cliquer sur « créer un raccourci » dans la barre des raccourcis en bas de l’interface.\\
+Un raccourci peut aussi être créé, pour annoter plusieurs fois des personnes ayant appartenu à une même famille par exemple. Pour cela l'utilisateur doit simplement cliquer sur "créer un raccourci" dans la barre des raccourcis en bas de l’interface (figure \ref{fig:interface_ajout_raccourci}).\\
 \begin{table}[H]
   \centering
    \small
@@ -1124,11 +1125,11 @@ Un raccourci peut aussi être créé, pour annoter plusieurs fois des personnes 
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & un utilisateur connecté veut créer un raccourci\\
+   			-1 & Un utilisateur connecté veut créer un raccourci\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & un utilisateur clique sur l'icône « créer un raccourci »\\
+   			-1 & Un utilisateur clique sur l'icône « créer un raccourci »\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
@@ -1167,23 +1168,23 @@ Si un raccourci n’est pas utilisé, il peut être intéressant pour l’utilis
    		\hline
    			\multicolumn{2}{|l|}{Condition de d\'eclenchement} \\
    		\hline
-   			-1 & un utilisateur connecté veut supprimer un raccourci\\
+   			-1 & Un utilisateur connecté veut supprimer un raccourci\\
    		\hline
    			\multicolumn{2}{|l|}{D\'eclenchement de l'op\'eration} \\
    		\hline
-   			-1 & un utilisateur déplace le raccourci vers la corbeille\\
+   			-1 & Un utilisateur déplace le raccourci vers la corbeille\\
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-   			-1 &  un utilisateur déplace le raccourci vers la corbeille\\
+   			-1 &  Un utilisateur déplace le raccourci vers la corbeille\\
    		\hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & supprimer la raccourci\\
+   			-1 & Supprimer la raccourci\\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
-   			-1 & rafraichir la barre des raccourcis\\
+   			-1 & Rafraîchir la barre des raccourcis\\
    		\hline
 	\end{tabular}
   \caption{SD02 - Supprimer un raccourci}
@@ -1194,9 +1195,9 @@ Si un raccourci n’est pas utilisé, il peut être intéressant pour l’utilis
 
 
 \subsubsection{Fonction SD03 - Marquer un document}
-Le but de marquer un document (soit une table, soit un RMM) est de pouvoir d'y accéder plus tard et donc de le retrouver facilement. Il est possible de les classer dans différents dossiers que l'utilisateur pourra créer ou supprimer. Ces dossiers sont sp\'ecifiques \`a chaque utilisateur, ils en sont propriétaires. Aussi, lors qu'un utilisateur annote un document, un dossier non supprimable sera crée qui servira de répertoire de tous les documents qu'il a déjà annotés. 
+Le but de marquer un document (soit une table, soit un RMM) est de pouvoir d'y accéder plus tard et donc de le retrouver facilement. Il est possible de les classer dans différents dossiers que l'utilisateur pourra créer ou supprimer. Ces dossiers sont sp\'ecifiques \`a chaque utilisateur, ils en sont propriétaires. Aussi, lorsqu'un utilisateur annote un document, un dossier non supprimable sera créé qui servira de répertoire de tous les documents qu'il a déjà annotés. 
 
-Ces enregistrements seront stockés sous forme de lien, c'est-à-dire l'utilisateur crée en fait un lien vers le document marqué.
+Ces enregistrements seront stockés sous forme de lien : l'utilisateur crée en fait un lien vers le document marqué.
 
 Pour marquer le document via l'application l'utilisateur devra : (se référencer àa la future interface)... .\\
 
@@ -1236,9 +1237,9 @@ Pour marquer le document via l'application l'utilisateur devra : (se référence
 \end{table}
 
 \subsubsection{Fonction SD04 - Créer un dossier}
-L'utilisateur pourra créer et supprimer autant de dossiers qu'il le souhaite, cependant trois cas sont particulieurs : le dossier qui répertorie toutes ses annotations ne pourra pas être modifié ou supprimé, le dossier ".." représente le dossier père, celui-ci ne pourra être modifié ou supprimé, le dossier "Corbeille" n'est pas un dossier, il ne pourra pas être modifié ou supprimé. Aussi, il ne pourra pas créer un dossier existant.
+L'utilisateur pourra créer et supprimer autant de dossiers qu'il le souhaite. Cependant trois cas sont particuliers : le dossier qui répertorie toutes ses annotations ne pourra pas être modifié ou supprimé, le dossier ".." représente le dossier père, celui-ci ne pourra être modifié ou supprimé, le dossier "Corbeille" n'est pas un dossier, il ne pourra pas être modifié ou supprimé. En outre, il ne pourra pas créer un dossier existant.
 
-Utilisation : l'utilisateur sélectionne grâce à son doigt "Nouveau dossier", il lui choisit un nom, le dossier est crée.
+Utilisation : l'utilisateur sélectionne "Nouveau dossier", il lui choisit un nom et le dossier est créé.
 
 \begin{figure}[H]
 \centering
@@ -1284,8 +1285,7 @@ Utilisation : l'utilisateur sélectionne grâce à son doigt "Nouveau dossier", 
 
 \subsubsection{Fonction SD05 - Renommer un document}
 L'utilisateur pourra renommer ses documents à sa guise (sauf "..", "Mes annotations" et "Corbeille"). Cependant, aucun doublon ne sera toléré.
-
-Utilisation : 
+ 
 
 \begin{table}[H]
   \centering
@@ -1367,7 +1367,7 @@ Utilisation : l'utilisateur effectue un appui long sur le document choisi, le d�
 \end{table}
 
 \subsubsection{Fonction SD07 - Supprimer un document}
-La suppression fonctionne comme un déplacement, seulement, le document doit être déplacer dans la Corbeille, une boîte de confirmation est envoyée à l'utilisateur.
+La suppression fonctionne comme un déplacement. Seulement, le document doit être déplacé dans la Corbeille, une boîte de confirmation est affichée.
 Si l'utilisateur supprime un dossier, tous les documents présents sont supprimés.
 Il est impossible de supprimer le dossier "..", "Mes annotations" et "Corbeille".
 
@@ -1414,7 +1414,7 @@ Utilisation : l'utilisateur effectue un appui long sur le document choisi, le d�
 Pour un utilisateur qui veut trouver un document en particulier, parcourir tous les documents lui même jusqu'à trouver celui qui l'intéresse est trop fastidieux.
 C'est pourquoi nous allons proposer un outil de recherche.
 Ce dernier se basera non seulement sur les annotations de l'utilisateur, mais aussi sur celles des autres, afin d'avoir les résultats les plus précis possibles.
-Afin d'offrir le maximum de flexibilité, la recherche pourra être effectué sur une large variété de paramètres.
+Afin d'offrir le maximum de flexibilité, la recherche pourra être effectuée sur une large variété de paramètres.
 
 \begin{figure}[H]
 \centering
@@ -1432,7 +1432,7 @@ Afin d'offrir le maximum de flexibilité, la recherche pourra être effectué su
 
 \subsubsection{Fonction SE01 - Rechercher un nom dans les tables}
 
-L'utilisateur veut trouver le ou les RMM de personnes dont il a le nom. Il peut dans ce cas effectuer une recherche dans les tables grâce à ce nom. Si ce nom a déjà été annoté, l'application propose à l'utilisateur les pages des tables pertinentes. Toutefois ce nom n'est pas toujours repertorié dans les annotations liées aux tables. Si jamais aucune annotation de ce nom existe, l'application propose pour chaque table (chaque année) la page comportant l'annotation du nom la plus proche. Si aucune annotation existe la page ayant le plus de chance d'être la bonne (en suivant l'ordre alphabétique) est proposée.
+L'utilisateur veut trouver le ou les images du RMM de la personne dont il a le nom. Il peut dans ce cas effectuer une recherche dans les tables grâce à ce nom. Si ce nom a déjà été annoté, l'application propose à l'utilisateur les pages des tables pertinentes. Toutefois, ce nom n'est pas toujours repertorié dans les annotations liées aux tables. Si jamais aucune annotation de ce nom existe, l'application propose pour chaque table (chaque année) la page comportant l'annotation du nom la plus proche. Si aucune annotation existe, la page ayant le plus de chance d'être la bonne (en suivant l'ordre alphabétique) est proposée.
 \\
 
 \begin{table}[H]
@@ -1514,7 +1514,7 @@ L'utilisateur veut trouver un ou des RMM, non pas en les parcourant un par un ma
 
 \subsubsection{Fonction SE03 - Rechercher des RMM grâce aux annotations personnelles}
 
-Comme pour la fonction précedente, l'utilisateur veut trouver un ou des RMM en puisant dans la base de données des annotations. En revanche, la recherche ne se fera cette fois que sur les annotations de cet utilisateur. 
+Comme pour la fonction précédente, l'utilisateur veut trouver un ou des RMM en puisant dans la base de données des annotations. En revanche, la recherche ne se fera cette fois que sur les annotations appartenant à cet cet utilisateur. 
 \\
 
 \begin{table}[H]
@@ -1556,7 +1556,7 @@ Comme pour la fonction précedente, l'utilisateur veut trouver un ou des RMM en 
 
 \subsubsection{Fonction SE04 - Rechercher un RMM par son numéro matricule.}
 
-L'utilisateur veut trouver un RMM uniquement avec son numéro matricule, sans renseigner son nom, son prénom,\ldots La recherche se fait alors de la même façon que pour les tables : si l'annotation du numéro matricule existe, le RMM est renvoyé. Si l'annotation n'existe pas, l'application estime quel RMM doit être renvoyé en fonction des annotations qui lui sont proches et du nombre d'images.
+L'utilisateur veut trouver un RMM uniquement avec son numéro matricule, sans renseigner son nom, son prénom, \ldots  La recherche se fait alors de la même façon que pour les tables : si l'annotation du numéro matricule existe, le RMM est renvoyé. Si l'annotation n'existe pas, l'application estime quel RMM doit être renvoyé en fonction des annotations qui lui sont proches et du nombre d'images.
 \\
 
 \begin{table}[H]
@@ -1597,7 +1597,7 @@ L'utilisateur veut trouver un RMM uniquement avec son numéro matricule, sans re
 
 \subsubsection{Fonction SE05 - Rechercher selon un pivot.}
 
-L'utilisateur souhaite obtenir des informations autour de la guerre, par exemple les soldats médaillés ou les blessés à la bataille de la Marne. L'application lui fournit alors, en plus des RMM qui correspondent à sa recherche, des statistiques sur les informations renseignés (nombre de médaillés, \ldots).
+L'utilisateur souhaite obtenir des informations autour de la guerre, par exemple les soldats médaillés ou les blessés à la bataille de la Marne. L'application lui fournit alors, en plus des RMM qui correspondent à sa recherche, des statistiques sur les informations renseignées (nombre de médaillés, \ldots).
 \\
 
 \begin{table}[H]
@@ -1642,14 +1642,14 @@ L'utilisateur souhaite obtenir des informations autour de la guerre, par exemple
 
 \subsection{Visualisation des documents}
 
-Les images numérisées ne seront pas paramétrées pour un affichage optimal sur l’application, celle-ci devra donc proposer une fonctionnalité proposant la modification de l’affichage d’une image, et non une modification de l’image en elle-même afin de ne pas dégrader l’image originale. En effet, l’image originale peut être d’une taille trop petite ou trop grande, sombre ou mal cadrée, celle-ci dépendant de la qualité l’appareil qui l’a numérisée. Pour faciliter la manipulation de l’affichage de l’image sur l’application, différents outils seront proposés à l’utilisateur : un zoom, une modification du contraste, de la luminosité, d’un effet négatif, de translation en abscisse et ordonnée et de rotation. Pour permettre la conservation des paramètres d’affichage favoris de l’utilisateur, celui-ci pourra les sauvegarder afin d’éviter une manipulation répétitive de ces paramètres. Aussi, un retour à l’état original de l’affichage sera disponible dans le cas où l’utilisateur n’arrive plus à un affichage correct.
+Les images numérisées ne seront pas paramétrées pour un affichage optimal sur l’application. Celle-ci devra donc proposer une fonctionnalité proposant la modification de l’affichage d’une image, et non une modification de l’image en elle-même afin de ne pas dégrader l’image originale. En effet, l’image originale peut être d’une taille trop petite ou trop grande, sombre ou mal cadrée, et dépendante de la qualité l’appareil qui l’a numérisée. Pour faciliter la manipulation de l’affichage de l’image sur l’application, différents outils seront proposés à l’utilisateur : un zoom, une modification du contraste et de la luminosité, un effet négatif, une translation en abscisse et ordonnée et une rotation. Pour permettre la conservation des paramètres d’affichage favoris de l’utilisateur, celui-ci pourra les sauvegarder afin d’éviter une manipulation répétitive de ces paramètres. Aussi, un retour à l’état original de l’affichage sera disponible dans le cas où l’utilisateur n’arrive plus à un affichage correct.
 
-D'ailleurs, l'application étant destinée à être tactile, ces fonctionnalités de modification seront accessibles par un raccourci "mouvement", c'est-à-dire que l'utilisateur pourra avec seulement un mouvement de ses doigts exécuter une modification de l'image. Cependant, ces fonctionnalités devront être également accessibles à partir d'une barre d'outils afin de permettre à l'utilisateur de connaître les paramètres qu'il modifient et aussi dans le cas ou l'utilisateur ne sait quel mouvement exécuté.
+D'ailleurs, l'application étant destinée à être tactile, ces fonctionnalités de modification seront accessibles par un raccourci "mouvement", c'est-à-dire que l'utilisateur pourra avec seulement un mouvement de ses doigts exécuter une modification de l'image. Cependant, ces fonctionnalités devront être également accessibles à partir d'une barre d'outils afin de permettre à l'utilisateur de connaître les paramètres qu'il modifie et aussi dans le cas où l'utilisateur ne sait quel mouvement exécuter.
 
 
 \subsubsection{Fonction SF01 - Zoom}
 
-Le zoom d'une image permet d'améliorer la lisibilité du document, il permet à l'utilisateur d'agrandir ou de rétricir le document. L'utilisateur pourra paramétrer son zoom selon le pourcentage de la taille de l'image d'origine. Le pourcentage autorisera une modification de 20\% jusqu'à 300\% de la taille de l'image d'origine.
+Le zoom d'une image permet d'améliorer la lisibilité du document, en offrant la possibilité à l'utilisateur d'agrandir ou de rétrécir le document. L'utilisateur pourra paramétrer son zoom selon le pourcentage de la taille de l'image d'origine. Le pourcentage autorisera une modification de 20\% jusqu'à 300\% de la taille de l'image d'origine.
 
 Raccourci mouvement : L'utilisateur colle ses doigts sur une zone de l'image, et les écarte pour agrandir la zone, mouvement inverse pour un rétrécissement.
 
@@ -1733,7 +1733,7 @@ Raccourci mouvement : L'utilisateur pointe l'image avec un doigt en marquant une
 
 La rotation d'une image permet de faire pivoter l'image dans l'objectif de consulter un objet comme une phrase ou un mot qui serait écrit de travers.
 
-Raccourci mouvement : L'utilisateur positionne deux doigt sur l'image et effectue un mouvement circulaire dans un sens horaire ou anti-horaire.
+Raccourci mouvement : L'utilisateur positionne deux doigts sur l'image et effectue un mouvement circulaire dans un sens horaire ou anti-horaire.
 
 \begin{table}[H]
   \centering
@@ -1855,7 +1855,7 @@ Raccourci mouvement : aucun.
 
 \subsubsection{Fonction SF06 - Défaire / Refaire}
 
-Lorsque l'utilisateur hésite quant à sa modification de l'image, il paraît nécessaire que celui-ci puisse annuler, défaire son changement pour revenir à l'état précédent de l'image. Aussi, il pourra refaire son changement s'il le souhaite, ce sont des raccourcis efficaces qui évite plusieurs manipulations par l'utilisateur.
+Lorsque l'utilisateur hésite quant à sa modification de l'image, il paraît nécessaire que celui-ci puisse annuler, défaire son changement pour revenir à l'état précédent de l'image. Aussi, il pourra refaire son changement s'il le souhaite : ce sont des raccourcis efficaces qui évite plusieurs manipulations par l'utilisateur.
 
 Raccourci mouvement : aucun.
 
@@ -1897,7 +1897,7 @@ Raccourci mouvement : aucun.
 
 \subsubsection{Fonction SF07 - Sauvegarder les paramètres}
 
-L'utilisateur pourra sauvegarder ses paramètres préférentiels dans un raccourci, afin d'éviter de répéter différentes manipulations lorqu'il consulte plusieurs images. Celui-ci pourra donc refaire toutes ses manipulations en une seule actio, augmentant l'efficacité d'utilisation de l'application.
+L'utilisateur pourra sauvegarder ses paramètres préférentiels dans un raccourci, afin d'éviter de répéter différentes manipulations lorqu'il consulte plusieurs images. Celui-ci pourra donc refaire toutes ses manipulations en une seule action, augmentant l'efficacité d'utilisation de l'application.
 
 Raccourci mouvement : aucun.
 
@@ -1918,11 +1918,11 @@ Raccourci mouvement : aucun.
    		\hline
    			\multicolumn{2}{|l|}{Entrants de l'op\'eration} \\
    		\hline
-        	-1 & Une liste d'action \\ 	
+        	-1 & Une liste d'actions \\ 	
         \hline
    			\multicolumn{2}{|l|}{Traitement de l'op\'eration} \\
   		\hline
-   			-1 & L'application conserve en local cette liste d'action \\
+   			-1 & L'application conserve en local cette liste d'actions \\
    		\hline
    			\multicolumn{2}{|l|}{Sortants de l'op\'eration} \\
    		\hline
@@ -1940,7 +1940,7 @@ Comme nous avons pu le voir précédemment, les utilisateurs authentifiés sont 
 
 \subsubsection{Fonction SG01 - Supprimer un ou des utilisateurs basiques}
 
-Les modérateurs peuvent supprimer un utilisateur basique de la base de données. Ceci se fait au travers de la page de gestion des utilisateurs. Le modérateur sélectionne les utilisateurs qu'il souhaite supprimer puis il les supprime.
+Les modérateurs peuvent supprimer un utilisateur basique de la base de données. Ceci se fait au travers de la page de gestion des utilisateurs. Le modérateur sélectionne les utilisateurs qu'il souhaite supprimer puis les supprime.
 
 \begin{table}[H]
   \centering
@@ -1951,7 +1951,7 @@ Les modérateurs peuvent supprimer un utilisateur basique de la base de données
    		\hline
    			\multicolumn{2}{|l|}{Condition de déclenchement} \\
    		\hline
-   			-1 & L'utilisateur a le status de modérateur.\\
+   			-1 & L'utilisateur a le statut de modérateur.\\
         			-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite supprimer une liste d'utilisateurs basiques.\\
         
    		\hline
@@ -1979,21 +1979,21 @@ Les modérateurs peuvent supprimer un utilisateur basique de la base de données
 \end{table}
 
 
-\subsubsection{Fonction SG02 - Desactiver les annotations d'un ou plusieurs utilisateur}
+\subsubsection{Fonction SG02 - Désactiver les annotations d'un ou plusieurs utilisateur}
 
-Les annotations de certains utilisateurs peuvent induire en erreur d'autres utilisateurs. Pour éviter cela, les modérateurs doivent avoir la possibilité de désactiver les annotations de certains utilisateurs sans pour autant les banir. Cette désactivation empêche la visibilité des annoations par les autres utilisateurs. Un administrateur a la possibilité d'effectuer cette action via la page de gestion des utilisateurs. 
+Les annotations de certains utilisateurs peuvent induire en erreur d'autres utilisateurs. Pour éviter cela, les modérateurs doivent avoir la possibilité de désactiver les annotations de certains utilisateurs sans pour autant les bannir. Cette désactivation empêche la visibilité des annotations par les autres utilisateurs. Un administrateur a la possibilité d'effectuer cette action via la page de gestion des utilisateurs. 
 
 \begin{table}[H]
   \centering
    \small
 	\begin{tabular}{|c|p{12cm}|}
    		\hline
-   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG02 - Desactiver les annotations d'un ou plusieurs utilisateur}} \\
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Fonction SG02 - Désactiver les annotations d'un ou plusieurs utilisateur}} \\
    		\hline
    			\multicolumn{2}{|l|}{Condition de déclenchement} \\
    		\hline
-   			-1 & L'utilisateur a le status de modérateur.\\
-        	-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite désactiver la visibilité des annocations d'une liste d'utilisateurs.\\
+   			-1 & L'utilisateur a le statut de modérateur.\\
+        	-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite désactiver la visibilité des annotations d'une liste d'utilisateurs.\\
    		\hline
    			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
    		\hline
@@ -2031,7 +2031,7 @@ Les administrateurs peuvent, en plus de supprimer un utilisateur basique, suppri
    		\hline
    			\multicolumn{2}{|l|}{Condition de déclenchement} \\
    		\hline
-   			-1 & L'utilisateur a le status d'administrateur.\\
+   			-1 & L'utilisateur a le statut d'administrateur.\\
         			-2 & L'utilisateur est sur la page de gestion des utilisateurs et souhaite supprimer une liste d'utilisateurs.\\
    		\hline
    			\multicolumn{2}{|l|}{Déclenchement de l'opération} \\
@@ -2059,7 +2059,7 @@ Les administrateurs peuvent, en plus de supprimer un utilisateur basique, suppri
 
 \subsubsection{Fonction SG04 - Changer le rang d'un utilisateur}
 
-Les équipes de modérateurs et d'administrateurs doivent pouvoir évoluer au fil du temps. Pour cela, un administrateur peut changer le rang d'un utilisateur dans l'objectif de le promouvoir modérateur ou administrateur mais il a aussi la possiblité de lui retirer ses droits de modérateur ou d'administrateur si celui-ci les possède.
+Les équipes de modérateurs et d'administrateurs doivent pouvoir évoluer au fil du temps. Pour cela, un administrateur peut changer le rang d'un utilisateur dans l'objectif de le promouvoir modérateur ou administrateur mais il a aussi la possibilité de lui retirer ses droits de modérateur ou d'administrateur si celui-ci les possède.
 
 \begin{table}[H]
   \centering
@@ -2104,7 +2104,7 @@ Dans la perspective du centenaire de la guerre 14-18, ce projet a pour objectif 
 
 Cette phase de spécifications avait pour objectif de nous faire réfléchir plus en profondeur aux fonctionnalités proposées par notre solution. Ce document sera notre référence pour les prochaines phases. En effet, la charge de travail nécessaire à la réalisation de chaque spécification peut maintenant être quantifiée, dans l'objectif de planifier notre phase de conception et de développement.
 
-Afin de répondre au mieux au sujet, nous avons évidemment gardé les deux fonctionnalités de base que sont la navigation et l'annotation. Aussi, nous avons décidé d'en ajouter une troisième : la recherche de documents. En effet, en plus de réutiliser les annotations, ce système va permettre à un utilisateur de trouver plus efficacement un registre qu'il souhaite consulter ou annoter. L'application offrira plusieurs outils afin d'améliorer la visualisation et donc la lisibilité des différents documents, comme le zoom ou la rotation. Enfin les utilisateurs auront la possibilité de s'authentifier et de gérer leurs documents favoris grâce à un accès personnel.
+Afin de répondre au mieux au sujet, nous avons évidemment gardé les deux fonctionnalités de base que sont la navigation et l'annotation. Suite aux discussions que nous avons menées auprès de Jean-Yves LECLERC, nous avons décidé d'en ajouter une troisième : la recherche de documents. En effet, en plus de réutiliser les annotations, ce système va permettre à un utilisateur de trouver plus efficacement un registre qu'il souhaite consulter ou annoter. L'application offrira plusieurs outils afin d'améliorer la visualisation et donc la lisibilité des différents documents, comme le zoom ou la rotation. Enfin les utilisateurs auront la possibilité de s'authentifier et de gérer leurs documents favoris grâce à un accès personnel.
 
 Depuis le commencement du projet, nous travaillons en collaboration avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales
 d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit. Aussi, nous bénéficions du suivi de Mme Karen Février, chef de projet chez ATOS, sur l'aspect gestion de projet. Nous souhaitons garder ces relations pour la suite du projet, qui nous offrent l'opportunité de travailler avec des professionnels.
