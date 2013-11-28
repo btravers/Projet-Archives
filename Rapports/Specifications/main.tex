@@ -67,11 +67,11 @@ La table des RMM représente la liste de tous les registres présents dans un vo
 
 Ces tables nous seront utiles pour la rapidité de recherche de l'information. En effet, le numéro matricule est un moyen de recherche efficace puisqu'ils sont rangés, dans un volume, en ordre numérique. 
 
-L'objectif de l'application sera donc d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant donc la zone du numéro matricule "cliquable" tel un lien hypertexte, on appelera ce type de lien un pivot.
+L'objectif de l'application sera donc d'offrir la possibilité de naviguer d'une table à un RMM directement en rendant donc la zone du numéro matricule "cliquable" tel un lien hypertexte. On appelera ce type de lien un pivot.
 
 \subsection{Différents types d'utilisateurs}
 
-L'application sera utilisé par plusieurs types d'usagers. Un utilisateur ponctuel et un habitué des archives n'auront pas forcément la même approche des documents. Nous allons donc détailler les comportements types des usagers.
+L'application sera utilisée par plusieurs types d'usagers. Un utilisateur ponctuel et un habitué des archives n'auront pas forcément la même approche des documents. Nous allons donc détailler les comportements types des usagers.
 
 \subsubsection{Amateur}
 Le premier utilisateur type est l'amateur. C'est une personne qui vient rarement aux archives et qui n'est pas un habitué de la généalogie. Cette personne utilisera l'application sans nécessairement se connecter car elle souhaite principalement naviguer au travers des documents, sans les annoter.
@@ -79,7 +79,7 @@ Le premier utilisateur type est l'amateur. C'est une personne qui vient rarement
 Lorsque ces utilisateurs arrivent sur la page d'accueil de l'application, il faut donc qu'ils soient capables de naviguer dans les documents directement. Ils ont besoin d'une fonctionnalité pour aller chercher une table en fonction de son année et de la commune d'où elle vient. Une fois qu'il a accédé à un registre matricule, l'amateur lit le document et les annotations apportées par les autres usagers, sans annoter lui même. En effet, il ne se sert pas assez des documents des archives pour avoir besoin de noter des informations dont il aurait besoin plus tard. Si cet usager veut trouver un registre, il pourra effectuer une recherche grâce aux annotations des autres utilisateurs. Il pourra ainsi chercher un registre selon le nom, le prénom, la profession, \ldots
 
 \subsubsection{Utilisateur expérimenté}
-Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consultés et annotés. Cet utilisateur se connectera, souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annotés et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il aura en revanche aussi la possibilité d'annoter les registres qu'il consulte. Pour cela, il peut choisir un document vierge et annoter en partant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (s'il en existe). Toutefois, il ne pourra modifier les annotations des autres utilisateurs.
+Contrairement à l'amateur, l'utilisateur expérimenté vient souvent aux archives et veut garder une trace des documents qu'il a consultés et annotés. Cet utilisateur se connectera souvent avant de parcourir quoi que ce soit. En se connectant, il pourra avoir accès aux documents qu'il a annotés et à ses favoris. Il pourra, comme l'amateur, rechercher une table ou un registre. Il aura en revanche aussi la possibilité d'annoter les registres qu'il consulte. Pour cela, il peut choisir un document vierge et annoter en partant de rien, ou bien copier les annotations d'un autre utilisateur sur ce document (s'il en existe). Toutefois, il ne pourra modifier les annotations des autres utilisateurs.
 
 \subsection{Différents niveaux de privilèges}
 En plus de s'adresser à différents utilisateurs, notre application proposera plusieurs niveaux de privilèges, allant de l'utilisateur simple à l'administrateur, en passant par le modérateur. Vous trouverez ci-dessous un schéma représentant les différentes actions réalisables selon le niveau de privilèges possédé (figure \ref{fig:privileges}).
@@ -852,7 +852,7 @@ De même la position des annotations peuvent être masquées.\\
 \end{table}
 
 \subsubsection{Fonction SC08 - Sélectionner une annotation sur un document}
-Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au niveau de la fiche d’identité ou sur la position d'une annotation (si on a affiché les annotations) la sélectionne. Quand une annotation est sélectionnée, le point, qui correspond à la position de cette annotation, devient plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne se taille et la fenêtre disparaît.\\
+Un utilisateur peut sélectionner une annotation. Cliquer sur une annotation au niveau de la fiche d’identité ou sur la position d'une annotation (si on a affiché les annotations) la sélectionne. Quand une annotation est sélectionnée, le point, qui correspond à la position de cette annotation, devient plus gros par rapport aux autres. On ne peut sélectionner qu’une seule annotation à la fois. C’est-à-dire que si on sélectionne une autre annotation, la précédente regagne sa taille et la fenêtre disparaît.\\
 
 \begin{table}[H]
   \centering
@@ -967,7 +967,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 \end{table}
 
 \subsubsection{Fonction SC11 - Modification du texte d’une annotation}
-Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut modifier son texte au niveau de la fiche d'indentité. Il est impossible de modifier la catégorie d'une annotation : l'utilisateur devra supprimer et recréer l'annotation s'il souhaite changer de catégorie.\\
+Après avoir sélectionné une annotation, un utilisateur qui possède cette annotation peut modifier son texte au niveau de la fiche d'identité. Il est impossible de modifier la catégorie d'une annotation : l'utilisateur devra supprimer et recréer l'annotation s'il souhaite changer de catégorie.\\
 
 \begin{table}[H]
   \centering
@@ -1044,7 +1044,7 @@ Après avoir sélectionné une annotation, un utilisateur qui possède cette ann
 \end{table}
 
 \subsubsection{Fonction SC13 - Consulter des fiches d’identités et en sélectionner une}
-Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est jugée intéressante on peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la consultation des fiches, on peut annuler cette consultation et revenir à la visualisation du RMM précédant. Une fois la fiche copiée, on peut modifier ou supprimer les annotations.
+Un utilisateur peut consulter les fiches d’identités des autres utilisateurs, ce qui revient à visualiser des annotations déjà réalisées. Si la fiche est jugée intéressante il peut la copier, c’est-à-dire s’approprier toutes les annotations. Pendant la consultation des fiches, il peut annuler cette consultation et revenir à la visualisation du RMM précédant. Une fois la fiche copiée, l'utilisateur peut modifier ou supprimer les annotations.
 La maquette suivante illustre l’interface permettant de sélectionner une fiche d’identité.\\
 
 \begin{figure}[H]
@@ -1379,8 +1379,8 @@ Utilisation : l'utilisateur effectue un appui long sur le document choisi, le d�
 \end{table}
 
 \subsubsection{Fonction SC21 - Supprimer un document}
-La suppression fonctionne comme un déplacement. Seulement, le document doit être déplacé dans la Corbeille, une boîte de confirmation est affichée.
-Si l'utilisateur supprime un dossier, tous les documents présents sont supprimés.
+La suppression fonctionne comme un déplacement. Seulement, le document doit être déplacé dans la Corbeille, et une boîte de confirmation est affichée.
+Si l'utilisateur supprime un dossier, tous les liens vers les documents présents sont supprimés.
 Il est impossible de supprimer le dossier "..", "Mes annotations" et "Corbeille".
 
 Utilisation : l'utilisateur effectue un appui long sur le document choisi, le déplace, en restant appuyé, vers la Corbeille.
@@ -1444,7 +1444,7 @@ Afin d'offrir le maximum de flexibilité, la recherche pourra être effectuée s
 
 \subsubsection{Fonction SD01 - Rechercher un nom dans les tables}
 
-L'utilisateur veut trouver le ou les images du RMM de la personne dont il a le nom. Il peut dans ce cas effectuer une recherche dans les tables grâce à ce nom. Si ce nom a déjà été annoté, l'application propose à l'utilisateur les pages des tables pertinentes. Toutefois, ce nom n'est pas toujours repertorié dans les annotations liées aux tables. Si jamais aucune annotation de ce nom existe, l'application propose pour chaque table (chaque année) la page comportant l'annotation du nom la plus proche. Si aucune annotation existe, la page ayant le plus de chance d'être la bonne (en suivant l'ordre alphabétique) est proposée.
+L'utilisateur veut trouver le ou les images du RMM de la personne dont il a le nom. Il peut dans ce cas effectuer une recherche dans les tables grâce à ce nom. Si ce nom a déjà été annoté, l'application propose à l'utilisateur les pages des tables pertinentes. Toutefois, ce nom n'est pas toujours repertorié dans les annotations liées aux tables. Si jamais ce nom n'a pas été annoté, l'application propose pour chaque table (chaque année) la page comportant l'annotation du nom la plus proche. Si aucune annotation existe, la page ayant le plus de chance d'être la bonne (en suivant l'ordre alphabétique) est proposée.
 \\
 
 \begin{table}[H]
