@@ -35,9 +35,9 @@
 
 	L'objectif du projet est de construire un outil d'annotations semi-auto\-matiques des documents liés au recrutement militaire concernant cette période. L'outil doit permettre à un utilisateur, visiteur des archives, d'associer lecture et annotation du document avec l'image numérisée qui lui correspond. En plus de naviguer et d'annoter les images, l'usager peut utiliser ces annotations pour rechercher des documents, par exemple trouver une personne grâce a son nom.\\
 	
-	Ce rapport de spécifications fonctionnelles reprend brièvement les notions importantes abordées dans le rapport de pré-étude, avant de décrire grossièrement l'architecture générale choisie pour la réalisation de ce système. Finalement, la majeure partie de ce rapport est consacrée à la description des spécifications fonctionnelles.
+	Ce rapport de spécification fonctionnelle reprend brièvement les notions importantes abordées dans le rapport de pré-étude, avant de décrire grossièrement l'architecture générale choisie pour la réalisation de ce système. Finalement, la majeure partie de ce rapport est consacrée à la description des spécifications fonctionnelles.
 	
-	Ce travail a fait l'objet d'échanges réguliers avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit, et Me. Karen Février, chef de projet chez ATOS, qui nous offre un suivi sur l'aspect gestion de projet ainsi que sur la rédaction des documents.
+	Ce travail a fait l'objet d'échanges réguliers avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquels devra répondre notre produit, et Me. Karen Février, chef de projet chez ATOS, qui nous offre un suivi sur l'aspect gestion de projet ainsi que sur la rédaction des documents.
 
 \newpage
 
@@ -51,7 +51,7 @@
 	
 \subsection{Mise en valeur des documents de guerre}
 
-L'application étant destinée à être utilisée dans le cadre du centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Rappelons que ces documents ont été donnés aux archives par l'armée, ce sont les seuls documents militaires que les archives possèdent.
+L'application étant destinée à être utilisée dans le cadre du centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Ces documents ont été donnés aux archives par l'armée.
 
 \subsubsection{Le registre matricule militaire}
 Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe \ref{sec:annexe 1}, est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver l'état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.
@@ -625,7 +625,7 @@ La maquette illustrée par la figure \ref{fig:annotation} présente l'interface 
 \label{fig:annotation}
 \end{figure}
 
-Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela, il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Une catégorie d’annotation sera suggérée. Si l’utilisateur veut créer une annotation sans catégorie particulière, il peut choisir la catégorie « Autre catégorie ». Il doit ensuite remplir le texte de l’annotation et la valider. Les annotations faites sur un RMM met à jour la fiche d’identité associé au RMM. Elle sera ensuite enregistrée sur la base de données.\\
+Un utilisateur visualise un RMM et souhaite annoter son contenu. Pour faire cela, il doit appuyer à l’endroit où il souhaite annoter, ce qui va permettre de créer une annotation avec sa position sur l’image. Une catégorie d’annotation sera suggérée. Si l’utilisateur veut créer une annotation sans catégorie particulière, il peut choisir la catégorie « Autre catégorie ». Il doit ensuite remplir le texte de l’annotation et la valider. Les annotations faites sur un RMM mettent à jour la fiche d’identité associée au RMM. Elle sera ensuite enregistrée sur la base de données.\\
 
 \begin{table}[H]
   \centering
