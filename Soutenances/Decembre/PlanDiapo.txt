@@ -1,1 +1,54 @@
 Plan Diaporama
+
+(Idée avec deux supports : prezi et diapo openoffice (basculer entre les différents supports))
+
+Légende :
+	**** (Pourquoi pas un prezi pour cette partie ?)
+
+prezi ou vidéo préparée ? (pour contrer problème de connexion internet)
+
+- Diaporama de début (x1)
+- Remerciements (x1)
+	+ Archives d'ille et vilaine : JY Le Clerc, P Delauney
+	+ Société Atos : Karen Février 
+	+ Encadrants
+- Présentation de l'équipe (x1) ****
+	+ Sous forme de minis états civil
+- Présentation du projet (3)
+	-- Le besoin (x1)
+		+ Application d'annotation et de navigation
+		+ Images d'archives
+	-- Le contexte (x1)
+		+ Centenaire de la Guerre 14-18
+		+ Poilus
+		+ Deux types de documents RMM et sa Table
+	-- Le RMM et sa table (x1) ****
+		+ Les différents cadres importants
+		+ Les relations entre les deux documents
+- Choix et Présentation du logiciel (x ??)
+	-- Architecture générale du logiciel (x1)
+		+ Tactile
+		+ Base de données
+		+ Serveur
+	-- Différents clients potentiels (cas d'utilisation ?) (x1)
+		+ Utilisateur simple
+		+ Utilisateur avancé
+	-- Fonctionnalités attendues (x ??)
+		+ Listing
+	-- Maquettes réalisées (x ??) ****
+		+ Listing avec les fonctionnalités associées
+- Méthodologie de travail (x2)
+	-- Diagramme en V (x1/2)
+	-- Responsabilité de chacun (x1/2)
+		+ Différents livrables
+	-- Temps passé et estimé de travail (x1)
+		+ Temps déjà passé, temps futur estimé
+- Conclusion (x1)
+	-- Idées d'améliorations (x1/2)
+		+ Serious game des archives
+	-- Prochaine étape (x1/2)
+		+ Conception / Développement
+		+ Pot de départ des deux leavers (Joke)
+- Diaporama de fin (x1)
+		+ Remerciement de l'attention
+		+ Questions
