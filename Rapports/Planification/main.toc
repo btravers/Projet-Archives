@@ -1,0 +1,16 @@
+\select@language {french}
+\contentsline {section}{Introduction}{3}{section*.2}
+\contentsline {section}{\numberline {1}Pr\IeC {\'e}sentation du projet : ArchiPoilus}{4}{section.1}
+\contentsline {subsection}{\numberline {1.1}Sujet}{4}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Mise en valeur des documents de guerre}{4}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Le registre matricule militaire}{4}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Les tables des registres matricules militaires}{5}{subsubsection.1.2.2}
+\contentsline {section}{\numberline {2}Sp\IeC {\'e}cifications fonctionnelles}{5}{section.2}
+\contentsline {section}{\numberline {3}M\IeC {\'e}thodologie}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Gestionnaire de version}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Cycle en V}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Chronologie}{7}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Diagramme de Gantt}{8}{subsection.3.4}
+\contentsline {section}{Conclusion}{11}{section*.4}
+\contentsline {section}{\numberline {A}Vue compl\`ete d'un RMM}{12}{appendix.A}
+\contentsline {section}{\numberline {B}Table de RMM - Saint-Malo 1899}{13}{appendix.B}
