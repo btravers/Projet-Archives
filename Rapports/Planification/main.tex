@@ -47,7 +47,7 @@
 
 	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des Registres Matricules Militaires (RMM) numérisés ainsi que leurs tables associées. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images afin de pouvoir les annoter. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.\\
 	
-	Notre équipe est composée de 6 élèves ingénieurs de 4ème année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons toutefois prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale; l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
+	Notre équipe est composée de 6 élèves ingénieurs de 4ème année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons toutefois prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale; l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
 
 \subsection{Mise en valeur des documents de guerre}
 
@@ -84,8 +84,12 @@
 	
 	La phase de développement de cette application passe par le développement de 6 fonctionnalités : l'authentification d'un utilisateur, la recherche de document, la navigation entre différents documents, la visualisation de documents, l'annotation de documents et enfin la gestion des différents types d'utilisateurs. Pour plus d'information consernant le détails de ces spécifications, nous vous invitons à lire notre rapport de spécification fonctionnelle.\\
 	
-\section{Planification des tâches}
-	
+\section{Méthodologie}
+
+	\subsection{Gestionnaire de version}
+
+	Pour améliorer l'efficacité de mise en commun de rédactions de rapports, nous utilisons un gestionnaire de version Git où nous avons créer un dépôt Git sur GitHub qui est un service web d'hébergement et de gestion de développement de logiciels, utilisant Git. Celui-ci nous permet de travailler en même temps sur un même document. Le possible inconvénient d'utiliser ce genre de logiciel est de posséder une connexion internet permanente et de prévoir un temps de prise en main pour chacune des ressources. Mais l'avantage est un gain de temps non négligeable en matière de rassemblement de travaux et de mise en commun.
+
 	\subsection{Cycle en V}
 	
 	Pour mener à bien notre projet, nous avons choisi de suivre un cycle en V par rapport à une méthode agile pour plusieurs raisons.\\
@@ -105,7 +109,7 @@
 	
 \subsection{Chronologie}
 
-	La prochaine phase du projet est la conception logicielle. Sachant qu'il va être difficile de travailler pendant les congés de Noël et que des partiels nous occuperons début Janvier, nous avons prévu de commencer la prochaine phase du projet le 20 Janvier. La chronologie suivante (figure 3) montre les phases du projet (conception logicielle - prise en main - développement - livraison) avec les dates des différents livrables et soutenances associés. 
+	La prochaine phase du projet est la conception logicielle. Sachant qu'il va être difficile de travailler pendant les congés de Noël et que des partiels nous occuperons début Janvier, nous avons prévu de commencer la prochaine phase du projet le 20 Janvier. La chronologie suivante (figure 3) montre les phases du projet (conception logicielle - prise en main - développement - livraison) avec les dates des différents livrables et soutenances associés. La phase de développement comprend le codage de chaque spécification fonctionnelle (la case "SF -" n'est pas complète et correspond à "SF - Administration"). En fin de projet, une longue période est réservée pour la rédaction de rapport et la préparation de soutenance. En effet, des partiels en mai ne nous permettent pas de consacrer beaucoup de temps au projet, c'est pour cela que cette période est assez longue.
 	
 \begin{figure}[H]
 \centering
@@ -114,17 +118,20 @@
 \label{fig:chronologie}
 \end{figure}
 
-	Dates des livrables : \\
-		Rapport de conception logicielle : 13 Février\\
-		Page HTML (résumé du projet) : 3 Avril\\
-		Documentation en ligne du logiciel : 28 Mai\\
-		Rapport Final, Annexes et Rapport de bilan de planification : 21 Mai\\
-				
+	Dates des livrables :
+
+\begin{itemize}
+\item Rapport de conception logicielle : 13 Février
+\item Page HTML (résumé du projet) : 3 Avril
+\item Documentation en ligne du logiciel : 28 Mai
+\item Rapport Final, Annexes et Rapport de bilan de planification : 21 Mai
+\end{itemize}
+
 	Date de la soutenance finale de projet : 27-28 Mai\\
 
 \subsection{Diagramme de Gantt}
 
-	Le diagramme de Gantt suivant montre en détail la planification des tâches restantes pour le projet.
+	Le diagramme de Gantt suivant (figure 4) montre en détail la planification des tâches restantes pour le projet.
 
 \begin{figure}[H]
 \centering
@@ -133,16 +140,9 @@
 \label{fig:gantt}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{taches_gantt.png}
-\caption{Liste des tâches du diagramme de Gantt}
-\label{fig:taches_gantt}
-\end{figure}
-
 \newpage
 
-	On y retrouve les échéances du projet sous forme de flèche blanche. On voit également les heures attachées à chaque tâche. Nous avons compté en moyenne : 
+	Pour chaque tâche, nous avons affecté une ressource unique, c'est-à-dire qu'une tâche va être développée par une seule personne. Ceci explique le fait que certaines tâches soient effectuer en parallèle. De plus, nous avons estimé le nombre d'heures de travail hebdomadaire, à savoir : 
 	
 \begin{itemize}
 \item 5 heures de travail par personne par semaine pour les semaines classiques
@@ -155,7 +155,7 @@
 
 	On peut remarquer que la phase de développement se termine au début du mois de Mai, et nous allons proposer aux Archives départementales d’Ille-et-Vilaine de tester notre produit au début du mois de Mai. Cela nous permettrai d'avoir les avis sur notre application afin de pouvoir faire des améliorations.\\
 
-	Afin de réaliser une première version à la fois fonctionnelle et à valeur ajoutée par rapport aux produits existants, nous avons priorisé les tâches. Sachant que le système ne nécessite pas la gestion des différents utilisateurs pour fonctionner, cette tâche est définie comme moins prioritaire. Selon notre estimations des charges et notre estimation du temps disponible, nous devrions pouvoir réaliser toutes les fonctionnalités dans le temps imparti. Mais nous ne sommes pas à l'abri d'un problème technique, humain ou même d'une mauvais estimation du temps de réalisation. C'est pourquoi la gestion des différents utilisateurs peut être omise par manque de temps.\\
+	Afin de réaliser une première version à la fois fonctionnelle et à valeur ajoutée par rapport aux produits existants, nous avons priorisé les tâches. Sachant que le système ne nécessite pas la gestion des différents utilisateurs pour fonctionner, cette tâche est définie comme moins prioritaire et est donc placée en dernière. Selon notre estimations des charges et notre estimation du temps disponible, nous devrions pouvoir réaliser toutes les fonctionnalités dans le temps imparti. Mais nous ne sommes pas à l'abri d'un problème technique, humain ou même d'une mauvais estimation du temps de réalisation. C'est pourquoi la gestion des différents utilisateurs peut être omise par manque de temps.\\
 	
 	Pour le déroulement du projet, il conviendra de mettre à jour ce diagramme de Gantt et de vérifier régulièrement si les délais sont respectés.
 
@@ -168,7 +168,7 @@
 	
 	Le développement de notre application, ArchiPoilus, suit un Cycle en V. En effet, c'est pour nous la méthode de planification la plus adpatée à ce projet puisque ses différentes phases correspondent exactement avec les dates des livrables à fournir. Le diagramme de Gantt montre la répartition des tâches pour la suite du projet, il faudra ensuite vérifier si l'estimation du temps à consacrer à chaque tâche est excate, si on prend du retard par rapport au planning et tenir le cas échéant le diagramme de Gantt à jour.\\
 	
-	Depuis le commencement du projet, nous travaillons en collaboration avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit. Nous allons proposer aux Archives départementales d’Ille-et-Vilaine de tester notre application afin d'intégrer des améliorations en fin de projet. Nous souhaitons garder cette "`relation client"'  pour la suite du projet, qui nous offre l’opportunité de travailler avec des professionnels.\\
+	Depuis le commencement du projet, nous travaillons en collaboration avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit. Nous allons proposer aux Archives départementales d’Ille-et-Vilaine de tester notre application afin d'intégrer des améliorations en fin de projet. Nous souhaitons garder cette "relation client"  pour la suite du projet, qui nous offre l’opportunité de travailler avec des professionnels.\\
 	
 	Aussi, nous bénéficions du suivi de Mme Karen Février, chef de projet chez ATOS, sur l’aspect gestion de projet, que nous remercions pour ces nombreux retours depuis le début du projet, et en particulier sur la planification du projet.\\
 	
