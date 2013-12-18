@@ -11,6 +11,7 @@
 \usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
 \usepackage{colortbl}
 
+\frenchbsetup{StandardLists=true}
 
 \title{\bsc{INSA} de Rennes \\ Département Informatique \\ \bigskip \hrule \bigskip ArchiPoilus \\ \bigskip Système d'annotation et de navigation dans des images d'archives \\ \bigskip Dossier de planification initiale \bigskip \hrule}
 \author{Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, \\ Clément \bsc{Leboullenger}, Thomas \bsc{François}, Benoit \bsc{Travers}}
@@ -32,11 +33,11 @@
 	Les Archives départementales d'Ille-et-Vilaine sont en charge de la collecte, du classement, de la conservation et de la communication des archives qui constituent une grande partie du patrimoine historique écrit du département. 
 \`A l'approche du centenaire de la Première Guerre Mondiale, les Archives, en collaboration avec l'\bsc{INSA} de Rennes, ont choisi de proposer aux étudiants en quatrième année du département informatique un sujet de mise en valeur des documents li\'es \`a la Grande Guerre.\\
 
-	L'objectif du projet est de construire un outil d'annotations semi-auto\-matiques des documents liés au recrutement militaire concernant cette période. L'outil doit permettre à un utilisateur, visiteur des archives, d'associer lecture et annotation du document avec l'image numérisée qui lui correspond. En plus de naviguer et d'annoter les images, l'usager peut utiliser ces annotations pour rechercher des documents, par exemple trouver une personne grâce a son nom.\\
+	L'objectif du projet est de construire un outil d'annotations semi-auto\-matiques des documents liés au recrutement militaire concernant cette période. L'outil, dénommé ArchiPoilus, doit permettre à un utilisateur, visiteur des archives, d'associer lecture et annotation du document avec l'image numérisée qui lui correspond. En plus de naviguer et d'annoter les images, l'usager peut utiliser ces annotations pour rechercher des documents, par exemple trouver une personne grâce à son nom.\\
 	
-	Ce Dossier de planification initiale présente notre projet dans les grandes lignes ainsi que la planifications des tâches à réaliser tout en indiquant les dates consernant les livrables et les soutenances. Il contiendra notamment un premier diagramme de Gantt résumant graphiquement les intéractions et recouvrements temporels des tâches préalablement définies.\\
+	Ce dossier de planification initiale présente notre projet dans les grandes lignes ainsi que la planifications des tâches à réaliser, tout en indiquant les dates consernant les livrables et les soutenances. Il contiendra notamment un premier diagramme de Gantt résumant graphiquement les intéractions et recouvrements temporels des tâches préalablement définies.\\
 	
-	Ce travail a fait l'objet d'échanges réguliers avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquels devra répondre notre produit, et Me. Karen Février, chef de projet chez ATOS, qui nous offre un suivi sur l'aspect gestion de projet ainsi que sur la rédaction des documents.
+	Ce travail a fait l'objet d'échanges réguliers avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquels devra répondre notre produit, et Mme. Karen Février, chef de projet chez ATOS, qui nous offre un suivi sur l'aspect gestion de projet ainsi que sur la rédaction des documents.
 
 \newpage
 
@@ -44,7 +45,7 @@
 
 \subsection{Sujet}
 
-	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des registres matricules militaires (RMM) numérisés ainsi que leurs tables associées. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images afin de pouvoir les annoter. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM ou d’informations, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.\\
+	Dans le cadre des projets de 4ième année du département informatique, notre objectif est de développer une application permettant d’annoter des Registres Matricules Militaires (RMM) numérisés ainsi que leurs tables associées. Ces annotations doivent être à la fois simples et rapides à créer. Il sera important de pouvoir visualiser des images afin de pouvoir les annoter. De plus, l’application devra permettre à l’utilisateur de facilement rechercher des informations liées à ces annotations. Les principales fonctionnalités à développer seront la recherche de RMM, la visualisation d’images et l’annotation de ces images. Conformément au cahier des charges, notre application sera conçue pour fonctionner sur une table Microsoft PixelSense : nous utiliserons donc des émulateurs pour le développement du projet.\\
 	
 	Notre équipe est composée de 6 élèves ingénieurs de 4ème année du département informatique de l’INSA de Rennes : Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, Clément \bsc{Leboullenger}, Thomas \bsc{François} et Benoit \bsc{Travers}. Nous devons toutefois prendre en compte l’absence de Thomas et Benoit lors du second semestre pour cause de mobilité internationale; l’équipe sera donc réduite à quatre étudiants pour développer le projet pendant cette période.
 
@@ -53,9 +54,9 @@
 	L'application étant destinée à être utilisée dans le cadre du centenaire de la guerre 14-18, deux types de documents nous intéressent particulièrement : le registre matricule militaire et la table des registres matricules militaires. Ces documents ont été donnés aux archives par l'armée.
 
 \subsubsection{Le registre matricule militaire}
-	Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe \ref{sec:annexe 1}, est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver l'état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.\\
+	Le RMM (Registre Matricule Militaire), dont vous trouverez un exemple complet en annexe \ref{sec:annexe 1}, est un document qui récapitule la carrière d'un soldat. On peut notamment y trouver son état civil, c'est-à-dire son nom, son prénom, la date et le lieu de sa naissance et les noms de ses parents, ainsi que la description physique du soldat, le lieu de son engagement et ses différentes affectations. On y trouve aussi les campagnes auxquelles il a pris part, ainsi que ses éventuelles décorations et/ou condamnations.\\
 
-	\`A la lumière du centenaire de la guerre 1914-1918, ces RMM prennent un intérêt particulier. En effet, ils permettent de déterminer quels soldats ont pris part à cette guerre, quelles batailles ils ont menées, et quel destin ils y ont trouvé. En bref, la mise en lumière du centenaire passe en grande partie par la mise en valeur de ces documents, qui seront mis en ligne par les archives d'Ille-et-Vilaine pour l'occasion.\\
+	\`A la lumière du centenaire de la guerre 1914-1918, ces RMM prennent un intérêt particulier. En effet, ils permettent de déterminer quels soldats ont pris part à cette guerre, quelles batailles ils ont menées, et quel destin ils y ont trouvé. En bref, la valorisation du centenaire passe en grande partie par la mise en valeur de ces documents, qui seront mis en ligne par les archives d'Ille-et-Vilaine pour l'occasion.\\
 
 	Le Registre Matricule Militaire est le document de base de notre projet. Afin de mieux le comprendre, celui-ci, étant divisé en plusieurs parties, est expliqué plus en détails dans notre rapport de pré-étude.\\
 
@@ -79,13 +80,9 @@
 \label{fig:navigation}
 \end{figure}
 
-	Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. Aussi, un écran de recherche devra être accessible à partir de n’importe quel autre écran permettant à l'utilisateur d'effectuer une recherche. Les écrans de gestion des documents ne seront accessibles seulement si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessibles à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.\\
+	Lorsque l’utilisateur commencera à utiliser l’application, celui-ci se retrouvera sur un écran d’accueil qui lui proposera deux fonctionnalités : s'inscrire ou bien s’identifier. De plus, un écran de recherche devra être accessible à partir de n’importe quel autre écran permettant à l'utilisateur d'effectuer une recherche. La gestion des documents ne seront accessibles que si l’utilisateur est déjà identifié. Les écrans de visualisation de document pourront être accessibles à partir d’une recherche ou bien lorsque l’utilisateur souhaite consulter un de ses documents. Aussi, à partir d’une visualisation de table, il sera possible à l’utilisateur d’accéder à un ou plusieurs RMM.\\
 	
 	La phase de développement de cette application passe par le développement de 6 fonctionnalités : l'authentification d'un utilisateur, la recherche de document, la navigation entre différents documents, la visualisation de documents, l'annotation de documents et enfin la gestion des différents types d'utilisateurs. Pour plus d'information consernant le détails de ces spécifications, nous vous invitons à lire notre rapport de spécification fonctionnelle.\\
-
-	La gestion des différents types d'utilisateur est la fonctionnalité la moins prioritaire. En effet, notre premier objectif est de réaliser une première version à la fois fonctionnelle et intéressante. La gestion des utilisateurs est certes très utile, mais le système peut être intéressant sans celle-ci. Le temps nécessaire au développement de cette fonctionnalitée apparait dans la planification, toutefois, si nous perdons trop de temps à développer le reste de l'application, cette fonctionnalité sera mise de côté.\\
-	
-	Toutes les autres fonctionnalités devront être développées dans les temps.
 	
 \section{Planification des tâches}
 	
@@ -93,11 +90,9 @@
 	
 	Pour mener à bien notre projet, nous avons choisi de suivre un cycle en V par rapport à une méthode agile pour plusieurs raisons.\\
 	
-	La méthode agile est adapté aux projets de développement en informatique. Elle permet de mener un projet par incréments : elle consiste à mettre au point un produit rapidement puis de l'améliorer en prenant en compte les avis des différents clients/utilisateurs. Cependant, une méthode agile nécessite de faire des nombreuses et courtes itérations. Or nous avons peu de temps à consacrer au projet et nous ne pourrons pas faire beaucoup d'itération au projet, ce qui rend la méthode agile peu intéressante.\\
+	La méthode agile est adapté aux projets de développement en informatique. Elle permet de mener un projet par incréments : elle consiste à mettre au point un produit rapidement puis de l'améliorer en prenant en compte les avis des différents clients/utilisateurs. Cependant, cette méthode nécessite de faire des nombreuses et courtes itérations et le temps qui nous est impati pour réaliser le projet ne nous permet pas de faire plusieurs itérations. Or se sont ces itérations successives qui font tout l'intérêt de la méthode.\\
 	
-	De plus, elle demande de rapidement lancer le produit. Or la phase d'analyse et de prise en main des différentes technologies nécessite beaucoup de temps. En effet, il nous a fallut plusieurs échanges avec les Archives départementales d’Ille-et-Vilaine ainsi que de nombreuses réunions avant de préciser notre produit. Aussi, le matériel n'est pas encore disponible. C'est pourquoi il nous est impossible de procéder à une première itération rapidement.\\
-	
-	Enfin, les nombreux livrables ont des dates imposées et ces dates correspondent au développement d'un projet suivant un cycle en V. C'est pourquoi nous suivons cette méthode de planification.\\
+	Les nombreux livrables ont des dates imposées et l'enchainement des livrables correspond au développement d'un projet suivant un cycle en V. C'est pourquoi nous suivons cette méthode de planification. La figure suivante montre les différentes phases d'un cycle en V (figure 2).\\
 	
 \begin{figure}[H]
 \centering
@@ -110,7 +105,7 @@
 	
 \subsection{Chronologie}
 
-	La prochaine phase du projet est la conception logicielle. Sachant qu'il va être difficile de travailler pendant les congés de noël et que des partiels nous occuperons début Janvier, nous avons prévu de commencer la prochaine phase du projet le 20 Janvier. La chronologie suivante montre les phases du projet (conception logicielle - prise en main - développement - livraison) avec les dates des différents livrables et soutenances associés. 
+	La prochaine phase du projet est la conception logicielle. Sachant qu'il va être difficile de travailler pendant les congés de Noël et que des partiels nous occuperons début Janvier, nous avons prévu de commencer la prochaine phase du projet le 20 Janvier. La chronologie suivante (figure 3) montre les phases du projet (conception logicielle - prise en main - développement - livraison) avec les dates des différents livrables et soutenances associés. 
 	
 \begin{figure}[H]
 \centering
@@ -145,24 +140,37 @@
 \label{fig:taches_gantt}
 \end{figure}
 
-	On y retrouve les échéances du projet sous forme de flèche blanche. On voit également les heures attachées à chaque tâche. Nous avons compté en moyenne 5 heures de travail par semaine par personne pour les semaines classiques. Nous avons aussi compté 10 heures de travail par personne par semaine lors des congés (congés de Mars et d'Avril) et lors de la semaine réservé au projet en Mai. Il y a aussi une période où ne travaillerons pas le projet  Nous avons au total environ 420 heures disponibles pour travailler le projet qui correspondent avec les 414 heures de prévues par la planification.\\
+\newpage
 
-	On peut remarquer que la phase de développement se termine au début du mois de Mai, et il serait intéressant de proposer aux Archives départementales d’Ille-et-Vilaine de tester notre produit au début du mois de Mai. Cela nous permettrai d'avoir les avis sur notre application afin de pouvoir faire des améliorations.\\
-
-	On peut aussi noter qu'il nous reste un peu de temps à la fin du projet au cas où une tâche serait un peu plus longue que prévue. Cette durée n'est pas suffisante pour garantir une date de livraison. C'est pourquoi nous comptons aussi sur la fonctionnalité Administration qui peut être omise par manque de temps.\\
+	On y retrouve les échéances du projet sous forme de flèche blanche. On voit également les heures attachées à chaque tâche. Nous avons compté en moyenne : 
 	
-	Pour le déroulement du projet, il conviendra de mettre à jour ce diagramme de Gantt et de vérifier si les délais sont respectés.
+\begin{itemize}
+\item 5 heures de travail par personne par semaine pour les semaines classiques
+\item 10 heures de travail par personne par semaine lors des congés (congés de Mars et d'Avril)
+\item 15 heures de travail par personne par semaine lors de la semaine réservé au projet en Mai
+\item Pas de travail sur le projet du lundi 5 Mais au vendredi 16 Mai (partiels)
+\end{itemize}
+
+	Nous avons au total environ 420 heures disponibles pour travailler le projet qui sont en adéquation avec les 414 heures de prévues par la planification.\\
+
+	On peut remarquer que la phase de développement se termine au début du mois de Mai, et nous allons proposer aux Archives départementales d’Ille-et-Vilaine de tester notre produit au début du mois de Mai. Cela nous permettrai d'avoir les avis sur notre application afin de pouvoir faire des améliorations.\\
+
+	Afin de réaliser une première version à la fois fonctionnelle et à valeur ajoutée par rapport aux produits existants, nous avons priorisé les tâches. Sachant que le système ne nécessite pas la gestion des différents utilisateurs pour fonctionner, cette tâche est définie comme moins prioritaire. Selon notre estimations des charges et notre estimation du temps disponible, nous devrions pouvoir réaliser toutes les fonctionnalités dans le temps imparti. Mais nous ne sommes pas à l'abri d'un problème technique, humain ou même d'une mauvais estimation du temps de réalisation. C'est pourquoi la gestion des différents utilisateurs peut être omise par manque de temps.\\
+	
+	Pour le déroulement du projet, il conviendra de mettre à jour ce diagramme de Gantt et de vérifier régulièrement si les délais sont respectés.
 
 \newpage
 \phantomsection
 \addcontentsline{toc}{section}{Conclusion}
 \section*{Conclusion}
 
-	Dans la perspective du centenaire de la guerre 14-18, ce projet a pour objectif de concevoir un outil en ligne multi-utilisateurs de navigation et d’annotation des RMM sur un support tactile.\\
+	Dans la perspective du centenaire de la guerre 14-18, ce projet a pour objectif de concevoir un outil en ligne multi-utilisateurs de navigation et d’annotations des RMM sur un support tactile.\\
 	
-	Le développement de notre application, ArchiPoilus, suit un Cycle en V. En effet, c'est pour nous la méthode de planification la plus adpatée à ce projet puisqu'elle correspond exactement avec le calendrier des projets. Le diagramme de Gantt montre la répartition des tâches pour la suite du projet, il faudra ensuite vérifier si l'estimation du temps à consacrer à chaque tâche est excate, si on prend du retard par rapport au planning et tenir le diagramme de Gantt à jour.\\
+	Le développement de notre application, ArchiPoilus, suit un Cycle en V. En effet, c'est pour nous la méthode de planification la plus adpatée à ce projet puisque ses différentes phases correspondent exactement avec les dates des livrables à fournir. Le diagramme de Gantt montre la répartition des tâches pour la suite du projet, il faudra ensuite vérifier si l'estimation du temps à consacrer à chaque tâche est excate, si on prend du retard par rapport au planning et tenir le cas échéant le diagramme de Gantt à jour.\\
 	
-	Depuis le commencement du projet, nous travaillons en collaboration avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit. Il serait intéressant de faire tester notre application aux Archives départementales d’Ille-et-Vilaine pour pouvoir intégrer des améliorations en fin de projet. Aussi, nous bénéficions du suivi de Mme Karen Février, chef de projet chez ATOS, sur l’aspect gestion de projet. Nous souhaitons garder ces relations pour la suite du projet, qui nous offrent l’opportunité de travailler avec des professionnels.\\
+	Depuis le commencement du projet, nous travaillons en collaboration avec M. Jean-Yves Le Clerc, adjoint au directeur des Archives départementales d’Ille-et-Vilaine, afin de cibler au mieux les besoins auxquelles devra répondre notre produit. Nous allons proposer aux Archives départementales d’Ille-et-Vilaine de tester notre application afin d'intégrer des améliorations en fin de projet. Nous souhaitons garder cette "`relation client"'  pour la suite du projet, qui nous offre l’opportunité de travailler avec des professionnels.\\
+	
+	Aussi, nous bénéficions du suivi de Mme Karen Février, chef de projet chez ATOS, sur l’aspect gestion de projet, que nous remercions pour ces nombreux retours depuis le début du projet, et en particulier sur la planification du projet.\\
 	
 	La prochaine phase de notre projet est la conception logicielle de notre application. Elle permettra de préparer au mieux la phase de développement.
 
