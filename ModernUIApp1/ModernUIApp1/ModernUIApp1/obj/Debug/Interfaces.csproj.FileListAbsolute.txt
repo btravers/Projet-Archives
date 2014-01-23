@@ -1,0 +1,2 @@
+H:\TP\Archives\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.exe
+H:\TP\Archives\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.pdb
