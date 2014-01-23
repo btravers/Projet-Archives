@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-H:\TP\Archives\ModernUIApp1\ModernUIApp1\obj\Debug\
+C:\Users\Tosh\Documents\Visual Studio 2012\Projects\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\
 ModernUIApp1
 none
 false
 DEBUG;TRACE
-H:\TP\Archives\ModernUIApp1\ModernUIApp1\App.xaml
+C:\Users\Tosh\Documents\Visual Studio 2012\Projects\ModernUIApp1\ModernUIApp1\ModernUIApp1\App.xaml
 10-2140699653
 
-17-1801037270
-13-1872056605
+172062037931
+13570814864
 Content\Recherche\RechercheImageCell.xaml;Content\Recherche\RechercheResultat.xaml;Content\Recherche\RechercheRegistre.xaml;Content\Recherche\RechercheTable.xaml;MainWindow.xaml;Content\About.xaml;Content\SettingsAppearance.xaml;Pages\Settings.xaml;Pages\Home.xaml;Pages\Recherche.xaml;
 
 False
