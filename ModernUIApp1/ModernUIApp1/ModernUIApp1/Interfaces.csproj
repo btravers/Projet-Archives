@@ -86,6 +86,7 @@
     <Compile Include="Content\Recherche\RechercheRegistre.xaml.cs">
       <DependentUpon>RechercheRegistre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\Recherche\RechercheResultatViewModel.cs" />
     <Compile Include="Content\Recherche\RechercheTable.xaml.cs">
       <DependentUpon>RechercheTable.xaml</DependentUpon>
     </Compile>

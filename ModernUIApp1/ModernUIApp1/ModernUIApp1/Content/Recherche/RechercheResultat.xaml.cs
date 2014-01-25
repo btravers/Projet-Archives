@@ -24,7 +24,7 @@ namespace ModernUIApp1.Content
         {
             InitializeComponent();
 
-            this.DataContext = new SettingsAppearanceViewModel();
+            this.DataContext = new RecherheResultatViewModel();
         }
     }
 }

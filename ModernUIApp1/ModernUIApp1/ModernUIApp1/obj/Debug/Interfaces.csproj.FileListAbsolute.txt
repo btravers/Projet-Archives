@@ -31,3 +31,34 @@ C:\Users\Tosh\Documents\Visual Studio 2012\Projects\ModernUIApp1\ModernUIApp1\Mo
 C:\Users\Tosh\Documents\Visual Studio 2012\Projects\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.g.resources
 C:\Users\Tosh\Documents\Visual Studio 2012\Projects\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.exe
 C:\Users\Tosh\Documents\Visual Studio 2012\Projects\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.pdb
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.exe
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.pdb
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\bin\Debug\ModernUIApp1.exe
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\bin\Debug\ModernUIApp1.pdb
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\bin\Debug\FirstFloor.ModernUI.dll
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\bin\Debug\FirstFloor.ModernUI.xml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheImageCell.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheResultat.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheRegistre.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheTable.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\MainWindow.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\About.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\SettingsAppearance.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Settings.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Home.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Recherche.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\App.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheImageCell.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheResultat.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheRegistre.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Recherche\RechercheTable.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\MainWindow.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\About.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\SettingsAppearance.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Settings.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Home.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Recherche.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\App.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1_MarkupCompile.cache
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.g.resources
