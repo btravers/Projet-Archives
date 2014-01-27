@@ -9,8 +9,10 @@
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel MinWidth="200">
-                <TextBlock Text="Rechercher dans une table" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
+                <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Année"/></TextBlock>
+                <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="{Binding SelectedTickValue}"/></TextBlock>
+                <Slider Minimum="1880" IsSnapToTickEnabled="True" SmallChange="1" Maximum="1918" Value="1900" TickPlacement="BottomRight" Background="Transparent"/>
+                <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Commune"/></TextBlock>
             </StackPanel>
         </ScrollViewer>
     </Grid>

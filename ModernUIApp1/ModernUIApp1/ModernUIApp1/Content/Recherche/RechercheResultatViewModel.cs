@@ -12,12 +12,11 @@ namespace ModernUIApp1.Content
     /// <summary>
     /// A simple view model for configuring theme, font and accent colors.
     /// </summary>
-    public class RecherheResultatViewModel
+    public class RechercheResultatViewModel
         : NotifyPropertyChanged
     {
-
         // 20 accent colors from Windows Phone 8
-        private Color[] accentColors = new Color[]{
+        private Color[] accentImages = new Color[]{
             Color.FromRgb(0xa4, 0xc4, 0x00),   // lime
             Color.FromRgb(0x60, 0xa9, 0x17),   // green
             Color.FromRgb(0x00, 0x8a, 0x00),   // emerald
@@ -40,45 +39,46 @@ namespace ModernUIApp1.Content
             Color.FromRgb(0x87, 0x79, 0x4e),   // taupe
         };
 
-        private Color selectedAccentColor;
+        private Color selectedAccentImage;
 
-        public RecherheResultatViewModel()
+        public RechercheResultatViewModel()
         {
-            SyncThemeAndColor();
+ //           SyncThemeAndColor();
 
-            AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
+ //           AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
         }
 
         private void SyncThemeAndColor()
         {
             // and make sure accent color is up-to-date
-            this.SelectedAccentColor = AppearanceManager.Current.AccentColor;
+            //this.SelectedAccentImage = AppearanceManager.Current.AccentColor;
         }
 
         private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "AccentColor")
+            if (e.PropertyName == "AccentImage")
             {
-                SyncThemeAndColor();
+                //SyncThemeAndColor();
             }
         }
 
-        public Color[] AccentColors
+        public Color[] AccentImages
         {
-            get { return this.accentColors; }
+            get { return this.accentImages; }
         }
 
-        public Color SelectedAccentColor
+
+        public Color SelectedAccentImage
         {
-            get { return this.selectedAccentColor; }
+            get { return this.selectedAccentImage; }
             set
             {
-                if (this.selectedAccentColor != value)
+                if (this.selectedAccentImage != value)
                 {
-                    this.selectedAccentColor = value;
-                    OnPropertyChanged("SelectedAccentColor");
+                    this.selectedAccentImage = value;
+                    OnPropertyChanged("SelectedAccentImage");
 
-                    AppearanceManager.Current.AccentColor = value;
+                    //AppearanceManager.Current.AccentColor = value;
                 }
             }
         }

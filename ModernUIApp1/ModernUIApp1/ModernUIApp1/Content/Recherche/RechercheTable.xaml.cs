@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FirstFloor.ModernUI.Presentation;
 
 namespace ModernUIApp1.Content
 {
@@ -23,6 +24,25 @@ namespace ModernUIApp1.Content
         public RechercheTable()
         {
             InitializeComponent();
+        }
+    }
+
+    public class RechercheTableDataContext : NotifyPropertyChanged
+    {
+
+        // TODO pour binder le tickvalue
+        private String tickValue;
+
+        public String SelectedTickValue
+        {
+            get { return this.tickValue; }
+            set
+            {
+                if (this.tickValue != value)
+                {
+                    this.tickValue = value;
+                }
+            }
         }
     }
 }

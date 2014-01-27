@@ -1,0 +1,115 @@
+\documentclass[a4paper]{article}
+
+\usepackage[francais]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{colortbl}
+
+\title{\bsc{INSA} de Rennes \\ Département Informatique \\ \bigskip \hrule \bigskip ArchiPoilus \\ \bigskip Système d'annotation et de navigation dans des images d'archives \\ \bigskip Rapport de spécification fonctionnelle \bigskip \hrule}
+\author{Raphaël \bsc{Baron}, Pierre-Olivier \bsc{Bouteau}, Nicolas \bsc{Charpentier}, \\ Clément \bsc{Leboullenger}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Introduction}
+\section*{Introduction}
+
+\section{Modèle Conceptuel de Données}
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Table - Utilisateur}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Attributs} \\
+   		\hline
+			identifiant & (Primary key, String) clé unique représentant le pseudonyme de l'utilisateur \\
+			mot_de_passe & (String) mot de passe crypté pour permettre l'authentification de l'utilisateur \\
+			email & (String) email de l'utilisateur \\
+			statut & (Int, défaut : 1) détermine les droits d'accès de l'utilisateur \\
+   		\hline
+ 	\end{tabular}
+  \caption{Table - Utilisateur}
+  \normalsize
+  \label{tab: table_utilisateur}
+\end{table}
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Table - Registre}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Attributs} \\
+   		\hline
+			identifiant & (Primary key, Int) clé unique \\
+			commune & String & commune du registre \\
+			année & Int & année du registre \\
+			volume & Int & numéro du volume du registre \\
+   		\hline
+ 	\end{tabular}
+  \caption{Table - Registre}
+  \normalsize
+  \label{tab: table_registre}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Table - Table}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Attributs} \\
+   		\hline
+			identifiant & Int & clé unique \\
+			numéro & Int & numéro de la table par rapport au registre \\
+		\hline
+ 	\end{tabular}
+  \caption{Table - Utilisateur}
+  \normalsize
+  \label{tab: table_utilisateur}
+\end{table}
+
+\begin{table}[H]
+  \centering
+   \small
+	\begin{tabular}{|c|p{12cm}|}
+   		\hline
+   			\rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Table - Fiche}} \\
+   		\hline
+   			\multicolumn{2}{|l|}{Attributs} \\
+   		\hline
+			identifiant & Int & clé unique \\
+			numéro & Int & numéro de la fiche par rapport au registre \\
+   		\hline
+ 	\end{tabular}
+  \caption{Table - Fiche}
+  \normalsize
+  \label{tab: table_fiche}
+\end{table}
+
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Conclusion}
+\section*{Conclusion}
+
+
+\appendix
+
+\end{document}
