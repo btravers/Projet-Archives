@@ -24,25 +24,13 @@ namespace ModernUIApp1.Content
         public RechercheTable()
         {
             InitializeComponent();
+
+            this.yearSlider.ValueChanged += yearSlider_ValueChanged;
         }
-    }
 
-    public class RechercheTableDataContext : NotifyPropertyChanged
-    {
-
-        // TODO pour binder le tickvalue
-        private String tickValue;
-
-        public String SelectedTickValue
+        private void yearSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            get { return this.tickValue; }
-            set
-            {
-                if (this.tickValue != value)
-                {
-                    this.tickValue = value;
-                }
-            }
+            this.yearValue.Text = e.NewValue.ToString();
         }
     }
 }
