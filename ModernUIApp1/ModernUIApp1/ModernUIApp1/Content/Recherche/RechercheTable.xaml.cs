@@ -25,6 +25,7 @@ namespace ModernUIApp1.Content
         {
             InitializeComponent();
 
+            // Event manager for edit text year value
             this.yearSlider.ValueChanged += yearSlider_ValueChanged;
         }
 
