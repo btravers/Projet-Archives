@@ -9,8 +9,19 @@
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel MinWidth="200">
-                <TextBlock Text="BASIC PAGE" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
+                <Grid>
+                    <Label Content="Identifiant"/>
+                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                </Grid>
+                <Grid>
+                    <Label Content="Mot de passe"/>
+                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                </Grid>
+                <Grid>
+                    <Label Content="Email"/>
+                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                </Grid>
+                <Button Content="S'enregistrer" Width="170"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

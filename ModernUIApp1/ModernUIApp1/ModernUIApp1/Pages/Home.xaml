@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
@@ -16,15 +17,18 @@
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel>
                 <Grid>
-                    <TextBlock Text="LEFT CONTENT" Style="{StaticResource Heading2}" />
+                    <TextBlock Text="Identification" Style="{StaticResource Heading2}" />
+                    <mui:ModernFrame Grid.Row="1" Source="/Content/Identification/Identification.xaml" Margin="0,81,0,-212"/>
                 </Grid>
              </StackPanel>
         </ScrollViewer>
         <GridSplitter Grid.Column="1" />
         <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
             <StackPanel>
-                <TextBlock Text="RIGHT CONTENT" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
+                <Grid>
+                    <TextBlock Text="Enregistrement" Style="{StaticResource Heading2}" />
+                    <mui:ModernFrame Grid.Row="1" Source="/Content/Identification/Enregistrement.xaml" Margin="0,81,0,-212"/>
+                </Grid>
             </StackPanel>
         </ScrollViewer>
     </Grid>
