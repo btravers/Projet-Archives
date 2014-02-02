@@ -57,6 +57,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Content\Identification\Enregistrement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\Identification\Identification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Content\Recherche\RechercheImageCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +85,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Content\Identification\Enregistrement.xaml.cs">
+      <DependentUpon>Enregistrement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Identification\Identification.xaml.cs">
+      <DependentUpon>Identification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\Recherche\RechercheImageCell.xaml.cs">
       <DependentUpon>RechercheImageCell.xaml</DependentUpon>
     </Compile>
@@ -126,8 +140,15 @@
     <Compile Include="Pages\Recherche.xaml.cs">
       <DependentUpon>Recherche.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SplitPage1.xaml.cs">
+      <DependentUpon>SplitPage1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Page Include="Pages\Recherche.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SplitPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

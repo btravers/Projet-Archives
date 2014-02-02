@@ -93,3 +93,9 @@ H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\
 H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\App.g.cs
 H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1_MarkupCompile.cache
 H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1.g.resources
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Identification\Enregistrement.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Identification\Identification.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\SplitPage1.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Identification\Enregistrement.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Identification\Identification.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\SplitPage1.g.cs

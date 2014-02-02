@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\
 ModernUIApp1
 none
 false
 DEBUG;TRACE
-H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\App.xaml
-10-2140699653
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\App.xaml
+13-1734336502
 
-181985736766
-13-631633491
-Content\Recherche\RechercheImageCell.xaml;Content\Recherche\RechercheResultat.xaml;Content\Recherche\RechercheRegistre.xaml;Content\Recherche\RechercheTable.xaml;MainWindow.xaml;Content\About.xaml;Content\SettingsAppearance.xaml;Pages\Settings.xaml;Pages\Home.xaml;Pages\Recherche.xaml;
+21-655125955
+131680909245
+Content\Identification\Enregistrement.xaml;Content\Identification\Identification.xaml;Content\Recherche\RechercheImageCell.xaml;Content\Recherche\RechercheResultat.xaml;Content\Recherche\RechercheRegistre.xaml;Content\Recherche\RechercheTable.xaml;MainWindow.xaml;Content\About.xaml;Content\SettingsAppearance.xaml;Pages\Settings.xaml;Pages\Home.xaml;Pages\Recherche.xaml;Pages\SplitPage1.xaml;
 
 False
 
