@@ -12,6 +12,11 @@
                 <mui:Link DisplayName="home" Source="/Pages/Home.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="view" GroupName="view">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="view" Source="/Pages/View.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
         <mui:LinkGroup DisplayName="Recherche" GroupName="Recherche">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="recherche" Source="/Pages/Recherche.xaml" />
@@ -25,6 +30,7 @@
     </mui:ModernWindow.MenuLinkGroups>
     
     <mui:ModernWindow.TitleLinks>
+        <mui:Link DisplayName="view" Source="/Pages/View.xaml" />
         <mui:Link DisplayName="recherche" Source="/Pages/Recherche.xaml" />
         <mui:Link DisplayName="options" Source="/Pages/Settings.xaml" />
     </mui:ModernWindow.TitleLinks>

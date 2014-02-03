@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ModernUIApp1.Pages
 {
     /// <summary>
-    /// Interaction logic for SplitPage1.xaml
+    /// Interaction logic for View.xaml
     /// </summary>
-    public partial class SplitPage1 : UserControl
+    public partial class View : UserControl
     {
-        public SplitPage1()
+        public View()
         {
             InitializeComponent();
         }

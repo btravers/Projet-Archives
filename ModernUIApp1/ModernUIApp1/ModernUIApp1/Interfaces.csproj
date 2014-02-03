@@ -140,15 +140,15 @@
     <Compile Include="Pages\Recherche.xaml.cs">
       <DependentUpon>Recherche.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SplitPage1.xaml.cs">
-      <DependentUpon>SplitPage1.xaml</DependentUpon>
+    <Compile Include="Pages\View.xaml.cs">
+      <DependentUpon>View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Page Include="Pages\Recherche.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SplitPage1.xaml">
+    <Page Include="Pages\View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,7 +156,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\View\Common\" />
+    <Folder Include="Content\View\Registre\" />
+    <Folder Include="Content\View\Table\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
