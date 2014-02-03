@@ -15,8 +15,17 @@
 
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel>
-                <mui:ModernFrame Source="/Content/Authentification/Authentification.xaml"/>
-                <mui:ModernFrame Source="/Content/Authentification/Register.xaml"/>
+                <ScrollViewer>
+                    <mui:ModernFrame Source="/Content/View/Common/Toolbar.xaml"/>
+                </ScrollViewer>
+                <GridSplitter Height="6" />
+                <ScrollViewer>
+                    <mui:ModernFrame Source="/Content/View/Common/MainContent.xaml"/>
+                </ScrollViewer>
+                <GridSplitter Height="6" />
+                <ScrollViewer>
+                    <mui:ModernFrame Source="/Content/View/Registre/Iconbar.xaml"/>
+                </ScrollViewer>
             </StackPanel>
         </ScrollViewer>
         <GridSplitter Grid.Column="1" />
@@ -24,7 +33,7 @@
             <StackPanel>
                 <Grid>
                     <TextBlock Text="Identité" Style="{StaticResource Heading2}" />
-                    <mui:ModernFrame Grid.Row="1" Source="/Content/Authentification/Register.xaml" Margin="0,81,0,-212"/>
+                    <mui:ModernFrame Grid.Row="1" Source="/Content/View/Registre/IdentCell.xaml" Margin="0,81,0,-212"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

@@ -81,6 +81,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Content\View\Common\MainContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Common\Toolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Registre\Iconbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Registre\IdentCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +119,18 @@
     <Compile Include="Content\Search\SearchResultViewModel.cs" />
     <Compile Include="Content\Search\SearchTable.xaml.cs">
       <DependentUpon>SearchTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\MainContent.xaml.cs">
+      <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\Toolbar.xaml.cs">
+      <DependentUpon>Toolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Registre\Iconbar.xaml.cs">
+      <DependentUpon>Iconbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Registre\IdentCell.xaml.cs">
+      <DependentUpon>IdentCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -157,8 +185,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\View\Common\" />
-    <Folder Include="Content\View\Registre\" />
     <Folder Include="Content\View\Table\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

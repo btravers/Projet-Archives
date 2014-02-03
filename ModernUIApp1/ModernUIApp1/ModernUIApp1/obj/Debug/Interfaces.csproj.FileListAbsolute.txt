@@ -105,3 +105,11 @@ H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\
 H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Search\SearchTable.g.cs
 H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Search.g.cs
 H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\View.g.cs
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\MainContent.baml
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\Toolbar.baml
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\Iconbar.baml
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentCell.baml
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\MainContent.g.cs
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\Toolbar.g.cs
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\Iconbar.g.cs
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentCell.g.cs
