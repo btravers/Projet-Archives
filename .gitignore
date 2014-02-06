@@ -19,6 +19,11 @@ Rapports/Specifications/main.toc
 ModernUIApp1/ModernUIApp1/ModernUIApp1/bin/Debug/*
 ModernUIApp1/ModernUIApp1/ModernUIApp1/obj/Debug/*
 
+*/bin/Debug/*
+*/obj/Debug/*
+
 *~
 *.exe
 *.sln
+*.g.cs
+*.g.i.cs
