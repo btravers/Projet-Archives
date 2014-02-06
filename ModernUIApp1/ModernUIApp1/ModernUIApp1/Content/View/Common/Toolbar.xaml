@@ -9,8 +9,14 @@
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel MinWidth="200">
-                <TextBlock Text="BASIC PAGE" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
+                    <ToolBar>
+                        <Slider Width="150" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
+                        <Slider Width="150" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
+                        <Button Content="Undo">
+                        </Button>
+                        <Button Content="Redo">
+                        </Button>
+                    </ToolBar>
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -18,7 +18,6 @@
                 <ScrollViewer>
                     <mui:ModernFrame Source="/Content/View/Common/Toolbar.xaml"/>
                 </ScrollViewer>
-                <GridSplitter Height="6" />
                 <ScrollViewer>
                     <mui:ModernFrame Source="/Content/View/Common/MainContent.xaml"/>
                 </ScrollViewer>

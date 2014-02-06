@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
         <StackPanel MinWidth="200">
-            <Image Source="../../Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
+            <Image Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
             <Label Content="Fiche Matricule Militaire" HorizontalAlignment="Center" />
         </StackPanel>
     </Grid>
