@@ -20,3 +20,5 @@ ModernUIApp1/ModernUIApp1/ModernUIApp1/bin/Debug/*
 ModernUIApp1/ModernUIApp1/ModernUIApp1/obj/Debug/*
 
 *~
+*.exe
+*.sln
