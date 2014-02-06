@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\
 ModernUIApp1
 none
 false
 DEBUG;TRACE
-C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\App.xaml
-13-1335502241
+H:\Projets\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\App.xaml
+17-389114854
 
-21-1027085287
-131680909245
-Content\Identification\Enregistrement.xaml;Content\Identification\Identification.xaml;Content\Recherche\RechercheImageCell.xaml;Content\Recherche\RechercheResultat.xaml;Content\Recherche\RechercheRegistre.xaml;Content\Recherche\RechercheTable.xaml;MainWindow.xaml;Content\About.xaml;Content\SettingsAppearance.xaml;Pages\Settings.xaml;Pages\Home.xaml;Pages\Recherche.xaml;Pages\View.xaml;
+25514400127
+13-631633491
+Content\Authentification\Register.xaml;Content\Authentification\Authentification.xaml;Content\Search\SearchImageCell.xaml;Content\Search\SearchResult.xaml;Content\Search\SearchRegistre.xaml;Content\Search\SearchTable.xaml;Content\View\Common\MainContent.xaml;Content\View\Common\Toolbar.xaml;Content\View\Registre\Iconbar.xaml;Content\View\Registre\IdentCell.xaml;MainWindow.xaml;Content\About.xaml;Content\SettingsAppearance.xaml;Pages\Settings.xaml;Pages\Home.xaml;Pages\Search.xaml;Pages\View.xaml;
 
 False
 

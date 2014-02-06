@@ -57,27 +57,43 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Content\Identification\Enregistrement.xaml">
+    <Page Include="Content\Authentification\Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\Identification\Identification.xaml">
+    <Page Include="Content\Authentification\Authentification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\Recherche\RechercheImageCell.xaml">
+    <Page Include="Content\Search\SearchImageCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\Recherche\RechercheResultat.xaml">
+    <Page Include="Content\Search\SearchResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\Recherche\RechercheRegistre.xaml">
+    <Page Include="Content\Search\SearchRegistre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\Recherche\RechercheTable.xaml">
+    <Page Include="Content\Search\SearchTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Common\MainContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Common\Toolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Registre\Iconbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Registre\IdentCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -85,24 +101,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Content\Identification\Enregistrement.xaml.cs">
-      <DependentUpon>Enregistrement.xaml</DependentUpon>
+    <Compile Include="Content\Authentification\Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\Identification\Identification.xaml.cs">
-      <DependentUpon>Identification.xaml</DependentUpon>
+    <Compile Include="Content\Authentification\Authentification.xaml.cs">
+      <DependentUpon>Authentification.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\Recherche\RechercheImageCell.xaml.cs">
-      <DependentUpon>RechercheImageCell.xaml</DependentUpon>
+    <Compile Include="Content\Search\SearchImageCell.xaml.cs">
+      <DependentUpon>SearchImageCell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\Recherche\RechercheResultat.xaml.cs">
-      <DependentUpon>RechercheResultat.xaml</DependentUpon>
+    <Compile Include="Content\Search\SearchResult.xaml.cs">
+      <DependentUpon>SearchResult.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\Recherche\RechercheRegistre.xaml.cs">
-      <DependentUpon>RechercheRegistre.xaml</DependentUpon>
+    <Compile Include="Content\Search\SearchRegistre.xaml.cs">
+      <DependentUpon>SearchRegistre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\Recherche\RechercheResultatViewModel.cs" />
-    <Compile Include="Content\Recherche\RechercheTable.xaml.cs">
-      <DependentUpon>RechercheTable.xaml</DependentUpon>
+    <Compile Include="Content\Search\SearchResultViewModel.cs" />
+    <Compile Include="Content\Search\SearchTable.xaml.cs">
+      <DependentUpon>SearchTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\MainContent.xaml.cs">
+      <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\Toolbar.xaml.cs">
+      <DependentUpon>Toolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Registre\Iconbar.xaml.cs">
+      <DependentUpon>Iconbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Registre\IdentCell.xaml.cs">
+      <DependentUpon>IdentCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -137,14 +165,14 @@
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Recherche.xaml.cs">
-      <DependentUpon>Recherche.xaml</DependentUpon>
+    <Compile Include="Pages\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\View.xaml.cs">
       <DependentUpon>View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Page Include="Pages\Recherche.xaml">
+    <Page Include="Pages\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,8 +185,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\View\Common\" />
-    <Folder Include="Content\View\Registre\" />
     <Folder Include="Content\View\Table\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
