@@ -23,7 +23,7 @@
                 </ScrollViewer>
                 <GridSplitter Height="6" />
                 <ScrollViewer>
-                    <mui:ModernFrame Source="/Content/View/Registre/Iconbar.xaml"/>
+                    <mui:ModernFrame Source="/Content/View/Registre/ShortcutBar.xaml"/>
                 </ScrollViewer>
             </StackPanel>
         </ScrollViewer>
@@ -32,7 +32,7 @@
             <StackPanel>
                 <Grid>
                     <TextBlock Text="Identité" Style="{StaticResource Heading2}" />
-                    <mui:ModernFrame Grid.Row="1" Source="/Content/View/Registre/IdentCell.xaml" Margin="0,81,0,-212"/>
+                    <mui:ModernFrame Grid.Row="1" Source="/Content/View/Registre/IdentitySheet.xaml" Margin="0,81,0,-212"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

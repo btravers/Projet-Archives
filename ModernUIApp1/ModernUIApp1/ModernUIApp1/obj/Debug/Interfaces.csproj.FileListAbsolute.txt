@@ -106,8 +106,6 @@ C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\Mod
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Search\SearchTable.baml
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\MainContent.baml
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\Toolbar.baml
-C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\Iconbar.baml
-C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentCell.baml
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Search.baml
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Authentification\Register.g.cs
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Authentification\Authentification.g.cs
@@ -117,8 +115,16 @@ C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\Mod
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\Search\SearchTable.g.cs
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\MainContent.g.cs
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Common\Toolbar.g.cs
-C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\Iconbar.g.cs
-C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentCell.g.cs
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Pages\Search.g.cs
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Interfaces.csprojResolveAssemblyReference.cache
 C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\ModernUIApp1_Content.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\AnnotationCell.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\DocumentViewer.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentitySheetViewer.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\ShortcutBar.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentitySheet.baml
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\AnnotationCell.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\DocumentViewer.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentitySheetViewer.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\ShortcutBar.g.cs
+C:\Users\Tosh\Documents\projet\git\Projet-Archives\ModernUIApp1\ModernUIApp1\ModernUIApp1\obj\Debug\Content\View\Registre\IdentitySheet.g.cs

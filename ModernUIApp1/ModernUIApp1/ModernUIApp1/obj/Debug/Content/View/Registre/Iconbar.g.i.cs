@@ -42,7 +42,7 @@ namespace ModernUIApp1.Content.View.Registre {
     /// <summary>
     /// Iconbar
     /// </summary>
-    public partial class Iconbar : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
+    public partial class ShortcutBar : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
         
         private bool _contentLoaded;
         

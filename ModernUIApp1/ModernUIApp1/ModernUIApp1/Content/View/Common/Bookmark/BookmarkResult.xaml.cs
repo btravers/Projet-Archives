@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModernUIApp1.Content.View.Registre
+namespace ModernUIApp1.Content.Bookmark
 {
     /// <summary>
-    /// Interaction logic for Iconbar.xaml
+    /// Interaction logic for BookmarkResult.xaml
     /// </summary>
-    public partial class Iconbar : UserControl
+    public partial class BookmarkResult : UserControl
     {
-        public Iconbar()
+        public BookmarkResult()
         {
             InitializeComponent();
         }

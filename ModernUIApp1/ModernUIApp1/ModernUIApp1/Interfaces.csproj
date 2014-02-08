@@ -65,6 +65,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Content\View\Common\Bookmark\BookmarkCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Common\Bookmark\BookmarkResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Content\Search\SearchImageCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,11 +97,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\View\Registre\Iconbar.xaml">
+    <Page Include="Content\View\Registre\AnnotationCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\View\Registre\IdentCell.xaml">
+    <Page Include="Content\View\Common\Bookmark\BookmarkViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Registre\IdentitySheetViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Registre\ShortcutBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Registre\IdentitySheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,6 +126,12 @@
     </Compile>
     <Compile Include="Content\Authentification\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\Bookmark\BookmarkCell.xaml.cs">
+      <DependentUpon>BookmarkCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\Bookmark\BookmarkResult.xaml.cs">
+      <DependentUpon>BookmarkResult.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\Search\SearchImageCell.xaml.cs">
       <DependentUpon>SearchImageCell.xaml</DependentUpon>
@@ -126,11 +152,20 @@
     <Compile Include="Content\View\Common\Toolbar.xaml.cs">
       <DependentUpon>Toolbar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\View\Registre\Iconbar.xaml.cs">
-      <DependentUpon>Iconbar.xaml</DependentUpon>
+    <Compile Include="Content\View\Registre\AnnotationCell.xaml.cs">
+      <DependentUpon>AnnotationCell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\View\Registre\IdentCell.xaml.cs">
-      <DependentUpon>IdentCell.xaml</DependentUpon>
+    <Compile Include="Content\View\Common\Bookmark\BookmarkViewer.xaml.cs">
+      <DependentUpon>BookmarkViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Registre\IdentitySheetViewer.xaml.cs">
+      <DependentUpon>IdentitySheetViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Registre\ShortcutBar.xaml.cs">
+      <DependentUpon>ShortcutBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Registre\IdentitySheet.xaml.cs">
+      <DependentUpon>IdentitySheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

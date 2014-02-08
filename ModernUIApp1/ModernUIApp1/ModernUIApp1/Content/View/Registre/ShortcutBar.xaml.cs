@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ModernUIApp1.Content.View.Registre
 {
     /// <summary>
-    /// Interaction logic for IdentCell.xaml
+    /// Interaction logic for ShortcutBar.xaml
     /// </summary>
-    public partial class IdentCell : UserControl
+    public partial class ShortcutBar : UserControl
     {
-        public IdentCell()
+        public ShortcutBar()
         {
             InitializeComponent();
         }
