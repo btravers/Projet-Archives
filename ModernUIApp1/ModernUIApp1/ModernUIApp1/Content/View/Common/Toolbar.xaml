@@ -4,20 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d">
     <Grid Style="{StaticResource ContentRoot}">
-        <ScrollViewer>
-            <StackPanel MinWidth="200">
-                    <ToolBar>
-                        <Slider Width="150" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
-                        <Slider Width="150" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
-                        <Button Content="Undo">
-                        </Button>
-                        <Button Content="Redo">
-                        </Button>
-                    </ToolBar>
+            <StackPanel>
+                <Expander Header="Views" ExpandDirection="Down" >
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label  Content="Zoom" />
+                        <Slider MinWidth="100" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label  Content="Luminosité" />
+                        <Slider MinWidth="100" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
+                    </StackPanel>
+                    <Button  Content="Undo" />
+                    <Button  Content="Redo" />
+                </StackPanel>
+            </Expander>
             </StackPanel>
-        </ScrollViewer>
     </Grid>
 </UserControl>

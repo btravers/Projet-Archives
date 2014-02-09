@@ -4,37 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d">
     <Grid Style="{StaticResource ContentRoot}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="6"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+  
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Frame Source="/Content/View/Common/Toolbar.xaml"/>
+                </StackPanel>
 
-        <ScrollViewer Margin="{StaticResource SplitLeft}">
-            <StackPanel>
-                <ScrollViewer>
-                    <mui:ModernFrame Source="/Content/View/Common/Toolbar.xaml"/>
-                </ScrollViewer>
-                <ScrollViewer>
-                    <mui:ModernFrame Source="/Content/View/Common/MainContent.xaml"/>
-                </ScrollViewer>
-                <GridSplitter Height="6" />
-                <ScrollViewer>
-                    <mui:ModernFrame Source="/Content/View/Registre/ShortcutBar.xaml"/>
-                </ScrollViewer>
-            </StackPanel>
-        </ScrollViewer>
-        <GridSplitter Grid.Column="1" />
-        <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
-            <StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <Frame Source="/Content/View/Common/Bookmark/BookmarkViewer.xaml"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                    <Frame Source="/Content/View/Registre/IdentitySheet.xaml"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                    <Frame Source="/Content/View/Registre/ShortcutBar.xaml"/>
+                </StackPanel>
+
                 <Grid>
-                    <TextBlock Text="Identité" Style="{StaticResource Heading2}" />
-                    <mui:ModernFrame Grid.Row="1" Source="/Content/View/Registre/IdentitySheet.xaml" Margin="0,81,0,-212"/>
+                    <Frame Source="/Content/View/Common/TestPage.xaml"/>
                 </Grid>
-            </StackPanel>
-        </ScrollViewer>
+            </DockPanel>
+       
     </Grid>
 </UserControl>

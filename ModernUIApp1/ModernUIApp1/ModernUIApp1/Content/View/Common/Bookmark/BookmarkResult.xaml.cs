@@ -23,6 +23,8 @@ namespace ModernUIApp1.Content.Bookmark
         public BookmarkResult()
         {
             InitializeComponent();
+
+            this.DataContext = new BookmarkViewModel();
         }
     }
 }

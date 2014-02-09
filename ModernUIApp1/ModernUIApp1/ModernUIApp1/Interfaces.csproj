@@ -93,6 +93,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Content\View\Common\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Content\View\Common\Toolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,8 +150,12 @@
     <Compile Include="Content\Search\SearchTable.xaml.cs">
       <DependentUpon>SearchTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\View\Common\Bookmark\BookmarkResultViewModel.cs" />
     <Compile Include="Content\View\Common\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\View\Common\Toolbar.xaml.cs">
       <DependentUpon>Toolbar.xaml</DependentUpon>
