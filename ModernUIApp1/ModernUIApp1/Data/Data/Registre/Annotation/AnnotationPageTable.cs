@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Data.Registre.Annotation
 {
-    class AnnotationTable
+    class AnnotationPageTable
     {
     }
 }
