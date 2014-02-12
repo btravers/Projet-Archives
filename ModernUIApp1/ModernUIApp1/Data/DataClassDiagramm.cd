@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Data.Data.Registre.Annotation.AnnotationPageTable">
+    <Position X="0.75" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAQAQAAAAAAAIAAAAAAAAABiAAAAAQA=</HashCode>
+      <FileName>Data\Registre\Annotation\AnnotationPageTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.Registre.Annotation.AnnotationSheet">
+    <Position X="3.25" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAABAAAIAABgAACAAQA=</HashCode>
+      <FileName>Data\Registre\Annotation\AnnotationSheet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.Registre.PageTable">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAQAUIAAAAAAAAAIAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Data\Registre\PageTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.Registre.Register">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAACAAAAAAAAACAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\Registre\Register.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.Registre.Sheet">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACQAUIAAAAAAAAAIAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Data\Registre\Sheet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.BookmarkFile">
+    <Position X="9" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>gEAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Users\Bookmark\BookmarkFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.User">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgAAAAAAgAAAAAAAAAIAAAAgAAAAA=</HashCode>
+      <FileName>Data\Users\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.Users.Bookmark.BookmarkFolder">
+    <Position X="6" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAIAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Users\Bookmark\BookmarkFolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.Users.Shortcut.Shortcut">
+    <Position X="7.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Data\Users\Shortcut\Shortcut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Data.Users.Shortcut.Type">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Users\Shortcut\Type.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

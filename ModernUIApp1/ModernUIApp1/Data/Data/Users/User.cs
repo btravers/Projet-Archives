@@ -8,5 +8,11 @@ namespace Data.Data
 {
     class User
     {
+        int id_user;
+
+        String id_session;
+        String email;
+        String password;
+        int status;
     }
 }

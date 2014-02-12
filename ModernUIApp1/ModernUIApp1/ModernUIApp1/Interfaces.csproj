@@ -225,6 +225,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="InterfacesClassDiagramm.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

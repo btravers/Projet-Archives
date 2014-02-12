@@ -39,20 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Registre\Annotation\AnnotationPageTable.cs" />
     <Compile Include="Data\Registre\Annotation\AnnotationSheet.cs" />
-    <Compile Include="Data\Registre\Annotation\AnnotationTable.cs" />
-    <Compile Include="Data\Registre\Registre.cs" />
+    <Compile Include="Data\Registre\PageTable.cs" />
+    <Compile Include="Data\Registre\Register.cs" />
     <Compile Include="Data\Registre\Sheet.cs" />
-    <Compile Include="Data\Registre\Table.cs" />
-    <Compile Include="Data\User\Bookmark\BookmarkFile.cs" />
-    <Compile Include="Data\Registre\Image.cs" />
-    <Compile Include="Data\User\Bookmark\BookmarkFolder.cs" />
-    <Compile Include="Data\User\Shortcut\Shortcut.cs" />
-    <Compile Include="Data\User\Shortcut\Type.cs" />
-    <Compile Include="Data\User\User.cs" />
+    <Compile Include="Data\Users\Bookmark\BookmarkFile.cs" />
+    <Compile Include="Data\Users\Bookmark\BookmarkFolder.cs" />
+    <Compile Include="Data\Users\Shortcut\Shortcut.cs" />
+    <Compile Include="Data\Users\Shortcut\Type.cs" />
+    <Compile Include="Data\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="DataClassDiagramm.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

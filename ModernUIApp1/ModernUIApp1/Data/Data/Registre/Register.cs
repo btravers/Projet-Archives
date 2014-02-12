@@ -8,5 +8,10 @@ namespace Data.Data.Registre
 {
     class Register
     {
+        int id_register;
+
+        String location;
+        int year;
+        int volume;
     }
 }

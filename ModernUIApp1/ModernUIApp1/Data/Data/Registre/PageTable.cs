@@ -8,5 +8,12 @@ namespace Data.Data.Registre
 {
     class PageTable
     {
+        int id_page_table;
+        Register register;
+
+        int page;
+        String url;
+        int size;
+        int width, height;
     }
 }
