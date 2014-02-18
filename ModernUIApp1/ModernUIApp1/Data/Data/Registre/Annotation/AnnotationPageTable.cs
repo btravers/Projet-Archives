@@ -9,7 +9,7 @@ namespace Data.Data.Registre.Annotation
 {
     class AnnotationPageTable
     {
-        int id_annotation_page_table;
+        public int id_annotation_page_table;
         PageTable page_table;
         String user;
 

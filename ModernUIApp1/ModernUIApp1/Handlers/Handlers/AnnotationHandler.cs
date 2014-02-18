@@ -11,6 +11,14 @@ namespace Handlers.Handlers
     {
         public AnnotationPageTable getAnnotationPageTableByPageTableId(int page_table_id)
         {
+            // Keep the page table
+            
+            // Request
+
+            // Parse XML
+                // Add to the PageTable.annotation if it isnt already load
+                
+
             throw new NotImplementedException();
         }
 
