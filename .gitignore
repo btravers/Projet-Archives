@@ -16,8 +16,14 @@ Rapports/Specifications/main.out
 Rapports/Specifications/main.synctex.gz
 Rapports/Specifications/main.toc
 
-ModernUIApp1/ModernUIApp1/ModernUIApp1/bin/Debug/*
-ModernUIApp1/ModernUIApp1/ModernUIApp1/obj/Debug/*
+ModernUIApp1/ModernUIApp1/ModernUIApp1/bin/
+ModernUIApp1/ModernUIApp1/ModernUIApp1/obj/
+ModernUIApp1/ModernUIApp1/Data/obj/
+ModernUIApp1/ModernUIApp1/Data/bin/
+ModernUIApp1/ModernUIApp1/Data/obj/
+
+bin/
+obj/
 
 */bin/Debug/*
 */obj/Debug/*
