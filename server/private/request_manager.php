@@ -11,7 +11,8 @@ class RequestManager
 	 */
 	public function main()
 	{
-		echo $this->parse($_GET);
+		$request = $this->parse($_GET);
+		$data = $this->exec($request);
 		echo "done.";
 	}
 
@@ -25,6 +26,7 @@ class RequestManager
 		$function = $url['function'];
 		$args = explode("/", $url['args']);
 
+		// Transform helper string in abstract class Helper
 		switch($helper) {
 			case "authentificator":
 				$helperType = Helper::Authentificator;
@@ -43,7 +45,8 @@ class RequestManager
 	 */
 	public function exec($request)
 	{
-
+		$execFunction = Bootstrap::loadHelper($request->helper);
+		$execFunction($request);
 	}
 
 	/**

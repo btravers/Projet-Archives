@@ -7,6 +7,14 @@
 class Authentificator
 {
 	/**
+	 * Parse request and exec right function
+	 */
+	public static function exec($request)
+	{
+		echo $request;
+	}
+
+	/**
 	 * Login
 	 */
 	public static function login($email, $password)
