@@ -38,7 +38,12 @@ class Bootstrap
 		switch($helper) {
 			case Helper::Authentificator:
 				require_once("helpers/authentificator.php");
-				break;		
+				$function = new ReflectionMethod('Authentificator::exec');
+				return $function->getClosure();
+			default:
+				require_once("helpers/error.php");
+				$function = new ReflectionMethod('Error::exec');
+				return $function->getClosure();
 		}
 	}
 }
