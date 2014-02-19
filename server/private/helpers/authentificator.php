@@ -11,7 +11,7 @@ class Authentificator
 	 */
 	public static function exec($request)
 	{
-		echo $request;
+		return $request;
 	}
 
 	/**

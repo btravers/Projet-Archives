@@ -13,6 +13,6 @@ class Error
 	 */
 	public static function exec($request)
 	{
-		echo "error " . $request->function;
+		return "error " . $request->function;
 	}
 }
