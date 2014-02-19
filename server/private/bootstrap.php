@@ -20,6 +20,8 @@ class Bootstrap
 	{		
 		// include main files
 		require_once("database.php");
+		require_once("helpers/error.php");
+		require_once("request.php");
 		require_once("request_manager.php");
 
 		Bootstrap::$requestManager = new RequestManager();
@@ -27,21 +29,22 @@ class Bootstrap
 	}
 	
 	/**
-	 * Load specific module
-	 * @see abstract class Module
+	 * Load specific helper
+	 * @see abstract class Helper
 	 */
-	public static function loadModule($module)
+	public static function loadHelper($helper)
 	{
-		// include module
-		switch($module) {
-			case Module::Authentificator:
-				require_once("modules/authentificator.php");
+		// include helper
+		switch($helper) {
+			case Helper::Authentificator:
+				require_once("helpers/authentificator.php");
 				break;		
 		}
 	}
 }
 
-abstract class Module
+abstract class Helper
 {
 	const Authentificator = 0;
+	const Error = 100;
 }
