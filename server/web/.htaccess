@@ -1,0 +1,6 @@
+DirectoryIndex index.php
+RewriteEngine on
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !=/favicon.ico
+RewriteRule ^/([a-z]+)/([a-z]+)/([\w/]+)$ /index.php?helper=$1&function=$2&args=$3
