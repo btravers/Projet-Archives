@@ -13,6 +13,7 @@ class RequestManager
 	{
 		$request = $this->parse($_GET);
 		$data = $this->exec($request);
+		$this->printXML($data);
 		echo "done.";
 	}
 
@@ -46,22 +47,14 @@ class RequestManager
 	public function exec($request)
 	{
 		$execFunction = Bootstrap::loadHelper($request->helper);
-		$execFunction($request);
-	}
-
-	/**
-	 * Check if the session id exists in database
-	 */
-	public function isConnected($sessionId)
-	{
-
+		return $execFunction($request);
 	}
 
 	/**
 	 * Transform data to XML and print
 	 */
 	public function printXML($data)
-	{
-
+	{		
+		print_r($data);
 	}
 }
