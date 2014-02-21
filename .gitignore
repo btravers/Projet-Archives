@@ -36,3 +36,5 @@ obj/
 *.sln
 *.g.cs
 *.g.i.cs
+
+server/private/password.php
