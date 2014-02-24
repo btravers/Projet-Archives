@@ -51,8 +51,13 @@ class Database
 	/**
 	 * Check if the session id exists in database
 	 */
-	public static function isConnected($sessionId)
+	public static function getUser($sessionId)
 	{
-
+		$result = Database::query("SELECT * FROM User WHERE session_id = '" . $sessionId . "'");
+		if(count($result) > 0) {
+			return $result[0]["session_id"];
+		} else {
+			return -1;
+		}
 	}
 }
