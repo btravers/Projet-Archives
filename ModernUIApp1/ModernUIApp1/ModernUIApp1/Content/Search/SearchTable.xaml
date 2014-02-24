@@ -14,7 +14,7 @@
                 <Slider Name="yearSlider" Minimum="1880" IsSnapToTickEnabled="True" SmallChange="1" Maximum="1918" Value="1890" TickPlacement="BottomRight" Background="Transparent"/>
                 <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Commune"/></TextBlock>
                 <Grid>
-                    <TextBox Height="23" Width="152" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2" TextAlignment="Center" Text="Rechercher" ToolTip="Rechercher"/>
+                    <TextBox Height="23" Width="152" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2" TextAlignment="Left" Text="Commune" Foreground="DarkGray"/>
                     <Button Content="Rechercher" Height="25" Width="152" Margin="157,0,10,0"/>
                 </Grid>
             </StackPanel>

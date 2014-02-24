@@ -23,6 +23,14 @@ namespace ModernUIApp1.Content
         public SearchRegistre()
         {
             InitializeComponent();
+
+            // Event manager for edit text year value
+            this.yearSlider.ValueChanged += yearSlider_ValueChanged;
+        }
+
+        private void yearSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.yearValue.Text = e.NewValue.ToString();
         }
     }
 }
