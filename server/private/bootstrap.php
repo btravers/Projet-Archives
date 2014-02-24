@@ -30,13 +30,13 @@ class Bootstrap
 	
 	/**
 	 * Load specific helper
-	 * @see abstract class Helper
+	 * @see abstract class HelperEnum
 	 */
 	public static function loadHelper($helper)
 	{
 		// include helper
 		switch($helper) {
-			case Helper::Authentificator:
+			case HelperEnum::Authentificator:
 				require_once("helpers/authentificator.php");
 				$function = new ReflectionMethod('Authentificator::exec');
 				return $function->getClosure();
@@ -48,7 +48,7 @@ class Bootstrap
 	}
 }
 
-abstract class Helper
+abstract class HelperEnum
 {
 	const Authentificator = 0;
 	const Error = 100;

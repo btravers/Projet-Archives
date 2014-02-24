@@ -11,7 +11,8 @@ class Authentificator
 	 */
 	public static function exec($request)
 	{
-		return $request;
+		$function = new ReflectionMethod(get_called_class(), $request->function);
+		return $function->invokeArgs(NULL, $request->arguments);
 	}
 
 	/**
@@ -19,7 +20,7 @@ class Authentificator
 	 */
 	public static function login($email, $password)
 	{
-		
+		return array("session_id" => "lololol");
 	}
 
 	/**

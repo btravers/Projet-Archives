@@ -22,7 +22,7 @@
                 </Grid>
              </StackPanel>
         </ScrollViewer>
-        <GridSplitter Grid.Column="1" />
+        <Rectangle Grid.Column="1" Fill="LightGray"/>
         <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
             <StackPanel>
                 <Grid>
