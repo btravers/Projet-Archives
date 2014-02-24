@@ -9,7 +9,7 @@ namespace Data.Data.Registre
 {
     class PageTable
     {
-        int id_page_table;
+        public int id_page_table;
         Register register;
 
         int page;
@@ -20,6 +20,8 @@ namespace Data.Data.Registre
         /* Dictionnary contains all annotation which refers to the page table */
         Dictionary<int, AnnotationPageTable> annotations_page_table;
 
+        /* Constructors */
+        /* TODO : We have to determine what attributes we need */
         public PageTable()
         {
             annotations_page_table = new Dictionary<int, AnnotationPageTable>();
@@ -29,6 +31,19 @@ namespace Data.Data.Registre
         {
             this.id_page_table = id_page_table;
             this.url = url;
+
+            annotations_page_table = new Dictionary<int, AnnotationPageTable>();
+        }
+
+        public PageTable(int id_page_table, Register register, int page, String url, int size, int width, int height)
+        {
+            this.id_page_table = id_page_table;
+            this.register = register;
+            this.page = page;
+            this.url = url;
+            this.size = size;
+            this.width = width;
+            this.height = height;
 
             annotations_page_table = new Dictionary<int, AnnotationPageTable>();
         }
