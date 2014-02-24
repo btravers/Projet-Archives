@@ -16,7 +16,7 @@ namespace Handlers.Handlers
             // Request
 
             // Parse XML
-                // Add to the PageTable.annotation if it isnt already load
+                // Add to the PageTable.annotation if it isnt already loaded
                 
 
             throw new NotImplementedException();
