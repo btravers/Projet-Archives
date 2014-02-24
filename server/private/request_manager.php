@@ -14,7 +14,7 @@ class RequestManager
 		$request = $this->parse($_GET);
 		$data = $this->exec($request);
 		$this->printXML($data);
-		echo "done.";
+		//echo "done.";
 	}
 
 	/**
@@ -27,13 +27,13 @@ class RequestManager
 		$function = $url['function'];
 		$args = explode("/", $url['args']);
 
-		// Transform helper string in abstract class Helper
+		// Transform helper string in abstract class HelperEnum
 		switch($helper) {
 			case "authentificator":
-				$helperType = Helper::Authentificator;
+				$helperType = HelperEnum::Authentificator;
 				break;
 			default:
-				$helperType = Helper::Error;
+				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;
 				break;
 		}
@@ -51,10 +51,34 @@ class RequestManager
 	}
 
 	/**
-	 * Transform data to XML and print
+	 * Print XML
 	 */
 	public function printXML($data)
-	{		
-		print_r($data);
+	{
+		$xml = new SimpleXMLElement('<response/>');
+		$this->array_to_xml($data, $xml);
+		print $xml->asXML();
+	}
+
+	/**
+	 * Transform data to XML
+	 * @see SimpleXMLElement
+	 */
+	function array_to_xml($student_info, &$xml_student_info) {
+	    foreach($student_info as $key => $value) {
+	        if(is_array($value)) {
+	            if(!is_numeric($key)){
+	                $subnode = $xml_student_info->addChild("$key");
+	                $this->array_to_xml($value, $subnode);
+	            }
+	            else{
+	                $subnode = $xml_student_info->addChild("item$key");
+	                $this->array_to_xml($value, $subnode);
+	            }
+	        }
+	        else {
+	            $xml_student_info->addChild("$key","$value");
+	        }
+	    }
 	}
 }
