@@ -39,6 +39,7 @@ class Authentificator
 	{
 		$idUser = Database::getUser($sessionId);
 		if($idUser != -1) {
+			Database::exec("UPDATE User SET session_id = '' WHERE id_user = '" . $idUser."'");
 			return array("message" => "disconnected");
 		} else {
 			return array("message" => "user_not_found");
@@ -50,6 +51,12 @@ class Authentificator
 	 */
 	public static function register($email, $password)
 	{
-
+		$result = Database::query("SELECT * FROM User WHERE email = '" . $email . "'");
+		if(count($result) > 0) {
+			return array("message" => "user_already_exists");
+		} else {
+			Database::exec("INSERT INTO User VALUES ('', '', '" . $email . "', '" . sha1($password) . "', 1)");
+			return array("message" => "registered");
+		}
 	}
 }
