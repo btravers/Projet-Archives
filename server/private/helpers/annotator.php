@@ -16,40 +16,31 @@ class Annotator
 	}
 
 	/**
-	 * Login
+	 * Annotate a Table with a position and a number
 	 */
-	public static function login($email, $password)
-	{
-		$passwordCrypt = sha1($password);
-
-		$result = Database::query("SELECT * FROM User WHERE email = '" . $email . "' AND password = '" . $passwordCrypt . "'");
-		if(count($result) > 0) {
-			$sessionId = sha1(microtime() . $email);
-			Database::exec("UPDATE User SET session_id = '" . $sessionId . "' WHERE id_user = " . $result[0]["id_user"]);
-			return array("message" => "connected", "session_id" => $sessionId);
-		} else {
-			return array("message" => "user_not_found");
-		}
-	}
-
-	/**
-	 * Transform url in php function
-	 */
-	public static function logout($sessionId)
+	public static function annotate_table($id_session, $idTable, $page, $x, $y, $height, $width, $number)
 	{
 		$idUser = Database::getUser($sessionId);
 		if($idUser != -1) {
-			return array("message" => "disconnected");
+			Database::exec("INSERT INTO AnnotationPageTable VALUES ('', '" . $idTable . "', '" . $idUser . "', '" . $x . "', , '" . $y . "', '" . $width . "', '" . $height . "', '" . $number . "')");
+			return array("message" => "registered");
 		} else {
 			return array("message" => "user_not_found");
 		}
 	}
 
 	/**
-	 * Exec the parsed request
+	 * Annotate a Sheet with a position and a string
 	 */
-	public static function register($email, $password)
+	public static function annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation)
 	{
-
+		$idUser = Database::getUser($sessionId);
+		if($idUser != -1) {
+			Database::exec("INSERT INTO AnnotationSheet VALUES ('', '" . $idSheet . "', '" . $idTtype . "', '" . $idUser . "' '" . $x . "', , '" . $y . "', '" . $annotation . "')");
+			return array("message" => "registered");
+		} else {
+			return array("message" => "user_not_found");
+		}
 	}
+
 }
