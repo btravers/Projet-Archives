@@ -18,11 +18,11 @@ class Annotator
 	/**
 	 * Annotate a Table with a position and a number
 	 */
-	public static function annotate_table($id_session, $idTable, $page, $x, $y, $height, $width, $number)
+	public static function annotate_table($id_session, $idTable, $x, $y, $height, $width, $number)
 	{
-		$idUser = Database::getUser($sessionId);
+		$idUser = Database::getUser($id_session);
 		if($idUser != -1) {
-			Database::exec("INSERT INTO AnnotationPageTable VALUES ('', '" . $idTable . "', '" . $idUser . "', '" . $x . "', , '" . $y . "', '" . $width . "', '" . $height . "', '" . $number . "')");
+			Database::exec("INSERT INTO AnnotationPageTable VALUES ('', '" . $idTable . "', '" . $idUser . "', '" . $x . "', '" . $y . "', '" . $width . "', '" . $height . "', '" . $number . "')");
 			return array("message" => "registered");
 		} else {
 			return array("message" => "user_not_found");
@@ -42,5 +42,6 @@ class Annotator
 			return array("message" => "user_not_found");
 		}
 	}
+
 
 }
