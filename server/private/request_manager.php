@@ -33,6 +33,9 @@ class RequestManager
 			case "authentificator":
 				$helperType = HelperEnum::Authentificator;
 				break;
+			case "annotator":
+				$helperType = HelperEnum::Annotator;
+				break;
 			default:
 				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;
