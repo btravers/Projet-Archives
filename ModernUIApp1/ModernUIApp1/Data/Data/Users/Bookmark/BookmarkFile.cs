@@ -10,10 +10,22 @@ namespace Data.Data
 {
     class BookmarkFile
     {
-        int id_bookmark_file;
+        public int id_bookmark_file;
         Sheet id_sheet;
-        BookmarkFolder bookmarkFolder;
+        BookmarkFolder bookmarkFolderParent;
 
         String label;
+
+        /* Constructors */
+        public BookmarkFile()
+        {
+        }
+
+        public BookmarkFile(int id_bookmark_file, Sheet id_sheet, BookmarkFolder bookmarkFolderParent)
+        {
+            this.id_bookmark_file = id_bookmark_file;
+            this.id_sheet = id_sheet;
+            this.bookmarkFolderParent = bookmarkFolderParent;
+        }
     }
 }

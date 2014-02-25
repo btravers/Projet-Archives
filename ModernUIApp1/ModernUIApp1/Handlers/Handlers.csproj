@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\Cache.cs" />
     <Compile Include="Handlers\AnnotationHandler.cs" />
     <Compile Include="Handlers\BookmarkHandler.cs" />
     <Compile Include="Handlers\RegistreHandler.cs" />

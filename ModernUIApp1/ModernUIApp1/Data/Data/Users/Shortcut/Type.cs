@@ -10,5 +10,16 @@ namespace Data.Data.Users.Shortcut
     {
         int id_type;
         String label;
+
+        /* Constructors */
+        public Type()
+        {
+        }
+
+        public Type(int id_type, String label)
+        {
+            this.id_type = id_type;
+            this.label = label;
+        }
     }
 }
