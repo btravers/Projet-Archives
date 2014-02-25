@@ -55,7 +55,7 @@ class Database
 	{
 		$result = Database::query("SELECT * FROM User WHERE session_id = '" . $sessionId . "'");
 		if(count($result) > 0) {
-			return $result[0]["session_id"];
+			return $result[0]["id_user"];
 		} else {
 			return -1;
 		}

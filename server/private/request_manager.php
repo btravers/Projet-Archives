@@ -11,7 +11,7 @@ class RequestManager
 	 */
 	public function main()
 	{
-		header ("Content-Type:text/xml");
+		// header ("Content-Type:text/xml");
 
 		$request = $this->parse($_GET);
 		$data = $this->exec($request);
@@ -32,6 +32,9 @@ class RequestManager
 		switch($helper) {
 			case "authentificator":
 				$helperType = HelperEnum::Authentificator;
+				break;
+			case "annotator":
+				$helperType = HelperEnum::Annotator;
 				break;
 			default:
 				$helperType = HelperEnum::Error;
