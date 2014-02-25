@@ -40,6 +40,10 @@ class Bootstrap
 				require_once("helpers/authentificator.php");
 				$function = new ReflectionMethod('Authentificator::exec');
 				return $function->getClosure();
+			case HelperEnum::Annotator:
+				require_once("helpers/annotator.php");
+				$function = new ReflectionMethod('Annotator::exec');
+				return $function->getClosure();
 			default:
 				require_once("helpers/error.php");
 				$function = new ReflectionMethod('Error::exec');
@@ -51,5 +55,6 @@ class Bootstrap
 abstract class HelperEnum
 {
 	const Authentificator = 0;
+	const Annotator = 1;
 	const Error = 100;
 }
