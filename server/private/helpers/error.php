@@ -15,7 +15,7 @@ class Error
 	{
 		switch($request->function) {
 			case Error::HelperNotFound:
-				return array("error" => array("message" => "helper_not_found"));
+				return array("helper" => "error", "message" => "helper_not_found");
 		}
 	}
 }

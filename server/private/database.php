@@ -34,8 +34,13 @@ class Database
 	public static function exec($sql) 
 	{
 		Database::connect();
-
-		Database::$connection->exec($sql);
+		
+		try
+		{
+			Database::$connection->exec($sql);
+		} catch(Exception $e) {
+			echo $e->getTraceAsString();
+		}
 	}
 	
 	/**
@@ -44,8 +49,17 @@ class Database
 	public static function query($sql)
 	{
 		Database::connect();
-
-		return Database::$connection->query($sql)->fetchAll();
+		
+		$result = array();
+		
+		try
+		{
+			$result = Database::$connection->query($sql)->fetchAll();
+		} catch(Exception $e) {
+			echo $e->getTraceAsString();
+		}
+		
+		return $result;
 	}
 
 	/**
