@@ -24,9 +24,18 @@ class RequestManager
 	 */
 	public function parse($url)
 	{
-		$helper = $url['helper'];
-		$function = $url['function'];
-		$args = explode("/", $url['args']);
+		if(isset($url['helper']))
+			$helper = $url['helper'];
+		else
+			$helper = "";
+		if(isset($url['function']))
+			$function = $url['function'];
+		else
+			$function = "";
+		if(isset($url['args']))
+			$args = explode("/", $url['args']);
+		else
+			$args = array();
 
 		// Transform helper string in abstract class HelperEnum
 		switch($helper) {

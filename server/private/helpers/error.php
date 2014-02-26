@@ -13,6 +13,9 @@ class Error
 	 */
 	public static function exec($request)
 	{
-		return "error " . $request->function;
+		switch($request->function) {
+			case Error::HelperNotFound:
+				return array("error" => array("message" => "helper_not_found"));
+		}
 	}
 }
