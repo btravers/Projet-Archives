@@ -24,7 +24,7 @@ class Authentificator
 
 		$result = Database::query("SELECT * FROM User WHERE email = '" . $email . "' AND password = '" . $passwordCrypt . "'");
 		if(count($result) > 0) {
-			$sessionId = sha1(microtime() . $email);
+			$sessionId = sha1(microtime() . $email . $passwordCrypt);
 			Database::exec("UPDATE User SET session_id = '" . $sessionId . "' WHERE id_user = " . $result[0]["id_user"]);
 			return array("helper" => "authentificator", "message" => "connected", "session_id" => $sessionId);
 		} else {
