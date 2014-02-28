@@ -36,7 +36,7 @@ class RequestManager
 		if(isset($url['args']))
 			$args = explode("/", $url['args']);
 		else
-			$args = array();
+			$args = array();		
 
 		// Transform helper string in abstract class HelperEnum
 		switch($helper) {
@@ -50,6 +50,12 @@ class RequestManager
 				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;
 				break;
+		}
+
+		// Check if user is not using url rewritting
+		if($_SERVER["SCRIPT_NAME"] == "/index.php") {
+			$helperType = HelperEnum::Error;
+			$function = Error::SecurityException;
 		}
 
 		return new Request($helperType, $function, $args);
