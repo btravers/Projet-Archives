@@ -16,36 +16,36 @@ class Browser
 	}
 
 	/**
-	 * Get a page of a table
+	 * Get a Page of a Table
 	 */
-	public static function getPageTable($idTable, $page)
+	public static function getPageTable($idRegister, $page)
 	{
 		// TODO
 		return array();
 	}
 
 	/**
-	 * Get a table
+	 * Get a Table
 	 */
-	public static function getTable($idTable, $page, $year)
+	public static function getTable($idRegister, $page, $year)
 	{
 		// TODO
 		return array();
 	}
 
 	/**
-	 * Get sheets between start and end
+	 * Get Sheets between start and end
 	 */
-	public static function getFiche($idTable, $start, $end)
+	public static function getSheet($idRegister, $start, $end)
 	{
 		// TODO
 		return array();
 	}
 
 	/**
-	 * Get the sheet with the matricule number
+	 * Get the Sheet with the matricule number
 	 */
-	public static function getFiche($idTable, $numeroMatricule)
+	public static function getSheet($idRegister, $matriculeNumber)
 	{
 		// TODO
 		return array();
