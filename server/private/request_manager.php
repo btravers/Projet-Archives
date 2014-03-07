@@ -46,6 +46,9 @@ class RequestManager
 			case "annotator":
 				$helperType = HelperEnum::Annotator;
 				break;
+			case "browser":
+				$helperType = HelperEnum::Browser;
+				break;
 			default:
 				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;
