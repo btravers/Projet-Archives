@@ -4,22 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Data.Registre.Annotation;
+using ModernUIApp1.Handlers.Utils.Parsers;
+using Data.Data.Registre;
 
 namespace Handlers.Handlers
 {
     public class AnnotationHandler
     {
-        public AnnotationPageTable getAnnotationPageTableByPageTableId(int page_table_id)
+        public List<AnnotationPageTable> getAnnotationPageTableByPageTableId(int page_table_id)
         {
             // Keep the page table
-            
+            PageTable pageTable = new PageTable(); // RegistreHandler.findPageTableById(...)
+
             // Request
+            String xmlResponse = ""; // Connection.send(...)
 
             // Parse XML
-                // Add to the PageTable.annotation if it isnt already loaded
-                
+            foreach (AnnotationPageTable a in Parser.ParseAnnotationPageTable(xmlResponse))
+            {
+                // Add to the PageTable.annotation if it isnt already loaded or if it's modified
+                // TODO : redefine equals ?
+                if (!pageTable.annotations_page_table.ContainsKey(a.id_annotation_page_table) || !pageTable.annotations_page_table.ContainsValue(a))
+                    pageTable.addAnnotation(a);
+            }
 
-            throw new NotImplementedException();
+            return pageTable.annotations_page_table.Values.ToList();
         }
 
         public List<AnnotationPageTable> getAnnotationPageTableByText(String text)
@@ -27,7 +36,7 @@ namespace Handlers.Handlers
             throw new NotImplementedException();
         }
 
-        public AnnotationSheet getAnnotationSheetBySheetId(int sheet_id)
+        public List<AnnotationSheet> getAnnotationSheetBySheetId(int sheet_id)
         {
             throw new NotImplementedException();
         }

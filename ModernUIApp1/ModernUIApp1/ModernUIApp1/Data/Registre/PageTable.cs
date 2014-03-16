@@ -18,7 +18,7 @@ namespace Data.Data.Registre
         int width, height;
 
         /* Dictionnary contains all annotation which refers to the page table */
-        Dictionary<int, AnnotationPageTable> annotations_page_table;
+        public Dictionary<int, AnnotationPageTable> annotations_page_table { get; private set; }
 
         /* Constructors */
         /* TODO : We have to determine what attributes we need */

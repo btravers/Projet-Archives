@@ -60,6 +60,7 @@
     <Compile Include="Handlers\SheetHandler.cs" />
     <Compile Include="Handlers\ShortcutHandler.cs" />
     <Compile Include="Handlers\TableHandler.cs" />
+    <Compile Include="Handlers\Utils\Authenticator.cs" />
     <Compile Include="Handlers\Utils\Connection.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

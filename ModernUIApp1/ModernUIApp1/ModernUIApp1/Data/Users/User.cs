@@ -26,5 +26,14 @@ namespace Data.Data
             this.id_session = id_session;
         }
 
+        public User(int id_user, String id_session, String email, String password, int status)
+        {
+            this.id_user = id_user;
+            this.id_session = id_session;
+            this.email = email;
+            this.password = password;
+            this.status = status;
+        }
+
     }
 }
