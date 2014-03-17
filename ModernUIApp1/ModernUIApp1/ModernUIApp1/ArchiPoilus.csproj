@@ -194,6 +194,7 @@
     <Compile Include="Data\Users\Shortcut\Shortcut.cs" />
     <Compile Include="Data\Users\Shortcut\Type.cs" />
     <Compile Include="Data\Users\User.cs" />
+    <Compile Include="Handlers\Utils\Parsers\Parser.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Data.Data.Registre.Annotation;
 using ModernUIApp1.Handlers.Utils.Parsers;
 using Data.Data.Registre;
+using Handlers.Utils;
 
 namespace Handlers.Handlers
 {
@@ -17,7 +18,7 @@ namespace Handlers.Handlers
             PageTable pageTable = new PageTable(); // RegistreHandler.findPageTableById(...)
 
             // Request
-            String xmlResponse = ""; // Connection.send(...)
+            String xmlResponse = Connection.getRequest(""); // Connection.send(...)
 
             // Parse XML
             foreach (AnnotationPageTable a in Parser.ParseAnnotationPageTable(xmlResponse))

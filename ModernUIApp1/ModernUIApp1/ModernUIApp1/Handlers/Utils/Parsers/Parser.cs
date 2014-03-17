@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.Data;
 
 namespace ModernUIApp1.Handlers.Utils.Parsers
 {
@@ -12,6 +13,11 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
     class Parser
     {
         public static List<AnnotationPageTable> ParseAnnotationPageTable(String xmlResponse) 
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<BookmarkFile> ParseBookmarkFile(String xmlResponse)
         {
             throw new NotImplementedException();
         }

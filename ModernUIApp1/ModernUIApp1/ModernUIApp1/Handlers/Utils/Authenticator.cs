@@ -14,8 +14,8 @@ namespace ModernUIApp1.Handlers.Utils
     {
         // regex taken from http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx/
         private static string EMAIL_PATTERN = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
-+ @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
-+ @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+            + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+            + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
 
         // SALT for encryption
         private static string SALT = "@RCH1 P01LU$";
@@ -23,7 +23,7 @@ namespace ModernUIApp1.Handlers.Utils
         /* SINGLETON */
         public static Authenticator AUTHENTICATOR { 
             get{ if (AUTHENTICATOR == null) AUTHENTICATOR = new Authenticator(); return AUTHENTICATOR; }
-            private set; 
+            private set { AUTHENTICATOR = value; } 
         }
 
         private User user;
