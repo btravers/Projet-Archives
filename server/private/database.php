@@ -74,4 +74,49 @@ class Database
 			return -1;
 		}
 	}
+
+	/**
+	 * Check if the table exists in database
+	 */
+	public static function existPageTable($idTable)
+	{
+		$result = Database::query("SELECT * FROM PageTable WHERE id_page_table = '" . $idTable . "'");
+		return (count($result) > 0);
+	}
+
+	/**
+	 * Check if the sheet exists in database
+	 */
+	public static function existSheet($idSheet)
+	{
+		$result = Database::query("SELECT * FROM Sheet WHERE id_sheet = '" . $idSheet . "'");
+		return (count($result) > 0);
+	}
+
+	/**
+	 * Check if the type exists in database
+	 */
+	public static function existType($idType)
+	{
+		$result = Database::query("SELECT * FROM Type WHERE id_type = '" . $idType . "'");
+		return (count($result) > 0);
+	}
+
+	/**
+	 * Check if the annotation on the table exists in database
+	 */
+	public static function existAnnotationTable($idAnnotationTable)
+	{
+		$result = Database::query("SELECT * FROM AnnotationPageTable WHERE id_annotation_page_table = '" . $idAnnotationTable . "'");
+		return (count($result) > 0);
+	}
+
+	/**
+	 * Check if the annotation on the sheet exists in database
+	 */
+	public static function existAnnotationTable($idAnnotationSheet)
+	{
+		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = '" . $idAnnotationSheet . "'");
+		return (count($result) > 0);
+	}
 }
