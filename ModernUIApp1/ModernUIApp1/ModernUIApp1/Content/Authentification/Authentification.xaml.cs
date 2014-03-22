@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernUIApp1.Handlers.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace ModernUIApp1.Content.Identification
         public Authentification()
         {
             InitializeComponent();
+        }
+
+        private void login_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(email.Text);
+            Console.WriteLine(password.Text);
+
+            Authenticator.AUTHENTICATOR.login(email.Text, password.Text);
         }
     }
 }

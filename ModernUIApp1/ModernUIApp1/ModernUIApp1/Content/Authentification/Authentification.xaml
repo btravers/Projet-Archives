@@ -12,13 +12,13 @@
             <StackPanel MinWidth="200">
                 <Grid>
                     <Label Content="Identifiant"/>
-                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                    <TextBox Name="email" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
                 </Grid>
                 <Grid>
                     <Label Content="Mot de passe"/>
-                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                    <TextBox Name="password" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
                 </Grid>
-                <Button Content="S'identifier" Width="170"/>
+                <Button Name="login" Content="S'identifier" Width="170" Click="login_Click"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

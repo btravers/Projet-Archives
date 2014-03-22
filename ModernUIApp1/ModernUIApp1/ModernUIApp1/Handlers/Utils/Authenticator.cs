@@ -22,9 +22,17 @@ namespace ModernUIApp1.Handlers.Utils
         private static string SALT = "@RCH1 P01LU$";
 
         /* SINGLETON */
-        public static Authenticator AUTHENTICATOR { 
-            get{ if (AUTHENTICATOR == null) AUTHENTICATOR = new Authenticator(); return AUTHENTICATOR; }
-            private set { AUTHENTICATOR = value; } 
+        private static Authenticator authenticator;
+        public static Authenticator AUTHENTICATOR {
+            get {
+                if (authenticator == null)
+                {
+                    authenticator = new Authenticator(); 
+                }
+
+                return authenticator;
+            }
+            private set { authenticator = value; }
         }
 
         private User user;
@@ -38,13 +46,16 @@ namespace ModernUIApp1.Handlers.Utils
         /* Encrypt a password */
         private String passwordEncryption(String password)
         {
+            // Debug
+            Console.WriteLine("encryption");
+
             // Salt it
             String saltedPassword = password + SALT;
 
             // Hash it
             SHA1 sha1 = SHA1.Create();
             sha1.ComputeHash(new ASCIIEncoding().GetBytes(saltedPassword));
-            
+
             // Return the encrypted password
             return Convert.ToBase64String(sha1.Hash);
         }
@@ -77,10 +88,10 @@ namespace ModernUIApp1.Handlers.Utils
             // Send a request register() to the server
             // Debug mode (with Console.write())
             String request = Resources.LinkResources.LinkRegister.Replace(Resources.LinkResources.Email, email).Replace(Resources.LinkResources.Password, passwordEncryption(password));
-            Console.Write(request);
+            Console.WriteLine(request);
 
             String response = Connection.getRequest(request);
-            Console.Write(response);
+            Console.WriteLine(response);
 
             return true;
         }
@@ -98,10 +109,11 @@ namespace ModernUIApp1.Handlers.Utils
             // Send a request login() to the server
             // Debug mode (with Console.write())
             String request = Resources.LinkResources.LinkLogin.Replace(Resources.LinkResources.Email, email).Replace(Resources.LinkResources.Password, passwordEncryption(password));
-            Console.Write(request);
+            Console.WriteLine("pass:"+passwordEncryption(password));
+            Console.WriteLine(request);
 
             String response = Connection.getRequest(request);
-            Console.Write(response);
+            Console.WriteLine(response);
 
             // TODO : if connection succeed
             if (isAValidPassword(password)) // TOSWITCH
@@ -125,10 +137,10 @@ namespace ModernUIApp1.Handlers.Utils
                 // Send a request logout() to the server
                 // Debug mode (with Console.write())
                 String request = Resources.LinkResources.LinkLogout.Replace(Resources.LinkResources.Email, user.email).Replace(Resources.LinkResources.SessionId, user.id_session);
-                Console.Write(request);
+                Console.WriteLine(request);
 
                 String response = Connection.getRequest(request);
-                Console.Write(response);
+                Console.WriteLine(response);
             }
 
             user = null;
