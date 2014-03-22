@@ -57,7 +57,7 @@ namespace ModernUIApp1.Handlers.Utils
             sha1.ComputeHash(new ASCIIEncoding().GetBytes(saltedPassword));
 
             // Return the encrypted password
-            return Convert.ToBase64String(sha1.Hash);
+            return Convert.ToBase64String(sha1.Hash).Replace("/", "").Replace("=", "").Replace("+", ""); // TODO : caracters escape
         }
 
         /* Check if it's a valid email */

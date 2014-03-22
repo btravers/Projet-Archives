@@ -36,29 +36,36 @@ namespace Handlers.Utils
         /* TODO : This method has to return a XML file */
         public static String getRequest(String requestString)
         {
+            // return
+            String responseFromServer = null;
             // Create a GET request
             WebRequest resultRequest = WebRequest.Create(ROOT_URL + requestString);
             resultRequest.Method = "GET";
 
-            // Get the response
-            WebResponse response = resultRequest.GetResponse();
-            
-            // DEBUG MODE Display
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-            
-            // Content send by the server
-            Stream dataStream = response.GetResponseStream();
-            // Read the content
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = reader.ReadToEnd();
+            try
+            {
+                // Get the response
+                WebResponse response = resultRequest.GetResponse();
+                // DEBUG MODE Display
+                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
 
-            // DEBUG MODE Display the content.
-            Console.WriteLine(responseFromServer);
-            
-            // Clean up the streams
-            reader.Close();
-            dataStream.Close();
-            response.Close();
+                // Content send by the server
+                Stream dataStream = response.GetResponseStream();
+                // Read the content
+                StreamReader reader = new StreamReader(dataStream);
+                responseFromServer = reader.ReadToEnd();
+
+                // DEBUG MODE Display the content.
+                Console.WriteLine(responseFromServer);
+
+                // Clean up the streams
+                reader.Close();
+                dataStream.Close();
+                response.Close();
+
+            } catch (WebException e) {
+                Console.WriteLine(e);
+            }
 
             return responseFromServer;
         }
