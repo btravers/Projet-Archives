@@ -1,4 +1,5 @@
 ﻿using Data.Data;
+using Handlers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,22 +74,46 @@ namespace ModernUIApp1.Handlers.Utils
             if (!isAValidPassword(password))
                 return false;
 
+            // Send a request register() to the server
+            // Debug mode (with Console.write())
+            String request = Resources.LinkResources.LinkRegister.Replace(Resources.LinkResources.Email, email).Replace(Resources.LinkResources.Password, passwordEncryption(password));
+            Console.Write(request);
 
-            // TODO : Send a request register() to the server
+            String response = Connection.getRequest(request);
+            Console.Write(response);
+
             return true;
         }
 
         /* Send a request login() to the server */
         public bool login(String email, String password)
         {
-            if (!isAnEmail(email))
+            /* Email isn't supported yet (for the server)
+             * if (!isAnEmail(email))
                 return false;
-
+             */
             if (!isAValidPassword(password))
                 return false;
             
-            // TODO : Send a request login() to the server
-            return true;
+            // Send a request login() to the server
+            // Debug mode (with Console.write())
+            String request = Resources.LinkResources.LinkLogin.Replace(Resources.LinkResources.Email, email).Replace(Resources.LinkResources.Password, passwordEncryption(password));
+            Console.Write(request);
+
+            String response = Connection.getRequest(request);
+            Console.Write(response);
+
+            // TODO : if connection succeed
+            if (isAValidPassword(password)) // TOSWITCH
+            {
+                user = new User(email, "id_sessionReturned");
+                return true;
+            }
+            else
+            {
+                user = null;
+                return false;
+            }
         }
 
         /* Send a request logout() to the server */
@@ -96,7 +121,15 @@ namespace ModernUIApp1.Handlers.Utils
         {
 
             if (user != null)
-                // TODO : Send a request logout() to the server
+            {
+                // Send a request logout() to the server
+                // Debug mode (with Console.write())
+                String request = Resources.LinkResources.LinkLogout.Replace(Resources.LinkResources.Email, user.email).Replace(Resources.LinkResources.SessionId, user.id_session);
+                Console.Write(request);
+
+                String response = Connection.getRequest(request);
+                Console.Write(response);
+            }
 
             user = null;
 
