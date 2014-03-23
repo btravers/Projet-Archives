@@ -31,13 +31,14 @@ class Database
 	/**
 	 * Execute an update/insert query
 	 */
-	public static function exec($sql) 
+	public static function exec($sql, $arguments) 
 	{
 		Database::connect();
 		
 		try
-		{
-			Database::$connection->exec($sql);
+		{			
+			$statement = Database::$connection->prepare($sql);
+			$statement->execute($arguments);
 		} catch(Exception $e) {
 			echo $e->getTraceAsString();
 		}
@@ -46,15 +47,18 @@ class Database
 	/**
 	 * Execute a select query
 	 */
-	public static function query($sql)
+	public static function query($sql, $arguments)
 	{
 		Database::connect();
 		
 		$result = array();
 		
 		try
-		{
-			$result = Database::$connection->query($sql)->fetchAll();
+		{			
+			$statement = Database::$connection->prepare($sql);
+			$statement->execute($arguments);
+			
+			$result = $statement->fetchAll();
 		} catch(Exception $e) {
 			echo $e->getTraceAsString();
 		}
@@ -67,7 +71,7 @@ class Database
 	 */
 	public static function getUser($sessionId)
 	{
-		$result = Database::query("SELECT * FROM User WHERE session_id = '" . $sessionId . "'");
+		$result = Database::query("SELECT * FROM User WHERE session_id = ?", array($sessionId));
 		if(count($result) > 0) {
 			return $result[0]["id_user"];
 		} else {
@@ -114,7 +118,7 @@ class Database
 	/**
 	 * Check if the annotation on the sheet exists in database
 	 */
-	public static function existAnnotationTable($idAnnotationSheet)
+	public static function existAnnotationTable2($idAnnotationSheet)
 	{
 		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = '" . $idAnnotationSheet . "'");
 		return (count($result) > 0);

@@ -48,6 +48,10 @@ class Bootstrap
 				require_once("helpers/browser.php");
 				$function = new ReflectionMethod('Browser::exec');
 				return $function->getClosure();
+			case HelperEnum::Finder:
+				require_once("helpers/finder.php");
+				$function = new ReflectionMethod('Finder::exec');
+				return $function->getClosure();
 			default:
 				require_once("helpers/error.php");
 				$function = new ReflectionMethod('Error::exec');
@@ -61,5 +65,6 @@ abstract class HelperEnum
 	const Authentificator = 0;
 	const Annotator = 1;
 	const Browser = 2;
+	const Finder = 3;
 	const Error = 100;
 }

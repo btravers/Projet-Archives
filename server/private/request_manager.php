@@ -49,6 +49,9 @@ class RequestManager
 			case "browser":
 				$helperType = HelperEnum::Browser;
 				break;
+			case "finder":
+				$helperType = HelperEnum::Finder;
+				break;
 			default:
 				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;
