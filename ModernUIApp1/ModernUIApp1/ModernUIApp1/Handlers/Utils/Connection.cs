@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Handlers.Utils
 {
@@ -31,6 +33,11 @@ namespace Handlers.Utils
             return arg;
         }
 
+        /* Connection which returns XmlDocument, useful when data are returned */
+        public static XDocument getXmlResponse(String requestString)
+        {
+            return XDocument.Load(ROOT_URL + requestString);
+        }
 
         /* Connection with GET method */
         /* TODO : This method has to return a XML file */

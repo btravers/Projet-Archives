@@ -20,8 +20,10 @@ namespace Handlers.Handlers
             // Request
             String xmlResponse = Connection.getRequest(""); // Connection.send(...)
 
+            Parser parser = new Parser(xmlResponse);
+
             // Parse XML
-            foreach (AnnotationPageTable a in Parser.ParseAnnotationPageTable(xmlResponse))
+            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable())
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?

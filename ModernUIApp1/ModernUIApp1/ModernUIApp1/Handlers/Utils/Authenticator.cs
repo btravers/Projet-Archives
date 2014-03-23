@@ -1,5 +1,6 @@
 ﻿using Data.Data;
 using Handlers.Utils;
+using ModernUIApp1.Handlers.Utils.Parsers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ModernUIApp1.Handlers.Utils
 {
@@ -46,9 +48,6 @@ namespace ModernUIApp1.Handlers.Utils
         /* Encrypt a password */
         private String passwordEncryption(String password)
         {
-            // Debug
-            Console.WriteLine("encryption");
-
             // Salt it
             String saltedPassword = password + SALT;
 
@@ -111,17 +110,34 @@ namespace ModernUIApp1.Handlers.Utils
             String request = Resources.LinkResources.LinkLogin.Replace(Resources.LinkResources.Email, email).Replace(Resources.LinkResources.Password, passwordEncryption(password));
             Console.WriteLine("pass:"+passwordEncryption(password));
             Console.WriteLine(request);
-
+/*
             String response = Connection.getRequest(request);
             Console.WriteLine(response);
+*/
+            XDocument xmlResponse = Connection.getXmlResponse(request);
 
-            // TODO : if connection succeed
-            if (isAValidPassword(password)) // TOSWITCH
+            // Debug
+            IEnumerable<XElement> childList =
+            from el in xmlResponse.Elements()
+            select el;
+            
+            foreach (XElement e in childList)
+                Console.WriteLine(e);
+
+            // New parser for the xmlResponse
+            Parser parser = new Parser(xmlResponse);
+
+            // If connection succeed
+            if (parser.getFirstNode(Resources.LinkResources.Message) == Resources.LinkResources.MsgConnected)
             {
-                user = new User(email, "id_sessionReturned");
+                user = new User(email, parser.getFirstNode(Resources.LinkResources.SessionId));
+                
+                // Debug
+                Console.WriteLine("Session id returned : " + user.id_session);
+
                 return true;
-            }
-            else
+            } // Else
+            else 
             {
                 user = null;
                 return false;
