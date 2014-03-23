@@ -37,16 +37,25 @@ namespace ModernUIApp1.Handlers.Utils
             private set { authenticator = value; }
         }
 
+        /* User */
         private User user;
+        private Boolean connected;
 
         private Authenticator()
         {
+            connected = false;
         }
 
         /* Functions */
+        /* Returns if a user is identified */
+        public Boolean isConnected()
+        {
+            return connected;
+        }
 
+        /* Static functions */
         /* Encrypt a password */
-        private String passwordEncryption(String password)
+        private static String passwordEncryption(String password)
         {
             // Salt it
             String saltedPassword = password + SALT;
@@ -60,16 +69,17 @@ namespace ModernUIApp1.Handlers.Utils
         }
 
         /* Check if it's a valid email */
-        private bool isAnEmail(String email)
+        private static bool isAnEmail(String email)
         {
             return new Regex(EMAIL_PATTERN, RegexOptions.IgnoreCase).IsMatch(email);
         }
 
         /* Check if it's a valid password */
-        private bool isAValidPassword(String password)
+        private static bool isAValidPassword(String password)
         {
             return password.Length >= 7 ? true : false;
         }
+        /* End static functions */
 
         /* Requests */
 
@@ -88,11 +98,24 @@ namespace ModernUIApp1.Handlers.Utils
             // Debug mode (with Console.write())
             String request = Resources.LinkResources.LinkRegister.Replace(Resources.LinkResources.Email, email).Replace(Resources.LinkResources.Password, passwordEncryption(password));
             Console.WriteLine(request);
-
+/*
             String response = Connection.getRequest(request);
             Console.WriteLine(response);
+*/
+            XDocument xmlResponse = Connection.getXmlResponse(request);
+            Parser parser = new Parser(xmlResponse);
 
-            return true;
+            // If register succeed
+            if (parser.getFirstNode(Resources.LinkResources.Message) == Resources.LinkResources.MsgRegistered)
+            {
+                // Auto connect
+                login(email, password);
+                return true;
+            } // Else
+            else
+            {
+                return false;
+            }
         }
 
         /* Send a request login() to the server */
@@ -131,6 +154,7 @@ namespace ModernUIApp1.Handlers.Utils
             if (parser.getFirstNode(Resources.LinkResources.Message) == Resources.LinkResources.MsgConnected)
             {
                 user = new User(email, parser.getFirstNode(Resources.LinkResources.SessionId));
+                connected = true;
                 
                 // Debug
                 Console.WriteLine("Session id returned : " + user.id_session);
@@ -160,6 +184,7 @@ namespace ModernUIApp1.Handlers.Utils
             }
 
             user = null;
+            connected = false;
 
             return true;
         }
