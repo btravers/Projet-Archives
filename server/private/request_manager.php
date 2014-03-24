@@ -11,8 +11,8 @@ class RequestManager
 	 */
 	public function main()
 	{
-		// header ("Content-Type:text/xml");
-		header("Content-Type:text/plain");
+		// header ("Content-Type:text/xml; charset=UTF-8");
+		header("Content-Type:text/plain; charset=UTF-8");
 
 		$request = $this->parse($_GET);
 		$data = $this->exec($request);

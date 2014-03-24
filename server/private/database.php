@@ -21,7 +21,7 @@ class Database
 			try
 			{
 				require_once("password.php");
-				Database::$connection = new PDO('mysql:host=localhost;dbname=' . Password::$dbname, Password::$username, Password::$password);
+				Database::$connection = new PDO('mysql:host=localhost;dbname=' . Password::$dbname, Password::$username, Password::$password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 			} catch(Exception $e) {
 				die("database error");
 			}

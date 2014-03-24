@@ -58,11 +58,59 @@ class Finder
 	{
 		if(!is_numeric($year))
 			return array("helper" => "finder", "message" => "year_not_numeric");
-		
+
 		$data = array();
+
+		$argumentsNumber = 0;
+		$argumentsSql = "";
+		$argumentsValues = array($year, $location);
+
+		if($firstname != "") {
+			$argumentsNumber++;
+			$argumentsSql .= "(t.label = 'Prénom' AND a.text LIKE ?)";
+			array_push($argumentsValues, "%$firstname%");
+		}
+
+		if($lastname != "") {			
+			if($argumentsNumber > 0) {
+				$argumentsSql .= " OR ";
+			}
+			$argumentsNumber++;
+			$argumentsSql .= "(t.label = 'Nom' AND a.text LIKE ?)";
+			array_push($argumentsValues, "%$lastname%");
+		}
+
+		if($job != "") {			
+			if($argumentsNumber > 0) {
+				$argumentsSql .= " OR ";
+			}
+			$argumentsNumber++;
+			$argumentsSql .= "(t.label = 'Profession' AND a.text LIKE ?)";
+			array_push($argumentsValues, "%$job%");
+		}
+
+		if($regiment != "") {			
+			if($argumentsNumber > 0) {
+				$argumentsSql .= " OR ";
+			}
+			$argumentsNumber++;
+			$argumentsSql .= "(t.label = 'Régiment' AND a.text LIKE ?)";
+			array_push($argumentsValues, "%$regiment%");
+		}
+
+		if($argumentsNumber > 0) {
+			$argumentsSql = " AND (" . $argumentsSql . ") GROUP BY s.id_sheet HAVING COUNT(*) = " . $argumentsNumber;
+		}
 		
+		// SELECT * FROM AnnotationSheet a, Sheet s, Type t WHERE a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND ((t.label = "Nom" AND a.text LIKE "%bouteau%") OR (t.label = "Prénom" AND a.text LIKE "%pierre%")) GROUP BY s.id_sheet HAVING COUNT(*) = 2
+		$sql = "SELECT * FROM Register r, AnnotationSheet a, Sheet s, Type t WHERE r.id_register = s.id_register AND a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND year = ? AND location = ? " . $argumentsSql;
+
+		echo $sql;
+
+		$resultSheets = Database::query($sql, $argumentsValues);
+		print_r($resultSheets);
 		
-		
+
 		if(count($data) > 1) {
 			return array("helper" => "finder", "message" => "result_found", "result" => $data);
 		} else {
