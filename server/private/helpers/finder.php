@@ -44,7 +44,7 @@ class Finder
 			}
 		}
 		
-		if(count($data) > 1) {
+		if(count($data) > 0) {
 			return array("helper" => "finder", "message" => "result_found", "result" => $data);
 		} else {
 			return array("helper" => "finder", "message" => "result_not_found");
@@ -97,21 +97,23 @@ class Finder
 			$argumentsSql .= "(t.label = 'Régiment' AND a.text LIKE ?)";
 			array_push($argumentsValues, "%$regiment%");
 		}
-
+		
 		if($argumentsNumber > 0) {
 			$argumentsSql = " AND (" . $argumentsSql . ") GROUP BY s.id_sheet HAVING COUNT(*) = " . $argumentsNumber;
+			$sql = "SELECT * FROM Register r, AnnotationSheet a, Sheet s, Type t WHERE r.id_register = s.id_register AND a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND year = ? AND location = ? " . $argumentsSql;
+		} else {
+			$sql = "SELECT * FROM Register r, Sheet s WHERE r.id_register = s.id_register AND year = ? AND location = ?";
 		}
 		
-		// SELECT * FROM AnnotationSheet a, Sheet s, Type t WHERE a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND ((t.label = "Nom" AND a.text LIKE "%bouteau%") OR (t.label = "Prénom" AND a.text LIKE "%pierre%")) GROUP BY s.id_sheet HAVING COUNT(*) = 2
-		$sql = "SELECT * FROM Register r, AnnotationSheet a, Sheet s, Type t WHERE r.id_register = s.id_register AND a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND year = ? AND location = ? " . $argumentsSql;
-
-		echo $sql;
-
 		$resultSheets = Database::query($sql, $argumentsValues);
-		print_r($resultSheets);
-		
+		foreach ($resultSheets as $sheet)
+		{
+			$idSheet = $sheet['id_sheet'];
 
-		if(count($data) > 1) {
+			$data[$idSheet]['url'] = $sheet['url'];
+		}		
+
+		if(count($data) > 0) {
 			return array("helper" => "finder", "message" => "result_found", "result" => $data);
 		} else {
 			return array("helper" => "finder", "message" => "result_not_found");
