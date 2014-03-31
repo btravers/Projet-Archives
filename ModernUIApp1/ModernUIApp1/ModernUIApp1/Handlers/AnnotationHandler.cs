@@ -41,7 +41,7 @@ namespace Handlers.Handlers
             PageTable pageTable = new PageTable(); 
 
             // Request
-            String xmlResponse = Connection.getRequest(""); // Connection.send(...)
+            String xmlResponse = Connection.getRequest("");
 
             Parser parser = new Parser(xmlResponse);
 
@@ -60,7 +60,7 @@ namespace Handlers.Handlers
         public List<AnnotationSheet> getAnnotationSheetBySheetId(int sheet_id)
         {
             // Keep the page table
-            Sheet sheet = new Sheet();
+            Sheet sheet = new Sheet(); // RegistreHandler.findPageTableById(...)
 
             // Request
             String xmlResponse = Connection.getRequest(""); // Connection.send(...)
@@ -68,21 +68,38 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-   /*         foreach (AnnotationSheet a in parser.ParseAnnotationSheet())
+            foreach (AnnotationSheet a in parser.ParseAnnotationSheet())
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
-                if (!sheet.annotations_sheet.ContainsKey(a.id_annotation_sheet) || !sheet.annotations_sheet.ContainsValue(a))
+                if (!sheet.annotations_sheet.ContainsKey(a.id_annotations_sheet) || !sheet.annotations_sheet.ContainsValue(a))
                     sheet.addAnnotation(a);
             }
-            */
-            //return Sheet.annotations_page_table.Values.ToList();
-            return null;
+
+            return sheet.annotations_sheet.Values.ToList();
         }
 
         public List<AnnotationSheet> getAnnotationSheetByText(String text)
+        //Recherche des annotations qui contiennent le texte text
         {
-            throw new NotImplementedException();
+            // Keep the page table
+            Sheet sheet = new Sheet();
+
+            // Request
+            String xmlResponse = Connection.getRequest("");
+
+            Parser parser = new Parser(xmlResponse);
+
+            // Parse XML
+            foreach (AnnotationSheet a in parser.ParseAnnotationSheet())
+            {
+                // Add to the PageTable.annotation if it isnt already loaded or if it's modified
+                // TODO : redefine equals ?
+                if (!sheet.annotations_sheet.ContainsKey(a.id_annotations_sheet) || !sheet.annotations_sheet.ContainsValue(a))
+                    sheet.addAnnotation(a);
+            }
+
+            return sheet.annotations_sheet.Values.ToList();
         }
 
         public void createAnnotationPageTable(int id_page_table, int x, int y, int width, int height, int id_number)
@@ -95,7 +112,12 @@ namespace Handlers.Handlers
             throw new NotImplementedException();
         }
 
-        public void modifyAnnotationSheet(int id_annotation_page_sheet, int id_type, int x, int y, String text)
+        public void modifyAnnotationPageTable(int id_annotation_page_table, int id_type, int x, int y, String text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void modifyAnnotationSheet(int id_annotation_sheet, int id_type, int x, int y, String text)
         {
             throw new NotImplementedException();
         }

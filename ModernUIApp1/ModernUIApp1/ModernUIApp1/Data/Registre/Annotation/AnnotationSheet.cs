@@ -8,7 +8,7 @@ namespace Data.Data.Registre.Annotation
 {
     public class AnnotationSheet
     {
-        public int id_annotation_sheet;
+        public int id_annotations_sheet;
         Sheet sheet;
         Type type;
         String user;
@@ -21,9 +21,9 @@ namespace Data.Data.Registre.Annotation
         {
         }
 
-        public AnnotationSheet(int id_annotation_sheet, Sheet sheet, Type type, String user, int x, int y, String text)
+        public AnnotationSheet(int id_annotations_sheet, Sheet sheet, Type type, String user, int x, int y, String text)
         {
-            this.id_annotation_sheet = id_annotation_sheet;
+            this.id_annotations_sheet = id_annotations_sheet;
             this.sheet = sheet;
             this.type = type;
             this.user = user;
