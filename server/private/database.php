@@ -84,7 +84,7 @@ class Database
 	 */
 	public static function existPageTable($idTable)
 	{
-		$result = Database::query("SELECT * FROM PageTable WHERE id_page_table = '" . $idTable . "'");
+		$result = Database::query("SELECT * FROM PageTable WHERE id_page_table = ?", array($idTable));
 		return (count($result) > 0);
 	}
 
@@ -93,7 +93,7 @@ class Database
 	 */
 	public static function existSheet($idSheet)
 	{
-		$result = Database::query("SELECT * FROM Sheet WHERE id_sheet = '" . $idSheet . "'");
+		$result = Database::query("SELECT * FROM Sheet WHERE id_sheet = ?", array($idSheet));
 		return (count($result) > 0);
 	}
 
@@ -102,7 +102,7 @@ class Database
 	 */
 	public static function existType($idType)
 	{
-		$result = Database::query("SELECT * FROM Type WHERE id_type = '" . $idType . "'");
+		$result = Database::query("SELECT * FROM Type WHERE id_type = ?",array($idType));
 		return (count($result) > 0);
 	}
 
@@ -111,7 +111,7 @@ class Database
 	 */
 	public static function existAnnotationTable($idAnnotationTable)
 	{
-		$result = Database::query("SELECT * FROM AnnotationPageTable WHERE id_annotation_page_table = '" . $idAnnotationTable . "'");
+		$result = Database::query("SELECT * FROM AnnotationPageTable WHERE id_annotation_page_table = ?", array($idAnnotationTable));
 		return (count($result) > 0);
 	}
 
@@ -120,7 +120,7 @@ class Database
 	 */
 	public static function existAnnotationTable2($idAnnotationSheet)
 	{
-		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = '" . $idAnnotationSheet . "'");
+		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?"array($idAnnotationSheet));
 		return (count($result) > 0);
 	}
 }
