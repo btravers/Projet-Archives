@@ -50,7 +50,7 @@ namespace Handlers.Handlers
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
-                if (!pageTable.annotations_page_table.ContainsKey(a.id_annotation_page_table) || !pageTable.annotations_page_table.ContainsValue(a))
+                if ((!pageTable.annotations_page_table.ContainsKey(a.id_annotation_page_table) || !pageTable.annotations_page_table.ContainsValue(a)) & (a.ToString() == text))
                     pageTable.addAnnotation(a);
             }
 
@@ -95,7 +95,7 @@ namespace Handlers.Handlers
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
-                if (!sheet.annotations_sheet.ContainsKey(a.id_annotations_sheet) || !sheet.annotations_sheet.ContainsValue(a))
+                if ((!sheet.annotations_sheet.ContainsKey(a.id_annotations_sheet) || !sheet.annotations_sheet.ContainsValue(a)) & (a.ToString() == text))
                     sheet.addAnnotation(a);
             }
 

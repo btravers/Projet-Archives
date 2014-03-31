@@ -21,15 +21,20 @@ namespace Data.Data.Registre.Annotation
         {
         }
 
-        public AnnotationSheet(int id_annotations_sheet, Sheet sheet, Type type, String user, int x, int y, String text)
+        public AnnotationSheet(int id_annotations_sheet, Sheet sheet, Type type, String user, String text, int x, int y)
         {
             this.id_annotations_sheet = id_annotations_sheet;
             this.sheet = sheet;
             this.type = type;
             this.user = user;
+            this.text = text;
             this.x = x;
             this.y = y;
-            this.text = text;
+        }
+
+        public override String ToString()
+        {
+            return text;
         }
 
     }

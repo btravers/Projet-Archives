@@ -12,6 +12,7 @@ namespace Data.Data.Registre.Annotation
         public int id_annotation_page_table;
         PageTable page_table;
         String user;
+        String text;
 
         int x, y;
         int width, height;
@@ -22,23 +23,30 @@ namespace Data.Data.Registre.Annotation
         {
         }
 
-        public AnnotationPageTable(int id_annotation_page_table, PageTable page_table, String user)
+        public AnnotationPageTable(int id_annotation_page_table, PageTable page_table, String user, String text)
         {
             this.id_annotation_page_table = id_annotation_page_table;
             this.page_table = page_table;
             this.user = user;
+            this.text = text;
         }
 
-        public AnnotationPageTable(int id_annotation_page_table, PageTable page_table, String user, int x, int y, int width, int height, int id_number)
+        public AnnotationPageTable(int id_annotation_page_table, PageTable page_table, String user, String text, int x, int y, int width, int height, int id_number)
         {
             this.id_annotation_page_table = id_annotation_page_table;
             this.page_table = page_table;
             this.user = user;
+            this.text = text;
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
             this.id_number = id_number;
+        }
+
+        public override String ToString()
+        {
+            return text;
         }
 
     }

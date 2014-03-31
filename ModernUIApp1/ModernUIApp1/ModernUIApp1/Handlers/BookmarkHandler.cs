@@ -8,5 +8,6 @@ namespace Handlers.Handlers
 {
     public class BookmarkHandler
     {
+
     }
 }
