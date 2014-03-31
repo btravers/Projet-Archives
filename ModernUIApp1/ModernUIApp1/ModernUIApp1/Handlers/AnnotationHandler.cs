@@ -16,7 +16,7 @@ namespace Handlers.Handlers
         {
             // Keep the page table
             PageTable pageTable = new PageTable(); // RegistreHandler.findPageTableById(...)
-
+            
             // Request
             String xmlResponse = Connection.getRequest(""); // Connection.send(...)
 
@@ -35,13 +35,49 @@ namespace Handlers.Handlers
         }
 
         public List<AnnotationPageTable> getAnnotationPageTableByText(String text)
+            //Recherche des annotations qui contiennent le texte text
         {
-            throw new NotImplementedException();
+            // Keep the page table
+            PageTable pageTable = new PageTable(); 
+
+            // Request
+            String xmlResponse = Connection.getRequest(""); // Connection.send(...)
+
+            Parser parser = new Parser(xmlResponse);
+
+            // Parse XML
+            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable())
+            {
+                // Add to the PageTable.annotation if it isnt already loaded or if it's modified
+                // TODO : redefine equals ?
+                if (!pageTable.annotations_page_table.ContainsKey(a.id_annotation_page_table) || !pageTable.annotations_page_table.ContainsValue(a))
+                    pageTable.addAnnotation(a);
+            }
+
+            return pageTable.annotations_page_table.Values.ToList();
         }
 
         public List<AnnotationSheet> getAnnotationSheetBySheetId(int sheet_id)
         {
-            throw new NotImplementedException();
+            // Keep the page table
+            Sheet sheet = new Sheet();
+
+            // Request
+            String xmlResponse = Connection.getRequest(""); // Connection.send(...)
+
+            Parser parser = new Parser(xmlResponse);
+
+            // Parse XML
+   /*         foreach (AnnotationSheet a in parser.ParseAnnotationSheet())
+            {
+                // Add to the PageTable.annotation if it isnt already loaded or if it's modified
+                // TODO : redefine equals ?
+                if (!sheet.annotations_sheet.ContainsKey(a.id_annotation_sheet) || !sheet.annotations_sheet.ContainsValue(a))
+                    sheet.addAnnotation(a);
+            }
+            */
+            //return Sheet.annotations_page_table.Values.ToList();
+            return null;
         }
 
         public List<AnnotationSheet> getAnnotationSheetByText(String text)
