@@ -33,7 +33,12 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
         }
 
         /* Samples */
-        public List<AnnotationPageTable> ParseAnnotationPageTable() 
+        public List<AnnotationPageTable> ParseAnnotationPageTable()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<AnnotationSheet> ParseAnnotationSheet()
         {
             throw new NotImplementedException();
         }
