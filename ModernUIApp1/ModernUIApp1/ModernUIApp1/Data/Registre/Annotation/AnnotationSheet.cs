@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace Data.Data.Registre.Annotation
 {
+    public enum EType
+    {
+        Numéro_matricule = 3,
+        Nom,
+        Prénom,
+        Profession,
+        Régiment
+    }
+
     public class AnnotationSheet
     {
         public int id_annotations_sheet;
         Sheet sheet;
-        Type type;
+        EType type;
         String user;
 
         int x, y;
@@ -21,7 +30,7 @@ namespace Data.Data.Registre.Annotation
         {
         }
 
-        public AnnotationSheet(int id_annotations_sheet, Sheet sheet, Type type, String user, String text, int x, int y)
+        public AnnotationSheet(int id_annotations_sheet, Sheet sheet, EType type, String user, String text, int x, int y)
         {
             this.id_annotations_sheet = id_annotations_sheet;
             this.sheet = sheet;
