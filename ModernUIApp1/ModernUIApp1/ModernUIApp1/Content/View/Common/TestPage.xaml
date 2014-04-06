@@ -6,7 +6,7 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Style="{StaticResource ContentRoot}">
+    <Grid Style="{StaticResource ContentRoot}" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -14,8 +14,8 @@
             <Slider Grid.Column="0" Orientation="Vertical" 
            HorizontalAlignment="Left" Minimum="1" x:Name="slider"/>
             <ScrollViewer Name="scrollViewer" Grid.Column="1" 
-              VerticalScrollBarVisibility="Visible" 
-              HorizontalScrollBarVisibility="Visible">
+              VerticalScrollBarVisibility="Hidden" 
+              HorizontalScrollBarVisibility="Hidden">
 
                 <Grid Name="grid" Width="400" 
               Height="400" RenderTransformOrigin="0.5,0.5">
@@ -25,7 +25,7 @@
                         </TransformGroup>
                     </Grid.LayoutTransform>
                     <Viewbox Grid.Column="0" Grid.Row="0">
-                        <Image Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
+                        <Image Name="rmmImage" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
                     </Viewbox>
                 </Grid>
 

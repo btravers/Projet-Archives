@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d">
-    <Grid Style="{StaticResource ContentRoot}">
+    <Grid Style="{StaticResource ContentRoot}" Margin="-2,-2,0,0">
             <StackPanel>
-                <Expander Header="Views" ExpandDirection="Down" >
+            <Expander Header="Views" ExpandDirection="Down" >
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
                         <Label  Content="Zoom" />
@@ -21,6 +21,6 @@
                     <Button  Content="Redo" />
                 </StackPanel>
             </Expander>
-            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>
