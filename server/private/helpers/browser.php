@@ -6,7 +6,7 @@
  */
 class Browser
 {
-	const MAT_NUMBER_TYPE = 0; // TODO Put the right value.
+	const MAT_NUMBER_TYPE = 3; // TODO Put the right value.
 
 	/**
 	 * Parse request and exec right function
@@ -22,18 +22,19 @@ class Browser
 	 */
 	public static function get_page_table($idPageTable, $idUser, $page)
 	{
-		$tables = Database::query("SELECT * FROM PageTable WHERE id_page_table = ? AND page = ?", array($idPageTable, $page));
-		if (count($tables) > 0) {
+		$tablesArray = Database::query("SELECT * FROM PageTable WHERE id_page_table = ? AND page = ?", array($idPageTable, $page));
+		if (count($tablesArray) > 0) {
 			$authenticated = ($idUser != null);
 
 			$tables = array("helper" => "browser", "message" => "ok");
-			foreach ($tables as $table) {
+			foreach ($tablesArray as $table) {
 				$annotationsArray = array();
 
 				if ($authenticated) {
 					$annotations = Database::query("SELECT * FROM AnnotationPageTable WHERE id_page_table = ? AND id_user = ?", array($idPageTable, $idUser));
 					foreach ($annotations as $annotation) {
-						$annotationsArray[] = array("x" => $annotation[3],
+						$annotationsArray[] = array("id_annotation_page_table" => $annotation[0],
+							"x" => $annotation[3],
 							"y" => $annotation[4],
 							"width" => $annotation[5],
 							"height" => $annotation[6],
@@ -59,18 +60,19 @@ class Browser
 	 */
 	public static function get_table($idRegister, $idUser)
 	{
-		$tables = Database::query("SELECT * FROM PageTable WHERE id_register = ?", array($idRegister));
-		if (count($tables) > 0) {
+		$tablesArray = Database::query("SELECT * FROM PageTable WHERE id_register = ?", array($idRegister));
+		if (count($tablesArray) > 0) {
 			$authenticated = ($idUser != null);
 
 			$tables = array("helper" => "browser", "message" => "ok");
-			foreach ($tables as $table) {
+			foreach ($tablesArray as $table) {
 				$annotationsArray = array();
 
 				if ($authenticated) {
 					$annotations = Database::query("SELECT * FROM AnnotationPageTable WHERE id_page_table = ? AND id_user = ?", array($table[0], $idUser));
 					foreach ($annotations as $annotation) {
-						$annotationsArray[] = array("x" => $annotation[3],
+						$annotationsArray[] = array("id_annotation_page_table" => $annotation[0],
+							"x" => $annotation[3],
 							"y" => $annotation[4],
 							"width" => $annotation[5],
 							"height" => $annotation[6],
@@ -97,20 +99,22 @@ class Browser
 	 */
 	public static function get_sheets($idRegister, $idUser, $start, $end)
 	{
-		$sheets = Database::query("SELECT * FROM Sheet WHERE id_register =  ? AND page >= ? AND page <= ?", array($idRegister, $start, $end));
-		if (count($sheets) > 0) {
+		$sheetsArray = Database::query("SELECT * FROM Sheet WHERE id_register =  ? AND page >= ? AND page <= ?", array($idRegister, $start, $end));
+		if (count($sheetsArray) > 0) {
 			$authenticated = ($idUser != null);
 
 			$sheets = array("helper" => "browser", "message" => "ok");
-			foreach ($sheets as $sheet) {
+			foreach ($sheetsArray as $sheet) {
 				$annotationsArray = array();
 
 				if ($authenticated) {
-					$query = "SELECT x, y, label, text FROM AnnotationSheet, Type WHERE id_sheet = ? AND id_user = ?";
+					$query = "SELECT x, y, label, text, id_annotation_sheet FROM AnnotationSheet, Type "
+						. "WHERE id_sheet = ? AND id_user = ? AND AnnotationSheet.id_type = Type.id_type";
 
 					$annotations = Database::query($query, array($sheet[0], $idUser));
 					foreach ($annotations as $annotation) {
-						$annotationsArray[] = array("x" => $annotation[0],
+						$annotationsArray[] = array("id_annotation_sheet" => $annotation[4],
+							"x" => $annotation[0],
 							"y" => $annotation[1],
 							"type" => $annotation[2],
 							"text" => $annotation[3]);
@@ -137,23 +141,24 @@ class Browser
 	public static function get_sheet($idRegister, $idUser, $matriculeNumber)
 	{
 		$query = "SELECT Sheet.id_sheet, page, url, size, width, height FROM Sheet, AnnotationSheet "
-			. "WHERE id_register =  ? AND id_type = ?";
+			. "WHERE id_register =  ? AND id_type = ? AND Sheet.id_sheet = AnnotationSheet.id_sheet";
 
-		$sheets = Database::query($query, array($idRegister, self::MAT_NUMBER_TYPE));
-		if (count($sheets) > 0) {
+		$sheetsArray = Database::query($query, array($idRegister, self::MAT_NUMBER_TYPE));
+		if (count($sheetsArray) > 0) {
 			$authenticated = ($idUser != null);
 
 			$sheets = array("helper" => "browser", "message" => "ok");
-			foreach ($sheets as $sheet) {
+			foreach ($sheetsArray as $sheet) {
 				$annotationsArray = array();
 
 				if ($authenticated) {
-					$query = "SELECT x, y, label, text FROM AnnotationSheet, Type "
-						. "WHERE id_sheet = ? AND id_user = ?";
+					$query = "SELECT x, y, label, text, id_annotation_sheet FROM AnnotationSheet, Type "
+						. "WHERE id_sheet = ? AND id_user = ? AND AnnotationSheet.id_type = Type.id_type";
 
 					$annotations = Database::query($query, array($sheet[0], $idUser));
 					foreach ($annotations as $annotation) {
-						$annotationsArray[] = array("x" => $annotation[0],
+						$annotationsArray[] = array("id_annotation_sheet" => $annotation[4],
+							"x" => $annotation[0],
 							"y" => $annotation[1],
 							"type" => $annotation[2],
 							"text" => $annotation[3]);
