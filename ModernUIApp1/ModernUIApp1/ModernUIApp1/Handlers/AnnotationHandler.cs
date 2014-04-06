@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 using Data.Data.Registre.Annotation;
 using ModernUIApp1.Handlers.Utils.Parsers;
 using Data.Data.Registre;
+using Data.Data;
 using Handlers.Utils;
 
 namespace Handlers.Handlers
 {
     public class AnnotationHandler
     {
+        User user;
+
+        public AnnotationHandler(User user)
+        {
+            this.user = user;
+        }
+
         public List<AnnotationPageTable> getAnnotationPageTableByPageTableId(int page_table_id)
         {
             // Keep the page table
@@ -23,7 +31,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable())
+            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable, user))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
@@ -46,7 +54,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable())
+            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable, user))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
@@ -68,7 +76,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationSheet a in parser.ParseAnnotationSheet())
+            foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet, user))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
@@ -91,7 +99,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationSheet a in parser.ParseAnnotationSheet())
+            foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet, user))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
