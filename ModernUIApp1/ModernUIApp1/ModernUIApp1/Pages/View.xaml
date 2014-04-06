@@ -7,16 +7,16 @@
              mc:Ignorable="d">
     <Grid Style="{StaticResource ContentRoot}">
   
-            <DockPanel>
+            <DockPanel Margin="-16,-28,-16,-16">
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                    <Frame Source="/Content/View/Common/Toolbar.xaml"/>
-                </StackPanel>
+                <Frame Source="/Content/View/Common/Toolbar.xaml"/>
+            </StackPanel>
 
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                    <Frame Source="/Content/View/Common/Bookmark/BookmarkViewer.xaml"/>
-                </StackPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <Frame Source="/Content/View/Common/Bookmark/BookmarkViewer.xaml"/>
+            </StackPanel>
 
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
                     <Frame Source="/Content/View/Registre/IdentitySheet.xaml"/>
                 </StackPanel>
 

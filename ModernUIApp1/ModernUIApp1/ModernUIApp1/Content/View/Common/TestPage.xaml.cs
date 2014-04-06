@@ -44,6 +44,8 @@ namespace ModernUIApp1.Content.View.Common
             scrollViewer.MouseMove += OnMouseMove;
 
             slider.ValueChanged += OnSliderValueChanged;
+
+            rmmImage.ManipulationDelta += OnManipulationDelta;
         }
 
         void OnMouseMove(object sender, MouseEventArgs e)
@@ -158,6 +160,31 @@ namespace ModernUIApp1.Content.View.Common
                     scrollViewer.ScrollToVerticalOffset(newOffsetY);
                 }
             }
+        }
+
+        void OnManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        {
+            Console.WriteLine("aaa");
+
+            UIElement element = sender as UIElement;
+
+            ScaleTransform transform = element.RenderTransform as ScaleTransform;
+            if (transform != null)
+            {
+                transform.ScaleX *= e.DeltaManipulation.Scale.X;
+                transform.ScaleY *= e.DeltaManipulation.Scale.Y;
+            }
+            
+            //CompositeTransform transform = element.RenderTransform as CompositeTransform;
+            /*Transform transform = element.RenderTransform;
+            if (transform != null)
+            {
+                transform.ScaleX *= e.DeltaManipulation.Scale;
+                transform.ScaleY *= e.DeltaManipulation.Scale;
+                transform.Rotation += e.DeltaManipulation.Rotation * 180 / Math.PI;
+                transform.TranslateX += e.DeltaManipulation.Translation.X;
+                transform.TranslateY += e.DeltaManipulation.Translation.Y;
+            }*/
         }
     }
 }
