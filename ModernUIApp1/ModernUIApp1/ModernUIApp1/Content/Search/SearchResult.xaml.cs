@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,8 +25,6 @@ namespace ModernUIApp1.Content
         {
             InitializeComponent();
 
-            //            
-            //this.DataContext = new SettingsAppearanceViewModel();
             this.DataContext = new SearchResultViewModel();
         }
     }

@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="700" d:DesignWidth="400">
     <Grid Style="{StaticResource ContentRoot}">
-        <StackPanel MinWidth="200">
-            <Image Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
+        <StackPanel Name="ItemPanel" MinWidth="280">
+            <Image Width="{Binding ActualWidth, ElementName=ItemPanel}" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
             <Label Content="Fiche Matricule Militaire" HorizontalAlignment="Center" />
         </StackPanel>
     </Grid>

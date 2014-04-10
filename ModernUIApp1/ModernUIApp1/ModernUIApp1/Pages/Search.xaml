@@ -9,7 +9,7 @@
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <mui:ModernTab Layout="List" SelectedSource="/Content/Search/SearchTable.xaml" Grid.Row="0" FontSize="17">
             <mui:ModernTab.Links>
@@ -18,7 +18,7 @@
             </mui:ModernTab.Links>
         </mui:ModernTab>
 
-        <mui:ModernFrame Grid.Row="1" Source="/Content/Search/SearchResult.xaml" Margin="0,81,0,-212"/>
+        <mui:ModernFrame Name="ResultFrame" Grid.Row="1" Source="/Content/Search/SearchResult.xaml" Margin="0,10,0,0"/>
     </Grid>
 </UserControl>
 

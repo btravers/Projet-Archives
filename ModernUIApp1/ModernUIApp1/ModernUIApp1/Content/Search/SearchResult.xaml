@@ -4,22 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:local="clr-namespace:ModernUIApp1.Content"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <Grid>
+        <Grid Name="resultGrid" Margin="0,0,0,40">
+            
+        </Grid>
         <ScrollViewer>
-                <ListBox ItemsSource="{Binding AccentImages}"
+                <ListBox Name="resultListBox" ItemsSource="{Binding AccentImages}"
                          SelectedItem="{Binding SelectedAccentImage, Mode=TwoWay}"
                          Margin="0,0,0,16">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel MaxWidth="{Binding ActualWidth, ElementName=Panel}" />
+                            <WrapPanel />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <mui:ModernFrame Source="/Content/Search/SearchImageCell.xaml" />
+                        <mui:ModernFrame Source="/Content/Search/SearchImageCell.xaml" MinHeight="{Binding ActualHeight, ElementName=resultGrid}"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
