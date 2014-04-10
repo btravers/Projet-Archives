@@ -17,7 +17,7 @@
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel>
                 <Grid>
-                    <TextBlock Text="Authentification" Style="{StaticResource Heading2}" />
+                    <TextBlock Text="Authentification" Style="{StaticResource Heading1}" />
                     <mui:ModernFrame Grid.Row="1" Source="/Content/Authentification/Authentification.xaml" Margin="0,81,0,-212"/>
                 </Grid>
              </StackPanel>
@@ -26,7 +26,7 @@
         <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
             <StackPanel>
                 <Grid>
-                    <TextBlock Text="Enregistrement" Style="{StaticResource Heading2}" />
+                    <TextBlock Text="Enregistrement" Style="{StaticResource Heading1}" />
                     <mui:ModernFrame Grid.Row="1" Source="/Content/Authentification/Register.xaml" Margin="0,81,0,-212"/>
                 </Grid>
             </StackPanel>

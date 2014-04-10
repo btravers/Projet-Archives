@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Annotations" xml:space="preserve">
+    <value>annotations</value>
+    <comment>refers to "annotations"</comment>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>email</value>
+    <comment>refers to "email"</comment>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>end</value>
+    <comment>refers to "end"</comment>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>height</value>
+    <comment>refers to "height"</comment>
+  </data>
+  <data name="IdAnnotationPageTable" xml:space="preserve">
+    <value>id_annotation_page_table</value>
+    <comment>refers to "id_annotation_page_table"</comment>
+  </data>
+  <data name="IdNumber" xml:space="preserve">
+    <value>id_number</value>
+    <comment>refers to "id_number"</comment>
+  </data>
+  <data name="IdPageTable" xml:space="preserve">
+    <value>id_page_table</value>
+    <comment>refers to "id_page_table"</comment>
+  </data>
+  <data name="IdRegister" xml:space="preserve">
+    <value>id_register</value>
+    <comment>refers to "id_register"</comment>
+  </data>
+  <data name="ImageSource" xml:space="preserve">
+    <value>image_src</value>
+    <comment>refers to "image_src"</comment>
+  </data>
+  <data name="LinkGetPageTable" xml:space="preserve">
+    <value>browser/get_page_table/idPageTable/idUser/page</value>
+    <comment>link to get_page_table</comment>
+  </data>
+  <data name="LinkGetSheets" xml:space="preserve">
+    <value>browser/get_sheets/idRegister/idUser/start/end</value>
+    <comment>link to get_sheets</comment>
+  </data>
+  <data name="LinkGetTable" xml:space="preserve">
+    <value>browser/get_table/idRegister/idUser</value>
+    <comment>link to get_table</comment>
+  </data>
+  <data name="LinkLogin" xml:space="preserve">
+    <value>authentificator/login/email/password</value>
+    <comment>link to login</comment>
+  </data>
+  <data name="LinkLogout" xml:space="preserve">
+    <value>authentificator/logout/session_id</value>
+    <comment>link to logout</comment>
+  </data>
+  <data name="LinkRegister" xml:space="preserve">
+    <value>authentificator/register/email/password</value>
+    <comment>link to register</comment>
+  </data>
+  <data name="LnikGetSheet" xml:space="preserve">
+    <value>browser/get_sheet/idRegister/idUser/matriculeNumber</value>
+    <comment>link to get_sheet</comment>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>message</value>
+    <comment>refers to "message"</comment>
+  </data>
+  <data name="MsgConnected" xml:space="preserve">
+    <value>connected</value>
+    <comment>message sent by the server if logging worked</comment>
+  </data>
+  <data name="MsgOk" xml:space="preserve">
+    <value>ok</value>
+    <comment>message sent by the server if there is data answering the request</comment>
+  </data>
+  <data name="MsgRegistered" xml:space="preserve">
+    <value>registered</value>
+    <comment>message sent by the server if registering worked</comment>
+  </data>
+  <data name="MsNull" xml:space="preserve">
+    <value>null</value>
+    <comment>message sent by the server if there is no data answering the request</comment>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>page</value>
+    <comment>refers to "page"</comment>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>password</value>
+    <comment>refers to "password"</comment>
+  </data>
+  <data name="SessionId" xml:space="preserve">
+    <value>session_id</value>
+    <comment>refers to "session_id"</comment>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>size</value>
+    <comment>refers to "size"</comment>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>start</value>
+    <comment>refers to "start"</comment>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>width</value>
+    <comment>refers to "width"</comment>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>x</value>
+    <comment>refers to "x"</comment>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>y</value>
+    <comment>refers to "y"</comment>
+  </data>
+  <data name="IdAnnotationSheet" xml:space="preserve">
+    <value>id_annotation_sheet</value>
+    <comment>refers to "id_annotation_sheet"</comment>
+  </data>
+  <data name="IdSheet" xml:space="preserve">
+    <value>id_sheet</value>
+    <comment>refers to "id_sheet"</comment>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>item</value>
+    <comment>refers to "item"</comment>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>text</value>
+    <comment>refers to "text"</comment>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>type</value>
+    <comment>refers to "type"</comment>
+  </data>
+</root>

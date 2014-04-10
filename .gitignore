@@ -38,5 +38,5 @@ obj/
 *.g.i.cs
 
 server/private/password.php
-ModernUIApp1/ModernUIApp1/ModernUIApp1/Resources/LinkResources.Designer.cs
-ModernUIApp1/ModernUIApp1/ModernUIApp1/Resources/LinkResources.resx
+#ModernUIApp1/ModernUIApp1/ModernUIApp1/Resources/LinkResources.Designer.cs
+#ModernUIApp1/ModernUIApp1/ModernUIApp1/Resources/LinkResources.resx

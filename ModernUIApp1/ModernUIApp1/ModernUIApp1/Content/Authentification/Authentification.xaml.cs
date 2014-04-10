@@ -29,9 +29,9 @@ namespace ModernUIApp1.Content.Identification
         private void login_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine(email.Text);
-            Console.WriteLine(password.Text);
+            Console.WriteLine(password.Password);
 
-            Authenticator.AUTHENTICATOR.login(email.Text, password.Text);
+            Authenticator.AUTHENTICATOR.login(email.Text, password.Password);
         }
     }
 }

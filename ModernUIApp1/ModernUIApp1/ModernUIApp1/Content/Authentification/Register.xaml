@@ -10,18 +10,18 @@
         <ScrollViewer>
             <StackPanel MinWidth="200">
                 <Grid>
-                    <Label Content="Identifiant"/>
-                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                    <Label Content="Email" FontSize="17"/>
+                    <TextBox TextWrapping="Wrap" Text="" FontSize="17" Margin="131,0,0,0"/>
                 </Grid>
-                <Grid>
-                    <Label Content="Mot de passe"/>
-                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                <Grid Margin="0,20,0,0">
+                    <Label Content="Mot de passe" FontSize="17"/>
+                    <PasswordBox FontSize="17" Margin="131,0,0,0"/>
                 </Grid>
-                <Grid>
-                    <Label Content="Email"/>
-                    <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                <Grid Margin="0,20,0,0">
+                    <Label Content="Email" FontSize="17"/>
+                    <PasswordBox FontSize="17" Margin="131,0,0,0"/>
                 </Grid>
-                <Button Content="S'enregistrer" Width="170"/>
+                <Button Content="S'enregistrer" Width="170" FontSize="17" Margin="0,50,0,0"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
