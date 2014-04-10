@@ -52,6 +52,15 @@ namespace ModernUIApp1.Content.View.Common
             slider.Value = 2;
 
             rmmImage.ManipulationDelta += OnManipulationDelta;
+
+            Ellipse e = new Ellipse();
+            e.Width = 8;
+            e.Height = 8;
+            e.Fill = new SolidColorBrush(Colors.CornflowerBlue);
+            Canvas.SetLeft(e, 20);
+            Canvas.SetTop(e, 20);
+            e.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
+            overlay.Children.Add(e);
         }
 
         void OnMouseMove(object sender, MouseEventArgs e)
@@ -71,7 +80,6 @@ namespace ModernUIApp1.Content.View.Common
                 if (dX != 0 || dY != 0)
                 {
                     mouseMove = true;
-                    Console.WriteLine("m");
                 }
 
                 
@@ -229,6 +237,11 @@ namespace ModernUIApp1.Content.View.Common
                 transform.TranslateX += e.DeltaManipulation.Translation.X;
                 transform.TranslateY += e.DeltaManipulation.Translation.Y;
             }*/
+        }
+
+        void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
+        {
+            Console.WriteLine("click annotation");
         }
     }
 }
