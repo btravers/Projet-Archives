@@ -23,6 +23,13 @@ namespace ModernUIApp1.Content
         public SearchImageCell()
         {
             InitializeComponent();
+
+            ItemPanel.MouseLeftButtonUp += ItemPanel_MouseLeftButtonUp;
+        }
+
+        void ItemPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {            
+            MainWindow.window.ContentSource = new Uri("/Pages/ViewTable.xaml", UriKind.Relative);
         }
     }
 }

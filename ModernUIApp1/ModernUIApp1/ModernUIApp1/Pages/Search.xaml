@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="310"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <mui:ModernTab Layout="List" SelectedSource="/Content/Search/SearchTable.xaml" Grid.Row="0" FontSize="17">

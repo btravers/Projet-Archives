@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="ModernUIApp1.Pages.ViewTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d">
+    <Grid Style="{StaticResource ContentRoot}">
+  
+            <DockPanel Margin="-16,-28,-16,-16">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <Frame Source="/Content/View/Common/Toolbar.xaml"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <Frame Source="/Content/View/Common/Bookmark/BookmarkViewer.xaml"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"/>
+
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom"/>
+
+            <Grid>
+                    <Frame Source="/Content/View/Common/TestPage.xaml"/>
+                </Grid>
+            </DockPanel>
+       
+    </Grid>
+</UserControl>

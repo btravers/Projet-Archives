@@ -1,6 +1,4 @@
-﻿using FirstFloor.ModernUI.Windows.Controls;
-using FirstFloor.ModernUI.Windows.Navigation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModernUIApp1
+namespace ModernUIApp1.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for View.xaml
     /// </summary>
-    public partial class MainWindow : ModernWindow
+    public partial class ViewTable : UserControl
     {
-        public static MainWindow window { get; private set; }
-        
-        public MainWindow()
+        public ViewTable()
         {
             InitializeComponent();
-
-            MainWindow.window = this;
         }
     }
 }

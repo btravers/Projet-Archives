@@ -18,9 +18,9 @@ namespace ModernUIApp1.Pages
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class View : UserControl
+    public partial class ViewRegister : UserControl
     {
-        public View()
+        public ViewRegister()
         {
             InitializeComponent();
         }
