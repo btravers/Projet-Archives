@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernUIApp1.Pages.Popups;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,7 @@ namespace ModernUIApp1.Content.View.Common
         Point? lastCenterPositionOnTarget;
         Point? lastMousePositionOnTarget;
         Point? lastDragPoint;
+        Window addAnnotationWindow;
 
         public TestPage()
         {
@@ -43,7 +45,10 @@ namespace ModernUIApp1.Content.View.Common
             scrollViewer.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
             scrollViewer.MouseMove += OnMouseMove;
 
+            rmmImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
+
             slider.ValueChanged += OnSliderValueChanged;
+            slider.Value = 2;
 
             rmmImage.ManipulationDelta += OnManipulationDelta;
         }
@@ -67,8 +72,7 @@ namespace ModernUIApp1.Content.View.Common
         void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var mousePos = e.GetPosition(scrollViewer);
-            if (mousePos.X <= scrollViewer.ViewportWidth && mousePos.Y <
-                scrollViewer.ViewportHeight) //make sure we still can use the scrollbars
+            if (mousePos.X <= scrollViewer.ViewportWidth && mousePos.Y < scrollViewer.ViewportHeight) //make sure we still can use the scrollbars
             {
                 scrollViewer.Cursor = Cursors.SizeAll;
                 lastDragPoint = mousePos;
@@ -99,14 +103,12 @@ namespace ModernUIApp1.Content.View.Common
             lastDragPoint = null;
         }
 
-        void OnSliderValueChanged(object sender,
-             RoutedPropertyChangedEventArgs<double> e)
+        void OnSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             scaleTransform.ScaleX = e.NewValue;
             scaleTransform.ScaleY = e.NewValue;
 
-            var centerOfViewport = new Point(scrollViewer.ViewportWidth / 2,
-                                             scrollViewer.ViewportHeight / 2);
+            var centerOfViewport = new Point(scrollViewer.ViewportWidth / 2, scrollViewer.ViewportHeight / 2);
             lastCenterPositionOnTarget = scrollViewer.TranslatePoint(centerOfViewport, grid);
         }
 
@@ -121,10 +123,8 @@ namespace ModernUIApp1.Content.View.Common
                 {
                     if (lastCenterPositionOnTarget.HasValue)
                     {
-                        var centerOfViewport = new Point(scrollViewer.ViewportWidth / 2,
-                                                         scrollViewer.ViewportHeight / 2);
-                        Point centerOfTargetNow =
-                              scrollViewer.TranslatePoint(centerOfViewport, grid);
+                        var centerOfViewport = new Point(scrollViewer.ViewportWidth / 2, scrollViewer.ViewportHeight / 2);
+                        Point centerOfTargetNow = scrollViewer.TranslatePoint(centerOfViewport, grid);
 
                         targetBefore = lastCenterPositionOnTarget;
                         targetNow = centerOfTargetNow;
@@ -146,10 +146,8 @@ namespace ModernUIApp1.Content.View.Common
                     double multiplicatorX = e.ExtentWidth / grid.Width;
                     double multiplicatorY = e.ExtentHeight / grid.Height;
 
-                    double newOffsetX = scrollViewer.HorizontalOffset -
-                                        dXInTargetPixels * multiplicatorX;
-                    double newOffsetY = scrollViewer.VerticalOffset -
-                                        dYInTargetPixels * multiplicatorY;
+                    double newOffsetX = scrollViewer.HorizontalOffset - dXInTargetPixels * multiplicatorX;
+                    double newOffsetY = scrollViewer.VerticalOffset - dYInTargetPixels * multiplicatorY;
 
                     if (double.IsNaN(newOffsetX) || double.IsNaN(newOffsetY))
                     {
@@ -159,6 +157,47 @@ namespace ModernUIApp1.Content.View.Common
                     scrollViewer.ScrollToHorizontalOffset(newOffsetX);
                     scrollViewer.ScrollToVerticalOffset(newOffsetY);
                 }
+            }
+        }
+
+        void OnMouseLeftButtonUpImage(object sender, MouseButtonEventArgs e)
+        {
+            Point position = e.MouseDevice.GetPosition(rmmImage);
+
+            Point mouse = Mouse.GetPosition(this);
+
+            AddAnnotation addAnnotationUserControl = new AddAnnotation();
+
+            addAnnotationUserControl.close.Click += OnClickCloseButton;
+
+            if (addAnnotationWindow != null)
+            {
+                addAnnotationWindow.Close();
+            }
+            addAnnotationWindow = new Window();
+            addAnnotationWindow.Title = "Ajouter une annotation";
+            if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2)
+            {
+                addAnnotationWindow.Left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
+            }
+            else
+            {
+                addAnnotationWindow.Left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
+            }
+            addAnnotationWindow.Top = mouse.Y;
+            addAnnotationWindow.Width = addAnnotationUserControl.Width + 25;
+            addAnnotationWindow.Height = addAnnotationUserControl.Height + 35;
+            addAnnotationWindow.ResizeMode = ResizeMode.NoResize;
+            addAnnotationWindow.WindowStyle = System.Windows.WindowStyle.ToolWindow;
+            addAnnotationWindow.Content = addAnnotationUserControl;
+            addAnnotationWindow.Show();
+        }
+
+        void OnClickCloseButton(object sender, RoutedEventArgs e)
+        {
+            if (addAnnotationWindow != null)
+            {
+                addAnnotationWindow.Close();
             }
         }
 

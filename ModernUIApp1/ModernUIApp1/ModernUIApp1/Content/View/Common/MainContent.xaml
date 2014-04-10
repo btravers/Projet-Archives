@@ -9,7 +9,7 @@
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel MinWidth="200">
-                <Image Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
+                <Image Source="/Resources/fake_sheet.jpg" Margin="0,0,0,5"/>
                 <Label Content="Fiche Matricule Militaire" HorizontalAlignment="Center" />
             </StackPanel>
         </ScrollViewer>
