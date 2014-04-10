@@ -31,7 +31,7 @@ namespace ModernUIApp1.Content.View.Common
         Point? lastCenterPositionOnTarget;
         Point? lastMousePositionOnTarget;
         Point? lastDragPoint;
-        Window addAnnotationWindow;
+        AddAnnotation addAnnotationUserControl;
 
         public TestPage()
         {
@@ -166,39 +166,28 @@ namespace ModernUIApp1.Content.View.Common
 
             Point mouse = Mouse.GetPosition(this);
 
-            AddAnnotation addAnnotationUserControl = new AddAnnotation();
-
-            addAnnotationUserControl.close.Click += OnClickCloseButton;
-
-            if (addAnnotationWindow != null)
+            if (addAnnotationUserControl != null)
             {
-                addAnnotationWindow.Close();
+                addAnnotationUserControl.window.Close();
             }
-            addAnnotationWindow = new Window();
-            addAnnotationWindow.Title = "Ajouter une annotation";
+
+            addAnnotationUserControl = new AddAnnotation(position);
+            addAnnotationUserControl.window.Title = "Ajouter une annotation";
             if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2)
             {
-                addAnnotationWindow.Left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
+                addAnnotationUserControl.window.Left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
             }
             else
             {
-                addAnnotationWindow.Left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
+                addAnnotationUserControl.window.Left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
             }
-            addAnnotationWindow.Top = mouse.Y;
-            addAnnotationWindow.Width = addAnnotationUserControl.Width + 25;
-            addAnnotationWindow.Height = addAnnotationUserControl.Height + 35;
-            addAnnotationWindow.ResizeMode = ResizeMode.NoResize;
-            addAnnotationWindow.WindowStyle = System.Windows.WindowStyle.ToolWindow;
-            addAnnotationWindow.Content = addAnnotationUserControl;
-            addAnnotationWindow.Show();
-        }
-
-        void OnClickCloseButton(object sender, RoutedEventArgs e)
-        {
-            if (addAnnotationWindow != null)
-            {
-                addAnnotationWindow.Close();
-            }
+            addAnnotationUserControl.window.Top = mouse.Y;
+            addAnnotationUserControl.window.Width = addAnnotationUserControl.Width + 25;
+            addAnnotationUserControl.window.Height = addAnnotationUserControl.Height + 35;
+            addAnnotationUserControl.window.ResizeMode = ResizeMode.NoResize;
+            addAnnotationUserControl.window.WindowStyle = System.Windows.WindowStyle.ToolWindow;
+            addAnnotationUserControl.window.Content = addAnnotationUserControl;
+            addAnnotationUserControl.window.Show();
         }
 
         void OnManipulationDelta(object sender, ManipulationDeltaEventArgs e)

@@ -12,7 +12,7 @@
         <ComboBox Name="type" HorizontalAlignment="Left" Margin="88,60,0,0" VerticalAlignment="Top" Width="193" FontSize="17"/>
 
         <Button Name="add" Content="Ajouter" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="106" FontSize="17"/>
-        <Button Name="close" Content="Fermer" HorizontalAlignment="Left" Margin="165,102,0,0" VerticalAlignment="Top" Width="106" FontSize="17"/>
+        <Button Name="close" Content="Fermer" HorizontalAlignment="Left" Margin="165,102,0,0" VerticalAlignment="Top" Width="106" FontSize="17" Click="close_Click"/>
 
     </Grid>
 </UserControl>

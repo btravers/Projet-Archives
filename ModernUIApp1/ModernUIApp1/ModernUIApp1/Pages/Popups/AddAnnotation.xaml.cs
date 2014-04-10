@@ -20,9 +20,20 @@ namespace ModernUIApp1.Pages.Popups
     /// </summary>
     public partial class AddAnnotation : UserControl
     {
-        public AddAnnotation()
+        public Window window { get; private set; }
+        public Point position;
+
+        public AddAnnotation(Point position)
         {
             InitializeComponent();
+
+            this.window = new Window();
+            this.position = position;
+        }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            window.Close();
         }
     }
 }
