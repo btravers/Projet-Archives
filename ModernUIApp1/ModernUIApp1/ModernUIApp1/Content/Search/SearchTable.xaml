@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="600">
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel MinWidth="200">
@@ -14,8 +14,8 @@
                 <Slider Name="yearSlider" Minimum="1880" IsSnapToTickEnabled="True" SmallChange="1" Maximum="1918" Value="1890" TickPlacement="BottomRight" Background="Transparent"/>
                 <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Commune"/></TextBlock>
                 <Grid>
-                    <TextBox Height="23" Width="152" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2" TextAlignment="Left" Text="Commune" Foreground="DarkGray"/>
-                    <Button Content="Rechercher" Height="25" Width="152" Margin="157,0,10,0"/>
+                    <TextBox Width="231" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2" TextAlignment="Left"/>
+                    <Button Content="Rechercher" Width="152" Margin="157,0,10,0"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

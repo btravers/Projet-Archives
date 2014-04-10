@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <mui:ModernTab Layout="List" SelectedSource="/Content/Search/SearchTable.xaml" Grid.Row="0">
+        <mui:ModernTab Layout="List" SelectedSource="/Content/Search/SearchTable.xaml" Grid.Row="0" FontSize="17">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="table" Source="/Content/Search/SearchTable.xaml" />
                 <mui:Link DisplayName="registre" Source="/Content/Search/SearchRegistre.xaml" />

@@ -5,21 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="500">
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
-            <StackPanel MinWidth="200">
+            <StackPanel>
                 <Grid>
                     <Label Content="Email" FontSize="17"/>
-                    <TextBox TextWrapping="Wrap" Text="" FontSize="17" Margin="131,0,0,0"/>
+                    <TextBox TextWrapping="Wrap" Text="" FontSize="17" Margin="193,0,0,0"/>
                 </Grid>
                 <Grid Margin="0,20,0,0">
                     <Label Content="Mot de passe" FontSize="17"/>
-                    <PasswordBox FontSize="17" Margin="131,0,0,0"/>
+                    <PasswordBox FontSize="17" Margin="193,0,0,0"/>
                 </Grid>
                 <Grid Margin="0,20,0,0">
-                    <Label Content="Email" FontSize="17"/>
-                    <PasswordBox FontSize="17" Margin="131,0,0,0"/>
+                    <Label Content="Confirmer mot de passe" FontSize="17"/>
+                    <PasswordBox FontSize="17" Margin="193,0,0,0"/>
                 </Grid>
                 <Button Content="S'enregistrer" Width="170" FontSize="17" Margin="0,50,0,0"/>
             </StackPanel>

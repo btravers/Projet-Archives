@@ -80,6 +80,8 @@ namespace ModernUIApp1.Content.View.Common
                 if (dX != 0 || dY != 0)
                 {
                     mouseMove = true;
+
+                    scrollViewer.Cursor = Cursors.SizeAll;
                 }
 
                 
@@ -91,7 +93,6 @@ namespace ModernUIApp1.Content.View.Common
             var mousePos = e.GetPosition(scrollViewer);
             if (mousePos.X <= scrollViewer.ViewportWidth && mousePos.Y < scrollViewer.ViewportHeight) //make sure we still can use the scrollbars
             {
-                scrollViewer.Cursor = Cursors.SizeAll;
                 lastDragPoint = mousePos;
                 Mouse.Capture(scrollViewer);
             }
