@@ -253,4 +253,23 @@
     <value>type</value>
     <comment>refers to "type"</comment>
   </data>
+  <data name="LinkGetRegister" xml:space="preserve">
+    <value>toComplete</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>location</value>
+    <comment>refers to "location"</comment>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>register</value>
+    <comment>refers to "register"</comment>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>vol</value>
+    <comment>refers to "volume"</comment>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>year</value>
+    <comment>refers to "year"</comment>
+  </data>
 </root>

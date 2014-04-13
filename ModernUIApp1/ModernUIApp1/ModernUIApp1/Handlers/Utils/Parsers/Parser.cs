@@ -161,6 +161,35 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             return lRes;
         }
 
+        /* Parse the register for a register request. */
+        public List<Register> ParseRegister()
+        {
+            List<Register> lRes = new List<Register>();
+
+            foreach (XElement xmlRegister in xmlDocument.Descendants(Resources.LinkResources.Register))
+            {
+                int i = 0;
+                while (xmlRegister.Descendants(Resources.LinkResources.Item + i.ToString()).Count() != 0)
+                {
+                    XElement elem = xmlRegister.Descendants(Resources.LinkResources.Item + i.ToString()).First();
+
+                    int idRegister = int.Parse(elem.Descendants(Resources.LinkResources.IdRegister).First().Value);
+                    String location = elem.Descendants(Resources.LinkResources.Location).First().Value;
+                    int year = int.Parse(elem.Descendants(Resources.LinkResources.Year).First().Value);
+                    int volume = int.Parse(elem.Descendants(Resources.LinkResources.Volume).First().Value);
+
+                    Register newReg = new Register(idRegister, location, year, volume);
+
+                    lRes.Add(newReg);
+
+                    i++;
+                }
+            }
+
+            return lRes;
+        }
+
+
         public List<BookmarkFile> ParseBookmarkFile()
         {
             throw new NotImplementedException();
