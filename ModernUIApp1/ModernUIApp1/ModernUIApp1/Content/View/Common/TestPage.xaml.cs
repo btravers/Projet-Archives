@@ -299,19 +299,15 @@ namespace ModernUIApp1.Content.View.Common
             {
                 Point mouseEndDrag = e.GetPosition(scrollViewer);
 
-                if (mouseEndDrag.X < mouseStartDrag.X)
+                if (mouseEndDrag.X < mouseStartDrag.X && (mouseStartDrag.X - mouseEndDrag.X) > 110)
                 {
-                    Console.WriteLine("left (show image on the right)");
-
                     Storyboard anim = (Storyboard)this.Resources["leftAnimation"];
                     anim.Completed += animNext_Completed;
                     anim.Begin();
 
                 }
-                else if (mouseEndDrag.X > mouseStartDrag.X)
+                else if (mouseEndDrag.X > mouseStartDrag.X && (mouseEndDrag.X - mouseStartDrag.X) > 110)
                 {
-                    Console.WriteLine("right (show image on the left)");
-
                     Storyboard anim = (Storyboard)this.Resources["rightAnimation"];
                     anim.Completed += animPrevious_Completed;
                     anim.Begin();
