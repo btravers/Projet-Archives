@@ -6,6 +6,37 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Storyboard x:Key="leftAnimation">
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" To="-1000" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseIn"  />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="backNextAnimation">
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" From="1000" To="0" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseOut"  />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="rightAnimation">
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" To="1000" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseIn"  />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="backPreviousAnimation">
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" From="-1000" To="0" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseOut"  />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    
     <Grid Style="{StaticResource ContentRoot}" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -20,10 +51,11 @@
                             <ScaleTransform x:Name="scaleTransform"/>
                         </TransformGroup>
                     </Grid.LayoutTransform>
-                <!--<Viewbox Grid.Column="0" Grid.Row="0" Margin="0,0,0,0">-->
-                <Image Name="rmmImage" Source="/Resources/fake_sheet.jpg" Margin="0,0,0,5"/>
-                <Canvas Name="overlay" Margin="45,0,45,5"></Canvas>
-                <!--</Viewbox>-->
+                    <Grid.RenderTransform>
+                        <TranslateTransform x:Name="panelTrans" X="0"/>
+                    </Grid.RenderTransform>
+                    <Image Name="rmmImage" Source="/Resources/fake_sheet.jpg" Margin="0,0,0,5"/>
+                    <Canvas Name="overlay" Margin="45,0,45,5"></Canvas>
                 </Grid>
 
             </ScrollViewer>

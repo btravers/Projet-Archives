@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -34,6 +35,8 @@ namespace ModernUIApp1.Content.View.Common
         AddAnnotation addAnnotationUserControl;
         Boolean mouseMove;
 
+        Point mouseStartDrag;
+
         public TestPage()
         {
             InitializeComponent();
@@ -44,14 +47,12 @@ namespace ModernUIApp1.Content.View.Common
             scrollViewer.PreviewMouseWheel += OnPreviewMouseWheel;
 
             scrollViewer.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
-            scrollViewer.MouseMove += OnMouseMove;
+            scrollViewer.MouseMove += OnMouseMove;            
 
             rmmImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
 
             slider.ValueChanged += OnSliderValueChanged;
             slider.Value = 2;
-
-            rmmImage.ManipulationDelta += OnManipulationDelta;
 
             Ellipse e = new Ellipse();
             e.Width = 8;
@@ -95,6 +96,11 @@ namespace ModernUIApp1.Content.View.Common
             {
                 lastDragPoint = mousePos;
                 Mouse.Capture(scrollViewer);
+            }
+
+            if (scrollViewer.ScrollableWidth == 0 && scrollViewer.ScrollableHeight == 0)
+            {
+                mouseStartDrag = e.GetPosition(scrollViewer);
             }
         }
 
@@ -213,31 +219,41 @@ namespace ModernUIApp1.Content.View.Common
             {
                 mouseMove = false;
             }
+
+            if (scrollViewer.ScrollableWidth == 0 && scrollViewer.ScrollableHeight == 0)
+            {
+                Point mouseEndDrag = e.GetPosition(scrollViewer);
+
+                if (mouseEndDrag.X < mouseStartDrag.X)
+                {
+                    Console.WriteLine("left (show image on the right)");
+
+                    Storyboard anim = (Storyboard)this.Resources["leftAnimation"];
+                    anim.Completed += animNext_Completed;
+                    anim.Begin();
+
+                }
+                else if (mouseEndDrag.X > mouseStartDrag.X)
+                {
+                    Console.WriteLine("right (show image on the left)");
+
+                    Storyboard anim = (Storyboard)this.Resources["rightAnimation"];
+                    anim.Completed += animPrevious_Completed;
+                    anim.Begin();
+                }
+            }
         }
 
-        void OnManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        void animNext_Completed(object sender, EventArgs e)
+        {            
+            Storyboard anim = (Storyboard)this.Resources["backNextAnimation"];
+            anim.Begin();
+        }
+
+        void animPrevious_Completed(object sender, EventArgs e)
         {
-            Console.WriteLine("aaa");
-
-            UIElement element = sender as UIElement;
-
-            ScaleTransform transform = element.RenderTransform as ScaleTransform;
-            if (transform != null)
-            {
-                transform.ScaleX *= e.DeltaManipulation.Scale.X;
-                transform.ScaleY *= e.DeltaManipulation.Scale.Y;
-            }
-            
-            //CompositeTransform transform = element.RenderTransform as CompositeTransform;
-            /*Transform transform = element.RenderTransform;
-            if (transform != null)
-            {
-                transform.ScaleX *= e.DeltaManipulation.Scale;
-                transform.ScaleY *= e.DeltaManipulation.Scale;
-                transform.Rotation += e.DeltaManipulation.Rotation * 180 / Math.PI;
-                transform.TranslateX += e.DeltaManipulation.Translation.X;
-                transform.TranslateY += e.DeltaManipulation.Translation.Y;
-            }*/
+            Storyboard anim = (Storyboard)this.Resources["backPreviousAnimation"];
+            anim.Begin();
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
