@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,6 +83,7 @@
     <Compile Include="Pages\Popups\AddAnnotation.xaml.cs">
       <DependentUpon>AddAnnotation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ExtBitmap.cs" />
     <Compile Include="Resources\LinkResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

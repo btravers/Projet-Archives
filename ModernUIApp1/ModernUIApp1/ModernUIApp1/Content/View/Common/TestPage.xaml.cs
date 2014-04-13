@@ -1,7 +1,10 @@
 ﻿using ModernUIApp1.Pages.Popups;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +17,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ModernUIApp1.Resources;
+
 
 namespace ModernUIApp1.Content.View.Common
 {
@@ -28,6 +33,11 @@ namespace ModernUIApp1.Content.View.Common
 
     public partial class TestPage : UserControl
     {
+        /* Contrast */
+        private System.Drawing.Bitmap originalBitmap = null;
+        private System.Drawing.Bitmap previewBitmap = null;
+        private System.Drawing.Bitmap resultBitmap = null;
+        /* End contrast */
 
         Point? lastCenterPositionOnTarget;
         Point? lastMousePositionOnTarget;
@@ -62,7 +72,72 @@ namespace ModernUIApp1.Content.View.Common
             Canvas.SetTop(e, 20);
             e.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
             overlay.Children.Add(e);
+
+            /* Contrast */
+            sliderContrast.ValueChanged += ThresholdValueChangedEventHandler;
+
+            System.IO.StreamReader streamReader = new System.IO.StreamReader("./Resources/mini_RMM.jpg");
+            originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
+            streamReader.Close();
+
+            previewBitmap = originalBitmap;
+            rmmImage.Source = this.loadBitmap(previewBitmap);
+            /* End contrast */
         }
+
+        /* Contrast */
+        private void ApplyFilter(bool preview)
+        {
+            if (previewBitmap == null)
+            {
+                return;
+            }
+
+            if (preview == true)
+            {
+                rmmImage.Source = this.loadBitmap(previewBitmap.Contrast((int)sliderContrast.Value));
+            }
+            else
+            {
+                resultBitmap = originalBitmap.Contrast((int)sliderContrast.Value);
+            }
+        }
+
+        private void ThresholdValueChangedEventHandler(object sender, EventArgs e)
+        {
+            ApplyFilter(true);
+        }
+
+        public System.Drawing.Bitmap BitmapSourceToBitmap(BitmapSource srs)
+        {
+            int width = srs.PixelWidth;
+            int height = srs.PixelHeight;
+            int stride = width * ((srs.Format.BitsPerPixel + 7) / 8);
+            IntPtr ptr = IntPtr.Zero;
+            try
+            {
+                ptr = Marshal.AllocHGlobal(height * stride);
+                srs.CopyPixels(new Int32Rect(0, 0, width, height), ptr, height * stride, stride);
+                using (var btm = new System.Drawing.Bitmap(width, height, stride, System.Drawing.Imaging.PixelFormat.Format1bppIndexed, ptr))
+                {
+                    // Clone the bitmap so that we can dispose it and
+                    // release the unmanaged memory at ptr
+                    return new System.Drawing.Bitmap(btm);
+                }
+            }
+            finally
+            {
+                if (ptr != IntPtr.Zero)
+                    Marshal.FreeHGlobal(ptr);
+            }
+        }
+        public BitmapSource loadBitmap(System.Drawing.Bitmap source)
+        {
+            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(source.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
+                System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+        }
+
+        /* End contrast */
 
         void OnMouseMove(object sender, MouseEventArgs e)
         {
@@ -260,5 +335,7 @@ namespace ModernUIApp1.Content.View.Common
         {
             Console.WriteLine("click annotation");
         }
+
+
     }
 }

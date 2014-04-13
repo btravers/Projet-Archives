@@ -39,11 +39,13 @@
     
     <Grid Style="{StaticResource ContentRoot}" Margin="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Slider Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider"/>
-            <ScrollViewer Name="scrollViewer" Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+            <Slider Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" Minimum="-100" Maximum="100" x:Name="sliderContrast"/>
+            <Slider Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider"/>
+        <ScrollViewer Name="scrollViewer" Grid.Column="2" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
 
                 <Grid Name="grid" Width="300" Height="300" RenderTransformOrigin="0.5,0.5">
                     <Grid.LayoutTransform>
@@ -54,8 +56,10 @@
                     <Grid.RenderTransform>
                         <TranslateTransform x:Name="panelTrans" X="0"/>
                     </Grid.RenderTransform>
-                    <Image Name="rmmImage" Source="/Resources/fake_sheet.jpg" Margin="0,0,0,5"/>
-                    <Canvas Name="overlay" Margin="45,0,45,5"></Canvas>
+                <Image Name="rmmImage" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5">
+
+                </Image>
+                <Canvas Name="overlay" Margin="45,0,45,5"></Canvas>
                 </Grid>
 
             </ScrollViewer>
