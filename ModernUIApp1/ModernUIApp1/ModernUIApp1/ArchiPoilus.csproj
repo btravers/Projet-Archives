@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Content\Search\SearchResultAdapter.cs" />
     <Compile Include="Handlers\AnnotationHandler.cs" />
     <Compile Include="Handlers\BookmarkHandler.cs" />
     <Compile Include="Handlers\Cache\Cache.cs" />
