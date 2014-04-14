@@ -6,10 +6,10 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="400">
-    <Grid Style="{StaticResource ContentRoot}">
-        <StackPanel Name="ItemPanel" MinWidth="280">
-            <Image Width="{Binding ActualWidth, ElementName=ItemPanel}" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5"/>
-            <Label Content="Fiche Matricule Militaire" HorizontalAlignment="Center" />
-        </StackPanel>
+    <Grid Name="allGrid" Style="{StaticResource ContentRoot}">
+        <Grid Name="mainGrid" Style="{StaticResource ContentRoot}">
+            <Image Height="{Binding ActualHeight, ElementName=mainGrid}" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,2"/>            
+        </Grid>
+        <Label Content="Fiche Matricule Militaire" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
     </Grid>
 </UserControl>

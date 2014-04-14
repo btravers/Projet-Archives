@@ -9,7 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid>
-        <Grid Name="resultGrid" Margin="0,0,0,40">
+        <Grid Name="resultGrid" Margin="0,0,0,40" MinHeight="0">
             
         </Grid>
         <ScrollViewer>
@@ -23,7 +23,7 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                        <mui:ModernFrame Source="/Content/Search/SearchImageCell.xaml" MinHeight="{Binding ActualHeight, ElementName=resultGrid}"/>
+                        <mui:ModernFrame Source="/Content/Search/SearchImageCell.xaml" MaxHeight="{Binding ActualHeight, ElementName=resultGrid}"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

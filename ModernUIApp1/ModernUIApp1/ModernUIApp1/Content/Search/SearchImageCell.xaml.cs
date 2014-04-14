@@ -24,10 +24,10 @@ namespace ModernUIApp1.Content
         {
             InitializeComponent();
 
-            ItemPanel.MouseLeftButtonUp += ItemPanel_MouseLeftButtonUp;
+            mainGrid.MouseLeftButtonUp += mainGrid_MouseLeftButtonUp;
         }
 
-        void ItemPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        void mainGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {            
             MainWindow.window.ContentSource = new Uri("/Pages/ViewTable.xaml", UriKind.Relative);
         }
