@@ -53,10 +53,11 @@ namespace ModernUIApp1.Content.View.Common
 
             scrollViewer.ScrollChanged += OnScrollViewerScrollChanged;
             scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
-            scrollViewer.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
+            //scrollViewer.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
             scrollViewer.PreviewMouseWheel += OnPreviewMouseWheel;
 
             scrollViewer.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
+
             scrollViewer.MouseMove += OnMouseMove;            
 
             rmmImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
@@ -173,7 +174,7 @@ namespace ModernUIApp1.Content.View.Common
                 Mouse.Capture(scrollViewer);
             }
 
-            if (scrollViewer.ScrollableWidth == 0 && scrollViewer.ScrollableHeight == 0)
+            if (scrollViewer.ScrollableWidth == 0)
             {
                 mouseStartDrag = e.GetPosition(scrollViewer);
             }
@@ -200,6 +201,25 @@ namespace ModernUIApp1.Content.View.Common
             scrollViewer.Cursor = Cursors.Arrow;
             scrollViewer.ReleaseMouseCapture();
             lastDragPoint = null;
+
+            if (scrollViewer.ScrollableWidth == 0)
+            {
+                Point mouseEndDrag = e.GetPosition(scrollViewer);
+
+                if (mouseEndDrag.X < mouseStartDrag.X && (mouseStartDrag.X - mouseEndDrag.X) > 100)
+                {
+                    Storyboard anim = (Storyboard)this.Resources["leftAnimation"];
+                    anim.Completed += animNext_Completed;
+                    anim.Begin();
+
+                }
+                else if (mouseEndDrag.X > mouseStartDrag.X && (mouseEndDrag.X - mouseStartDrag.X) > 100)
+                {
+                    Storyboard anim = (Storyboard)this.Resources["rightAnimation"];
+                    anim.Completed += animPrevious_Completed;
+                    anim.Begin();
+                }
+            }
         }
 
         void OnSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -293,25 +313,6 @@ namespace ModernUIApp1.Content.View.Common
             else
             {
                 mouseMove = false;
-            }
-
-            if (scrollViewer.ScrollableWidth == 0 && scrollViewer.ScrollableHeight == 0)
-            {
-                Point mouseEndDrag = e.GetPosition(scrollViewer);
-
-                if (mouseEndDrag.X < mouseStartDrag.X && (mouseStartDrag.X - mouseEndDrag.X) > 110)
-                {
-                    Storyboard anim = (Storyboard)this.Resources["leftAnimation"];
-                    anim.Completed += animNext_Completed;
-                    anim.Begin();
-
-                }
-                else if (mouseEndDrag.X > mouseStartDrag.X && (mouseEndDrag.X - mouseStartDrag.X) > 110)
-                {
-                    Storyboard anim = (Storyboard)this.Resources["rightAnimation"];
-                    anim.Completed += animPrevious_Completed;
-                    anim.Begin();
-                }
             }
         }
 
