@@ -195,6 +195,21 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             throw new NotImplementedException();
         }
 
+        public List<PageTable> ParserSearchTable()
+        {
+            List<PageTable> lRes = new List<PageTable>();
+
+            XElement xmlResponse = xmlDocument.Element("response");
+            XElement xmlResult = xmlResponse.Element("result");
+
+            foreach (XElement xmlNode in xmlResult.Descendants())
+            {
+                Console.WriteLine("n : " + xmlNode.ToString());
+            }
+
+            return lRes;
+        }
+
         private List<XElement> getAllNodes(String node)
         {
             List<XElement> list = new List<XElement>();

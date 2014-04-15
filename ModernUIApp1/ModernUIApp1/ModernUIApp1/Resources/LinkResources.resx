@@ -272,4 +272,7 @@
     <value>year</value>
     <comment>refers to "year"</comment>
   </data>
+  <data name="LinkSearchTable" xml:space="preserve">
+    <value>finder/search_table/year/location</value>
+  </data>
 </root>

@@ -107,10 +107,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\Search\SearchImageCell.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Content\Search\SearchResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,9 +166,6 @@
     </Compile>
     <Compile Include="Content\View\Common\Bookmark\BookmarkResult.xaml.cs">
       <DependentUpon>BookmarkResult.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Search\SearchImageCell.xaml.cs">
-      <DependentUpon>SearchImageCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\Search\SearchResult.xaml.cs">
       <DependentUpon>SearchResult.xaml</DependentUpon>
