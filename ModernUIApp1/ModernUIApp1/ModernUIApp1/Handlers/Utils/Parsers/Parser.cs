@@ -199,12 +199,34 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
         {
             List<PageTable> lRes = new List<PageTable>();
 
-            XElement xmlResponse = xmlDocument.Element("response");
-            XElement xmlResult = xmlResponse.Element("result");
+            try
+            {            
+                XElement xmlResponse = xmlDocument.Element("response");
+                XElement xmlResult = xmlResponse.Element("result");
 
-            foreach (XElement xmlNode in xmlResult.Descendants())
+                foreach (XElement xmlNode in xmlResult.Elements())
+                {
+                    int idRegister = int.Parse(xmlNode.Name.ToString().Substring(4));
+                    string location = xmlNode.Element("location").Value;
+                    int year = int.Parse(xmlNode.Element("year").Value);
+                    int volume = int.Parse(xmlNode.Element("volume").Value);
+
+                    Register register = new Register(idRegister, location, year, volume);
+
+                    XElement xmlPages = xmlNode.Element("pages");
+                    foreach (XElement xmlPage in xmlPages.Elements())
+                    {
+                        int idPageTable = int.Parse(xmlPage.Name.ToString().Substring(4));
+                        int page = int.Parse(xmlPage.Element("page").Value);
+                        string url = xmlPage.Element("url").Value;
+
+                        lRes.Add(new PageTable(idPageTable, register, page, url));
+                    }
+                }
+            }
+            catch (Exception e)
             {
-                Console.WriteLine("n : " + xmlNode.ToString());
+
             }
 
             return lRes;

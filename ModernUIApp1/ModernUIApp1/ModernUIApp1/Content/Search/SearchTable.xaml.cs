@@ -12,7 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Data.Data.Registre;
 using FirstFloor.ModernUI.Presentation;
+using Handlers.Handlers;
+using ModernUIApp1.Content.Search;
 
 namespace ModernUIApp1.Content
 {
@@ -32,6 +35,30 @@ namespace ModernUIApp1.Content
         private void yearSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             this.yearValue.Text = e.NewValue.ToString();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (SearchResult.window != null)
+            {
+                TableHandler handler = new TableHandler();
+
+                List<PageTable> result = handler.searchTable((int) yearSlider.Value, location.Text);
+
+                SearchResult.window.model.clearResult();
+                if (result.Count == 0)
+                {
+                    statusText.Text = "Pas de résultat !";                        
+                }
+                else
+                {
+                    statusText.Text = ""; 
+                    foreach (PageTable pageTable in result)
+                    {
+                        SearchResult.window.model.addResult(new SearchResultAdapter("/Resources/fake_sheet.jpg", "Table " + pageTable.page + " volume " + pageTable.register.volume, "/Pages/ViewTable.xaml"));
+                    }
+                }
+            }
         }
     }
 }

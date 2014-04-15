@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Data.Data.Registre;
 
 namespace ModernUIApp1.Pages
 {
@@ -23,10 +24,7 @@ namespace ModernUIApp1.Pages
     {
         public Recherche()
         {
-            InitializeComponent();
-
-            TableHandler handler = new TableHandler();
-            handler.searchTable(1867, "saint-malo");
+            InitializeComponent();            
         }
     }
 }
