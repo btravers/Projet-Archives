@@ -32,7 +32,7 @@
     
     <mui:ModernWindow.TitleLinks>
         <mui:Link DisplayName="view" Source="/Pages/ViewRegister.xaml" />
-        <mui:Link DisplayName="recherche" Source="/Pages/Search.xaml" />
+        <mui:Link x:Name="search" DisplayName="recherche" Source="/Pages/Search.xaml" />
         <mui:Link DisplayName="options" Source="/Pages/Settings.xaml" />
     </mui:ModernWindow.TitleLinks>
 </mui:ModernWindow>

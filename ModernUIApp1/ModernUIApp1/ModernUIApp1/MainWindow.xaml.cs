@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ModernUIApp1.Pages;
 
 namespace ModernUIApp1
 {
@@ -29,6 +30,11 @@ namespace ModernUIApp1
             InitializeComponent();
 
             MainWindow.window = this;
+        }
+
+        public void userConnected()
+        {
+            this.ContentSource = search.Source;
         }
     }
 }
