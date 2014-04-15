@@ -24,9 +24,13 @@ namespace ModernUIApp1.Content
     /// </summary>
     public partial class SearchTable : UserControl
     {
+        public static Dictionary<int, PageTable> pagesTable;
+        
         public SearchTable()
         {
             InitializeComponent();
+
+            SearchTable.pagesTable = new Dictionary<int, PageTable>();
 
             // Event manager for edit text year value
             this.yearSlider.ValueChanged += yearSlider_ValueChanged;
@@ -46,6 +50,8 @@ namespace ModernUIApp1.Content
                 List<PageTable> result = handler.searchTable((int) yearSlider.Value, location.Text);
 
                 SearchResult.window.model.clearResult();
+                SearchTable.pagesTable.Clear();
+
                 if (result.Count == 0)
                 {
                     statusText.Text = "Pas de résultat !";                        
@@ -55,7 +61,8 @@ namespace ModernUIApp1.Content
                     statusText.Text = ""; 
                     foreach (PageTable pageTable in result)
                     {
-                        SearchResult.window.model.addResult(new SearchResultAdapter("/Resources/fake_sheet.jpg", "Table " + pageTable.page + " volume " + pageTable.register.volume, "/Pages/ViewTable.xaml"));
+                        SearchTable.pagesTable.Add(pageTable.id_page_table, pageTable);
+                        SearchResult.window.model.addResult(new SearchResultAdapter("/Resources/fake_sheet.jpg", "Volume " + pageTable.register.volume + " page " + pageTable.page, pageTable.id_page_table, "/Pages/ViewTable.xaml#" + pageTable.id_page_table));
                     }
                 }
             }
