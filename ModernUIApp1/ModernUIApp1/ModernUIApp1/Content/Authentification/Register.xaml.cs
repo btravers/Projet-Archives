@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModernUIApp1.Content.Identification
+namespace ModernUIApp1.Content.Authentification
 {
     /// <summary>
     /// Interaction logic for Enregistrement.xaml

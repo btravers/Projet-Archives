@@ -84,6 +84,11 @@
     <Compile Include="Pages\Popups\AddAnnotation.xaml.cs">
       <DependentUpon>AddAnnotation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ErrorMessagesResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessagesResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\ExtBitmap.cs" />
     <Compile Include="Resources\LinkResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -285,6 +290,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\ErrorMessagesResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessagesResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\LinkResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LinkResources.Designer.cs</LastGenOutput>

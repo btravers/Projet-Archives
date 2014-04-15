@@ -13,11 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ModernUIApp1.Resources;
 
-namespace ModernUIApp1.Content.Identification
+namespace ModernUIApp1.Content.Authentification
 {
     /// <summary>
-    /// Interaction logic for Identification.xaml
+    /// Interaction logic for Authentification.xaml
     /// </summary>
     public partial class Authentification : UserControl
     {
@@ -31,7 +32,16 @@ namespace ModernUIApp1.Content.Identification
             Console.WriteLine(email.Text);
             Console.WriteLine(password.Password);
 
-            Authenticator.AUTHENTICATOR.login(email.Text, password.Password);
+            if (Authenticator.AUTHENTICATOR.login(email.Text, password.Password))
+            {
+                // Notify that the user is connected
+                MainWindow.window.userConnected();
+                message.Text = null;
+            }
+            else
+            {
+                message.Text = ErrorMessagesResources.Login_Failed;
+            }
         }
     }
 }
