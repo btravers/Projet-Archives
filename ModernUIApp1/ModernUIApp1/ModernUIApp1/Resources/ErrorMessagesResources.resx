@@ -121,4 +121,16 @@
     <value>Les informations que vous avez transmises n'ont pas permis de vous connecter.</value>
     <comment>Called when a user failed his login</comment>
   </data>
+  <data name="Register_Failed" xml:space="preserve">
+    <value>L'email que vous utilisez est déjà utilisé.</value>
+    <comment>Called when a user email exists</comment>
+  </data>
+  <data name="Register_Password_Not_Correspond" xml:space="preserve">
+    <value>Les mots de passe ne correspondent pas.</value>
+    <comment>Called when two password not correspond</comment>
+  </data>
+  <data name="Register_Success" xml:space="preserve">
+    <value>L'enregistrement s'est correctement déroulé, vous pouvez maintenant vous authentifier.</value>
+    <comment>Called when register success</comment>
+  </data>
 </root>

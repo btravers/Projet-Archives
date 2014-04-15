@@ -68,5 +68,32 @@ namespace ModernUIApp1.Resources {
                 return ResourceManager.GetString("Login_Failed", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à L&apos;email que vous utilisez est déjà utilisé..
+        /// </summary>
+        internal static string Register_Failed {
+            get {
+                return ResourceManager.GetString("Register_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Les mots de passe ne correspondent pas..
+        /// </summary>
+        internal static string Register_Password_Not_Correspond {
+            get {
+                return ResourceManager.GetString("Register_Password_Not_Correspond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à L&apos;enregistrement s&apos;est correctement déroulé, vous pouvez maintenant vous authentifier..
+        /// </summary>
+        internal static string Register_Success {
+            get {
+                return ResourceManager.GetString("Register_Success", resourceCulture);
+            }
+        }
     }
 }

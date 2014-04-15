@@ -11,17 +11,21 @@
             <StackPanel>
                 <Grid>
                     <Label Content="Email" FontSize="17"/>
-                    <TextBox TextWrapping="Wrap" Text="" FontSize="17" Margin="193,0,0,0"/>
+                    <TextBox x:Name="email"  TextWrapping="Wrap" FontSize="17" Margin="193,0,0,0"/>
                 </Grid>
                 <Grid Margin="0,20,0,0">
                     <Label Content="Mot de passe" FontSize="17"/>
-                    <PasswordBox FontSize="17" Margin="193,0,0,0"/>
+                    <PasswordBox x:Name="password" FontSize="17" Margin="193,0,0,0"/>
                 </Grid>
                 <Grid Margin="0,20,0,0">
                     <Label Content="Confirmer mot de passe" FontSize="17"/>
-                    <PasswordBox FontSize="17" Margin="193,0,0,0"/>
+                    <PasswordBox x:Name="check_password" FontSize="17" Margin="193,0,0,0"/>
                 </Grid>
-                <Button Content="S'enregistrer" Width="170" FontSize="17" Margin="0,50,0,0"/>
+                <Button x:Name="register" Content="S'enregistrer" Click="register_Click" Width="170" FontSize="17" Margin="0,50,0,0"/>
+                <Label FontSize="17" Padding="10, 10, 10, 10" Margin="10" Foreground="Red">
+                    <AccessText x:Name="message" TextWrapping="WrapWithOverflow">
+                    </AccessText>
+                </Label>
             </StackPanel>
         </ScrollViewer>
     </Grid>

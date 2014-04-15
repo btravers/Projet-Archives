@@ -77,7 +77,7 @@ namespace ModernUIApp1.Handlers.Utils
         /* Check if it's a valid password */
         private static bool isAValidPassword(String password)
         {
-            return password.Length >= 7 ? true : false;
+            return password.Length >= 4 ? true : false;
         }
         /* End static functions */
 
@@ -88,12 +88,14 @@ namespace ModernUIApp1.Handlers.Utils
         /* Send a request register() to the server */
         public bool registerNewUser(String email, String password)
         {
+            /*
             if (!isAnEmail(email))
                 return false;
 
             if (!isAValidPassword(password))
                 return false;
-
+            */
+             
             // Send a request register() to the server
             // Debug mode (with Console.write())
             String request = Resources.LinkResources.LinkRegister.Replace(Resources.LinkResources.Email, email).Replace(Resources.LinkResources.Password, passwordEncryption(password));
