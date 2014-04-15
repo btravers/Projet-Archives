@@ -8,11 +8,11 @@ namespace Data.Data.Registre
 {
     public class Register
     {
-        int id_register;
+        public int id_register { get; private set; }
 
-        String location;
-        int year;
-        int volume;
+        public String location { get; private set; }
+        public int year { get; private set; }
+        public int volume { get; private set; }
 
         /* Dictionnary contains all page table which refers to the register */
         Dictionary<int, PageTable> pages_table;

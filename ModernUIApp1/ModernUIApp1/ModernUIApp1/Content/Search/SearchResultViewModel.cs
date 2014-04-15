@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Collections.ObjectModel;
+using ModernUIApp1.Pages;
 
 namespace ModernUIApp1.Content
 {
@@ -15,20 +17,32 @@ namespace ModernUIApp1.Content
     /// </summary>
     public class SearchResultViewModel : NotifyPropertyChanged
     {
-        private List<SearchResultAdapter> results;
+        private ObservableCollection<SearchResultAdapter> results;
         private SearchResultAdapter selectedResult;
 
         public SearchResultViewModel()
         {
-            this.results = new List<SearchResultAdapter>();
+            this.results = new ObservableCollection<SearchResultAdapter>();
 
-            this.results.Add(new SearchResultAdapter("/Resources/fake_sheet.jpg", "test 1"));
-            this.results.Add(new SearchResultAdapter("/Resources/fake_sheet.jpg", "test 2"));
+            if (SearchResult.window != null)
+            {
+                SearchResult.window.resultListBox.ItemsSource = this.results;
+            }
+        }
+
+        public void addResult(SearchResultAdapter adapter)
+        {
+            this.results.Add(adapter);
+        }
+
+        public void clearResult()
+        {
+            this.results.Clear();
         }
 
         private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "AccentImage")
+            if (e.PropertyName == "ResultsList")
             {
                 //SyncThemeAndColor();
             }
@@ -49,7 +63,7 @@ namespace ModernUIApp1.Content
                     this.selectedResult = value;
                     OnPropertyChanged("SelectedResult");
 
-                    MainWindow.window.ContentSource = new Uri("/Pages/ViewTable.xaml", UriKind.Relative);
+                    MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
                 }
             }
         }

@@ -21,11 +21,18 @@ namespace ModernUIApp1.Content
     /// </summary>
     public partial class SearchResult : UserControl
     {
+        public static SearchResult window { get; private set; }
+        public SearchResultViewModel model { get; private set; }
+        
         public SearchResult()
         {
             InitializeComponent();
 
-            this.DataContext = new SearchResultViewModel();
+            SearchResult.window = this;
+
+            this.model = new SearchResultViewModel();
+
+            this.DataContext = this.model;
         }
     }
 }

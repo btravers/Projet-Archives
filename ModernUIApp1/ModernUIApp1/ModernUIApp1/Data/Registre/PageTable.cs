@@ -10,11 +10,11 @@ namespace Data.Data.Registre
     public class PageTable
     {
         public int id_page_table;
-        Register register;
+        public Register register { get; private set; }
 
-        int page;
-        String url;
-        int size;
+        public int page { get; private set; }
+        public String url { get; private set; }
+        public int size { get; private set; }
         int width, height;
 
         /* Dictionnary contains all annotation which refers to the page table */
@@ -30,6 +30,16 @@ namespace Data.Data.Registre
         public PageTable(int id_page_table, String url)
         {
             this.id_page_table = id_page_table;
+            this.url = url;
+
+            annotations_page_table = new Dictionary<int, AnnotationPageTable>();
+        }
+
+        public PageTable(int id_page_table, Register register, int page, String url)
+        {
+            this.id_page_table = id_page_table;
+            this.register = register;
+            this.page = page;
             this.url = url;
 
             annotations_page_table = new Dictionary<int, AnnotationPageTable>();
@@ -54,5 +64,9 @@ namespace Data.Data.Registre
             annotations_page_table.Add(new_annotation.id_annotation_page_table, new_annotation);
         }
 
+        public override string ToString()
+        {
+            return id_page_table + " " + page + " " + url;
+        }
     }
 }
