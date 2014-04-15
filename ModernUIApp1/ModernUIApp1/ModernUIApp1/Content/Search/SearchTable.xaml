@@ -10,11 +10,11 @@
         <ScrollViewer>
             <StackPanel MinWidth="200">
                 <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Année"/></TextBlock>
-                <TextBlock Name ="yearValue" Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="1890"/></TextBlock>
-                <Slider Name="yearSlider" Minimum="1867" IsSnapToTickEnabled="True" SmallChange="1" Maximum="1918" Value="1890" TickPlacement="BottomRight" Background="Transparent"/>
+                <TextBlock Name ="yearValue" Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="1867"/></TextBlock>
+                <Slider Name="yearSlider" Minimum="1867" IsSnapToTickEnabled="True" SmallChange="1" Maximum="1918" Value="1867" TickPlacement="BottomRight" Background="Transparent"/>
                 <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Commune"/></TextBlock>
                 <Grid>
-                    <TextBox Name="location" Width="231" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2" TextAlignment="Left"/>
+                    <TextBox Name="location" Width="231" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2" TextAlignment="Left" Text="saint-malo"/>
                     <Button Content="Rechercher" Width="152" Margin="157,0,10,0" Click="Button_Click_1"/>
                 </Grid>
                 <TextBlock Name="statusText" HorizontalAlignment="Center" Margin="0,40,0,0" Text=""/>

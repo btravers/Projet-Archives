@@ -11,12 +11,14 @@ namespace ModernUIApp1.Content.Search
     {
         public string imagePath { get; private set; }
         public string text { get; private set; }
+        public int id { get; private set; }
         public string uri { get; private set; }
 
-        public SearchResultAdapter(string imagePath, string text, string uri)
+        public SearchResultAdapter(string imagePath, string text, int id, string uri)
         {
             this.imagePath = imagePath;
             this.text = text;
+            this.id = id;
             this.uri = uri;
         }
     }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Collections.ObjectModel;
 using ModernUIApp1.Pages;
+using ModernUIApp1.Handlers.Utils;
 
 namespace ModernUIApp1.Content
 {
@@ -63,7 +64,13 @@ namespace ModernUIApp1.Content
                     this.selectedResult = value;
                     OnPropertyChanged("SelectedResult");
 
+                    TableViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
                     MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
+
+                    if (ViewTable.window != null)
+                    {
+                        ViewTable.window.reload();
+                    }
                 }
             }
         }
