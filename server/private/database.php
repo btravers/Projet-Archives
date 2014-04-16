@@ -120,7 +120,7 @@ class Database
 	 */
 	public static function existAnnotationTable2($idAnnotationSheet)
 	{
-		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?"array($idAnnotationSheet));
+		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
 		return (count($result) > 0);
 	}
 }

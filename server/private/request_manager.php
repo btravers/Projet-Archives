@@ -52,6 +52,9 @@ class RequestManager
 			case "finder":
 				$helperType = HelperEnum::Finder;
 				break;
+			case "file":
+				$helperType = HelperEnum::File;
+				break;
 			default:
 				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;

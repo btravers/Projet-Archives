@@ -317,13 +317,17 @@ namespace ModernUIApp1.Content.View.Common
         }
 
         void animNext_Completed(object sender, EventArgs e)
-        {            
+        {
+            slider.Value = 2;
+            
             Storyboard anim = (Storyboard)this.Resources["backNextAnimation"];
             anim.Begin();
         }
 
         void animPrevious_Completed(object sender, EventArgs e)
         {
+            slider.Value = 2;
+
             Storyboard anim = (Storyboard)this.Resources["backPreviousAnimation"];
             anim.Begin();
         }
