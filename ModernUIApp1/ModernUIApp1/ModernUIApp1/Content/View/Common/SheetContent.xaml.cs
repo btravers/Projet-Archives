@@ -33,6 +33,8 @@ namespace ModernUIApp1.Content.View.Common
 
     public partial class SheetContent : UserControl
     {
+        public static SheetContent window { get; private set; }
+        
         /* Contrast */
         private System.Drawing.Bitmap originalBitmap = null;
         private System.Drawing.Bitmap previewBitmap = null;
@@ -51,9 +53,11 @@ namespace ModernUIApp1.Content.View.Common
         {
             InitializeComponent();
 
+            SheetContent.window = this;
+
             scrollViewer.ScrollChanged += OnScrollViewerScrollChanged;
-            scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
-            //scrollViewer.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
+            //scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
+            scrollViewer.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
             scrollViewer.PreviewMouseWheel += OnPreviewMouseWheel;
 
             scrollViewer.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
@@ -77,13 +81,19 @@ namespace ModernUIApp1.Content.View.Common
             /* Contrast */
             sliderContrast.ValueChanged += ThresholdValueChangedEventHandler;
 
+            reload();
+        }
+
+        public void reload()
+        {
+            slider.Value = 2;
+
             System.IO.StreamReader streamReader = new System.IO.StreamReader("./Resources/mini_RMM.jpg");
             originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
             streamReader.Close();
 
             previewBitmap = originalBitmap;
             rmmImage.Source = this.loadBitmap(previewBitmap);
-            /* End contrast */
         }
 
         /* Contrast */

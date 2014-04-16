@@ -59,8 +59,8 @@ namespace ModernUIApp1.Content.View.Common
             PageTableContent.window = this;
 
             scrollViewer.ScrollChanged += OnScrollViewerScrollChanged;
-            scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
-            //scrollViewer.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
+            //scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
+            scrollViewer.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
             scrollViewer.PreviewMouseWheel += OnPreviewMouseWheel;
 
             scrollViewer.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
@@ -69,8 +69,7 @@ namespace ModernUIApp1.Content.View.Common
 
             rmmImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
 
-            slider.ValueChanged += OnSliderValueChanged;
-            slider.Value = 2;
+            slider.ValueChanged += OnSliderValueChanged;            
 
             Ellipse e = new Ellipse();
             e.Width = 8;
@@ -84,33 +83,30 @@ namespace ModernUIApp1.Content.View.Common
             /* Contrast */
             sliderContrast.ValueChanged += ThresholdValueChangedEventHandler;
 
-            /*System.IO.StreamReader streamReader = new System.IO.StreamReader("./Resources/mini_RMM.jpg");
-            originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
-            streamReader.Close();
-
-            previewBitmap = originalBitmap;
-            rmmImage.Source = this.loadBitmap(previewBitmap);*/
-            /* End contrast */
-
             reload();
         }
 
         public void reload()
         {
+            slider.Value = 2;
+            
             PageTable pageTable = TableViewManager.instance.pageTable;
             if (pageTable != null)
             {
                 FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, pageTable.url.Replace("/", "-")), pageTable.url,
                     () =>
                     {
-                        System.IO.StreamReader streamReader = new System.IO.StreamReader(pageTable.url);
-                        originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
-                        streamReader.Close();
+                        if (File.Exists(pageTable.url))
+                        {
+                            System.IO.StreamReader streamReader = new System.IO.StreamReader(pageTable.url);
+                            originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
+                            streamReader.Close();
 
-                        previewBitmap = originalBitmap;
-                        rmmImage.Source = this.loadBitmap(previewBitmap);
-                    
-                        ApplyFilter(true);
+                            previewBitmap = originalBitmap;
+                            rmmImage.Source = this.loadBitmap(previewBitmap);
+
+                            ApplyFilter(true);
+                        }
                     }
                 );
             }
