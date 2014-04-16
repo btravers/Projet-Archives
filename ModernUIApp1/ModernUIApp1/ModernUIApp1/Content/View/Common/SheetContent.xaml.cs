@@ -31,7 +31,7 @@ namespace ModernUIApp1.Content.View.Common
     // Test page to test a code provided by : WPF simple zoom and drag support in a ScrollViewer By Kevin Stumpf, 6 Nov 2013
     // http://www.codeproject.com/Articles/97871/WPF-simple-zoom-and-drag-support-in-a-ScrollViewer
 
-    public partial class TestPage : UserControl
+    public partial class SheetContent : UserControl
     {
         /* Contrast */
         private System.Drawing.Bitmap originalBitmap = null;
@@ -47,7 +47,7 @@ namespace ModernUIApp1.Content.View.Common
 
         Point mouseStartDrag;
 
-        public TestPage()
+        public SheetContent()
         {
             InitializeComponent();
 

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Data.Data.Registre;
 using ModernUIApp1.Handlers.Utils;
+using ModernUIApp1.Content.View.Common;
 
 namespace ModernUIApp1.Pages
 {
@@ -34,11 +35,11 @@ namespace ModernUIApp1.Pages
         }
 
         public void reload()
-        {
-            PageTable pageTable = TableViewManager.instance.pageTable;
-            if (pageTable != null)
+        {            
+            PageTableContent pageTableContent = PageTableContent.window;
+            if (pageTableContent != null)
             {
-                Console.WriteLine(pageTable.id_page_table);
+                pageTableContent.reload();
             }
         }
     }

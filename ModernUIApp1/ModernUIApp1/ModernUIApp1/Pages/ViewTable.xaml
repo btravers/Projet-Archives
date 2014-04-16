@@ -21,7 +21,7 @@
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom"/>
 
             <Grid>
-                    <Frame Source="/Content/View/Common/TestPage.xaml"/>
+                    <Frame Source="/Content/View/Common/PageTableContent.xaml"/>
                 </Grid>
             </DockPanel>
        

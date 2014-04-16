@@ -19,6 +19,7 @@ using ModernUIApp1.Content.Search;
 using System.Net;
 using Handlers.Utils;
 using System.IO;
+using ModernUIApp1.Handlers.Utils;
 
 namespace ModernUIApp1.Content
 {
@@ -70,26 +71,18 @@ namespace ModernUIApp1.Content
                         index++;
 
                         SearchTable.pagesTable.Add(pageTable.id_page_table, pageTable);
-                        
-                        WebClient webClient = new WebClient();
-                        Uri uri = new Uri(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, pageTable.url.Replace("/", "-")));
-                        string fileName = pageTable.url;
 
-                        Directory.CreateDirectory(System.IO.Path.GetDirectoryName(fileName));
+                        FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, pageTable.url.Replace("/", "-")), pageTable.url,
+                        () => {
+                                downloadCompleted++;
+                                SearchResult.window.model.addResult(new SearchResultAdapter(currentIndex, Directory.GetCurrentDirectory() + "/" + pageTable.url, "Volume " + pageTable.register.volume + " page " + pageTable.page, pageTable.id_page_table, "/Pages/ViewTable.xaml"));
 
-                        webClient.DownloadFileAsync(uri, fileName);
-                        webClient.DownloadFileCompleted += delegate
-                        {
-                            downloadCompleted++;
-                            SearchResult.window.model.addResult(new SearchResultAdapter(currentIndex, Directory.GetCurrentDirectory() + "/" + fileName, "Volume " + pageTable.register.volume + " page " + pageTable.page, pageTable.id_page_table, "/Pages/ViewTable.xaml#" + pageTable.id_page_table));
-
-                            Console.WriteLine(downloadCompleted + " " + result.Count);
-
-                            if (downloadCompleted == result.Count)
-                            {
-                                SearchResult.window.model.sort();
+                                if (downloadCompleted == result.Count)
+                                {
+                                    SearchResult.window.model.sort();
+                                }
                             }
-                        };
+                        );
                     }
                 }
             }

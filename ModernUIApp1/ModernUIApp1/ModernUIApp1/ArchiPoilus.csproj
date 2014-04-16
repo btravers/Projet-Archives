@@ -62,9 +62,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Content\Search\SearchResultAdapter.cs" />
+    <Compile Include="Content\View\Common\SheetContent.xaml.cs">
+      <DependentUpon>SheetContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\View\Common\PageTableContent.xaml.cs">
+      <DependentUpon>PageTableContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Handlers\AnnotationHandler.cs" />
     <Compile Include="Handlers\BookmarkHandler.cs" />
     <Compile Include="Handlers\Cache\Cache.cs" />
+    <Compile Include="Handlers\Cache\FileCache.cs" />
     <Compile Include="Handlers\RegistreHandler.cs" />
     <Compile Include="Handlers\SheetHandler.cs" />
     <Compile Include="Handlers\ShortcutHandler.cs" />
@@ -125,11 +132,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\View\Common\MainContent.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Content\View\Common\SheetContent.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Content\View\Common\TestPage.xaml">
+    <Page Include="Content\View\Common\PageTableContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Content\View\Common\MainContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,9 +197,6 @@
     <Compile Include="Content\View\Common\Bookmark\BookmarkResultViewModel.cs" />
     <Compile Include="Content\View\Common\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Content\View\Common\TestPage.xaml.cs">
-      <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\View\Common\Toolbar.xaml.cs">
       <DependentUpon>Toolbar.xaml</DependentUpon>
