@@ -90,7 +90,7 @@ namespace ModernUIApp1.Content.View.Common
         {
             slider.Value = 2;
             
-            PageTable pageTable = TableViewManager.instance.pageTable;
+            PageTable pageTable = ViewManager.instance.pageTable;
             if (pageTable != null)
             {
                 FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, pageTable.url.Replace("/", "-")), pageTable.url,

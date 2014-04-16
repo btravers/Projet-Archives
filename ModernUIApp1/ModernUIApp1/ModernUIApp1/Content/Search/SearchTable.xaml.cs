@@ -28,13 +28,11 @@ namespace ModernUIApp1.Content
     /// </summary>
     public partial class SearchTable : UserControl
     {
-        public static Dictionary<int, PageTable> pagesTable;
+        public static Dictionary<int, PageTable> pagesTable = new Dictionary<int, PageTable>();
         
         public SearchTable()
         {
             InitializeComponent();
-
-            SearchTable.pagesTable = new Dictionary<int, PageTable>();
 
             // Event manager for edit text year value
             this.yearSlider.ValueChanged += yearSlider_ValueChanged;
@@ -51,7 +49,7 @@ namespace ModernUIApp1.Content
             {
                 TableHandler handler = new TableHandler();
 
-                List<PageTable> result = handler.searchTable((int) yearSlider.Value, location.Text);
+                List<PageTable> result = handler.search((int) yearSlider.Value, location.Text);
 
                 SearchResult.window.model.clearResult();
                 SearchTable.pagesTable.Clear();

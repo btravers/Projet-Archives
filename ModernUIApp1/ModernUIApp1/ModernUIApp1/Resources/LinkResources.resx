@@ -281,4 +281,19 @@
   <data name="Path" xml:space="preserve">
     <value>path</value>
   </data>
+  <data name="LinkSearchSheet" xml:space="preserve">
+    <value>finder/search_sheet/year/location/firstname/lastname/job/regiment</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>firstname</value>
+  </data>
+  <data name="Job" xml:space="preserve">
+    <value>job</value>
+  </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>lastname</value>
+  </data>
+  <data name="Regiment" xml:space="preserve">
+    <value>regiment</value>
+  </data>
 </root>

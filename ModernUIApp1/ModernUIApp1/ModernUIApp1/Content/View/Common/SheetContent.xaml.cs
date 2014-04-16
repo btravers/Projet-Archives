@@ -18,6 +18,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModernUIApp1.Resources;
+using Data.Data.Registre;
+using ModernUIApp1.Handlers.Utils;
+using Handlers.Utils;
 
 
 namespace ModernUIApp1.Content.View.Common
@@ -88,12 +91,26 @@ namespace ModernUIApp1.Content.View.Common
         {
             slider.Value = 2;
 
-            System.IO.StreamReader streamReader = new System.IO.StreamReader("./Resources/mini_RMM.jpg");
-            originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
-            streamReader.Close();
+            Sheet sheet = ViewManager.instance.sheet;
+            if (sheet != null)
+            {
+                FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, sheet.url.Replace("/", "-")), sheet.url,
+                    () =>
+                    {
+                        if (File.Exists(sheet.url))
+                        {
+                            System.IO.StreamReader streamReader = new System.IO.StreamReader(sheet.url);
+                            originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
+                            streamReader.Close();
 
-            previewBitmap = originalBitmap;
-            rmmImage.Source = this.loadBitmap(previewBitmap);
+                            previewBitmap = originalBitmap;
+                            rmmImage.Source = this.loadBitmap(previewBitmap);
+
+                            ApplyFilter(true);
+                        }
+                    }
+                );
+            }
         }
 
         /* Contrast */

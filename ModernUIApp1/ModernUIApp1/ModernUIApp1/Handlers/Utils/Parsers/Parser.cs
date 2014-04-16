@@ -232,6 +232,31 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             return lRes;
         }
 
+        public List<Sheet> ParserSearchSheet()
+        {
+            List<Sheet> lRes = new List<Sheet>();
+
+            try
+            {
+                XElement xmlResponse = xmlDocument.Element("response");
+                XElement xmlResult = xmlResponse.Element("result");
+
+                foreach (XElement xmlNode in xmlResult.Elements())
+                {
+                    int idSheet = int.Parse(xmlNode.Name.ToString().Substring(4));
+                    string url = xmlNode.Element("url").Value;
+
+                    lRes.Add(new Sheet(idSheet, url));
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return lRes;
+        }
+
         private List<XElement> getAllNodes(String node)
         {
             List<XElement> list = new List<XElement>();

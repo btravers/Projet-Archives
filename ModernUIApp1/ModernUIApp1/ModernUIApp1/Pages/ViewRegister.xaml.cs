@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernUIApp1.Content.View.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,24 @@ namespace ModernUIApp1.Pages
     /// </summary>
     public partial class ViewRegister : UserControl
     {
+        public static ViewRegister window { get; private set; }
+        
         public ViewRegister()
         {
             InitializeComponent();
+
+            ViewRegister.window = this;
+
+            reload();
+        }
+
+        public void reload()
+        {
+            SheetContent sheetContent = SheetContent.window;
+            if (sheetContent != null)
+            {
+                sheetContent.reload();
+            }
         }
     }
 }

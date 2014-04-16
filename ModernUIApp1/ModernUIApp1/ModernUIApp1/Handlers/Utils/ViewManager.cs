@@ -7,16 +7,16 @@ using Data.Data.Registre;
 
 namespace ModernUIApp1.Handlers.Utils
 {
-    class TableViewManager
+    class ViewManager
     {
-        private static TableViewManager tableViewManager;
-        public static TableViewManager instance
+        private static ViewManager tableViewManager;
+        public static ViewManager instance
         {
             get
             {
                 if (tableViewManager == null)
                 {
-                    tableViewManager = new TableViewManager();
+                    tableViewManager = new ViewManager();
                 }
 
                 return tableViewManager;
@@ -25,5 +25,6 @@ namespace ModernUIApp1.Handlers.Utils
         }
 
         public PageTable pageTable = null;
+        public Sheet sheet = null;
     }
 }

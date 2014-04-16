@@ -100,9 +100,9 @@ class Finder
 		
 		if($argumentsNumber > 0) {
 			$argumentsSql = " AND (" . $argumentsSql . ") GROUP BY s.id_sheet HAVING COUNT(*) = " . $argumentsNumber;
-			$sql = "SELECT * FROM Register r, AnnotationSheet a, Sheet s, Type t WHERE r.id_register = s.id_register AND a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND year = ? AND location = ? " . $argumentsSql;
+			$sql = "SELECT * FROM Register r, AnnotationSheet a, Sheet s, Type t WHERE r.id_register = s.id_register AND a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND year = ? AND location = ? " . $argumentsSql . "  LIMIT 3";
 		} else {
-			$sql = "SELECT * FROM Register r, Sheet s WHERE r.id_register = s.id_register AND year = ? AND location = ?";
+			$sql = "SELECT * FROM Register r, Sheet s WHERE r.id_register = s.id_register AND year = ? AND location = ? LIMIT 3";
 		}
 		
 		$resultSheets = Database::query($sql, $argumentsValues);

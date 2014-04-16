@@ -74,13 +74,27 @@ namespace ModernUIApp1.Content
                     this.selectedResult = value;
                     OnPropertyChanged("SelectedResult");
 
-                    TableViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
-                    MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
+                    if (SearchTable.pagesTable.ContainsKey(this.selectedResult.id))
+                    {
+                        ViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
+                    }
 
                     if (ViewTable.window != null)
                     {
                         ViewTable.window.reload();
                     }
+
+                    if (SearchRegistre.sheets.ContainsKey(this.selectedResult.id))
+                    {
+                        ViewManager.instance.sheet = SearchRegistre.sheets[this.selectedResult.id];
+                    }
+
+                    if (ViewRegister.window != null)
+                    {
+                        ViewRegister.window.reload();
+                    }
+
+                    MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);                    
                 }
             }
         }

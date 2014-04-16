@@ -88,6 +88,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à firstname.
+        /// </summary>
+        internal static string Firstname {
+            get {
+                return ResourceManager.GetString("Firstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à height.
         /// </summary>
         internal static string Height {
@@ -169,6 +178,24 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à job.
+        /// </summary>
+        internal static string Job {
+            get {
+                return ResourceManager.GetString("Job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à lastname.
+        /// </summary>
+        internal static string Lastname {
+            get {
+                return ResourceManager.GetString("Lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à browser/get_page_table/idPageTable/idUser/page.
         /// </summary>
         internal static string LinkGetPageTable {
@@ -237,6 +264,15 @@ namespace ModernUIApp1.Resources {
         internal static string LinkRegister {
             get {
                 return ResourceManager.GetString("LinkRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à finder/search_sheet/year/location/firstname/lastname/job/regiment.
+        /// </summary>
+        internal static string LinkSearchSheet {
+            get {
+                return ResourceManager.GetString("LinkSearchSheet", resourceCulture);
             }
         }
         
@@ -336,6 +372,15 @@ namespace ModernUIApp1.Resources {
         internal static string Path {
             get {
                 return ResourceManager.GetString("Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à regiment.
+        /// </summary>
+        internal static string Regiment {
+            get {
+                return ResourceManager.GetString("Regiment", resourceCulture);
             }
         }
         

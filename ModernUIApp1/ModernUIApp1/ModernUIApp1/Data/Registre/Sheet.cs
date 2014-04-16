@@ -9,11 +9,11 @@ namespace Data.Data.Registre
 {
     public class Sheet
     {
-        public int id_sheet;
+        public int id_sheet { get; private set; }
         Register register;
 
         int page;
-        String url;
+        public String url { get; private set; }
         int size;
         int width, height;
 
@@ -52,6 +52,11 @@ namespace Data.Data.Registre
         public void addAnnotation(AnnotationSheet new_annotation)
         {
             annotations_sheet.Add(new_annotation.id_annotations_sheet, new_annotation);
+        }
+
+        public override string ToString()
+        {
+            return id_sheet + " " + url;
         }
     }
 }

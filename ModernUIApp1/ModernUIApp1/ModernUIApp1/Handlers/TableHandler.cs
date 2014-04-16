@@ -11,7 +11,7 @@ namespace Handlers.Handlers
 {
     public class TableHandler
     {
-        public List<PageTable> searchTable(int year, string location)
+        public List<PageTable> search(int year, string location)
         {
             String xmlResponse = Connection.getRequest(ModernUIApp1.Resources.LinkResources.LinkSearchTable.Replace(ModernUIApp1.Resources.LinkResources.Year, "" + year).Replace(ModernUIApp1.Resources.LinkResources.Location, location));
 
