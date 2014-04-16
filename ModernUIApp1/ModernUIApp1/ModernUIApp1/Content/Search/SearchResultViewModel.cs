@@ -36,6 +36,16 @@ namespace ModernUIApp1.Content
             this.results.Add(adapter);
         }
 
+        public void sort()
+        {
+            ObservableCollection<SearchResultAdapter> order = new ObservableCollection<SearchResultAdapter>(this.results.OrderBy(o => o.index));
+            this.results.Clear();
+            foreach(SearchResultAdapter o in order)
+            {
+                this.results.Add(o);
+            }
+        }
+
         public void clearResult()
         {
             this.results.Clear();

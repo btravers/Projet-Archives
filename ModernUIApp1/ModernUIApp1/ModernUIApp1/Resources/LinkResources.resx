@@ -275,4 +275,10 @@
   <data name="LinkSearchTable" xml:space="preserve">
     <value>finder/search_table/year/location</value>
   </data>
+  <data name="LinkPrintFile" xml:space="preserve">
+    <value>file/print_file/path</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>path</value>
+  </data>
 </root>

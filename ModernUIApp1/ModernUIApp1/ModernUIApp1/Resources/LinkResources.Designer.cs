@@ -223,6 +223,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à file/print_file/path.
+        /// </summary>
+        internal static string LinkPrintFile {
+            get {
+                return ResourceManager.GetString("LinkPrintFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à authentificator/register/email/password.
         /// </summary>
         internal static string LinkRegister {
@@ -318,6 +327,15 @@ namespace ModernUIApp1.Resources {
         internal static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à path.
+        /// </summary>
+        internal static string Path {
+            get {
+                return ResourceManager.GetString("Path", resourceCulture);
             }
         }
         

@@ -16,6 +16,9 @@ using Data.Data.Registre;
 using FirstFloor.ModernUI.Presentation;
 using Handlers.Handlers;
 using ModernUIApp1.Content.Search;
+using System.Net;
+using Handlers.Utils;
+using System.IO;
 
 namespace ModernUIApp1.Content
 {
@@ -58,11 +61,35 @@ namespace ModernUIApp1.Content
                 }
                 else
                 {
-                    statusText.Text = ""; 
+                    statusText.Text = "";
+                    int index = 0;
+                    int downloadCompleted = 0;
                     foreach (PageTable pageTable in result)
                     {
+                        int currentIndex = index;
+                        index++;
+
                         SearchTable.pagesTable.Add(pageTable.id_page_table, pageTable);
-                        SearchResult.window.model.addResult(new SearchResultAdapter("/Resources/fake_sheet.jpg", "Volume " + pageTable.register.volume + " page " + pageTable.page, pageTable.id_page_table, "/Pages/ViewTable.xaml#" + pageTable.id_page_table));
+                        
+                        WebClient webClient = new WebClient();
+                        Uri uri = new Uri(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, pageTable.url.Replace("/", "-")));
+                        string fileName = pageTable.url;
+
+                        Directory.CreateDirectory(System.IO.Path.GetDirectoryName(fileName));
+
+                        webClient.DownloadFileAsync(uri, fileName);
+                        webClient.DownloadFileCompleted += delegate
+                        {
+                            downloadCompleted++;
+                            SearchResult.window.model.addResult(new SearchResultAdapter(currentIndex, Directory.GetCurrentDirectory() + "/" + fileName, "Volume " + pageTable.register.volume + " page " + pageTable.page, pageTable.id_page_table, "/Pages/ViewTable.xaml#" + pageTable.id_page_table));
+
+                            Console.WriteLine(downloadCompleted + " " + result.Count);
+
+                            if (downloadCompleted == result.Count)
+                            {
+                                SearchResult.window.model.sort();
+                            }
+                        };
                     }
                 }
             }

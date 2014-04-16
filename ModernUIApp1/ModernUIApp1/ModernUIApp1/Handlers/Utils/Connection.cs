@@ -14,7 +14,7 @@ namespace Handlers.Utils
     public class Connection
     {
         // Website, contains the root
-        private static String ROOT_URL = "http://archipoilus.4estgump.org/";
+        public const String ROOT_URL = "http://archipoilus.4estgump.org/";
 
         /* Encryption for URLs */
         private static String URLEncryption(String url)
