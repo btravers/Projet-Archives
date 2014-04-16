@@ -74,27 +74,30 @@ namespace ModernUIApp1.Content
                     this.selectedResult = value;
                     OnPropertyChanged("SelectedResult");
 
-                    if (SearchTable.pagesTable.ContainsKey(this.selectedResult.id))
+                    if (this.selectedResult != null)
                     {
-                        ViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
-                    }
+                        if (SearchTable.pagesTable != null && SearchTable.pagesTable.ContainsKey(this.selectedResult.id))
+                        {
+                            ViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
+                        }
 
-                    if (ViewTable.window != null)
-                    {
-                        ViewTable.window.reload();
-                    }
+                        if (ViewTable.window != null)
+                        {
+                            ViewTable.window.reload();
+                        }
 
-                    if (SearchRegistre.sheets.ContainsKey(this.selectedResult.id))
-                    {
-                        ViewManager.instance.sheet = SearchRegistre.sheets[this.selectedResult.id];
-                    }
+                        if (SearchRegistre.sheets != null && SearchRegistre.sheets.ContainsKey(this.selectedResult.id))
+                        {
+                            ViewManager.instance.sheet = SearchRegistre.sheets[this.selectedResult.id];
+                        }
 
-                    if (ViewRegister.window != null)
-                    {
-                        ViewRegister.window.reload();
-                    }
+                        if (ViewRegister.window != null)
+                        {
+                            ViewRegister.window.reload();
+                        }
 
-                    MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);                    
+                        MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
+                    }
                 }
             }
         }

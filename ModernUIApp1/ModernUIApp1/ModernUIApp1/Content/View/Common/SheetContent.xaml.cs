@@ -99,14 +99,16 @@ namespace ModernUIApp1.Content.View.Common
                     {
                         if (File.Exists(sheet.url))
                         {
-                            System.IO.StreamReader streamReader = new System.IO.StreamReader(sheet.url);
+                            /*System.IO.StreamReader streamReader = new System.IO.StreamReader(sheet.url);
                             originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
                             streamReader.Close();
 
                             previewBitmap = originalBitmap;
                             rmmImage.Source = this.loadBitmap(previewBitmap);
 
-                            ApplyFilter(true);
+                            ApplyFilter(true);*/
+
+                            rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + sheet.url, UriKind.Absolute));
                         }
                     }
                 );

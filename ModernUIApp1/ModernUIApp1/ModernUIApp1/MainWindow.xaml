@@ -13,9 +13,14 @@
                 <mui:Link DisplayName="home" Source="/Pages/Home.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="view" GroupName="view">
+        <mui:LinkGroup DisplayName="Fiche" GroupName="Fiche">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="view" Source="/Pages/ViewRegister.xaml" />
+                <mui:Link DisplayName="Fiche" Source="/Pages/ViewRegister.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="Table" GroupName="Table">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="Table" Source="/Pages/ViewTable.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="Recherche" GroupName="Recherche">

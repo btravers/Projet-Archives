@@ -98,14 +98,16 @@ namespace ModernUIApp1.Content.View.Common
                     {
                         if (File.Exists(pageTable.url))
                         {
-                            System.IO.StreamReader streamReader = new System.IO.StreamReader(pageTable.url);
+                            /*System.IO.StreamReader streamReader = new System.IO.StreamReader(pageTable.url);
                             originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
                             streamReader.Close();
 
                             previewBitmap = originalBitmap;
                             rmmImage.Source = this.loadBitmap(previewBitmap);
 
-                            ApplyFilter(true);
+                            ApplyFilter(true);*/
+
+                            rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
                         }
                     }
                 );
