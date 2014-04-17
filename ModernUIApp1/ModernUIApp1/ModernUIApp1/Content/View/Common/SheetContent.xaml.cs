@@ -335,7 +335,9 @@ namespace ModernUIApp1.Content.View.Common
                 addAnnotationUserControl.window.Width = addAnnotationUserControl.Width + 25;
                 addAnnotationUserControl.window.Height = addAnnotationUserControl.Height + 35;
                 addAnnotationUserControl.window.ResizeMode = ResizeMode.NoResize;
-                addAnnotationUserControl.window.WindowStyle = System.Windows.WindowStyle.ToolWindow;
+                addAnnotationUserControl.window.WindowStyle = System.Windows.WindowStyle.None;
+                addAnnotationUserControl.window.AllowsTransparency = true;
+                addAnnotationUserControl.window.Background = Brushes.Transparent;
                 addAnnotationUserControl.window.Content = addAnnotationUserControl;
                 addAnnotationUserControl.window.Show();
             }

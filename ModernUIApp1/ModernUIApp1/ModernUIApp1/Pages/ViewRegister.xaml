@@ -12,7 +12,7 @@
                 <Frame Source="/Content/View/Common/Toolbar.xaml"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Visibility="Hidden">
                 <Frame Source="/Content/View/Common/Bookmark/BookmarkViewer.xaml"/>
             </StackPanel>
 

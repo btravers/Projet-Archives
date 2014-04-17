@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModernUIApp1.Pages;
+using FirstFloor.ModernUI.Presentation;
 
 namespace ModernUIApp1
 {
@@ -30,6 +31,9 @@ namespace ModernUIApp1
             InitializeComponent();
 
             MainWindow.window = this;
+
+            AppearanceManager.Current.ThemeSource = AppearanceManager.DarkThemeSource;
+            AppearanceManager.Current.AccentColor = Color.FromRgb(0xfa, 0x68, 0x00);
         }
 
         public void userConnected()

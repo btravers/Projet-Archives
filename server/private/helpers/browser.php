@@ -178,4 +178,32 @@ class Browser
 			return array("helper" => "browser", "message" => "null");
 		}
 	}
+	
+	/**
+	 * Preload request for idSheed -1 and +1 for a register
+	 */
+	public static function preload_sheet($idRegister, $idSheet) 
+	{
+		if(!is_numeric($idRegister))
+			return array("helper" => "browser", "message" => "id_register_not_numeric");
+			
+		if(!is_numeric($idSheet))
+			return array("helper" => "browser", "message" => "id_sheet_not_numeric");
+		
+		$data = array();
+		
+		$resultSheet = Database::query("SELECT * FROM Sheet WHERE id_sheet BETWEEN ? AND ? AND id_sheet <> ? AND id_register = ?", array($idSheet - 1, $idSheet + 1, $idSheet, $idRegister));
+		foreach ($resultSheet as $sheet)
+		{
+			$idSheet = $sheet['id_sheet'];
+
+			$data[$idSheet]['url'] = $sheet['url'];
+		}
+		
+		if(count($data) > 0) {
+			return array("helper" => "browser", "message" => "result_found", "result" => $data);
+		} else {
+			return array("helper" => "browser", "message" => "result_not_found");
+		}	
+	}
 }

@@ -140,10 +140,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Content\View\Common\MainContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Content\View\Common\Toolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,9 +191,6 @@
       <DependentUpon>SearchTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\View\Common\Bookmark\BookmarkResultViewModel.cs" />
-    <Compile Include="Content\View\Common\MainContent.xaml.cs">
-      <DependentUpon>MainContent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Content\View\Common\Toolbar.xaml.cs">
       <DependentUpon>Toolbar.xaml</DependentUpon>
     </Compile>
