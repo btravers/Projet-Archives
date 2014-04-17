@@ -250,6 +250,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à browser/preload_sheets/id_sheet.
+        /// </summary>
+        internal static string LinkPreloadSheets {
+            get {
+                return ResourceManager.GetString("LinkPreloadSheets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à file/print_file/path.
         /// </summary>
         internal static string LinkPrintFile {

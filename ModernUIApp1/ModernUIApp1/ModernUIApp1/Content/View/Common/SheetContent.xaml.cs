@@ -21,6 +21,7 @@ using ModernUIApp1.Resources;
 using Data.Data.Registre;
 using ModernUIApp1.Handlers.Utils;
 using Handlers.Utils;
+using Handlers.Handlers;
 
 
 namespace ModernUIApp1.Content.View.Common
@@ -52,9 +53,13 @@ namespace ModernUIApp1.Content.View.Common
 
         Point mouseStartDrag;
 
+        private SheetHandler sheetHandler;
+
         public SheetContent()
         {
             InitializeComponent();
+
+            sheetHandler = new SheetHandler();
 
             SheetContent.window = this;
 
@@ -89,7 +94,7 @@ namespace ModernUIApp1.Content.View.Common
 
         public void reload()
         {
-            slider.Value = 2;
+            onImageChange();
 
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
@@ -349,7 +354,7 @@ namespace ModernUIApp1.Content.View.Common
 
         void animNext_Completed(object sender, EventArgs e)
         {
-            slider.Value = 2;
+            onImageChange();
             
             Storyboard anim = (Storyboard)this.Resources["backNextAnimation"];
             anim.Begin();
@@ -357,17 +362,26 @@ namespace ModernUIApp1.Content.View.Common
 
         void animPrevious_Completed(object sender, EventArgs e)
         {
-            slider.Value = 2;
+            onImageChange();
 
             Storyboard anim = (Storyboard)this.Resources["backPreviousAnimation"];
             anim.Begin();
+        }
+
+        void onImageChange()
+        {
+            slider.Value = 2;
+
+            Sheet sheet = ViewManager.instance.sheet;
+            if (sheet != null)
+            {
+                sheetHandler.preloadSheets(sheet.id_sheet);
+            }
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
         {
             Console.WriteLine("click annotation");
         }
-
-
     }
 }

@@ -296,4 +296,7 @@
   <data name="Regiment" xml:space="preserve">
     <value>regiment</value>
   </data>
+  <data name="LinkPreloadSheets" xml:space="preserve">
+    <value>browser/preload_sheets/id_sheet</value>
+  </data>
 </root>
