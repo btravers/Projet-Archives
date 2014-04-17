@@ -36,6 +36,7 @@
     </mui:ModernWindow.MenuLinkGroups>
     
     <mui:ModernWindow.TitleLinks>
+        <mui:Link DisplayName="Mes marque-pages" Source="/Pages/BookmarkViewer.xaml" />
         <mui:Link DisplayName="Visionneur" Source="/Pages/ViewRegister.xaml" />
         <mui:Link x:Name="search" DisplayName="Recherche" Source="/Pages/Search.xaml" />
         <mui:Link DisplayName="Options" Source="/Pages/Settings.xaml" />

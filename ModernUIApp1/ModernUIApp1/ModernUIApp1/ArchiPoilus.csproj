@@ -148,7 +148,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\View\Common\Bookmark\BookmarkViewer.xaml">
+    <Page Include="Pages\BookmarkViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,7 +197,7 @@
     <Compile Include="Content\View\Registre\AnnotationCell.xaml.cs">
       <DependentUpon>AnnotationCell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\View\Common\Bookmark\BookmarkViewer.xaml.cs">
+    <Compile Include="Pages\BookmarkViewer.xaml.cs">
       <DependentUpon>BookmarkViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\View\Registre\IdentitySheetViewer.xaml.cs">

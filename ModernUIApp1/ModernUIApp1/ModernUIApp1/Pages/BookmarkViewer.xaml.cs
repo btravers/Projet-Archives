@@ -13,16 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModernUIApp1.Content.View.Registre
+namespace ModernUIApp1.Pages
 {
     /// <summary>
-    /// Interaction logic for DocumentViewer.xaml
+    /// Interaction logic for BookmarkViewer.xaml
     /// </summary>
-    public partial class DocumentViewer : UserControl
+    public partial class BookmarkViewer : UserControl
     {
-        public DocumentViewer()
+        public BookmarkViewer()
         {
             InitializeComponent();
         }
+
+        // TODO THIS WEEK END @NICO
     }
 }
