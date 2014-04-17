@@ -6,6 +6,7 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="330" d:DesignWidth="600">
+    
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer Margin="0,0,0,0">
             <StackPanel Height="295" Margin="0,0,0,0">
