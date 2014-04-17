@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Collections.ObjectModel;
 using ModernUIApp1.Pages;
 using ModernUIApp1.Handlers.Utils;
+using Data.Data.Registre;
 
 namespace ModernUIApp1.Content
 {
@@ -79,6 +80,20 @@ namespace ModernUIApp1.Content
                         if (SearchTable.pagesTable != null && SearchTable.pagesTable.ContainsKey(this.selectedResult.id))
                         {
                             ViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
+
+                            List<PageTable> list = new List<PageTable>();
+                            int index = 0;
+                            foreach (KeyValuePair<int, PageTable> pair in SearchTable.pagesTable.ToList().OrderBy(o => o.Key))
+                            {
+                                list.Add(pair.Value);
+                                if (this.selectedResult.id == pair.Key)
+                                {
+                                    ViewManager.instance.indexPageTables = index;
+                                }
+
+                                index++;
+                            }
+                            ViewManager.instance.pageTables = list;
                         }
 
                         if (ViewTable.window != null)

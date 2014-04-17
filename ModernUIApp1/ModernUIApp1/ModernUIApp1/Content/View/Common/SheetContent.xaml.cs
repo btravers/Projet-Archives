@@ -244,6 +244,7 @@ namespace ModernUIApp1.Content.View.Common
                 if (mouseEndDrag.X < mouseStartDrag.X && (mouseStartDrag.X - mouseEndDrag.X) > 100)
                 {
                     Storyboard anim = (Storyboard)this.Resources["leftAnimation"];
+                    anim.Completed -= animNext_Completed;
                     anim.Completed += animNext_Completed;
                     anim.Begin();
 
@@ -251,6 +252,7 @@ namespace ModernUIApp1.Content.View.Common
                 else if (mouseEndDrag.X > mouseStartDrag.X && (mouseEndDrag.X - mouseStartDrag.X) > 100)
                 {
                     Storyboard anim = (Storyboard)this.Resources["rightAnimation"];
+                    anim.Completed -= animPrevious_Completed;
                     anim.Completed += animPrevious_Completed;
                     anim.Begin();
                 }
@@ -389,7 +391,7 @@ namespace ModernUIApp1.Content.View.Common
                 {
 
                 } 
-            }
+            }            
 
             onImageChange();
 
@@ -405,6 +407,8 @@ namespace ModernUIApp1.Content.View.Common
             if (sheet != null)
             {
                 sheetHandler.preloadSheets(sheet.id_sheet);
+
+                // TODO download annotations
             }
         }
 

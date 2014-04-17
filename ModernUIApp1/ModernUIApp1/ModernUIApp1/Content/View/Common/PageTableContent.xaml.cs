@@ -88,11 +88,11 @@ namespace ModernUIApp1.Content.View.Common
 
         public void reload()
         {
-            slider.Value = 2;
+            slider.Value = 2;            
             
-            PageTable pageTable = ViewManager.instance.pageTable;
-            if (pageTable != null)
+            if (ViewManager.instance.pageTables != null)
             {
+                PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
                 FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, pageTable.url.Replace("/", "-")), pageTable.url,
                     () =>
                     {
@@ -237,6 +237,7 @@ namespace ModernUIApp1.Content.View.Common
                 if (mouseEndDrag.X < mouseStartDrag.X && (mouseStartDrag.X - mouseEndDrag.X) > 100)
                 {
                     Storyboard anim = (Storyboard)this.Resources["leftAnimation"];
+                    anim.Completed -= animNext_Completed;
                     anim.Completed += animNext_Completed;
                     anim.Begin();
 
@@ -244,6 +245,7 @@ namespace ModernUIApp1.Content.View.Common
                 else if (mouseEndDrag.X > mouseStartDrag.X && (mouseEndDrag.X - mouseStartDrag.X) > 100)
                 {
                     Storyboard anim = (Storyboard)this.Resources["rightAnimation"];
+                    anim.Completed -= animPrevious_Completed;
                     anim.Completed += animPrevious_Completed;
                     anim.Begin();
                 }
@@ -346,7 +348,22 @@ namespace ModernUIApp1.Content.View.Common
 
         void animNext_Completed(object sender, EventArgs e)
         {
-            slider.Value = 2;
+            if (ViewManager.instance.pageTables != null && ViewManager.instance.indexPageTables + 1 < ViewManager.instance.pageTables.Count)
+            {
+                ViewManager.instance.indexPageTables++;
+                PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
+                try
+                {
+                    rmmImage.Visibility = System.Windows.Visibility.Visible;
+                    rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+                }
+                catch (Exception ex)
+                {
+                    rmmImage.Visibility = System.Windows.Visibility.Hidden;
+                }
+            }
+            
+            onImageChange();
             
             Storyboard anim = (Storyboard)this.Resources["backNextAnimation"];
             anim.Begin();
@@ -354,10 +371,30 @@ namespace ModernUIApp1.Content.View.Common
 
         void animPrevious_Completed(object sender, EventArgs e)
         {
-            slider.Value = 2;
+            if (ViewManager.instance.pageTables != null && ViewManager.instance.indexPageTables - 1 >= 0)
+            {
+                ViewManager.instance.indexPageTables--;
+                PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
+                try
+                {
+                    rmmImage.Visibility = System.Windows.Visibility.Visible;
+                    rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+                }
+                catch (Exception ex)
+                {
+                    rmmImage.Visibility = System.Windows.Visibility.Hidden;
+                }                
+            }
+
+            onImageChange();
 
             Storyboard anim = (Storyboard)this.Resources["backPreviousAnimation"];
             anim.Begin();
+        }
+
+        void onImageChange()
+        {
+            slider.Value = 2;
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)

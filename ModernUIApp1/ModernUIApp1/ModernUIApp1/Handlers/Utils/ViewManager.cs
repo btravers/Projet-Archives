@@ -26,6 +26,9 @@ namespace ModernUIApp1.Handlers.Utils
         }
 
         public PageTable pageTable = null;
+        public List<PageTable> pageTables = null;
+        public int indexPageTables;
+
         public Sheet sheet = null;
 
         public Sheet previousSheet = null;
