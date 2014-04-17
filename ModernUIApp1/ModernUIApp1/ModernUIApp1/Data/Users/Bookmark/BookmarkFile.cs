@@ -21,11 +21,12 @@ namespace Data.Data
         {
         }
 
-        public BookmarkFile(int id_bookmark_file, Sheet id_sheet, BookmarkFolder bookmarkFolderParent)
+        public BookmarkFile(int id_bookmark_file, Sheet id_sheet, BookmarkFolder bookmarkFolderParent, string label)
         {
             this.id_bookmark_file = id_bookmark_file;
             this.id_sheet = id_sheet;
             this.bookmarkFolderParent = bookmarkFolderParent;
+            this.label = label;
         }
     }
 }

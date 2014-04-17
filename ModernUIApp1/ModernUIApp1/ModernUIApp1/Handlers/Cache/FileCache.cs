@@ -47,7 +47,7 @@ namespace ModernUIApp1.Handlers.Utils
                         }
                         catch (Exception e)
                         {
-
+                            Console.WriteLine(e.StackTrace);
                         }
                     }
                     callback();

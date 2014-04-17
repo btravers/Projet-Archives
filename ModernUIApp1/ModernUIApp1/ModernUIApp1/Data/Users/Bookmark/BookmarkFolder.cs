@@ -16,9 +16,9 @@ namespace Data.Data.Users.Bookmark
         String label;
 
         /* Dictionnary contains all BookmarkFolders which refers to the BookmarkFolder */
-        Dictionary<int, BookmarkFolder> bookmarkFolders;
+        Dictionary<int, BookmarkFolder> bookmarkFolders = new Dictionary<int,BookmarkFolder>();
         /* Dictionnary contains all BookmarkFiles which refers to the BookmarkFolder */
-        Dictionary<int, BookmarkFile> bookmarkFiles;
+        Dictionary<int, BookmarkFile> bookmarkFiles = new Dictionary<int,BookmarkFile>();
 
         /* Constructors */
         public BookmarkFolder()

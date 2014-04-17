@@ -8,28 +8,28 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <Storyboard x:Key="leftAnimation">
-            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" To="-1000" >
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" To="-1500" >
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode="EaseIn"  />
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
         </Storyboard>
         <Storyboard x:Key="backNextAnimation">
-            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" From="1000" To="0" >
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" From="1500" To="0" >
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode="EaseOut"  />
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
         </Storyboard>
         <Storyboard x:Key="rightAnimation">
-            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" To="1000" >
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" To="1500" >
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode="EaseIn"  />
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
         </Storyboard>
         <Storyboard x:Key="backPreviousAnimation">
-            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" From="-1000" To="0" >
+            <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" From="-1500" To="0" >
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode="EaseOut"  />
                 </DoubleAnimation.EasingFunction>

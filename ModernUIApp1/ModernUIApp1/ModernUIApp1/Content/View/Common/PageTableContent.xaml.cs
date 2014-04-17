@@ -359,6 +359,8 @@ namespace ModernUIApp1.Content.View.Common
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.StackTrace);
+
                     rmmImage.Visibility = System.Windows.Visibility.Hidden;
                 }
             }
@@ -382,6 +384,8 @@ namespace ModernUIApp1.Content.View.Common
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.StackTrace);
+
                     rmmImage.Visibility = System.Windows.Visibility.Hidden;
                 }                
             }

@@ -367,7 +367,7 @@ namespace ModernUIApp1.Content.View.Common
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.StackTrace);
                 } 
             }
 
@@ -389,7 +389,7 @@ namespace ModernUIApp1.Content.View.Common
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.StackTrace);
                 } 
             }            
 

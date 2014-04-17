@@ -226,7 +226,7 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e.StackTrace);
             }
 
             return lRes;
@@ -251,7 +251,7 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e.StackTrace);
             }
 
             return lRes;
