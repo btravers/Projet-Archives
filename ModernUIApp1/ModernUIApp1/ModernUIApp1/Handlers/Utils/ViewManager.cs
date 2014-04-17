@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Data.Registre;
+using System.Windows.Media.Imaging;
 
 namespace ModernUIApp1.Handlers.Utils
 {
@@ -26,5 +27,9 @@ namespace ModernUIApp1.Handlers.Utils
 
         public PageTable pageTable = null;
         public Sheet sheet = null;
+
+        public Sheet previousSheet = null;
+
+        public Sheet nextSheet = null;
     }
 }

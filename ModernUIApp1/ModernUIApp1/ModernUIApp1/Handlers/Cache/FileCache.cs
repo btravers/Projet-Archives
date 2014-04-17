@@ -41,7 +41,14 @@ namespace ModernUIApp1.Handlers.Utils
                     FileInfo f = new FileInfo(filePath);
                     if (f.Length == 0)
                     {
-                        File.Delete(filePath);
+                        try
+                        {
+                            File.Delete(filePath);
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
                     }
                     callback();
                 };

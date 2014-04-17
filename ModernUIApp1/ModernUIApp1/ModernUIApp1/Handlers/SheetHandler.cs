@@ -9,6 +9,8 @@ using Data.Data.Registre;
 using Handlers.Utils;
 using ModernUIApp1.Handlers.Utils;
 using System.Threading;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace Handlers.Handlers
 {
@@ -37,9 +39,16 @@ namespace Handlers.Handlers
                     FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, sheet.url.Replace("/", "-")), sheet.url,
                         () =>
                         {
-                            Console.WriteLine("dl ok");
+                            if (sheet.id_sheet > idSheet)
+                            {
+                                ViewManager.instance.nextSheet = sheet;
+                            }
+                            else if (sheet.id_sheet < idSheet)
+                            {
+                                ViewManager.instance.previousSheet = sheet;
+                            }
                         }
-                    );
+                    );                    
                 }
             }).Start();            
         }

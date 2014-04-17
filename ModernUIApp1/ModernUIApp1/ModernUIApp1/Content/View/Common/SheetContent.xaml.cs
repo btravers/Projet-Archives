@@ -22,6 +22,7 @@ using Data.Data.Registre;
 using ModernUIApp1.Handlers.Utils;
 using Handlers.Utils;
 using Handlers.Handlers;
+using System.Threading;
 
 
 namespace ModernUIApp1.Content.View.Common
@@ -93,9 +94,7 @@ namespace ModernUIApp1.Content.View.Common
         }
 
         public void reload()
-        {
-            onImageChange();
-
+        {        
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
             {
@@ -118,6 +117,8 @@ namespace ModernUIApp1.Content.View.Common
                     }
                 );
             }
+
+            onImageChange();
         }
 
         /* Contrast */
@@ -354,14 +355,42 @@ namespace ModernUIApp1.Content.View.Common
 
         void animNext_Completed(object sender, EventArgs e)
         {
+            if (ViewManager.instance.nextSheet != null)
+            {
+                try
+                {
+                    rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + ViewManager.instance.nextSheet.url, UriKind.Absolute));
+
+                    ViewManager.instance.sheet = ViewManager.instance.nextSheet;
+                }
+                catch (Exception ex)
+                {
+
+                } 
+            }
+
             onImageChange();
-            
+
             Storyboard anim = (Storyboard)this.Resources["backNextAnimation"];
             anim.Begin();
         }
 
         void animPrevious_Completed(object sender, EventArgs e)
-        {
+        {            
+            if (ViewManager.instance.previousSheet != null)
+            {
+                try
+                {
+                    rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + ViewManager.instance.previousSheet.url, UriKind.Absolute));
+
+                    ViewManager.instance.sheet = ViewManager.instance.previousSheet;
+                }
+                catch (Exception ex)
+                {
+
+                } 
+            }
+
             onImageChange();
 
             Storyboard anim = (Storyboard)this.Resources["backPreviousAnimation"];
