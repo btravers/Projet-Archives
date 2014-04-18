@@ -31,7 +31,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable, user))
+            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
@@ -54,7 +54,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable, user))
+            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
@@ -76,7 +76,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet, user))
+            foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?
@@ -99,7 +99,7 @@ namespace Handlers.Handlers
             Parser parser = new Parser(xmlResponse);
 
             // Parse XML
-            foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet, user))
+            foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                 // TODO : redefine equals ?

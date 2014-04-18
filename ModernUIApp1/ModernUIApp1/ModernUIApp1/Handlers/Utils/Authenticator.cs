@@ -38,7 +38,7 @@ namespace ModernUIApp1.Handlers.Utils
         }
 
         /* User */
-        private User user;
+        public User user { get; private set; }
         private Boolean connected;
 
         private Authenticator()

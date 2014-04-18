@@ -78,6 +78,19 @@ class Database
 			return -1;
 		}
 	}
+	
+	/**
+	 * Get user name
+	 */
+	public static function getUserName($userId)
+	{
+		$result = Database::query("SELECT * FROM User WHERE id_user = ?", array($userId));
+		if(count($result) > 0) {
+			return $result[0]["email"];
+		} else {
+			return -1;
+		}
+	}
 
 	/**
 	 * Check if the table exists in database

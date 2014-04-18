@@ -95,7 +95,7 @@ class Annotator
 	/**
 	 * Update an annotation on a Sheet
 	 */
-	public static function update_annotation_table($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation)
+	public static function update_annotation_sheet($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation)
 	{
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
@@ -108,13 +108,71 @@ class Annotator
 		}
 	}
 	
-	public static function get_annotation_sheet($idSession, $idAnnotationSheet)
+	public static function get_annotation_sheet($idSession, $idSheet)
 	{
+		if(!is_numeric($idSheet))
+			return array("helper" => "annotator", "message" => "id_sheet_not_numeric");
+		
+		$data = array();
+		
 		$idUser = Database::getUser($idSession);
+		
+		$resultAnnotations = Database::query("SELECT * FROM AnnotationSheet WHERE id_sheet = ?", array($idSheet));
+		foreach ($resultAnnotations as $annotation)
+		{
+			$idAnnotation = $annotation['id_annotation_sheet'];
+
+			$data[$idAnnotation]['type'] = $annotation['id_type'];
+			$data[$idAnnotation]['x'] = $annotation['x'];
+			$data[$idAnnotation]['y'] = $annotation['y'];
+			$data[$idAnnotation]['text'] = $annotation['text'];
+			
+			if($idUser == $annotation['id_user']) {
+				$data[$idAnnotation]['user'] = "-1";
+			} else {
+				$data[$idAnnotation]['user'] = Database::getUserName($annotation['id_user']);
+			}
+		}
+		
+		if(count($data) > 0) {
+			return array("helper" => "annotator", "message" => "result_found", "result" => $data);
+		} else {
+			return array("helper" => "annotator", "message" => "result_not_found");
+		}
 	}
 	
 	public static function get_annotation_table($idSession, $idTable)
 	{
+		if(!is_numeric($idTable))
+			return array("helper" => "annotator", "message" => "id_table_not_numeric");
+		
+		$data = array();
+		
 		$idUser = Database::getUser($idSession);
+		
+		$resultAnnotations = Database::query("SELECT * FROM AnnotationPageTable WHERE id_page_table = ?", array($idTable));
+		foreach ($resultAnnotations as $annotation)
+		{
+			$idAnnotation = $annotation['id_annotation_page_table'];
+			
+			$data[$idAnnotation]['x'] = $annotation['x'];
+			$data[$idAnnotation]['y'] = $annotation['y'];
+			$data[$idAnnotation]['width'] = $annotation['width'];
+			$data[$idAnnotation]['height'] = $annotation['height'];
+			$data[$idAnnotation]['id_number'] = $annotation['id_number'];
+			$data[$idAnnotation]['id_sheet'] = $annotation['id_sheet'];
+			
+			if($idUser == $annotation['id_user']) {
+				$data[$idAnnotation]['user'] = "-1";
+			} else {
+				$data[$idAnnotation]['user'] = Database::getUserName($annotation['id_user']);
+			}
+		}
+		
+		if(count($data) > 0) {
+			return array("helper" => "annotator", "message" => "result_found", "result" => $data);
+		} else {
+			return array("helper" => "annotator", "message" => "result_not_found");
+		}
 	}
 }

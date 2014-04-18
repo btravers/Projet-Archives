@@ -19,7 +19,8 @@ namespace Data.Data.Registre.Annotation
     {
         public int id_annotations_sheet;
         Sheet sheet;
-        EType type;
+        //EType type;
+        int type;
         String user;
 
         int x, y;
@@ -30,7 +31,7 @@ namespace Data.Data.Registre.Annotation
         {
         }
 
-        public AnnotationSheet(int id_annotations_sheet, Sheet sheet, EType type, String user, String text, int x, int y)
+        public AnnotationSheet(int id_annotations_sheet, Sheet sheet, int type, String user, String text, int x, int y)
         {
             this.id_annotations_sheet = id_annotations_sheet;
             this.sheet = sheet;

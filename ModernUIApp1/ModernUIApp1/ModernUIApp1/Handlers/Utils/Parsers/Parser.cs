@@ -63,7 +63,8 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
                     int w = int.Parse(elem.Descendants(Resources.LinkResources.Width).First().Value);
                     int h = int.Parse(elem.Descendants(Resources.LinkResources.Height).First().Value);
                     int id_number = int.Parse(elem.Descendants(Resources.LinkResources.IdNumber).First().Value);
-                    AnnotationPageTable annotation = new AnnotationPageTable(idAnnotation, pageTable, user.email, x, y, w, h, id_number);
+                    int id_sheet = int.Parse(elem.Descendants(Resources.LinkResources.IdSheet).First().Value);
+                    AnnotationPageTable annotation = new AnnotationPageTable(idAnnotation, pageTable, user.email, x, y, w, h, id_number, id_sheet);
 
                     pageTable.addAnnotation(annotation);
                 }
@@ -75,11 +76,11 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
         }
 
         /* Parse the answer of a 'get_page_table' request. */
-        public List<AnnotationPageTable> ParseAnnotationPageTable(PageTable pageTable, User user)
+        public List<AnnotationPageTable> ParseAnnotationPageTable(PageTable pageTable)
         {
             List<AnnotationPageTable> lRes = new List<AnnotationPageTable>();
             
-            foreach (XElement elem in xmlDocument.Descendants(Resources.LinkResources.Annotations))
+            /*foreach (XElement elem in xmlDocument.Descendants(Resources.LinkResources.Annotations))
             {
                 int idAnnotation = int.Parse(elem.Descendants(Resources.LinkResources.IdAnnotationPageTable).First().Value);
                 int x = int.Parse(elem.Descendants(Resources.LinkResources.X).First().Value);
@@ -90,6 +91,30 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
                 AnnotationPageTable annotation = new AnnotationPageTable(idAnnotation, pageTable, user.email, x, y, width, height, id_number);
 
                 lRes.Add(annotation);
+            }*/
+
+            try
+            {
+                XElement xmlResponse = xmlDocument.Element("response");
+                XElement xmlResult = xmlResponse.Element("result");
+
+                foreach (XElement xmlNode in xmlResult.Elements())
+                {
+                    int idAnnotation = int.Parse(xmlNode.Name.ToString().Substring(4));
+                    int x = int.Parse(xmlNode.Element("x").Value);
+                    int y = int.Parse(xmlNode.Element("y").Value);
+                    int width = int.Parse(xmlNode.Element("width").Value);
+                    int height = int.Parse(xmlNode.Element("height").Value);
+                    int id_number = int.Parse(xmlNode.Element("id_number").Value);
+                    int id_sheet = int.Parse(xmlNode.Element("id_sheet").Value);
+                    string user = xmlNode.Element("user").Value;
+
+                    lRes.Add(new AnnotationPageTable(idAnnotation, pageTable, user, x, y, width, height, id_number, id_sheet));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
             }
 
             return lRes;
@@ -120,8 +145,10 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
                     int idAnnotation = int.Parse(elem.Descendants(Resources.LinkResources.IdAnnotationSheet).First().Value);
                     int x = int.Parse(elem.Descendants(Resources.LinkResources.X).First().Value);
                     int y = int.Parse(elem.Descendants(Resources.LinkResources.Y).First().Value);
-                    EType type = (EType)Enum.Parse(typeof(EType), elem.Descendants(Resources.LinkResources.Type).First().Value, true);
+                    //EType type = (EType)Enum.Parse(typeof(EType), elem.Descendants(Resources.LinkResources.Type).First().Value, true);
+                    int type = int.Parse(elem.Descendants(Resources.LinkResources.Type).First().Value);
                     string text = elem.Descendants(Resources.LinkResources.Text).First().Value;
+                    
                     AnnotationSheet annotation = new AnnotationSheet(idAnnotation, sheet, type, user.email, text, x, y);
 
                     sheet.addAnnotation(annotation);
@@ -134,11 +161,11 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
         }
 
         /* Parse the annotations for a sheet request. */
-        public List<AnnotationSheet> ParseAnnotationSheet(Sheet sheet, User user)
+        public List<AnnotationSheet> ParseAnnotationSheet(Sheet sheet)
         {
             List<AnnotationSheet> lRes = new List<AnnotationSheet>();
 
-            foreach (XElement xmlAnnotations in xmlDocument.Descendants(Resources.LinkResources.Annotations))
+            /*foreach (XElement xmlAnnotations in xmlDocument.Descendants(Resources.LinkResources.Annotations))
             {
                 int i = 0;
                 while (xmlAnnotations.Descendants(Resources.LinkResources.Item + i.ToString()).Count() != 0)
@@ -148,7 +175,8 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
                     int idAnnotation = int.Parse(elem.Descendants(Resources.LinkResources.IdAnnotationSheet).First().Value);
                     int x = int.Parse(elem.Descendants(Resources.LinkResources.X).First().Value);
                     int y = int.Parse(elem.Descendants(Resources.LinkResources.Y).First().Value);
-                    EType type = (EType)Enum.Parse(typeof(EType), elem.Descendants(Resources.LinkResources.Type).First().Value, true);
+                    //EType type = (EType)Enum.Parse(typeof(EType), elem.Descendants(Resources.LinkResources.Type).First().Value, true);
+                    int type = int.Parse(elem.Descendants(Resources.LinkResources.Type).First().Value);
                     string text = elem.Descendants(Resources.LinkResources.Text).First().Value;
                     AnnotationSheet annotation = new AnnotationSheet(idAnnotation, sheet, type, user.email, text, x, y);
 
@@ -156,6 +184,28 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
 
                     i++;
                 }
+            }*/
+
+            try
+            {
+                XElement xmlResponse = xmlDocument.Element("response");
+                XElement xmlResult = xmlResponse.Element("result");
+
+                foreach (XElement xmlNode in xmlResult.Elements())
+                {
+                    int idAnnotation = int.Parse(xmlNode.Name.ToString().Substring(4));
+                    int type = int.Parse(xmlNode.Element("type").Value);
+                    int x = int.Parse(xmlNode.Element("x").Value);
+                    int y = int.Parse(xmlNode.Element("y").Value);
+                    string text = xmlNode.Element("text").Value;
+                    string user = xmlNode.Element("user").Value;
+
+                    lRes.Add(new AnnotationSheet(idAnnotation, sheet, type, user, text, x, y));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
             }
 
             return lRes;

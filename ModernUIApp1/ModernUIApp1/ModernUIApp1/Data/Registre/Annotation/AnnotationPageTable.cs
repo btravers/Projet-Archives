@@ -16,6 +16,7 @@ namespace Data.Data.Registre.Annotation
         int x, y;
         int width, height;
         int id_number;
+        int id_sheet;
 
         /* Constructors */
         public AnnotationPageTable()
@@ -29,7 +30,7 @@ namespace Data.Data.Registre.Annotation
             this.user = user;
         }
 
-        public AnnotationPageTable(int id_annotation_page_table, PageTable page_table, String user, int x, int y, int width, int height, int id_number)
+        public AnnotationPageTable(int id_annotation_page_table, PageTable page_table, String user, int x, int y, int width, int height, int id_number, int id_sheet)
         {
             this.id_annotation_page_table = id_annotation_page_table;
             this.page_table = page_table;
@@ -39,6 +40,7 @@ namespace Data.Data.Registre.Annotation
             this.width = width;
             this.height = height;
             this.id_number = id_number;
+            this.id_sheet = id_sheet;
         }
 
         public override String ToString()
