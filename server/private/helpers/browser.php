@@ -182,7 +182,7 @@ class Browser
 	/**
 	 * Preload request for idSheed -1 and +1 for a register
 	 */
-	public static function preload_sheets($idSheet) 
+	public static function preload_sheets($idSheet)
 	{			
 		if(!is_numeric($idSheet))
 			return array("helper" => "browser", "message" => "id_sheet_not_numeric");

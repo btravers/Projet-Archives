@@ -107,4 +107,14 @@ class Annotator
 			return array("message" => "updated");
 		}
 	}
+	
+	public static function get_annotation_sheet($idSession, $idAnnotationSheet)
+	{
+		$idUser = Database::getUser($idSession);
+	}
+	
+	public static function get_annotation_table($idSession, $idTable)
+	{
+		$idUser = Database::getUser($idSession);
+	}
 }

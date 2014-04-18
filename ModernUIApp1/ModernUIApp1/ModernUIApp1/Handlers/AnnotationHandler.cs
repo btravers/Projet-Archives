@@ -42,7 +42,7 @@ namespace Handlers.Handlers
             return pageTable.annotations_page_table.Values.ToList();
         }
 
-        public List<AnnotationPageTable> getAnnotationPageTableByText(String text)
+        public List<AnnotationPageTable> getAnnotationPageTableByText(String text) // USELESS
             //Recherche des annotations qui contiennent le texte text
         {
             // Keep the page table
@@ -87,7 +87,7 @@ namespace Handlers.Handlers
             return sheet.annotations_sheet.Values.ToList();
         }
 
-        public List<AnnotationSheet> getAnnotationSheetByText(String text)
+        public List<AnnotationSheet> getAnnotationSheetByText(String text)  // USELESS
         //Recherche des annotations qui contiennent le texte text
         {
             // Keep the page table
