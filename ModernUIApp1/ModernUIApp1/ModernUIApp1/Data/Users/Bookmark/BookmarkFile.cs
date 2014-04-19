@@ -10,11 +10,11 @@ namespace Data.Data.Users.Bookmark
 {
     public class BookmarkFile
     {
-        public int id_bookmark_file;
+        public int id_bookmark_file { get; protected set; }
         Sheet id_sheet;
         BookmarkFolder bookmarkFolderParent;
 
-        String label;
+        public String label { get; protected set; }
 
         /* Constructors */
         public BookmarkFile()

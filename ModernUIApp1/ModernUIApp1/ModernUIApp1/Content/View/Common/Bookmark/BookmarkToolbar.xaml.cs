@@ -24,5 +24,21 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         {
             InitializeComponent();
         }
+
+        public void home_click(object sender, RoutedEventArgs e)
+        {
+            if (BookmarkResult.window != null)
+            {
+                BookmarkResult.window.moveToHomeFolder();
+            }
+        }
+
+        public void previous_click(object sender, RoutedEventArgs e)
+        {
+            if (BookmarkResult.window != null)
+            {
+                BookmarkResult.window.moveToPreviousFolder();
+            }
+        }
     }
 }

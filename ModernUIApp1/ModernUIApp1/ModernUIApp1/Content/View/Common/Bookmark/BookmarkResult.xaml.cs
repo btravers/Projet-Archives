@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModernUIApp1.Content.Bookmark
+namespace ModernUIApp1.Content.View.Common.Bookmark
 {
     /// <summary>
     /// Interaction logic for BookmarkResult.xaml
@@ -28,12 +28,20 @@ namespace ModernUIApp1.Content.Bookmark
         public BookmarkResultViewModel model;
 
         public BookmarkFolder rootFolder { get; private set; } // Root folder
+
         public BookmarkFolder previousFolder { get; private set; } // Previous folder view
         public BookmarkFolder currentFolder { get; private set; } // Current folder view
+
+        public Dictionary<int, BookmarkFolder> currentUnderFolders { get; private set; }
+        public Dictionary<int, BookmarkFile> currentUnderFiles { get; private set; }
+
 
         public BookmarkResult()
         {
             InitializeComponent();
+
+            currentUnderFiles = new Dictionary<int,BookmarkFile>();
+            currentUnderFolders = new Dictionary<int,BookmarkFolder>();
 
             window = this;
             this.model = new BookmarkResultViewModel();
@@ -46,19 +54,63 @@ namespace ModernUIApp1.Content.Bookmark
             loadCurrentFolder();
         }
 
+        public void moveToFolder(int idFolder)
+        {
+            if (currentUnderFolders != null && currentUnderFolders.ContainsKey(idFolder)) 
+            {
+                previousFolder = currentFolder;
+                currentFolder = currentUnderFolders[idFolder];
+
+                loadCurrentFolder();
+            }
+        }
+
+        public void moveToPreviousFolder()
+        {
+            if (previousFolder != null)
+            {
+                currentFolder = previousFolder;
+                if (currentFolder != null && currentFolder.bookmarkFolderParent != null)
+                {
+                    previousFolder = currentFolder.bookmarkFolderParent;
+                }
+
+                loadCurrentFolder();
+            }
+        }
+
+        public void moveToHomeFolder()
+        {
+            if (rootFolder != null)
+            {
+                currentFolder = rootFolder;
+                previousFolder = rootFolder;
+
+                loadCurrentFolder();
+            }
+        }
+
         public void loadCurrentFolder()
         {
+            this.model.clearResult();
+            currentUnderFolders.Clear();
+            currentUnderFiles.Clear();
+
             int index = 0;
 
-            foreach (BookmarkFolder folder in currentFolder.bookmarkFolders.Values)
+            if (currentFolder != null)
             {
-                this.model.addResult(new BookmarkResultAdapter(index++, "/Resources/mini_RMM.jpg", folder.label, folder.id_bookmark_folder, "/Pages/ViewTable.xaml"));
+                foreach (BookmarkFolder folder in currentFolder.bookmarkFolders.Values)
+                {
+                    currentUnderFolders.Add(folder.id_bookmark_folder, folder);
+                    this.model.addResult(new BookmarkResultAdapter(BookmarkType.FOLDER, index++, "/Resources/mini_RMM.jpg", folder.label, folder.id_bookmark_folder, "/Pages/ViewTable.xaml"));
+                }
+                foreach (BookmarkFile file in currentFolder.bookmarkFiles.Values)
+                {
+                    currentUnderFiles.Add(file.id_bookmark_file, file);
+                    this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, "/Resources/mini_RMM.jpg", file.label, file.id_bookmark_file, "/Pages/ViewTable.xaml"));
+                }
             }
-            /*
-            foreach (BookmarkFile file in currentFolder.bookmarkFiles.Values)
-            {
-            }
-             */
         }
     }
 }

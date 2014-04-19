@@ -74,46 +74,56 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 {
                     this.selectedResult = value;
                     OnPropertyChanged("SelectedResult");
-/*
+
                     if (this.selectedResult != null)
                     {
-                        if (SearchTable.pagesTable != null && SearchTable.pagesTable.ContainsKey(this.selectedResult.id))
+                        if (this.selectedResult.type.Equals(BookmarkType.FILE))
                         {
-                            ViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
 
-                            List<PageTable> list = new List<PageTable>();
-                            int index = 0;
-                            foreach (KeyValuePair<int, PageTable> pair in SearchTable.pagesTable.ToList().OrderBy(o => o.Key))
+                            /*
+                            if (SearchTable.pagesTable != null && SearchTable.pagesTable.ContainsKey(this.selectedResult.id))
                             {
-                                list.Add(pair.Value);
-                                if (this.selectedResult.id == pair.Key)
+                                ViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
+
+                                List<PageTable> list = new List<PageTable>();
+                                int index = 0;
+                                foreach (KeyValuePair<int, PageTable> pair in SearchTable.pagesTable.ToList().OrderBy(o => o.Key))
                                 {
-                                    ViewManager.instance.indexPageTables = index;
+                                    list.Add(pair.Value);
+                                    if (this.selectedResult.id == pair.Key)
+                                    {
+                                        ViewManager.instance.indexPageTables = index;
+                                    }
+
+                                    index++;
                                 }
-
-                                index++;
+                                ViewManager.instance.pageTables = list;
                             }
-                            ViewManager.instance.pageTables = list;
-                        }
 
-                        if (ViewTable.window != null)
+                            if (ViewTable.window != null)
+                            {
+                                ViewTable.window.reload();
+                            }
+
+                            if (SearchRegistre.sheets != null && SearchRegistre.sheets.ContainsKey(this.selectedResult.id))
+                            {
+                                ViewManager.instance.sheet = SearchRegistre.sheets[this.selectedResult.id];
+                            }
+
+                            if (ViewRegister.window != null)
+                            {
+                                ViewRegister.window.reload();
+                            }
+
+                            MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
+                        
+                             */
+                        }
+                        else
                         {
-                            ViewTable.window.reload();
+                            BookmarkResult.window.moveToFolder(this.selectedResult.id);
                         }
-
-                        if (SearchRegistre.sheets != null && SearchRegistre.sheets.ContainsKey(this.selectedResult.id))
-                        {
-                            ViewManager.instance.sheet = SearchRegistre.sheets[this.selectedResult.id];
-                        }
-
-                        if (ViewRegister.window != null)
-                        {
-                            ViewRegister.window.reload();
-                        }
-
-                        MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
                     }
- */
                 }
             }
         }
