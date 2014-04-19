@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             InitializeComponent();
         }
 
+        /* Event : Click on the icon home */
         public void home_click(object sender, RoutedEventArgs e)
         {
             if (BookmarkResult.window != null)
@@ -33,12 +35,19 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
+        /* Event : Click on the icon previous / back */
         public void previous_click(object sender, RoutedEventArgs e)
         {
             if (BookmarkResult.window != null)
             {
                 BookmarkResult.window.moveToPreviousFolder();
             }
+        }
+
+        /* Event : Click on the icon newfolder, open a dialog / popup */
+        public void newfolder_click(object sender, RoutedEventArgs e)
+        {
+            new PopAddFolder().ShowDialog();
         }
     }
 }

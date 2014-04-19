@@ -9,6 +9,15 @@ namespace Handlers.Handlers
 {
     public class BookmarkHandler
     {
+        static int dbgTmpInt = -1;
+
+        /* Return the new folder returned by the server */
+        public BookmarkFolder newBookmarkFolder(String label, BookmarkFolder parent)
+        {
+            return new BookmarkFolder(dbgTmpInt--, parent, label);
+        }
+
+        /* Return the root folder by the server with all data loaded (subfolders and subfiles, recursively) */
         public BookmarkFolder getRootBookmarkFolder()
         {
             // Create the root bookmark folder
@@ -16,14 +25,21 @@ namespace Handlers.Handlers
 
             /* TEST PART */
             BookmarkFolder b1 = new BookmarkFolder(0, BookmarkFolder.bookmarkFolderRoot, "t0");
-            BookmarkFolder b2 = new BookmarkFolder(1, BookmarkFolder.bookmarkFolderRoot, "t1");
-            BookmarkFolder b3 = new BookmarkFolder(2, BookmarkFolder.bookmarkFolderRoot, "t2");
+ //           BookmarkFolder b2 = new BookmarkFolder(1, BookmarkFolder.bookmarkFolderRoot, "t1");
+ //           BookmarkFolder b3 = new BookmarkFolder(2, BookmarkFolder.bookmarkFolderRoot, "t2");
             BookmarkFolder.bookmarkFolderRoot.addBookmark(new BookmarkFile(0, new Data.Data.Registre.Sheet(), BookmarkFolder.bookmarkFolderRoot, "f0"));
             BookmarkFolder.bookmarkFolderRoot.addBookmark(new BookmarkFile(1, new Data.Data.Registre.Sheet(), BookmarkFolder.bookmarkFolderRoot, "f1"));
 
             BookmarkFolder.bookmarkFolderRoot.addBookmarkFolder(b1);
-            BookmarkFolder.bookmarkFolderRoot.addBookmarkFolder(b2);
-            BookmarkFolder.bookmarkFolderRoot.addBookmarkFolder(b3);
+//            BookmarkFolder.bookmarkFolderRoot.addBookmarkFolder(b2);
+//            BookmarkFolder.bookmarkFolderRoot.addBookmarkFolder(b3);
+           
+            
+            BookmarkFolder b2 = new BookmarkFolder(1, b1, "t1");
+            BookmarkFolder b3 = new BookmarkFolder(2, b1, "t2");
+ 
+            b1.addBookmarkFolder(b2);
+            b1.addBookmarkFolder(b3);
 
             b1.addBookmarkFolder(new BookmarkFolder(3, b1, "1.t3"));
             b1.addBookmarkFolder(new BookmarkFolder(4, b1, "1.t4"));

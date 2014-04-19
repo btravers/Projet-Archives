@@ -79,12 +79,11 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                     {
                         if (this.selectedResult.type.Equals(BookmarkType.FILE))
                         {
-
-                            /*
-                            if (SearchTable.pagesTable != null && SearchTable.pagesTable.ContainsKey(this.selectedResult.id))
+                            if (BookmarkResult.window != null && BookmarkResult.window.currentUnderFiles != null && BookmarkResult.window.currentUnderFiles.ContainsKey(this.selectedResult.id))
                             {
-                                ViewManager.instance.pageTable = SearchTable.pagesTable[this.selectedResult.id];
+                                ViewManager.instance.sheet = BookmarkResult.window.currentUnderFiles[this.selectedResult.id].id_sheet;
 
+                                /* TODO : same for sheet so ?
                                 List<PageTable> list = new List<PageTable>();
                                 int index = 0;
                                 foreach (KeyValuePair<int, PageTable> pair in SearchTable.pagesTable.ToList().OrderBy(o => o.Key))
@@ -98,6 +97,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                                     index++;
                                 }
                                 ViewManager.instance.pageTables = list;
+                                */
                             }
 
                             if (ViewTable.window != null)
@@ -105,19 +105,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                                 ViewTable.window.reload();
                             }
 
-                            if (SearchRegistre.sheets != null && SearchRegistre.sheets.ContainsKey(this.selectedResult.id))
-                            {
-                                ViewManager.instance.sheet = SearchRegistre.sheets[this.selectedResult.id];
-                            }
-
-                            if (ViewRegister.window != null)
-                            {
-                                ViewRegister.window.reload();
-                            }
-
                             MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
-                        
-                             */
                         }
                         else
                         {

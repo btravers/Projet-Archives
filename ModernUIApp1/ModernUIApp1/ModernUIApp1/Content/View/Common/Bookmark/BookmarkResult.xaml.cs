@@ -25,6 +25,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
     {
         public static BookmarkResult window { get; private set; } // SINGLETON
 
+        public BookmarkHandler bhandler;
         public BookmarkResultViewModel model;
 
         public BookmarkFolder rootFolder { get; private set; } // Root folder
@@ -35,7 +36,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         public Dictionary<int, BookmarkFolder> currentUnderFolders { get; private set; }
         public Dictionary<int, BookmarkFile> currentUnderFiles { get; private set; }
 
-
+        /* Constructor */
         public BookmarkResult()
         {
             InitializeComponent();
@@ -47,13 +48,14 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             this.model = new BookmarkResultViewModel();
             this.DataContext = this.model;
 
-            BookmarkHandler bhandler = new BookmarkHandler();
+            bhandler = new BookmarkHandler();
             rootFolder = bhandler.getRootBookmarkFolder();
             currentFolder = rootFolder;
 
             loadCurrentFolder();
         }
 
+        /* Move the view into the folder given in parameter */
         public void moveToFolder(int idFolder)
         {
             if (currentUnderFolders != null && currentUnderFolders.ContainsKey(idFolder)) 
@@ -65,6 +67,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
+        /* Move the view into the folder given in parameter (loop on root folder) */
         public void moveToPreviousFolder()
         {
             if (previousFolder != null)
@@ -79,6 +82,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
+        /* Move the view into the root folder */
         public void moveToHomeFolder()
         {
             if (rootFolder != null)
@@ -90,6 +94,24 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
+        /* Add a new folder to the current folder (REQUEST) */
+        public void addNewFolder(String label)
+        {
+            if (currentFolder == null)
+            {
+                currentFolder = rootFolder;
+            }
+
+            BookmarkFolder tmpFolder = bhandler.newBookmarkFolder(label, currentFolder);
+
+            if (tmpFolder != null)
+            {
+                currentFolder.addBookmarkFolder(tmpFolder);
+                loadCurrentFolder();
+            }
+        }
+
+        /* Update the view related to the current folder */
         public void loadCurrentFolder()
         {
             this.model.clearResult();
