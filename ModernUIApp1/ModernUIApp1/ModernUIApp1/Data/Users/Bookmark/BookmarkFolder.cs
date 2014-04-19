@@ -10,19 +10,21 @@ namespace Data.Data.Users.Bookmark
     {
         public static BookmarkFolder bookmarkFolderRoot;
 
-        public int id_bookmark_folder;
+        public int id_bookmark_folder { get; protected set; }
         BookmarkFolder bookmarkFolderParent;
 
-        String label;
+        public String label;
 
         /* Dictionnary contains all BookmarkFolders which refers to the BookmarkFolder */
-        Dictionary<int, BookmarkFolder> bookmarkFolders = new Dictionary<int,BookmarkFolder>();
+        public Dictionary<int, BookmarkFolder> bookmarkFolders { get; protected set; }
         /* Dictionnary contains all BookmarkFiles which refers to the BookmarkFolder */
-        Dictionary<int, BookmarkFile> bookmarkFiles = new Dictionary<int,BookmarkFile>();
+        public Dictionary<int, BookmarkFile> bookmarkFiles { get; protected set; }
 
         /* Constructors */
         public BookmarkFolder()
         {
+            bookmarkFolders = new Dictionary<int,BookmarkFolder>();
+            bookmarkFiles = new Dictionary<int, BookmarkFile>();
         }
 
         public BookmarkFolder(int id_bookmark_folder, BookmarkFolder bookmarkFolderParent, String label)
@@ -30,6 +32,9 @@ namespace Data.Data.Users.Bookmark
             this.id_bookmark_folder = id_bookmark_folder;
             this.bookmarkFolderParent = bookmarkFolderParent;
             this.label = label;
+
+            bookmarkFolders = new Dictionary<int, BookmarkFolder>();
+            bookmarkFiles = new Dictionary<int, BookmarkFile>();
         }
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Data.Data.Registre;
 using Data.Data.Users.Bookmark;
 
-namespace Data.Data
+namespace Data.Data.Users.Bookmark
 {
     public class BookmarkFile
     {

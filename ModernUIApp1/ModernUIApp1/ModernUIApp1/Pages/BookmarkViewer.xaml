@@ -6,38 +6,15 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" >
     
-    <Grid Style="{StaticResource ContentRoot}" Margin="-2,-2,0,0">
+    <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
-            <StackPanel>
-                <Expander Header="Bookmark" ExpandDirection="Right" >
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="105" />
-                            <RowDefinition Height="105" />
-                            <RowDefinition Height="105" />
-                            <RowDefinition Height="105" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="75" />
-                            <ColumnDefinition Width="75" />
-                            <ColumnDefinition Width="75" />
-                        </Grid.ColumnDefinitions>
+            <DockPanel>
+                <StackPanel Orientation="Horizontal"   DockPanel.Dock="Top">
+                    <Frame Source="/Content/View/Common/Bookmark/BookmarkToolbar.xaml"/>
+                </StackPanel>
 
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="0" Grid.Row="0"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="1" Grid.Row="0"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="2" Grid.Row="0"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="0" Grid.Row="1"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="1" Grid.Row="1"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="2" Grid.Row="1"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="0" Grid.Row="2"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="1" Grid.Row="2"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="2" Grid.Row="2"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="0" Grid.Row="3"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="1" Grid.Row="3"/>
-                        <Image MaxWidth="50" Source="/Resources/mini_RMM.jpg" Grid.Column="2" Grid.Row="3" />
-                    </Grid>
-                </Expander>
-            </StackPanel>
+                <Frame Source="/Content/View/Common/Bookmark/BookmarkResult.xaml"/>
+            </DockPanel>
         </ScrollViewer>
     </Grid>
 </UserControl>

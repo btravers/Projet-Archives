@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Content\Search\SearchResultAdapter.cs" />
+    <Compile Include="Content\View\Common\Bookmark\BookmarkResultAdapter.cs" />
+    <Compile Include="Content\View\Common\Bookmark\BookmarkToolbar.xaml.cs">
+      <DependentUpon>BookmarkToolbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\View\Common\SheetContent.xaml.cs">
       <DependentUpon>SheetContent.xaml</DependentUpon>
     </Compile>
@@ -129,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Content\Search\SearchTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\View\Common\Bookmark\BookmarkToolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -273,6 +281,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Icons\appbar.arrow.left.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Icons\appbar.folder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Icons\appbar.home.variant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Icons\appbar.shotglass.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -284,6 +308,7 @@
     <Content Include="Resources\fake_sheet.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Icons\appbar.folder.png" />
     <Content Include="Resources\mini_RMM.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

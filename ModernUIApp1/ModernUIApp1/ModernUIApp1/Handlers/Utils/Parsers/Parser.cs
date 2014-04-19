@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Data.Data;
 using System.Xml.Linq;
 using Data.Data.Registre;
+using Data.Data.Users.Bookmark;
 
 namespace ModernUIApp1.Handlers.Utils.Parsers
 {

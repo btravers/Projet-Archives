@@ -8,20 +8,27 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
-            <ListBox ItemsSource="{Binding AccentImages}"
-                         SelectedItem="{Binding SelectedAccentImage, Mode=TwoWay}"
+                <ListBox Name="resultListBox" ItemsSource="{Binding ResultsList}"
+                         SelectedItem="{Binding SelectedResult, Mode=TwoWay}"
                          Margin="0,0,0,16">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel MaxWidth="{Binding ActualWidth, ElementName=Panel}" />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <mui:ModernFrame Source="/Content/View/Common/Bookmark/BookmarkCell.xaml" />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid Name="allGrid" Style="{StaticResource ContentRoot}" Height="{Binding ActualHeight, ElementName=resultGrid}">
+                                <Grid Name="mainGrid" Style="{StaticResource ContentRoot}">
+                                    <Image Height="{Binding ActualHeight, ElementName=mainGrid}" Source="{Binding imagePath}" Margin="0,0,0,5"/>
+                                </Grid>
+                                <Label Content="{Binding text}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
         </ScrollViewer>
     </Grid>
 </UserControl>
