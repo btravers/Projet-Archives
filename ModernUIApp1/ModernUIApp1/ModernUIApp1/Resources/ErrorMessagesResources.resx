@@ -122,7 +122,7 @@
     <comment>Called when a user failed his login</comment>
   </data>
   <data name="Register_Failed" xml:space="preserve">
-    <value>L'email que vous utilisez est déjà utilisé.</value>
+    <value>L'email que vous avez indiqué n'est pas disponible ou est incorrect.</value>
     <comment>Called when a user email exists</comment>
   </data>
   <data name="Register_Password_Not_Correspond" xml:space="preserve">

@@ -71,13 +71,14 @@ namespace ModernUIApp1.Handlers.Utils
         /* Check if it's a valid email */
         private static bool isAnEmail(String email)
         {
-            return new Regex(EMAIL_PATTERN, RegexOptions.IgnoreCase).IsMatch(email);
+            //return new Regex(EMAIL_PATTERN, RegexOptions.IgnoreCase).IsMatch(email);
+            return email.Length >= 4;
         }
 
         /* Check if it's a valid password */
         private static bool isAValidPassword(String password)
         {
-            return password.Length >= 4 ? true : false;
+            return password.Length >= 4;
         }
         /* End static functions */
 
@@ -88,13 +89,13 @@ namespace ModernUIApp1.Handlers.Utils
         /* Send a request register() to the server */
         public bool registerNewUser(String email, String password)
         {
-            /*
+            
             if (!isAnEmail(email))
                 return false;
 
             if (!isAValidPassword(password))
                 return false;
-            */
+            
              
             // Send a request register() to the server
             // Debug mode (with Console.write())
