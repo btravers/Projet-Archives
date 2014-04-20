@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,22 +19,35 @@ namespace ModernUIApp1.Pages.Popups
     /// <summary>
     /// Logique d'interaction pour AddAnnotation.xaml
     /// </summary>
-    public partial class AddAnnotation : UserControl
+    public partial class AddAnnotation : ModernDialog
     {
-        public Window window { get; private set; }
+        // public Window window { get; private set; }
         public Point position;
 
         public AddAnnotation(Point position)
         {
             InitializeComponent();
 
-            this.window = new Window();
+            // this.window = new Window();
             this.position = position;
+            this.CloseButton.Visibility = Visibility.Hidden;
+        }
+
+        public void setParameters(Double left, Double top)
+        {
+            this.Left = left;
+            this.Top = top;
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
-            window.Close();
+            this.Close();
+            //window.Close();
+        }
+
+        public void close_dialog()
+        {
+            this.Close();
         }
     }
 }

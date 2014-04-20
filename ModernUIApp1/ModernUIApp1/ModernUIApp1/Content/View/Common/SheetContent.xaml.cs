@@ -326,19 +326,26 @@ namespace ModernUIApp1.Content.View.Common
 
                 if (addAnnotationUserControl != null)
                 {
-                    addAnnotationUserControl.window.Close();
+                    addAnnotationUserControl.close_dialog();
                 }
 
                 addAnnotationUserControl = new AddAnnotation(position);
-                addAnnotationUserControl.window.Title = "Ajouter une annotation";
+                // addAnnotationUserControl.window.Title = "Ajouter une annotation";
+
+                Double left;
+
                 if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2)
                 {
-                    addAnnotationUserControl.window.Left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
+                    left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
                 }
                 else
                 {
-                    addAnnotationUserControl.window.Left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
+                    left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
                 }
+
+                addAnnotationUserControl.setParameters(left, mouse.Y);
+                addAnnotationUserControl.Show();
+/*
                 addAnnotationUserControl.window.Top = mouse.Y;
                 addAnnotationUserControl.window.Width = addAnnotationUserControl.Width + 25;
                 addAnnotationUserControl.window.Height = addAnnotationUserControl.Height + 35;
@@ -348,6 +355,7 @@ namespace ModernUIApp1.Content.View.Common
                 addAnnotationUserControl.window.Background = Brushes.Transparent;
                 addAnnotationUserControl.window.Content = addAnnotationUserControl;
                 addAnnotationUserControl.window.Show();
+ */
             }
             else
             {
