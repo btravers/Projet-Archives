@@ -20,17 +20,17 @@ namespace Handlers.Handlers
             this.user = user;
         }
 
+        //retourne la liste des annotation d'une PageTable
         public List<AnnotationPageTable> getAnnotationPageTableByPageTableId(int page_table_id)
         {
             // Keep the page table
             PageTable pageTable = new PageTable(); // RegistreHandler.findPageTableById(...)
             
             // Request
-            String xmlResponse = Connection.getRequest("browser / "+page_table_id+" / idPageTable / idUser / page"); // Connection.send(...)
+            String xmlResponse = Connection.getRequest("annotator/get_annotation_table/"+user.id_session+"/"+page_table_id+")");
 
             Parser parser = new Parser(xmlResponse);
 
-            // Parse XML
             foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable))
             {
                 // Add to the PageTable.annotation if it isnt already loaded or if it's modified
@@ -65,13 +65,13 @@ namespace Handlers.Handlers
             return pageTable.annotations_page_table.Values.ToList();
         }
 
-        public List<AnnotationSheet> getAnnotationSheetBySheetId(int sheet_id)
+        public List<AnnotationSheet> getAnnotationSheetBySheetId(int id_sheet)
         {
             // Keep the page table
             Sheet sheet = new Sheet(); // RegistreHandler.findPageTableById(...)
 
             // Request
-            String xmlResponse = Connection.getRequest(""); // Connection.send(...)
+            String xmlResponse = Connection.getRequest("annotator/get_annotation_sheet/"+user.id_session+"/"+id_sheet+")"); // Connection.send(...)
 
             Parser parser = new Parser(xmlResponse);
 
