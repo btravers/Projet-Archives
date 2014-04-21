@@ -11,7 +11,7 @@ namespace Data.Data.Users.Bookmark
         public static BookmarkFolder bookmarkFolderRoot;
 
         public int id_bookmark_folder { get; protected set; }
-        public BookmarkFolder bookmarkFolderParent { get; protected set; }
+        public BookmarkFolder bookmarkFolderParent { get; set; }
 
         public String label { get; protected set; }
 

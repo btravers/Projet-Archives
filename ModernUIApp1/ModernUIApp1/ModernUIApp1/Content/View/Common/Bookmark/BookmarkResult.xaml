@@ -13,10 +13,11 @@
         <ScrollViewer>
                 <ListBox Name="resultListBox" ItemsSource="{Binding ResultsList}"
                          SelectedItem="{Binding SelectedResult, Mode=TwoWay}"
-                         Margin="0,0,0,16">
+                         Margin="0,0,0,16"
+                         AllowDrop="True" Drop="item_Drop">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel />
+                        <WrapPanel />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>

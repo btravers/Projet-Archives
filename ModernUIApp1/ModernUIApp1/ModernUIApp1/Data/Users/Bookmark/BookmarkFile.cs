@@ -12,7 +12,7 @@ namespace Data.Data.Users.Bookmark
     {
         public int id_bookmark_file { get; protected set; }
         public Sheet id_sheet { get; protected set; }
-        BookmarkFolder bookmarkFolderParent;
+        public BookmarkFolder bookmarkFolderParent { get; set; }
 
         public String label { get; protected set; }
 

@@ -39,24 +39,26 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         public Dictionary<int, BookmarkFolder> currentUnderFolders { get; private set; }
         public Dictionary<int, BookmarkFile> currentUnderFiles { get; private set; }
 
+#region LongClick variables (useless)
+        /*
         // TIMER for long click
         private DispatcherTimer timer;
         private Object sender;
         private MouseButtonEventArgs e;
+         */
         // End long click
+#endregion
 
         /* Constructor */
         public BookmarkResult()
         {
             InitializeComponent();
-
-            // TEST LONG CLICK
-            resultListBox.AddHandler(UIElement.MouseLeftButtonDownEvent,
-//        new MouseButtonEventHandler(ListBox_MouseLongClickDown), true);
-            new MouseButtonEventHandler(ListBox_MouseClickDown), true);
-            resultListBox.AddHandler(UIElement.MouseLeftButtonUpEvent,
-                new MouseButtonEventHandler(ListBox_MouseClickUp), true);
-            // END TEST LONG CLICK
+            
+//            resultListBox.AddHandler(UIElement.MouseLeftButtonDownEvent, new MouseButtonEventHandler(ListBox_MouseClickDown), true);
+            // DRAG N DROP
+            resultListBox.AddHandler(UIElement.MouseLeftButtonUpEvent, new MouseButtonEventHandler(ListBox_ShortClick), true);
+            resultListBox.AddHandler(UIElement.MouseMoveEvent, new MouseEventHandler(ListBox_MouseMove), true);
+            // END DRAG N DROP
 
             currentUnderFiles = new Dictionary<int,BookmarkFile>();
             currentUnderFolders = new Dictionary<int,BookmarkFolder>();
@@ -72,40 +74,94 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             loadCurrentFolder();
         }
 
-        // Long click & short click
-        /* Handler Cick left down on an item */
-        private void ListBox_MouseClickDown(Object sender, MouseButtonEventArgs e)
+        #region DragNDrop
+        /* Handler called when the source is moving */
+        private void ListBox_MouseMove(object sender, MouseEventArgs e)
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(875); // All 875ms,
-            timer.Tick += TickHandler; // Handler "TickHandler" is called
-            timer.Start();
-            this.sender = sender;
-            this.e = e;
-        }
-        // Timer tick
-        private void TickHandler(Object sender, EventArgs e)
-        {
-            if (timer != null)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
-                timer.Stop();   // Stop the timer
-                timer = null; // Delete it
-                if (this.e != null && this.sender != null)
+                ListBox listBox = (ListBox)sender;
+                DependencyObject dep = (DependencyObject)e.OriginalSource;
+
+                while ((dep != null) && !(dep is ListBoxItem))
                 {
-                    ListBox_LongClick(this.sender, this.e); // Determine that it's a long click
+                    dep = VisualTreeHelper.GetParent(dep);
                 }
-           }
+
+                if (dep == null)
+                    return;
+
+                BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
+            
+                DragDrop.DoDragDrop(dep,
+                                     item.type + "/" + item.id.ToString(),
+                                     DragDropEffects.Copy);
+            }
         }
-        /* Handler Cick left up on an item */
-        private void ListBox_MouseClickUp(Object sender, MouseButtonEventArgs e)
+
+        /* Handler called when an item is dropped on the source */
+        private void item_Drop(object sender, DragEventArgs e)
         {
-            if (timer != null) // If a timer is in running
+            ListBox listBox = (ListBox)sender;
+            DependencyObject dep = (DependencyObject)e.OriginalSource;
+
+            while ((dep != null) && !(dep is ListBoxItem))
             {
-                timer.Stop(); // Stop it to avoid the long click
+                dep = VisualTreeHelper.GetParent(dep);
             }
 
-             ListBox_ShortClick(sender, e); // So it's a short click because the timer didn't had the time to run the tick handler
+            if (dep == null)
+                return;
+
+            BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
+
+            if (item.type.Equals(BookmarkType.FOLDER)) 
+            {
+                // If the DataObject contains string data, extract it.
+                if (e.Data.GetDataPresent(DataFormats.StringFormat))
+                {
+                    string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+                    //MessageBox.Show("Drop : " + dataString + " to : " + item.text);
+
+                    BookmarkFolder destination = currentUnderFolders[item.id];
+
+                    if (dataString.Split('/')[0].Equals(BookmarkType.FOLDER.ToString()))
+                    { // It's a Folder, update it
+                        // Update File, New ParentFolder, Current Folder
+                        BookmarkFolder target = currentUnderFolders[int.Parse(dataString.Split('/')[1])];
+
+                        // Check destination != target
+                        if (target != destination)
+                        {
+                            target.bookmarkFolderParent = destination;
+                            destination.addBookmarkFolder(target);
+                            currentFolder.bookmarkFolders.Remove(target.id_bookmark_folder);
+                            // Update in server
+                            bhandler.updateBookmarks();
+                        }
+                        else
+                        { // If it is just open the folder
+                            this.moveToFolder(target.id_bookmark_folder);
+                        }
+                    }
+                    else
+                    { // It's a File, update it
+                        // Update File, New ParentFolder, Current Folder
+                        BookmarkFile target = currentUnderFiles[int.Parse(dataString.Split('/')[1])];
+
+                        target.bookmarkFolderParent = destination;
+                        destination.addBookmark(target);
+                        currentFolder.bookmarkFiles.Remove(target.id_bookmark_file);
+                        // Update in server
+                        bhandler.updateBookmarks();
+                    }
+
+                    // Reload the current folder
+                    loadCurrentFolder();
+                }
+            }
         }
+
         /* Called if it's a short click */
         private void ListBox_ShortClick(Object sender, MouseButtonEventArgs e)
         {
@@ -122,8 +178,6 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             if (dep == null)
                 return;
 
-            //try
-            //{
             BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
             if (item != null)
             {
@@ -147,7 +201,59 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 }
             }
         }
+        #endregion
+
+        #region LongClick operations & handlers (useless)
+        // Long click & short click
+        /* Handler Cick left down on an item */
+        /*
+        private void ListBox_MouseClickDown(Object sender, MouseButtonEventArgs e)
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(875); // All 875ms,
+            timer.Tick += TickHandler; // Handler "TickHandler" is called
+            timer.Start();
+            this.sender = sender;
+            this.e = e;
+        }
+         */
+        // Timer tick
+        /*
+        private void TickHandler(Object sender, EventArgs e)
+        {
+            if (timer != null)
+            {
+                timer.Stop();   // Stop the timer
+                timer = null; // Delete it
+               
+                if (this.e != null && this.sender != null)
+                {
+                    // ListBox_LongClick(this.sender, this.e); // Determine that it's a long click
+                    // Allow drop because it's a long click
+                    // resultListBox.AllowDrop = true;
+                }
+                 
+           }
+        }
+         */
+        /* Handler Cick left up on an item */
+        /*
+        private void ListBox_MouseClickUp(Object sender, MouseButtonEventArgs e)
+        {
+            // resultListBox.AllowDrop = false;
+            
+            if (timer != null) // If a timer is in running
+            {
+                timer.Stop(); // Stop it to avoid the long click
+            }
+             
+
+             ListBox_ShortClick(sender, e); // So it's a short click because the timer didn't had the time to run the tick handler
+        }
+        */
+
         /* Called if it's a long click */
+        /*
         private void ListBox_LongClick(Object sender, MouseButtonEventArgs e)
         {
 
@@ -172,7 +278,9 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             //catch (Exception) { }
 
         }
+         */ 
         // End long click & short click
+#endregion useless
 
         /* Move the view into the folder given in parameter */
         public void moveToFolder(int idFolder)

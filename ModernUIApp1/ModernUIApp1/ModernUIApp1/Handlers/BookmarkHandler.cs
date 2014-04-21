@@ -64,5 +64,11 @@ namespace Handlers.Handlers
             return BookmarkFolder.bookmarkFolderRoot;
 
         }
+
+        /* Update parent */
+        public void updateBookmarks()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }
