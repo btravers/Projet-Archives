@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModernUIApp1.Resources;
+using ModernUIApp1.Content.View.Registre;
+
 
 namespace ModernUIApp1.Content.Authentification
 {
@@ -37,6 +39,10 @@ namespace ModernUIApp1.Content.Authentification
                 // Notify that the user is connected
                 MainWindow.window.userConnected();
                 message.Text = null;
+
+                // Refresh the Identy Sheet which change after an authentication
+                if(IdentitySheet.IDENTITYSHEET != null)
+                    IdentitySheet.IDENTITYSHEET.reload();
             }
             else
             {

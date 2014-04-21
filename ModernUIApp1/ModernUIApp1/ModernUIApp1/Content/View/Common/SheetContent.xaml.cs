@@ -25,7 +25,7 @@ using Handlers.Handlers;
 using System.Threading;
 using Data.Data.Registre.Annotation;
 using System.Windows.Media.Effects;
-
+using ModernUIApp1.Content.View.Registre;
 
 namespace ModernUIApp1.Content.View.Common
 {
@@ -285,6 +285,7 @@ namespace ModernUIApp1.Content.View.Common
 
         void animNext_Completed(object sender, EventArgs e)
         {
+
             if (ViewManager.instance.nextSheet != null)
             {
                 try
@@ -343,6 +344,7 @@ namespace ModernUIApp1.Content.View.Common
                 List<AnnotationSheet> annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
                 displayAnnotations(annotations);
             }
+            IdentitySheet.IDENTITYSHEET.reload();
         }
 
         void displayAnnotations(List<AnnotationSheet> annotations)
