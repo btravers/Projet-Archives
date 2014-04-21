@@ -23,6 +23,7 @@ using ModernUIApp1.Handlers.Utils;
 using Handlers.Utils;
 using Handlers.Handlers;
 using System.Threading;
+using System.Windows.Media.Effects;
 
 
 namespace ModernUIApp1.Content.View.Common
@@ -410,6 +411,8 @@ namespace ModernUIApp1.Content.View.Common
         void onImageChange()
         {
             slider.Value = 2;
+            sliderContrast.Value = 0;
+            sliderBrightness.Value = 0;
 
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
@@ -423,6 +426,6 @@ namespace ModernUIApp1.Content.View.Common
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
         {
             Console.WriteLine("click annotation");
-        }
-    }
+        }        
+    }    
 }

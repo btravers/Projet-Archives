@@ -51,6 +51,10 @@ class Authentificator
 	 */
 	public static function register($email, $password)
 	{
+		if(strlen($email) <= 4 || strlen($password) <= 4) {
+			return array("helper" => "authentificator", "message" => "values_error");
+		}
+		
 		$result = Database::query("SELECT * FROM User WHERE email = ?", array($email));
 		if(count($result) > 0) {
 			return array("helper" => "authentificator", "message" => "user_already_exists");

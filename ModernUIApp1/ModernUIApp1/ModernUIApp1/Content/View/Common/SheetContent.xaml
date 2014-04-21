@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:l="clr-namespace:ModernUIApp1.Content.View.Common"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -38,14 +39,16 @@
     </UserControl.Resources>
     
     <Grid Style="{StaticResource ContentRoot}" Margin="0">
-            <Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Slider Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" Minimum="-100" Maximum="100" x:Name="sliderContrast"/>
-            <Slider Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider"/>
-        <ScrollViewer Name="scrollViewer" Grid.Column="2" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+        </Grid.ColumnDefinitions>        
+        <Slider Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" Minimum="-1" Maximum="1" x:Name="sliderContrast"/>
+        <Slider Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Minimum="-1" Maximum="1" x:Name="sliderBrightness"/>
+        <Slider Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider"/>
+        <ScrollViewer Name="scrollViewer" Grid.Column="3" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
 
                 <Grid Name="grid" Width="300" Height="300" RenderTransformOrigin="0.5,0.5">
                     <Grid.LayoutTransform>
@@ -57,7 +60,11 @@
                         <TranslateTransform x:Name="panelTrans" X="0"/>
                     </Grid.RenderTransform>
                 <Image Name="rmmImage" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5">
-
+                    <Image.Effect>
+                        <l:BrightContrastEffect 
+                            Brightness="{Binding ElementName=sliderBrightness, Path=Value}"
+                            Contrast="{Binding ElementName=sliderContrast, Path=Value}"/>
+                    </Image.Effect>
                 </Image>
                 <Canvas Name="overlay" Margin="45,0,45,5"></Canvas>
                 </Grid>

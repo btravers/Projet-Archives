@@ -410,6 +410,8 @@ namespace ModernUIApp1.Content.View.Common
         void onImageChange()
         {
             slider.Value = 2;
+            sliderContrast.Value = 0;
+            sliderBrightness.Value = 0;
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
