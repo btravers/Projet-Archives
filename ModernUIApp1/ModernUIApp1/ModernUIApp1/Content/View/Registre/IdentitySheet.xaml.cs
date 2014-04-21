@@ -40,12 +40,11 @@ namespace ModernUIApp1.Content.View.Registre
         public void reload()
         {
             //TODO : uncomment
-            //Sheet sheet = ViewManager.instance.sheet;
-            
-            //TEST
+            Sheet sheet = ViewManager.instance.sheet;
+            /*DEBUT TEST
             Sheet sheet = new Sheet();
             if (Authenticator.AUTHENTICATOR.user != null)
-            {                
+            {
                 AnnotationSheet a1 = new AnnotationSheet(0, sheet, 1, Authenticator.AUTHENTICATOR.user.ToString(), "Annot n1", 0, 0);
                 AnnotationSheet a2 = new AnnotationSheet(1, sheet, 2, Authenticator.AUTHENTICATOR.user.ToString(), "Annot n2", 0, 0);
                 AnnotationSheet a3 = new AnnotationSheet(2, sheet, 3, Authenticator.AUTHENTICATOR.user.ToString(), "Annot n3", 0, 0);
@@ -55,12 +54,13 @@ namespace ModernUIApp1.Content.View.Registre
                 sheet.addAnnotation(a3);
                 sheet.addAnnotation(a4);
             }
-            //FIN TEST
+            FIN TEST*/
+
 
             String annotationsText = "";
-            if (sheet != null)
+            if (Authenticator.AUTHENTICATOR.user != null)
             {
-                if (Authenticator.AUTHENTICATOR.user != null)
+                if (sheet != null)
                 {
                     List<AnnotationSheet> annotationList = annotationHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
                     foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values)
@@ -69,10 +69,10 @@ namespace ModernUIApp1.Content.View.Registre
                     }
                 }
                 else
-                    annotationsText = "Utilisateur non connecté";
+                    annotationsText = "Aucune fiche sélectionnée";
             }
             else
-                annotationsText = "Aucune fiche sélectionnée";
+                annotationsText = "Mode Visiteur (Utilisateur non connecté)";
             Annotations.Text = annotationsText;
         }
     }
