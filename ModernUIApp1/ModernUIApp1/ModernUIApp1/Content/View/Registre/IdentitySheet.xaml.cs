@@ -26,32 +26,33 @@ namespace ModernUIApp1.Content.View.Registre
     public partial class IdentitySheet : UserControl
     {
         private AnnotationHandler annotationHandler;
-        
         public IdentitySheet()
         {
             InitializeComponent();
-            /*
+            
             User user = Authenticator.AUTHENTICATOR.user;
             if(user != null)
                 annotationHandler = new AnnotationHandler(user);
 
-            reload();*/
+            reload();
         }
 
         public void reload()
         {
-            /*
-            String annotationsText = "";
             Sheet sheet = ViewManager.instance.sheet;
-            List<AnnotationSheet> annotationList = annotationHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
+
+            String annotationsText = "";
             if (sheet != null)
             {
-                foreach (KeyValuePair<int, AnnotationSheet> annotationPair in sheet.annotations_sheet)
+                List<AnnotationSheet> annotationList = annotationHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
+                foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values)
                 {
-                    annotationsText = annotationsText + annotationPair.Value.ToString() + "\n";
+                    annotationsText = annotationsText + annotation.ToString() + "\n";
                 }
             }
+            else
+                annotationsText = "aucune fiche sélectionnée";
             Annotations.Text = annotationsText;
-        */}
+        }
     }
 }
