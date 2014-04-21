@@ -9,7 +9,7 @@
         <ScrollViewer>
             <StackPanel>
                 <TextBlock Text="Identité du soldat" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
+                <TextBlock Name="Annotations" Text="Aucune annotation personnelle sur cette fiche" />
             </StackPanel>
         </ScrollViewer>
     </Grid>
