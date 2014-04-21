@@ -45,7 +45,7 @@ namespace Data.Data.Registre.Annotation
 
         public override String ToString()
         {
-            return type.ToString()+text;
+            return type.ToString()+" : "+text+"\n";
         }
 
     }
