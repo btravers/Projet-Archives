@@ -1,4 +1,5 @@
-﻿using FirstFloor.ModernUI.Windows.Controls;
+﻿using Data.Data.Users.Shortcut;
+using FirstFloor.ModernUI.Windows.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,14 @@ namespace ModernUIApp1.Pages.Popups
             // this.window = new Window();
             this.position = position;
             this.CloseButton.Visibility = Visibility.Hidden;
+
+            foreach (KeyValuePair<int, AnnotationType> type in AnnotationType.types.ToList())
+            {
+                ComboBoxItem i = new ComboBoxItem();
+                i.Tag = type.Key;
+                i.Content = type.Value.label;
+                typeList.Items.Add(i);
+            }
         }
 
         public void setParameters(Double left, Double top)

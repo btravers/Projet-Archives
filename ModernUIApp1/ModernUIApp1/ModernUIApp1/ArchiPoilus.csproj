@@ -232,7 +232,7 @@
     <Compile Include="Data\Users\Bookmark\BookmarkFile.cs" />
     <Compile Include="Data\Users\Bookmark\BookmarkFolder.cs" />
     <Compile Include="Data\Users\Shortcut\Shortcut.cs" />
-    <Compile Include="Data\Users\Shortcut\Type.cs" />
+    <Compile Include="Data\Users\Shortcut\AnnotationType.cs" />
     <Compile Include="Data\Users\User.cs" />
     <Compile Include="Handlers\Utils\Parsers\Parser.cs" />
     <Compile Include="MainWindow.xaml.cs">

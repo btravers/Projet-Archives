@@ -108,6 +108,29 @@ class Annotator
 		}
 	}
 	
+	public static function get_types()
+	{
+		$resultTypes = Database::query("SELECT * FROM Type", array());
+		
+		$data = array();
+		
+		foreach ($resultTypes as $type)
+		{
+			$idType = $type['id_type'];
+			
+			$data[$idType]['label'] = $type['label'];
+		}
+		
+		if(count($data) > 0) {
+			return array("helper" => "annotator", "message" => "result_found", "result" => $data);
+		} else {
+			return array("helper" => "annotator", "message" => "result_not_found");
+		}
+	}
+	
+	/**
+	 * Get all annotations by sheet
+	 */
 	public static function get_annotation_sheet($idSession, $idSheet)
 	{
 		if(!is_numeric($idSheet))
@@ -141,6 +164,9 @@ class Annotator
 		}
 	}
 	
+	/**
+	 * Get all annotations by table
+	 */
 	public static function get_annotation_table($idSession, $idTable)
 	{
 		if(!is_numeric($idTable))

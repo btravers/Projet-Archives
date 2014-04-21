@@ -5,17 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
-             Title="Ajouter une annotation" Height="200" Width="366" >
+             Title="Ajouter une annotation" Height="200" Width="482.564" >
     
-    <Grid Margin="0,0,18,-1">
+    <Grid Margin="0,0,0,0">
         <TextBlock Text="Texte" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="25"/>
-        <TextBox Name="text" HorizontalAlignment="Left" Margin="139,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="193" FontSize="25"/>
+        <TextBox Name="text" HorizontalAlignment="Left" Margin="139,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="318" FontSize="25"/>
 
         <TextBlock Text="Catégorie" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="25"/>
-        <ComboBox Name="type" HorizontalAlignment="Left" Margin="139,60,0,0" VerticalAlignment="Top" Width="193" FontSize="25"/>
+        <ComboBox Name="typeList" HorizontalAlignment="Left" Margin="139,60,0,0" VerticalAlignment="Top" Width="318" FontSize="25"/>
 
-        <Button Name="add" Content="Ajouter" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="122" FontSize="25"/>
-        <Button Name="close" Content="Fermer" HorizontalAlignment="Left" Margin="181,112,0,0" VerticalAlignment="Top" Width="122" FontSize="25" Click="close_Click"/>
+        <Button Name="add" Content="Ajouter" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="122" FontSize="25"/>
+        <Button Name="close" Content="Fermer" HorizontalAlignment="Left" Margin="343,117,0,0" VerticalAlignment="Top" Width="122" FontSize="25" Click="close_Click"/>
 
     </Grid>
 </mui:ModernDialog>

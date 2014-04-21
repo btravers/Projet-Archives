@@ -299,4 +299,7 @@
   <data name="LinkPreloadSheets" xml:space="preserve">
     <value>browser/preload_sheets/id_sheet</value>
   </data>
+  <data name="LinkGetTypes" xml:space="preserve">
+    <value>annotator/get_types//</value>
+  </data>
 </root>

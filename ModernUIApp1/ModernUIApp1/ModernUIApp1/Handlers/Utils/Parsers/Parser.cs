@@ -8,6 +8,7 @@ using Data.Data;
 using System.Xml.Linq;
 using Data.Data.Registre;
 using Data.Data.Users.Bookmark;
+using Data.Data.Users.Shortcut;
 
 namespace ModernUIApp1.Handlers.Utils.Parsers
 {
@@ -298,6 +299,31 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
                     string url = xmlNode.Element("url").Value;
 
                     lRes.Add(new Sheet(idSheet, url));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+
+            return lRes;
+        }
+
+        public List<AnnotationType> ParserTypes()
+        {
+            List<AnnotationType> lRes = new List<AnnotationType>();
+
+            try
+            {
+                XElement xmlResponse = xmlDocument.Element("response");
+                XElement xmlResult = xmlResponse.Element("result");
+
+                foreach (XElement xmlNode in xmlResult.Elements())
+                {
+                    int idType = int.Parse(xmlNode.Name.ToString().Substring(4));
+                    string label = xmlNode.Element("label").Value;
+
+                    lRes.Add(new AnnotationType(idType, label));
                 }
             }
             catch (Exception e)

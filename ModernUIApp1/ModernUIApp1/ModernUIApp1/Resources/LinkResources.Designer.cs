@@ -232,6 +232,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à annotator/get_types//.
+        /// </summary>
+        internal static string LinkGetTypes {
+            get {
+                return ResourceManager.GetString("LinkGetTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à authentificator/login/email/password.
         /// </summary>
         internal static string LinkLogin {

@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModernUIApp1.Pages;
 using FirstFloor.ModernUI.Presentation;
+using Handlers.Handlers;
 
 namespace ModernUIApp1
 {
@@ -34,6 +35,9 @@ namespace ModernUIApp1
 
             AppearanceManager.Current.ThemeSource = AppearanceManager.DarkThemeSource;
             AppearanceManager.Current.AccentColor = Color.FromRgb(0xfa, 0x68, 0x00);
+
+            SheetHandler sheetHandler = new SheetHandler();
+            sheetHandler.getTypes();
         }
 
         public void userConnected()

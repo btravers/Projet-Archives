@@ -9,7 +9,7 @@ namespace Data.Data.Users.Shortcut
     public class Shortcut
     {
         int id_shortcut;
-        Type type;
+        AnnotationType type;
 
         String default_text;
         int id_icon;
@@ -19,7 +19,7 @@ namespace Data.Data.Users.Shortcut
         {
         }
 
-        public Shortcut(int id_shortcut, Type type, String default_text, int id_icon)
+        public Shortcut(int id_shortcut, AnnotationType type, String default_text, int id_icon)
         {
             this.id_shortcut = id_shortcut;
             this.type = type;
