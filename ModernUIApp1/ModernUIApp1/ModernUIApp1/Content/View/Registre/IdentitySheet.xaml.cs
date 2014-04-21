@@ -30,16 +30,17 @@ namespace ModernUIApp1.Content.View.Registre
         public IdentitySheet()
         {
             InitializeComponent();
-
+            /*
             User user = Authenticator.AUTHENTICATOR.user;
             if(user != null)
                 annotationHandler = new AnnotationHandler(user);
 
-            reload();
+            reload();*/
         }
 
         public void reload()
         {
+            /*
             String annotationsText = "";
             Sheet sheet = ViewManager.instance.sheet;
             List<AnnotationSheet> annotationList = annotationHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
@@ -51,6 +52,6 @@ namespace ModernUIApp1.Content.View.Registre
                 }
             }
             Annotations.Text = annotationsText;
-        }
+        */}
     }
 }
