@@ -20,11 +20,12 @@ namespace Data.Data.Registre.Annotation
         public int id_annotations_sheet;
         Sheet sheet;
         //EType type;
-        int type;
+        public int type { get; private set; }
         String user;
 
-        int x, y;
-        String text;
+        public int x { get; private set; }
+        public int y { get; private set; }
+        public String text { get; private set; }
 
         /* Constructors */
         public AnnotationSheet()

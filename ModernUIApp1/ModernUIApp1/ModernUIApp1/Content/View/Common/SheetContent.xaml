@@ -60,7 +60,7 @@
                 <Canvas Name="overlay" Margin="45,0,45,5"></Canvas>
             </Grid>
         </ScrollViewer>
-        <Expander Header="Views" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="200" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
+        <Expander Header="Outils" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="200" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
             <StackPanel Orientation="Horizontal" Background="#252526">
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Contraste" />
