@@ -39,12 +39,11 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         public Dictionary<int, BookmarkFolder> currentUnderFolders { get; private set; }
         public Dictionary<int, BookmarkFile> currentUnderFiles { get; private set; }
 
-        // TEST LONG CLICK
-        // TIMER
+        // TIMER for long click
         private DispatcherTimer timer;
         private Object sender;
         private MouseButtonEventArgs e;
-        // END TEST LONG CLICK
+        // End long click
 
         /* Constructor */
         public BookmarkResult()
@@ -73,12 +72,13 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             loadCurrentFolder();
         }
 
-        // TEST OTHER SOLUTION
+        // Long click & short click
+        /* Handler Cick left down on an item */
         private void ListBox_MouseClickDown(Object sender, MouseButtonEventArgs e)
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(875);
-            timer.Tick += TickHandler;
+            timer.Interval = TimeSpan.FromMilliseconds(875); // All 875ms,
+            timer.Tick += TickHandler; // Handler "TickHandler" is called
             timer.Start();
             this.sender = sender;
             this.e = e;
@@ -88,24 +88,25 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         {
             if (timer != null)
             {
-                timer.Stop();
-                timer = null;
+                timer.Stop();   // Stop the timer
+                timer = null; // Delete it
                 if (this.e != null && this.sender != null)
                 {
-                    ListBox_LongClick(this.sender, this.e);
+                    ListBox_LongClick(this.sender, this.e); // Determine that it's a long click
                 }
            }
         }
-
+        /* Handler Cick left up on an item */
         private void ListBox_MouseClickUp(Object sender, MouseButtonEventArgs e)
         {
-            if (timer != null)
+            if (timer != null) // If a timer is in running
             {
-                timer.Stop();
+                timer.Stop(); // Stop it to avoid the long click
             }
 
-             ListBox_ShortClick(sender, e);
+             ListBox_ShortClick(sender, e); // So it's a short click because the timer didn't had the time to run the tick handler
         }
+        /* Called if it's a short click */
         private void ListBox_ShortClick(Object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
@@ -146,7 +147,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 }
             }
         }
-
+        /* Called if it's a long click */
         private void ListBox_LongClick(Object sender, MouseButtonEventArgs e)
         {
 
@@ -171,7 +172,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             //catch (Exception) { }
 
         }
-        // END TEST
+        // End long click & short click
 
         /* Move the view into the folder given in parameter */
         public void moveToFolder(int idFolder)
