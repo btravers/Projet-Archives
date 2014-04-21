@@ -77,7 +77,7 @@ namespace Handlers.Handlers
 
             // Request
             String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, id_sheet.ToString())); // Connection.send(...)
-
+            
             if (xmlResponse != null)
             {
                 Parser parser = new Parser(xmlResponse);

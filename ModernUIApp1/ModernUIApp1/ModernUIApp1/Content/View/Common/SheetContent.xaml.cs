@@ -344,7 +344,9 @@ namespace ModernUIApp1.Content.View.Common
                 List<AnnotationSheet> annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
                 displayAnnotations(annotations);
             }
-            IdentitySheet.IDENTITYSHEET.reload();
+
+            if (IdentitySheet.IDENTITYSHEET != null)
+                IdentitySheet.IDENTITYSHEET.reload();
         }
 
         void displayAnnotations(List<AnnotationSheet> annotations)

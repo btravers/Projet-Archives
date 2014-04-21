@@ -39,10 +39,6 @@ namespace ModernUIApp1.Content.Authentification
                 // Notify that the user is connected
                 MainWindow.window.userConnected();
                 message.Text = null;
-
-                // Refresh the Identy Sheet which change after an authentication
-                if(IdentitySheet.IDENTITYSHEET != null)
-                    IdentitySheet.IDENTITYSHEET.reload();
             }
             else
             {
