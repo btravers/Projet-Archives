@@ -26,7 +26,7 @@ namespace Handlers.Handlers
             PageTable pageTable = new PageTable(); // RegistreHandler.findPageTableById(...)
             
             // Request
-            String xmlResponse = Connection.getRequest(""); // Connection.send(...)
+            String xmlResponse = Connection.getRequest("browser / "+page_table_id+" / idPageTable / idUser / page"); // Connection.send(...)
 
             Parser parser = new Parser(xmlResponse);
 
