@@ -37,12 +37,6 @@ namespace ModernUIApp1.Content.View.Common
     public partial class PageTableContent : UserControl
     {
         public static PageTableContent window { get; private set; }
-        
-        /* Contrast */
-        private System.Drawing.Bitmap originalBitmap = null;
-        private System.Drawing.Bitmap previewBitmap = null;
-        private System.Drawing.Bitmap resultBitmap = null;
-        /* End contrast */
 
         Point? lastCenterPositionOnTarget;
         Point? lastMousePositionOnTarget;
@@ -80,9 +74,6 @@ namespace ModernUIApp1.Content.View.Common
             e.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
             overlay.Children.Add(e);
 
-            /* Contrast */
-            sliderContrast.ValueChanged += ThresholdValueChangedEventHandler;
-
             reload();
         }
 
@@ -98,75 +89,12 @@ namespace ModernUIApp1.Content.View.Common
                     {
                         if (File.Exists(pageTable.url))
                         {
-                            /*System.IO.StreamReader streamReader = new System.IO.StreamReader(pageTable.url);
-                            originalBitmap = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(streamReader.BaseStream);
-                            streamReader.Close();
-
-                            previewBitmap = originalBitmap;
-                            rmmImage.Source = this.loadBitmap(previewBitmap);
-
-                            ApplyFilter(true);*/
-
                             rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
                         }
                     }
                 );
             }
-        }
-
-        /* Contrast */
-        private void ApplyFilter(bool preview)
-        {
-            if (previewBitmap == null)
-            {
-                return;
-            }
-
-            if (preview == true)
-            {
-                rmmImage.Source = this.loadBitmap(previewBitmap.Contrast((int)sliderContrast.Value));
-            }
-            else
-            {
-                resultBitmap = originalBitmap.Contrast((int)sliderContrast.Value);
-            }
-        }
-
-        private void ThresholdValueChangedEventHandler(object sender, EventArgs e)
-        {
-            ApplyFilter(true);
-        }
-
-        public System.Drawing.Bitmap BitmapSourceToBitmap(BitmapSource srs)
-        {
-            int width = srs.PixelWidth;
-            int height = srs.PixelHeight;
-            int stride = width * ((srs.Format.BitsPerPixel + 7) / 8);
-            IntPtr ptr = IntPtr.Zero;
-            try
-            {
-                ptr = Marshal.AllocHGlobal(height * stride);
-                srs.CopyPixels(new Int32Rect(0, 0, width, height), ptr, height * stride, stride);
-                using (var btm = new System.Drawing.Bitmap(width, height, stride, System.Drawing.Imaging.PixelFormat.Format1bppIndexed, ptr))
-                {
-                    // Clone the bitmap so that we can dispose it and
-                    // release the unmanaged memory at ptr
-                    return new System.Drawing.Bitmap(btm);
-                }
-            }
-            finally
-            {
-                if (ptr != IntPtr.Zero)
-                    Marshal.FreeHGlobal(ptr);
-            }
-        }
-        public BitmapSource loadBitmap(System.Drawing.Bitmap source)
-        {
-            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(source.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
-                System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
-        }
-
-        /* End contrast */
+        }        
 
         void OnMouseMove(object sender, MouseEventArgs e)
         {
@@ -410,6 +338,8 @@ namespace ModernUIApp1.Content.View.Common
         void onImageChange()
         {
             slider.Value = 2;
+            sliderContrast.Value = 0;
+            sliderBrightness.Value = 0;
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)

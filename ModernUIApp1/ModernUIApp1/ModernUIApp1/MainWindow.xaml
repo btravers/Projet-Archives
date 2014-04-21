@@ -41,6 +41,7 @@
     </mui:ModernWindow.MenuLinkGroups>
     
     <mui:ModernWindow.TitleLinks>
+        <mui:Link DisplayName="Accueil" Source="/Pages/Home.xaml" />
         <mui:Link DisplayName="Visionneur" Source="/Pages/ViewRegister.xaml" />
         <mui:Link x:Name="search" DisplayName="Recherche" Source="/Pages/Search.xaml" />
         <mui:Link DisplayName="Options" Source="/Pages/Settings.xaml" />

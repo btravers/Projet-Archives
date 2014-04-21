@@ -30,17 +30,21 @@ namespace Handlers.Handlers
             // Request
             String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotTable.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, page_table_id.ToString()));
 
-            Parser parser = new Parser(xmlResponse);
-
-            foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable))
+            if (xmlResponse != null)
             {
-                // Add to the PageTable.annotation if it isnt already loaded or if it's modified
-                // TODO : redefine equals ?
-                if (!pageTable.annotations_page_table.ContainsKey(a.id_annotation_page_table) || !pageTable.annotations_page_table.ContainsValue(a))
-                    pageTable.addAnnotation(a);
-            }
+                Parser parser = new Parser(xmlResponse);
 
-            return pageTable.annotations_page_table.Values.ToList();
+                foreach (AnnotationPageTable a in parser.ParseAnnotationPageTable(pageTable))
+                {
+                    // Add to the PageTable.annotation if it isnt already loaded or if it's modified
+                    // TODO : redefine equals ?
+                    if (!pageTable.annotations_page_table.ContainsKey(a.id_annotation_page_table) || !pageTable.annotations_page_table.ContainsValue(a))
+                        pageTable.addAnnotation(a);
+                }
+
+                return pageTable.annotations_page_table.Values.ToList();
+            }
+            else return null;
         }
 
         public List<AnnotationPageTable> getAnnotationPageTableByText(String text) // USELESS
@@ -69,23 +73,27 @@ namespace Handlers.Handlers
         public List<AnnotationSheet> getAnnotationSheetBySheetId(int id_sheet)
         {
             // Keep the page table
-            Sheet sheet = new Sheet(); // RegistreHandler.findPageTableById(...)
+            Sheet sheet = new Sheet(id_sheet, "xxxx"); // RegistreHandler.findSheetById(...)
 
             // Request
             String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, id_sheet.ToString())); // Connection.send(...)
 
-            Parser parser = new Parser(xmlResponse);
-
-            // Parse XML
-            foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet))
+            if (xmlResponse != null)
             {
-                // Add to the PageTable.annotation if it isnt already loaded or if it's modified
-                // TODO : redefine equals ?
-                if (!sheet.annotations_sheet.ContainsKey(a.id_annotations_sheet) || !sheet.annotations_sheet.ContainsValue(a))
-                    sheet.addAnnotation(a);
-            }
+                Parser parser = new Parser(xmlResponse);
 
-            return sheet.annotations_sheet.Values.ToList();
+                // Parse XML
+                foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet))
+                {
+                    // Add to the PageTable.annotation if it isnt already loaded or if it's modified
+                    // TODO : redefine equals ?
+                    if (!sheet.annotations_sheet.ContainsKey(a.id_annotations_sheet) || !sheet.annotations_sheet.ContainsValue(a))
+                        sheet.addAnnotation(a);
+                }
+
+                return sheet.annotations_sheet.Values.ToList();
+            }
+            else return null;
         }
 
         public List<AnnotationSheet> getAnnotationSheetByText(String text)  // USELESS

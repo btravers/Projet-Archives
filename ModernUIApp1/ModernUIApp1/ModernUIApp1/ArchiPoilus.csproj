@@ -69,6 +69,7 @@
     <Compile Include="Content\View\Common\Bookmark\PopAddFolder.xaml.cs">
       <DependentUpon>PopAddFolder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\View\Common\BrightContrastEffect.cs" />
     <Compile Include="Content\View\Common\SheetContent.xaml.cs">
       <DependentUpon>SheetContent.xaml</DependentUpon>
     </Compile>
@@ -90,6 +91,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Handlers\Utils\ViewManager.cs" />
+    <Compile Include="Pages\Popups\DisplayAnnotation.xaml.cs">
+      <DependentUpon>DisplayAnnotation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ViewRegister.xaml.cs">
       <DependentUpon>ViewRegister.xaml</DependentUpon>
     </Compile>
@@ -254,6 +258,10 @@
       <DependentUpon>SettingsAppearance.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\SettingsAppearanceViewModel.cs" />
+    <Page Include="Pages\Popups\DisplayAnnotation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\ViewRegister.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -307,6 +315,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\bricon.ps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\View\Table\" />
