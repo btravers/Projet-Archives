@@ -74,7 +74,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 {
                     this.selectedResult = value;
                     OnPropertyChanged("SelectedResult");
-
+/*
                     if (this.selectedResult != null)
                     {
                         if (this.selectedResult.type.Equals(BookmarkType.FILE))
@@ -98,7 +98,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                                 }
                                 ViewManager.instance.pageTables = list;
                                 */
-                            }
+/*                            }
 
                             if (ViewTable.window != null)
                             {
@@ -112,6 +112,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                             BookmarkResult.window.moveToFolder(this.selectedResult.id);
                         }
                     }
+ */
                 }
             }
         }

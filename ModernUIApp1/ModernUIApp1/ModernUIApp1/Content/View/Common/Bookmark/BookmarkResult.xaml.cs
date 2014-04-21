@@ -1,6 +1,8 @@
 ﻿using Data.Data.Users.Bookmark;
 using Handlers.Handlers;
 using ModernUIApp1.Content.View.Common.Bookmark;
+using ModernUIApp1.Handlers.Utils;
+using ModernUIApp1.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ModernUIApp1.Content.View.Common.Bookmark
 {
@@ -41,6 +44,12 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         {
             InitializeComponent();
 
+            // TEST LONG CLICK
+            resultListBox.AddHandler(UIElement.MouseDownEvent,
+//        new MouseButtonEventHandler(ListBox_MouseLongClickDown), true);
+            new MouseButtonEventHandler(ListBox_LongClick), true);
+            // END TEST LONG CLICK
+
             currentUnderFiles = new Dictionary<int,BookmarkFile>();
             currentUnderFolders = new Dictionary<int,BookmarkFolder>();
 
@@ -54,6 +63,77 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
 
             loadCurrentFolder();
         }
+
+        // TEST OTHER SOLUTION
+        private void ListBox_LongClick(Object sender, MouseButtonEventArgs e)
+        {
+            WaitFor(TimeSpan.FromMilliseconds(750), DispatcherPriority.SystemIdle);
+            ListBox_MouseLongClickDown(sender, e);
+        }
+        private void WaitFor(TimeSpan time, DispatcherPriority priority)
+        {
+            DispatcherTimer timer = new DispatcherTimer(priority);
+            timer.Tick += new EventHandler(OnDispatched);
+            timer.Interval = time;
+            DispatcherFrame dispatcherFrame = new DispatcherFrame(false);
+            timer.Tag = dispatcherFrame;
+            timer.Start();
+            Dispatcher.PushFrame(dispatcherFrame);
+        }
+        private void OnDispatched(object sender, EventArgs args)
+        {
+            DispatcherTimer timer = (DispatcherTimer)sender;
+            timer.Tick -= new EventHandler(OnDispatched);
+            timer.Stop();
+            DispatcherFrame frame = (DispatcherFrame)timer.Tag;
+            frame.Continue = false;
+        }
+        private void ListBox_MouseLongClickDown(Object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            //MessageBox.Show("MouseDown event on " + listBox.Name);
+
+            DependencyObject dep = (DependencyObject)e.OriginalSource;
+            
+            while ((dep != null) && !(dep is ListBoxItem))
+            {
+                dep = VisualTreeHelper.GetParent(dep);
+            }
+
+            if (dep == null)
+                return;
+
+            //try
+            //{
+                BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
+                MessageBox.Show("MouseDown event on " + item.text);
+            //}
+            //catch (Exception) { }
+            /*
+                if (item != null)
+                {
+                    if (item.type.Equals(BookmarkType.FILE))
+                    {
+                        if (BookmarkResult.window != null && BookmarkResult.window.currentUnderFiles != null && BookmarkResult.window.currentUnderFiles.ContainsKey(item.id))
+                        {
+                            ViewManager.instance.sheet = BookmarkResult.window.currentUnderFiles[item.id].id_sheet;
+                        }
+
+                        if (ViewTable.window != null)
+                        {
+                            ViewTable.window.reload();
+                        }
+
+                        MainWindow.window.ContentSource = new Uri(item.uri, UriKind.Relative);
+                    }
+                    else
+                    {
+                        window.moveToFolder(item.id);
+                    }
+                }
+             */
+        }
+        // END TEST
 
         /* Move the view into the folder given in parameter */
         public void moveToFolder(int idFolder)

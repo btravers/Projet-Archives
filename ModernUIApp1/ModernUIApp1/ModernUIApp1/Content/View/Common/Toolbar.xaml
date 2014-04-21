@@ -10,12 +10,12 @@
             <Expander Header="Views" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
-                        <Label  Content="Zoom" />
-                        <Slider MinWidth="100" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
+                        <Label  Content="Contraste" />
+                        <Slider Name="sliderContrast" MinWidth="100" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <Label  Content="Luminosité" />
-                        <Slider MinWidth="100" Minimum="1880" Maximum="1918" Value="1890" Background="Transparent"/>
+                        <Slider Name="sliderBrightness" MinWidth="100" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
                     </StackPanel>
                     <Button  Content="Undo" />
                     <Button  Content="Redo" />

@@ -8,9 +8,7 @@
     <Grid Style="{StaticResource ContentRoot}">
   
             <DockPanel Margin="-16,-28,-16,-16">
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Frame Source="/Content/View/Common/Toolbar.xaml"/>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top"/>
 
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"/>
 
