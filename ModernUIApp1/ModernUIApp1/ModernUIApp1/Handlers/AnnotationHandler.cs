@@ -69,7 +69,7 @@ namespace Handlers.Handlers
         public List<AnnotationSheet> getAnnotationSheetBySheetId(int id_sheet)
         {
             // Keep the page table
-            Sheet sheet = new Sheet(); // RegistreHandler.findPageTableById(...)
+            Sheet sheet = new Sheet(id_sheet, "xxxx"); // RegistreHandler.findPageTableById(...)
 
             // Request
             String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, id_sheet.ToString())); // Connection.send(...)
