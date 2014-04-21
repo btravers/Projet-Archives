@@ -39,15 +39,24 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         public Dictionary<int, BookmarkFolder> currentUnderFolders { get; private set; }
         public Dictionary<int, BookmarkFile> currentUnderFiles { get; private set; }
 
+        // TEST LONG CLICK
+        // TIMER
+        private DispatcherTimer timer;
+        private Object sender;
+        private MouseButtonEventArgs e;
+        // END TEST LONG CLICK
+
         /* Constructor */
         public BookmarkResult()
         {
             InitializeComponent();
 
             // TEST LONG CLICK
-            resultListBox.AddHandler(UIElement.MouseDownEvent,
+            resultListBox.AddHandler(UIElement.MouseLeftButtonDownEvent,
 //        new MouseButtonEventHandler(ListBox_MouseLongClickDown), true);
-            new MouseButtonEventHandler(ListBox_LongClick), true);
+            new MouseButtonEventHandler(ListBox_MouseClickDown), true);
+            resultListBox.AddHandler(UIElement.MouseLeftButtonUpEvent,
+                new MouseButtonEventHandler(ListBox_MouseClickUp), true);
             // END TEST LONG CLICK
 
             currentUnderFiles = new Dictionary<int,BookmarkFile>();
@@ -65,36 +74,45 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         }
 
         // TEST OTHER SOLUTION
-        private void ListBox_LongClick(Object sender, MouseButtonEventArgs e)
+        private void ListBox_MouseClickDown(Object sender, MouseButtonEventArgs e)
         {
-            WaitFor(TimeSpan.FromMilliseconds(750), DispatcherPriority.SystemIdle);
-            ListBox_MouseLongClickDown(sender, e);
-        }
-        private void WaitFor(TimeSpan time, DispatcherPriority priority)
-        {
-            DispatcherTimer timer = new DispatcherTimer(priority);
-            timer.Tick += new EventHandler(OnDispatched);
-            timer.Interval = time;
-            DispatcherFrame dispatcherFrame = new DispatcherFrame(false);
-            timer.Tag = dispatcherFrame;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(875);
+            timer.Tick += TickHandler;
             timer.Start();
-            Dispatcher.PushFrame(dispatcherFrame);
+            this.sender = sender;
+            this.e = e;
         }
-        private void OnDispatched(object sender, EventArgs args)
+        // Timer tick
+        private void TickHandler(Object sender, EventArgs e)
         {
-            DispatcherTimer timer = (DispatcherTimer)sender;
-            timer.Tick -= new EventHandler(OnDispatched);
-            timer.Stop();
-            DispatcherFrame frame = (DispatcherFrame)timer.Tag;
-            frame.Continue = false;
+            if (timer != null)
+            {
+                timer.Stop();
+                timer = null;
+                if (this.e != null && this.sender != null)
+                {
+                    ListBox_LongClick(this.sender, this.e);
+                }
+           }
         }
-        private void ListBox_MouseLongClickDown(Object sender, MouseButtonEventArgs e)
+
+        private void ListBox_MouseClickUp(Object sender, MouseButtonEventArgs e)
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+            }
+
+             ListBox_ShortClick(sender, e);
+        }
+        private void ListBox_ShortClick(Object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
             //MessageBox.Show("MouseDown event on " + listBox.Name);
 
             DependencyObject dep = (DependencyObject)e.OriginalSource;
-            
+
             while ((dep != null) && !(dep is ListBoxItem))
             {
                 dep = VisualTreeHelper.GetParent(dep);
@@ -105,33 +123,53 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
 
             //try
             //{
-                BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
-                MessageBox.Show("MouseDown event on " + item.text);
+            BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
+            if (item != null)
+            {
+                if (item.type.Equals(BookmarkType.FILE))
+                {
+                    if (BookmarkResult.window != null && BookmarkResult.window.currentUnderFiles != null && BookmarkResult.window.currentUnderFiles.ContainsKey(item.id))
+                    {
+                        ViewManager.instance.sheet = BookmarkResult.window.currentUnderFiles[item.id].id_sheet;
+                    }
+
+                    if (ViewTable.window != null)
+                    {
+                        ViewTable.window.reload();
+                    }
+
+                    MainWindow.window.ContentSource = new Uri(item.uri, UriKind.Relative);
+                }
+                else
+                {
+                    window.moveToFolder(item.id);
+                }
+            }
+        }
+
+        private void ListBox_LongClick(Object sender, MouseButtonEventArgs e)
+        {
+
+            ListBox listBox = (ListBox)sender;
+            //MessageBox.Show("MouseDown event on " + listBox.Name);
+
+            DependencyObject dep = (DependencyObject)e.OriginalSource;
+
+            while ((dep != null) && !(dep is ListBoxItem))
+            {
+                dep = VisualTreeHelper.GetParent(dep);
+            }
+
+            if (dep == null)
+                return;
+
+            //try
+            //{
+            BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
+            MessageBox.Show("LONG CLICK on " + item.text);
             //}
             //catch (Exception) { }
-            /*
-                if (item != null)
-                {
-                    if (item.type.Equals(BookmarkType.FILE))
-                    {
-                        if (BookmarkResult.window != null && BookmarkResult.window.currentUnderFiles != null && BookmarkResult.window.currentUnderFiles.ContainsKey(item.id))
-                        {
-                            ViewManager.instance.sheet = BookmarkResult.window.currentUnderFiles[item.id].id_sheet;
-                        }
 
-                        if (ViewTable.window != null)
-                        {
-                            ViewTable.window.reload();
-                        }
-
-                        MainWindow.window.ContentSource = new Uri(item.uri, UriKind.Relative);
-                    }
-                    else
-                    {
-                        window.moveToFolder(item.id);
-                    }
-                }
-             */
         }
         // END TEST
 
