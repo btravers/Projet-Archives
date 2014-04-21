@@ -177,7 +177,7 @@
     <value>authentificator/register/email/password</value>
     <comment>link to register</comment>
   </data>
-  <data name="LnikGetSheet" xml:space="preserve">
+  <data name="LinkGetSheet" xml:space="preserve">
     <value>browser/get_sheet/idRegister/idUser/matriculeNumber</value>
     <comment>link to get_sheet</comment>
   </data>
@@ -301,5 +301,13 @@
   </data>
   <data name="LinkGetTypes" xml:space="preserve">
     <value>annotator/get_types//</value>
+  </data>
+  <data name="LinkGetAnnotSheet" xml:space="preserve">
+    <value>annotator/get_annotation_sheet/session_id/id_sheet)</value>
+    <comment>Link get annotation sheet</comment>
+  </data>
+  <data name="LinkGetAnnotTable" xml:space="preserve">
+    <value>annotator/get_annotation_table/session_id/id_page_table)</value>
+    <comment>Linkg get annotation page table</comment>
   </data>
 </root>

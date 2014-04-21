@@ -8,6 +8,7 @@ using ModernUIApp1.Handlers.Utils.Parsers;
 using Data.Data.Registre;
 using Data.Data;
 using Handlers.Utils;
+using ModernUIApp1.Resources;
 
 namespace Handlers.Handlers
 {
@@ -27,7 +28,7 @@ namespace Handlers.Handlers
             PageTable pageTable = new PageTable(); // RegistreHandler.findPageTableById(...)
             
             // Request
-            String xmlResponse = Connection.getRequest("annotator/get_annotation_table/"+user.id_session+"/"+page_table_id+")");
+            String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotTable.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, page_table_id.ToString()));
 
             Parser parser = new Parser(xmlResponse);
 
@@ -71,7 +72,7 @@ namespace Handlers.Handlers
             Sheet sheet = new Sheet(); // RegistreHandler.findPageTableById(...)
 
             // Request
-            String xmlResponse = Connection.getRequest("annotator/get_annotation_sheet/"+user.id_session+"/"+id_sheet+")"); // Connection.send(...)
+            String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, id_sheet.ToString())); // Connection.send(...)
 
             Parser parser = new Parser(xmlResponse);
 
