@@ -9,6 +9,7 @@ using Data.Data.Registre;
 using Data.Data;
 using Handlers.Utils;
 using ModernUIApp1.Resources;
+using ModernUIApp1.Handlers.Utils;
 
 namespace Handlers.Handlers
 {
@@ -73,7 +74,8 @@ namespace Handlers.Handlers
         public List<AnnotationSheet> getAnnotationSheetBySheetId(int id_sheet)
         {
             // Keep the page table
-            Sheet sheet = new Sheet(id_sheet, "xxxx"); // RegistreHandler.findSheetById(...)
+            //Sheet sheet = new Sheet(id_sheet, "xxxx"); // RegistreHandler.findSheetById(...)
+            Sheet sheet = ViewManager.instance.sheet;
 
             // Request
             String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, id_sheet.ToString())); // Connection.send(...)

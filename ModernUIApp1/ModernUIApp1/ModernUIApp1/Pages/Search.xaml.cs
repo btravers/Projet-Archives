@@ -25,13 +25,6 @@ namespace ModernUIApp1.Pages
         public Recherche()
         {
             InitializeComponent();
-
-            SheetHandler sh = new SheetHandler();
-            List<Sheet> l = sh.search(1878, "saint-malo", "", "bouteau", "", "");
-            foreach (Sheet s in l)
-            {
-                Console.WriteLine(s.ToString());
-            }
         }
     }
 }
