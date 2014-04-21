@@ -47,6 +47,9 @@ namespace Handlers.Utils
             String responseFromServer = null;
             // Create a GET request
             WebRequest resultRequest = WebRequest.Create(ROOT_URL + requestString);
+
+            Console.WriteLine(ROOT_URL + requestString);
+
             resultRequest.Method = "GET";
 
             try

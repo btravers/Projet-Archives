@@ -25,7 +25,8 @@ using Handlers.Handlers;
 using System.Threading;
 using Data.Data.Registre.Annotation;
 using System.Windows.Media.Effects;
-
+using ModernUIApp1.Content.View.Registre;
+using Data.Data;
 
 namespace ModernUIApp1.Content.View.Common
 {
@@ -285,6 +286,7 @@ namespace ModernUIApp1.Content.View.Common
 
         void animNext_Completed(object sender, EventArgs e)
         {
+
             if (ViewManager.instance.nextSheet != null)
             {
                 try
@@ -334,15 +336,22 @@ namespace ModernUIApp1.Content.View.Common
             sliderBrightness.Value = 0;
 
             Sheet sheet = ViewManager.instance.sheet;
-            if (sheet != null)
+            if (sheet != null && Authenticator.AUTHENTICATOR.user != null)
             {
+                User user = Authenticator.AUTHENTICATOR.user;
+                if (user == null)
+                    user = new User(0, "xx");
+
                 sheetHandler.preloadSheets(sheet.id_sheet);
 
                 // TODO download annotations
-                AnnotationHandler annotHandler = new AnnotationHandler(new Data.Data.User(1, "xxxx"));
+                AnnotationHandler annotHandler = new AnnotationHandler(user);
                 List<AnnotationSheet> annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
                 displayAnnotations(annotations);
             }
+
+            if (IdentitySheet.IDENTITYSHEET != null)
+                IdentitySheet.IDENTITYSHEET.reload();
         }
 
         void displayAnnotations(List<AnnotationSheet> annotations)

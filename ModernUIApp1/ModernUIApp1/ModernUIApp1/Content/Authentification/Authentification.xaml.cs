@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModernUIApp1.Resources;
+using ModernUIApp1.Content.View.Registre;
+
 
 namespace ModernUIApp1.Content.Authentification
 {
