@@ -23,6 +23,7 @@ using ModernUIApp1.Handlers.Utils;
 using Handlers.Utils;
 using Handlers.Handlers;
 using System.Threading;
+using Data.Data.Registre.Annotation;
 using System.Windows.Media.Effects;
 
 
@@ -45,6 +46,7 @@ namespace ModernUIApp1.Content.View.Common
         Point? lastMousePositionOnTarget;
         Point? lastDragPoint;
         AddAnnotation addAnnotationUserControl;
+        DisplayAnnotation displayAnnotationUserControl;
         Boolean mouseMove;
 
         Point mouseStartDrag;
@@ -58,6 +60,8 @@ namespace ModernUIApp1.Content.View.Common
             sheetHandler = new SheetHandler();
 
             SheetContent.window = this;
+            Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            Arrange(new Rect(0, 0, window.DesiredSize.Width, window.DesiredSize.Height));
 
             scrollViewer.ScrollChanged += OnScrollViewerScrollChanged;
             //scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
@@ -72,15 +76,6 @@ namespace ModernUIApp1.Content.View.Common
 
             slider.ValueChanged += OnSliderValueChanged;
             slider.Value = 2;
-
-            Ellipse e = new Ellipse();
-            e.Width = 8;
-            e.Height = 8;
-            e.Fill = new SolidColorBrush(Colors.CornflowerBlue);
-            Canvas.SetLeft(e, 20);
-            Canvas.SetTop(e, 20);
-            e.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
-            overlay.Children.Add(e);
 
             reload();
         }
@@ -149,13 +144,9 @@ namespace ModernUIApp1.Content.View.Common
             lastMousePositionOnTarget = Mouse.GetPosition(grid);
 
             if (e.Delta > 0)
-            {
                 slider.Value += 1;
-            }
-            if (e.Delta < 0)
-            {
+            else if (e.Delta < 0)
                 slider.Value -= 1;
-            }
 
             e.Handled = true;
         }
@@ -348,12 +339,60 @@ namespace ModernUIApp1.Content.View.Common
                 sheetHandler.preloadSheets(sheet.id_sheet);
 
                 // TODO download annotations
+                AnnotationHandler annotHandler = new AnnotationHandler(new Data.Data.User(1, "xxxx"));
+                List<AnnotationSheet> annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
+                displayAnnotations(annotations);
             }
+        }
+
+        void displayAnnotations(List<AnnotationSheet> annotations)
+        {
+            if (annotations == null)
+                return;
+
+            foreach (AnnotationSheet annotation in annotations)
+                displayAnnotationCircle(annotation);
+        }
+
+        void displayAnnotationCircle(AnnotationSheet annotation)
+        {
+            Ellipse e = new Ellipse();
+            e.Width = 8;
+            e.Height = 8;
+            e.Fill = new SolidColorBrush(Colors.CornflowerBlue);
+            e.Tag = annotation;
+            double x = (double)annotation.x / ((BitmapSource)rmmImage.Source).PixelWidth * rmmImage.ActualWidth;
+            double y = (double)annotation.y / ((BitmapSource)rmmImage.Source).PixelHeight * rmmImage.ActualHeight;
+            Canvas.SetLeft(e, x);
+            Canvas.SetTop(e, y);
+            e.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
+            overlay.Children.Add(e);
+
+            Console.WriteLine(annotation.id_annotations_sheet + ", x=" + annotation.x + ", y=" + annotation.y);
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("click annotation");
-        }        
-    }    
+            AnnotationSheet annotation = (AnnotationSheet) ((Ellipse)sender).Tag;
+            Console.WriteLine("id:" + annotation.id_annotations_sheet + ", ty:" + annotation.type + ", tx:" + annotation.text);
+
+            if (displayAnnotationUserControl != null)
+            {
+                displayAnnotationUserControl.close_dialog();
+            }
+
+            displayAnnotationUserControl = new DisplayAnnotation();
+
+            Double left;
+
+            if (annotation.x < SystemParameters.FullPrimaryScreenWidth / 2)
+                left = annotation.x + SystemParameters.FullPrimaryScreenWidth / 8;
+            else
+                left = annotation.x - SystemParameters.FullPrimaryScreenWidth / 4;
+
+            displayAnnotationUserControl.setPosition(left, annotation.y);
+            displayAnnotationUserControl.setParameters(annotation.text, annotation.type);
+            displayAnnotationUserControl.Show();
+        }
+    }
 }
