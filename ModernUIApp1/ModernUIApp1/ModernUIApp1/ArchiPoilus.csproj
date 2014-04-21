@@ -91,6 +91,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Handlers\Utils\ViewManager.cs" />
+    <Compile Include="Pages\Popups\DisplayAnnotation.xaml.cs">
+      <DependentUpon>DisplayAnnotation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ViewRegister.xaml.cs">
       <DependentUpon>ViewRegister.xaml</DependentUpon>
     </Compile>
@@ -255,6 +258,10 @@
       <DependentUpon>SettingsAppearance.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\SettingsAppearanceViewModel.cs" />
+    <Page Include="Pages\Popups\DisplayAnnotation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\ViewRegister.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
