@@ -303,11 +303,11 @@
     <value>annotator/get_types//</value>
   </data>
   <data name="LinkGetAnnotSheet" xml:space="preserve">
-    <value>annotator/get_annotation_sheet/session_id/id_sheet)</value>
+    <value>annotator/get_annotation_sheet/session_id/id_sheet</value>
     <comment>Link get annotation sheet</comment>
   </data>
   <data name="LinkGetAnnotTable" xml:space="preserve">
-    <value>annotator/get_annotation_table/session_id/id_page_table)</value>
+    <value>annotator/get_annotation_table/session_id/id_page_table</value>
     <comment>Linkg get annotation page table</comment>
   </data>
 </root>
