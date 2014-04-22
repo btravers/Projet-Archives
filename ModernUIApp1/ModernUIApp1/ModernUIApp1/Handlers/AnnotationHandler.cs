@@ -144,14 +144,24 @@ namespace Handlers.Handlers
             String xmlResponse = Connection.getRequest(LinkResources.LinkAnnotateSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, sheet.id_sheet.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text));
         }
 
-        public void modifyAnnotationPageTable(int id_annotation_page_table, int id_type, int x, int y, String text)
+        public void modifyAnnotationPageTable(int id_annotation_page_table, int x, int y, int height, int width, int id_number)
         {
-            throw new NotImplementedException();
+            PageTable table = ViewManager.instance.pageTable;
+            if (table == null)
+                return;
+
+            //Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkUpdateAnnotationTable.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdAnnotationPageTable, id_annotation_page_table.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Width, width.ToString()).Replace(LinkResources.Height, height.ToString()).Replace(LinkResources.Number, id_number.ToString()));
         }
 
         public void modifyAnnotationSheet(int id_annotation_sheet, int id_type, int x, int y, String text)
         {
-            throw new NotImplementedException();
+            Sheet sheet = ViewManager.instance.sheet;
+            if (sheet == null)
+                return;
+
+            //Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkUpdateAnnotationSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, id_annotation_sheet.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text));
         }
     }
 }
