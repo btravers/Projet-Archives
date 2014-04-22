@@ -347,8 +347,8 @@ namespace ModernUIApp1.Content.View.Common
 
                 // TODO download annotations
                 AnnotationHandler annotHandler = new AnnotationHandler(user);
-                List<AnnotationSheet> annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
-                displayAnnotations(annotations);
+                ViewManager.instance.annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
+                displayAnnotations(ViewManager.instance.annotations);
             }
 
             if (IdentitySheet.IDENTITYSHEET != null)

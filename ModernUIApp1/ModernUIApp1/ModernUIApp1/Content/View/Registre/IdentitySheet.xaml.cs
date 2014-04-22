@@ -67,8 +67,6 @@ namespace ModernUIApp1.Content.View.Registre
                 
                 if (sheet != null && sheet.id_sheet != 0)
                 {
-                    List<AnnotationSheet> annotationList = annotationHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
-
                     foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values)
                     {
                         annotationsText = annotationsText + annotation.ToString();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Data.Registre;
 using System.Windows.Media.Imaging;
+using Data.Data.Registre.Annotation;
 
 namespace ModernUIApp1.Handlers.Utils
 {
@@ -30,6 +31,7 @@ namespace ModernUIApp1.Handlers.Utils
         public int indexPageTables;
 
         public Sheet sheet = null;
+        public List<AnnotationSheet> annotations;
 
         public Sheet previousSheet = null;
 
