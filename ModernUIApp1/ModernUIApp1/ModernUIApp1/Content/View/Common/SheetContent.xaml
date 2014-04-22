@@ -36,11 +36,12 @@
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
         </Storyboard>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
     </UserControl.Resources>
 
     <Grid Style="{StaticResource ContentRoot}" Margin="0">        
-        <Slider Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider" Margin="0,24,0,0" />
-        <ScrollViewer Name="scrollViewer" Grid.Column="0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" Margin="22,24,0,0">
+        <Slider Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider" Margin="0,24,0,0"/>
+        <ScrollViewer Name="scrollViewer" Grid.Column="0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" Margin="32,24,0,0">
             <Grid Name="grid" Width="300" Height="300" RenderTransformOrigin="0.5,0.5">
                 <Grid.LayoutTransform>
                     <TransformGroup>
@@ -57,10 +58,10 @@
                             Contrast="{Binding ElementName=sliderContrast, Path=Value}"/>
                     </Image.Effect>
                 </Image>
-                <Canvas Name="overlay" Margin="45,0,45,5"></Canvas>
+                <Canvas Name="overlay" Margin="45,0,45,5" Visibility="{Binding Path=IsChecked, ElementName=annotationsEnable, Converter={StaticResource BoolToVisConverter}}"></Canvas>
             </Grid>
         </ScrollViewer>
-        <Expander Header="Outils" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="200" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
+        <Expander Header="Outils" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="300" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
             <StackPanel Orientation="Horizontal" Background="#252526">
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Contraste" />
@@ -69,6 +70,9 @@
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Luminosité" />
                     <Slider Name="sliderBrightness" MinWidth="100" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <CheckBox Name="annotationsEnable" IsChecked="True">Annotations</CheckBox>
                 </StackPanel>
             </StackPanel>
         </Expander>

@@ -334,6 +334,7 @@ namespace ModernUIApp1.Content.View.Common
             slider.Value = 2;
             sliderContrast.Value = 0;
             sliderBrightness.Value = 0;
+            annotationsEnable.IsChecked = true;
 
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
@@ -368,8 +369,10 @@ namespace ModernUIApp1.Content.View.Common
         void displayAnnotationCircle(AnnotationSheet annotation)
         {
             Ellipse e = new Ellipse();
-            e.Width = 8;
-            e.Height = 8;
+            e.Width = 4;
+            e.Height = 4;
+            e.StrokeThickness = 0.2;
+            e.Stroke = new SolidColorBrush(Colors.Blue);
             e.Fill = new SolidColorBrush(Colors.CornflowerBlue);
             e.Tag = annotation;
             double x = (double)annotation.x / ((BitmapSource)rmmImage.Source).PixelWidth * rmmImage.ActualWidth;
