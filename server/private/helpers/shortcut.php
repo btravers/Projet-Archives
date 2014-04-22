@@ -22,11 +22,7 @@ class Shortcut
 		} else {			
 			Database::exec("INSERT INTO Shortcut VALUES (0, ?, ?, ?, ?)", array($idUser, $id_type, $text, $id_icon));
 			$resReq = Database::exec("SELECT * FROM Shortcut WHERE id_user = ? AND id_type = ? AND text = ? AND id_icon = ?", array($idUser, $id_type, $text, $id_icon));
-			foreach ($resReq as $id)
-			{
-				$result = $id;
-			}	
-			return array("helper" => "shortcut", "message" => "registered", "result" => $result);
+			return array("helper" => "shortcut", "message" => "registered", "result" => $resReq);
 		}
 	}		
 	
