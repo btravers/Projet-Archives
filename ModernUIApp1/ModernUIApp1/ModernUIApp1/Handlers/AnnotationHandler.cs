@@ -131,7 +131,7 @@ namespace Handlers.Handlers
                 return;
 
             //Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkAnnotateTable..Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, table.id_page_table.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Width, width.ToString()).Replace(LinkResources.Height, height.ToString()).Replace(LinkResources.Number, id_number.ToString()));
+            String xmlResponse = Connection.getRequest(LinkResources.LinkAnnotateTable.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, table.id_page_table.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Width, width.ToString()).Replace(LinkResources.Height, height.ToString()).Replace(LinkResources.Number, id_number.ToString()));
         }
 
         public void createAnnotationSheet(int id_type, int x, int y, String text)
