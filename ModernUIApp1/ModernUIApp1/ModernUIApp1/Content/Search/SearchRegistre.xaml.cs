@@ -18,6 +18,7 @@ using Data.Data.Registre;
 using ModernUIApp1.Handlers.Utils;
 using ModernUIApp1.Content.Search;
 using System.IO;
+using System.Net;
 
 namespace ModernUIApp1.Content
 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -33,6 +34,23 @@ namespace Handlers.Utils
             return arg;
         }
 
+        public static string RemoveDiacritics(string text)
+        {
+            var normalizedString = text.Normalize(NormalizationForm.FormD);
+            var stringBuilder = new StringBuilder();
+
+            foreach (var c in normalizedString)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+        }
+
         /* Connection which returns XmlDocument, useful when data are returned */
         public static XDocument getXmlResponse(String requestString)
         {
@@ -46,7 +64,7 @@ namespace Handlers.Utils
             // return
             String responseFromServer = null;
             // Create a GET request
-            WebRequest resultRequest = WebRequest.Create(ROOT_URL + requestString);
+            WebRequest resultRequest = WebRequest.Create(ROOT_URL + Connection.RemoveDiacritics(requestString));
 
             Console.WriteLine(ROOT_URL + requestString);
 
