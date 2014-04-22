@@ -344,12 +344,15 @@ namespace ModernUIApp1.Content.View.Common
                 sheetHandler.preloadSheets(sheet.id_sheet);
 
                 // TODO download annotations
-                AnnotationHandler annotHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
-                ViewManager.instance.annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
-            }
+                new Thread(delegate()
+                {
+                    AnnotationHandler annotHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
+                    ViewManager.instance.annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
 
-            if (IdentitySheet.IDENTITYSHEET != null)
-                IdentitySheet.IDENTITYSHEET.reload();
+                    if (IdentitySheet.IDENTITYSHEET != null)
+                        Dispatcher.Invoke(new Action(delegate { IdentitySheet.IDENTITYSHEET.reload(); }));
+                }).Start();                
+            }            
         }
 
         public void displayAnnotations(List<AnnotationSheet> annotations)
