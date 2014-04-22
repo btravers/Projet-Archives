@@ -339,14 +339,10 @@ namespace ModernUIApp1.Content.View.Common
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
             {
-                User user = Authenticator.AUTHENTICATOR.user;
-                if (user == null)
-                    user = new User(0, "xx");
-
                 sheetHandler.preloadSheets(sheet.id_sheet);
 
                 // TODO download annotations
-                AnnotationHandler annotHandler = new AnnotationHandler(user);
+                AnnotationHandler annotHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
                 ViewManager.instance.annotations = annotHandler.getAnnotationSheetBySheetId(sheet.id_sheet);
                 displayAnnotations(ViewManager.instance.annotations);
             }
