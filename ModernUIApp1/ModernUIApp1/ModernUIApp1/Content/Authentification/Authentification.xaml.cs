@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModernUIApp1.Resources;
 using ModernUIApp1.Content.View.Registre;
+using ModernUIApp1.Pages;
 
 
 namespace ModernUIApp1.Content.Authentification
@@ -39,6 +40,11 @@ namespace ModernUIApp1.Content.Authentification
                 // Notify that the user is connected
                 MainWindow.window.userConnected();
                 message.Text = null;
+
+                if (ViewRegister.window != null)
+                {
+                    ViewRegister.window.reload();
+                }
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Data.Users.Shortcut;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,12 @@ namespace Data.Data.Registre.Annotation
 
         public override String ToString()
         {
-            return id_annotations_sheet + " : " + text + "\n";
+            string typeLabel = "Autre";
+            AnnotationType t;
+            if (AnnotationType.types.TryGetValue(type, out t))
+                typeLabel = t.label;
+
+            return typeLabel + " : " + text + "\n";
         }
 
     }

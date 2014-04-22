@@ -336,7 +336,7 @@ namespace ModernUIApp1.Content.View.Common
             sliderBrightness.Value = 0;
 
             Sheet sheet = ViewManager.instance.sheet;
-            if (sheet != null && Authenticator.AUTHENTICATOR.user != null)
+            if (sheet != null)
             {
                 User user = Authenticator.AUTHENTICATOR.user;
                 if (user == null)

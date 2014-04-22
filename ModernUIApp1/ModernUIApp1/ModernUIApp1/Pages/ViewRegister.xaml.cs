@@ -1,4 +1,5 @@
 ﻿using ModernUIApp1.Content.View.Common;
+using ModernUIApp1.Content.View.Registre;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,12 @@ namespace ModernUIApp1.Pages
             if (sheetContent != null)
             {
                 sheetContent.reload();
+            }
+
+            IdentitySheet identitySheet = IdentitySheet.IDENTITYSHEET;
+            if (identitySheet != null)
+            {
+                identitySheet.reload();
             }
         }
     }
