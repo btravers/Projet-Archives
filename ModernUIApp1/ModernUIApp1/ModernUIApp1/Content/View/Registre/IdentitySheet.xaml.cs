@@ -18,6 +18,7 @@ using Handlers.Handlers;
 using ModernUIApp1.Handlers.Utils;
 using Data.Data;
 using Data.Data.Registre.Annotation;
+using ModernUIApp1.Content.View.Common;
 
 namespace ModernUIApp1.Content.View.Registre
 {
@@ -46,24 +47,7 @@ namespace ModernUIApp1.Content.View.Registre
         /* Refresh the window */
         public void reload()
         {
-            /*
-             * DEBUT TEST
-             if (Authenticator.AUTHENTICATOR.user != null)
-             {
-                 AnnotationSheet a1 = new AnnotationSheet(0, sheet, 1, Authenticator.AUTHENTICATOR.user.ToString(), "Annot n1", 0, 0);
-                 AnnotationSheet a2 = new AnnotationSheet(1, sheet, 2, Authenticator.AUTHENTICATOR.user.ToString(), "Annot n2", 0, 0);
-                 AnnotationSheet a3 = new AnnotationSheet(2, sheet, 3, Authenticator.AUTHENTICATOR.user.ToString(), "Annot n3", 0, 0);
-                 AnnotationSheet a4 = new AnnotationSheet(3, sheet, 4, Authenticator.AUTHENTICATOR.user.ToString(), "Annot n4", 0, 0);
-                 sheet.addAnnotation(a1);
-                 sheet.addAnnotation(a2);
-                 sheet.addAnnotation(a3);
-                 sheet.addAnnotation(a4);
-             }
-            * FIN TEST
-            */
-
             Sheet sheet = ViewManager.instance.sheet;
-            String annotationsText = "";
             if (sheet != null)
             {
                 AnnotationHandler annotationHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
@@ -73,16 +57,12 @@ namespace ModernUIApp1.Content.View.Registre
                     annotator.Items.Clear();
                     annotations.Clear();                    
                     
+                    ComboBoxItem defaultItem = null;
+
                     foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values.OrderBy(e => e.type))
-                    {
-                        /*string userName = "";
-                        if (annotation.user != "-1")
-                        {
-                            userName = " (" + annotation.user + ")";
-                        }
-                        annotationsText = annotationsText + annotation.ToString() + userName + "\n";*/
-                        
+                    {                        
                         List<AnnotationSheet> annotationsUser = null;
+
                         if (annotations.ContainsKey(annotation.user))
                         {
                             annotationsUser = annotations[annotation.user];
@@ -97,33 +77,64 @@ namespace ModernUIApp1.Content.View.Registre
                             if (annotation.user == "-1")
                             {
                                 i.Content = "moi";
+
+                                defaultItem = i;
                             }
                             else
                             {
                                 i.Content = annotation.user;
+
+                                if (defaultItem == null)
+                                    defaultItem = i;
                             }
                             annotator.Items.Add(i);
                         }
+
                         annotationsUser.Add(annotation);
                     }
 
+                    annotator.SelectionChanged -= annotator_SelectionChanged;
                     annotator.SelectionChanged += annotator_SelectionChanged;
+
+                    if(defaultItem != null)
+                        annotator.SelectedItem = defaultItem;
                 }
                 else
                 {
-                    annotationsText = "Aucune fiche sélectionnée";
+                    annotationsTextBlock.Text = "Aucune fiche sélectionnée";
                 }
             }
             else
             {
-                annotationsText = "Aucune fiche sélectionnée";
+                annotationsTextBlock.Text = "Aucune fiche sélectionnée";
             }
-            Annotations.Text = annotationsText;
         }
 
         void annotator_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem item = (ComboBoxItem)annotator.SelectedItem;
+            if (item != null)
+            {
+                string tag = (string)item.Tag;
+
+                if (annotations.ContainsKey(tag))
+                {
+                    string annotationsText = "";
+
+                    foreach (AnnotationSheet annotation in annotations[tag])
+                    {
+                        annotationsText = annotationsText + annotation.ToString() + "\n";
+                    }
+
+                    annotationsTextBlock.Text = annotationsText;
+
+                    SheetContent sheetContent = SheetContent.window;
+                    if (sheetContent != null)
+                    {
+                        sheetContent.displayAnnotations(annotations[tag]);
+                    }
+                }
+            }
         }
     }
 }
