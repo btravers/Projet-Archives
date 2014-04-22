@@ -27,11 +27,6 @@ namespace Data.Data.Registre.Annotation
         public int y { get; private set; }
         public String text { get; private set; }
 
-        /* Constructors */
-        public AnnotationSheet()
-        {
-        }
-
         public AnnotationSheet(int id_annotations_sheet, Sheet sheet, int type, String user, String text, int x, int y)
         {
             this.id_annotations_sheet = id_annotations_sheet;
@@ -45,7 +40,7 @@ namespace Data.Data.Registre.Annotation
 
         public override String ToString()
         {
-            return type.ToString()+" : "+text+"\n";
+            return id_annotations_sheet + " : " + text + "\n";
         }
 
     }

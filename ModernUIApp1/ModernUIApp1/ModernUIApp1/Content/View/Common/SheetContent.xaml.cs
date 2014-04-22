@@ -359,6 +359,8 @@ namespace ModernUIApp1.Content.View.Common
             if (annotations == null)
                 return;
 
+            overlay.Children.Clear();
+
             foreach (AnnotationSheet annotation in annotations)
                 displayAnnotationCircle(annotation);
         }

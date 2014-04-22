@@ -61,7 +61,7 @@ namespace ModernUIApp1.Content.View.Registre
 
             Sheet sheet = ViewManager.instance.sheet;
             String annotationsText = "";
-            if (Authenticator.AUTHENTICATOR.user != null)
+            if (Authenticator.AUTHENTICATOR.user != null && sheet != null)
             {
                 annotationHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
                 

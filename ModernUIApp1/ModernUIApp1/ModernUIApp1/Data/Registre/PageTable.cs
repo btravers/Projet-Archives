@@ -61,7 +61,8 @@ namespace Data.Data.Registre
         /* Add an annotation to the Dictionnary */
         public void addAnnotation(AnnotationPageTable new_annotation)
         {
-            annotations_page_table.Add(new_annotation.id_annotation_page_table, new_annotation);
+            if(!annotations_page_table.ContainsKey(new_annotation.id_annotation_page_table))
+                annotations_page_table.Add(new_annotation.id_annotation_page_table, new_annotation);
         }
 
         public override string ToString()

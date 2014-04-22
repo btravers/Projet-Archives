@@ -76,6 +76,8 @@ namespace Handlers.Handlers
             // Keep the page table
             //Sheet sheet = new Sheet(id_sheet, "xxxx"); // RegistreHandler.findSheetById(...)
             Sheet sheet = ViewManager.instance.sheet;
+            if (sheet == null)
+                return null;
 
             // Request
             String xmlResponse = Connection.getRequest(LinkResources.LinkGetAnnotSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, id_sheet.ToString())); // Connection.send(...)
@@ -89,13 +91,14 @@ namespace Handlers.Handlers
                 {
                     // Add to the PageTable.annotation if it isnt already loaded or if it's modified
                     // TODO : redefine equals ?
-                    if (!sheet.annotations_sheet.ContainsKey(a.id_annotations_sheet) || !sheet.annotations_sheet.ContainsValue(a))
-                        sheet.addAnnotation(a);
+
+                    sheet.addAnnotation(a);
                 }
 
                 return sheet.annotations_sheet.Values.ToList();
             }
-            else return null;
+            else 
+               return null;
         }
 
         public List<AnnotationSheet> getAnnotationSheetByText(String text)  // USELESS
