@@ -39,12 +39,14 @@ namespace ModernUIApp1.Handlers.Utils
         }
 
         /* User */
+        public readonly User defaultUser = new User(0, "default", "default", "default", 0);
         public User user { get; private set; }
-        private Boolean connected;
+        public bool connected { get; private set; }
 
         private Authenticator()
         {
-            connected = false;
+            user = defaultUser;
+            connected = false;            
         }
 
         /* Functions */
@@ -167,7 +169,8 @@ namespace ModernUIApp1.Handlers.Utils
             } // Else
             else 
             {
-                user = null;
+                user = defaultUser;
+                connected = false;
                 return false;
             }
         }
@@ -176,7 +179,7 @@ namespace ModernUIApp1.Handlers.Utils
         public bool logout()
         {
 
-            if (user != null)
+            if (connected)
             {
                 // Send a request logout() to the server
                 // Debug mode (with Console.write())
@@ -187,7 +190,7 @@ namespace ModernUIApp1.Handlers.Utils
                 Console.WriteLine(response);
             }
 
-            user = null;
+            user = defaultUser;
             connected = false;
 
             return true;

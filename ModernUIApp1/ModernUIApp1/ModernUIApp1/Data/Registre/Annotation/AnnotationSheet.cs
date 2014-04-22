@@ -22,7 +22,7 @@ namespace Data.Data.Registre.Annotation
         Sheet sheet;
         //EType type;
         public int type { get; private set; }
-        String user;
+        public String user { get; private set; }
 
         public int x { get; private set; }
         public int y { get; private set; }
@@ -46,7 +46,7 @@ namespace Data.Data.Registre.Annotation
             if (AnnotationType.types.TryGetValue(type, out t))
                 typeLabel = t.label;
 
-            return typeLabel + " : " + text + "\n";
+            return typeLabel + " : " + text;
         }
 
     }

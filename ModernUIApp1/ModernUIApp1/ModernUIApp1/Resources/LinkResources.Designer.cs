@@ -196,6 +196,24 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à annotator/annotate_sheet/session_id/id_sheet/id_type/x/y/text.
+        /// </summary>
+        internal static string LinkAnnotateSheet {
+            get {
+                return ResourceManager.GetString("LinkAnnotateSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à annotator/annotate_table/session_id/id_page_table/x/y/height/width/number.
+        /// </summary>
+        internal static string LinkAnnotateTable {
+            get {
+                return ResourceManager.GetString("LinkAnnotateTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à annotator/get_annotation_sheet/session_id/id_sheet.
         /// </summary>
         internal static string LinkGetAnnotSheet {
@@ -381,6 +399,15 @@ namespace ModernUIApp1.Resources {
         internal static string MsNull {
             get {
                 return ResourceManager.GetString("MsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à number.
+        /// </summary>
+        internal static string Number {
+            get {
+                return ResourceManager.GetString("Number", resourceCulture);
             }
         }
         

@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" TextBlock.Foreground="#C1C1C1">
-    <Grid Style="{StaticResource ContentRoot}">
+    <Grid Name="mainGrid" Style="{StaticResource ContentRoot}" MinHeight="200">
         <ScrollViewer>
             <StackPanel>
-                <TextBlock Text="Identité du soldat" Style="{StaticResource Heading2}" />
-                <TextBlock Name="Annotations" Text="Aucune annotation personnelle sur cette fiche" />
+                <TextBlock Text="Identité du soldat" Style="{StaticResource Heading1}" />
+                <TextBlock Name="Annotations" FontSize="14" Text="Aucune annotation personnelle sur cette fiche" />
             </StackPanel>
         </ScrollViewer>
+        <TextBlock Text="Annoteur :" FontSize="14" VerticalAlignment="Bottom" Margin="0,0,0,22" />
+        <ComboBox Name="annotator" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=mainGrid}"/>
     </Grid>
 </UserControl>

@@ -18,6 +18,7 @@ using Handlers.Handlers;
 using ModernUIApp1.Handlers.Utils;
 using Data.Data;
 using Data.Data.Registre.Annotation;
+
 namespace ModernUIApp1.Content.View.Registre
 {
     /// <summary>
@@ -25,8 +26,6 @@ namespace ModernUIApp1.Content.View.Registre
     /// </summary>
     public partial class IdentitySheet : UserControl
     {
-        private AnnotationHandler annotationHandler;
-        private int i = 0;
         /* SINGLETON */
         public static IdentitySheet IDENTITYSHEET { get; private set; }
         
@@ -61,15 +60,20 @@ namespace ModernUIApp1.Content.View.Registre
 
             Sheet sheet = ViewManager.instance.sheet;
             String annotationsText = "";
-            if (Authenticator.AUTHENTICATOR.user != null && sheet != null)
+            if (sheet != null)
             {
-                annotationHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
+                AnnotationHandler annotationHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
                 
                 if (sheet != null && sheet.id_sheet != 0)
                 {
-                    foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values)
+                    foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values.OrderBy(e => e.type))
                     {
-                        annotationsText = annotationsText + annotation.ToString();
+                        string userName = "";
+                        if (annotation.user != "-1")
+                        {
+                            userName = " (" + annotation.user + ")";
+                        }
+                        annotationsText = annotationsText + annotation.ToString() + userName + "\n";
                     }
                 }
                 else
@@ -79,7 +83,7 @@ namespace ModernUIApp1.Content.View.Registre
             }
             else
             {
-               annotationsText = "Mode Visiteur (Utilisateur non connecté)";
+                annotationsText = "Aucune fiche sélectionnée";
             }
             Annotations.Text = annotationsText;
         }
