@@ -56,6 +56,10 @@ class Bootstrap
 				require_once("helpers/file.php");
 				$function = new ReflectionMethod('File::exec');
 				return $function->getClosure();
+			case HelperEnum::Shortcut:
+				require_once("helpers/shortcut.php");
+				$function = new ReflectionMethod('Shortcut::exec');
+				return $function->getClosure();
 			default:
 				require_once("helpers/error.php");
 				$function = new ReflectionMethod('Error::exec');
@@ -71,5 +75,6 @@ abstract class HelperEnum
 	const Browser = 2;
 	const Finder = 3;
 	const File = 4;
+	const Shortcut = 5;
 	const Error = 100;
 }

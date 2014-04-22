@@ -1,4 +1,5 @@
-﻿using ModernUIApp1.Handlers.Utils;
+﻿using Data.Data.Users.Shortcut;
+using ModernUIApp1.Handlers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Handlers.Handlers
         {
             //if(Authenticator.AUTHENTICATOR.user.id_user != null)
             //INSERT INTO Shortcut (id_shortcut, id_user, id_type, default_text, id_Icon) VALUES (0, Authenticator.AUTHENTICATOR.user.id_user, field, "", 0); 
-         
+            
             //id_icon par défaut ? id_icon en int ?
             //Si on ajoute qque chs dans le base, l'id est forcément unique ?
             
@@ -42,8 +43,10 @@ namespace Handlers.Handlers
             throw new NotImplementedException();
         }
 
-        public void getShortcutType(int id_shortcut)
+        public List<Shortcut> getAllShortcut()
         {
+            //Si l'utilisateur n'est pas nul
+            //Appele le serv avec l'id_session
             throw new NotImplementedException();
         }
     }

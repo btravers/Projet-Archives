@@ -55,6 +55,9 @@ class RequestManager
 			case "file":
 				$helperType = HelperEnum::File;
 				break;
+			case "shortcut":
+				$helperType = HelperEnum::Shortcut;
+				break;
 			default:
 				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;

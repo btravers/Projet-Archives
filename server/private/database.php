@@ -136,4 +136,13 @@ class Database
 		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
 		return (count($result) > 0);
 	}
+	
+	/**
+	 * Check if the shortcut exists in database
+	 */
+	public static function existShortcut($idShortcut)
+	{
+		$result = Database::query("SELECT * FROM Shortcut WHERE id_shortcut = ?", array($idShortcut));
+		return (count($result) > 0);
+	}
 }
