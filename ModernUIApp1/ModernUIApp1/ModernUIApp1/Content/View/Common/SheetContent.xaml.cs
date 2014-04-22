@@ -242,6 +242,8 @@ namespace ModernUIApp1.Content.View.Common
             if (!mouseMove)
             {
                 Point position = e.MouseDevice.GetPosition(rmmImage);
+                position.X = (int) (position.X * ((BitmapSource)rmmImage.Source).PixelWidth / rmmImage.ActualWidth);
+                position.Y = (int) (position.Y * ((BitmapSource)rmmImage.Source).PixelHeight / rmmImage.ActualHeight);            
 
                 Point mouse = Mouse.GetPosition(this);
 

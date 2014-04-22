@@ -40,6 +40,8 @@ namespace ModernUIApp1.Pages.Popups
                 i.Content = type.Value.label;
                 typeList.Items.Add(i);
             }
+
+            Console.WriteLine(position);
         }
 
         public void setParameters(Double left, Double top)
