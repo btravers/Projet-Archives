@@ -342,5 +342,16 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
 
             return list;
         }
+
+        public List<Shortcut> parserGetAllShortcut()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int parserCreateShortcut()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

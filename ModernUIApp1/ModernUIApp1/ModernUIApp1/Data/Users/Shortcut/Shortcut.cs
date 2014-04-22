@@ -8,7 +8,7 @@ namespace Data.Data.Users.Shortcut
 {
     public class Shortcut
     {
-        int id_shortcut;
+        public int id_shortcut { get; private set; }
         AnnotationType type;
 
         String default_text;

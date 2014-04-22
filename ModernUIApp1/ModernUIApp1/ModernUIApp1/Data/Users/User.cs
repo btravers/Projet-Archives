@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Data.Users.Shortcut;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,14 @@ namespace Data.Data
 {
     public class User
     {
-        public int id_user { get; private set; }
+        int id_user;
 
         public String id_session { get; private set; }
         public String email { get; private set; }
         public String password { get; private set; }
         int status;
+
+        List<Shortcut> shortcutList = new List<Shortcut>();
 
         /* Constructors */
         public User()
@@ -41,5 +44,18 @@ namespace Data.Data
             this.status = status;
         }
 
+        public void addShortcut(Shortcut shortcut)
+        {
+            shortcutList.Add(shortcut);
+        }
+        
+        public void deleteShortcut(int id_shortcut)
+        {
+            foreach (Shortcut shortcut in shortcutList)
+            {
+                if (shortcut.id_shortcut == id_shortcut)
+                    shortcutList.Remove(shortcut);
+            }
+        }
     }
 }
