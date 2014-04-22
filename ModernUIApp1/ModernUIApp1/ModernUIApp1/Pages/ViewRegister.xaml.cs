@@ -1,5 +1,6 @@
 ﻿using ModernUIApp1.Content.View.Common;
 using ModernUIApp1.Content.View.Registre;
+using ModernUIApp1.Handlers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,16 +36,23 @@ namespace ModernUIApp1.Pages
 
         public void reload()
         {
-            SheetContent sheetContent = SheetContent.window;
-            if (sheetContent != null)
+            if (ViewManager.instance.sheet == null)
             {
-                sheetContent.reload();
+                MainWindow.window.ContentSource = new Uri("/Pages/Search.xaml", UriKind.Relative);
             }
-
-            IdentitySheet identitySheet = IdentitySheet.IDENTITYSHEET;
-            if (identitySheet != null)
+            else
             {
-                identitySheet.reload();
+                SheetContent sheetContent = SheetContent.window;
+                if (sheetContent != null)
+                {
+                    sheetContent.reload();
+                }
+
+                IdentitySheet identitySheet = IdentitySheet.IDENTITYSHEET;
+                if (identitySheet != null)
+                {
+                    identitySheet.reload();
+                }
             }
         }
     }
