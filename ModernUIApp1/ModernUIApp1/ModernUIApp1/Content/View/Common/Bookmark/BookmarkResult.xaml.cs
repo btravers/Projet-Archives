@@ -91,11 +91,18 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 if (dep == null)
                     return;
 
+                // Allow remove
+                BookmarkToolbar.window.remove.Visibility = Visibility.Visible;
+
                 BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
-            
+
                 DragDrop.DoDragDrop(dep,
                                      item.type + "/" + item.id.ToString(),
                                      DragDropEffects.Copy);
+            }
+            else
+            {
+                BookmarkToolbar.window.remove.Visibility = Visibility.Hidden;
             }
         }
 
@@ -341,6 +348,8 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         /* Update the view related to the current folder */
         public void loadCurrentFolder()
         {
+            BookmarkToolbar.window.remove.Visibility = Visibility.Hidden;
+
             this.model.clearResult();
             currentUnderFolders.Clear();
             currentUnderFiles.Clear();

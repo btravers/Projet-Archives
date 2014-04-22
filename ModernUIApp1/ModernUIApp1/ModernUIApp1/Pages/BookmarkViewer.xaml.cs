@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ModernUIApp1.Content.View.Common.Bookmark;
 
 namespace ModernUIApp1.Pages
 {
@@ -24,7 +25,5 @@ namespace ModernUIApp1.Pages
         {
             InitializeComponent();
         }
-
-        // TODO THIS WEEK END @NICO
     }
 }

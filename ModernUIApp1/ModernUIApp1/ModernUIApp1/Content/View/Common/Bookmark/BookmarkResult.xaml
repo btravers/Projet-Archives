@@ -25,7 +25,7 @@
 
                             <Grid Name="allGrid" Style="{StaticResource ContentRoot}" Height="{Binding ActualHeight, ElementName=resultGrid}">
                                 <Grid Name="mainGrid" Style="{StaticResource ContentRoot}">
-                                    <Image Height="{Binding ActualHeight, ElementName=mainGrid}" Source="{Binding imagePath}" Margin="0,0,0,5"/>
+                                    <Image Tag="{Binding id}" Height="{Binding ActualHeight, ElementName=mainGrid}" Source="{Binding imagePath}" Margin="0,0,0,5"/>
                                 </Grid>
                                 <Label Content="{Binding text}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                             </Grid>
