@@ -18,6 +18,7 @@ using Handlers.Handlers;
 using ModernUIApp1.Handlers.Utils;
 using Data.Data;
 using Data.Data.Registre.Annotation;
+
 namespace ModernUIApp1.Content.View.Registre
 {
     /// <summary>

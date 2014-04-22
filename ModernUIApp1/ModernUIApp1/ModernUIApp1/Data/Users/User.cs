@@ -8,7 +8,7 @@ namespace Data.Data
 {
     public class User
     {
-        int id_user;
+        public int id_user { get; private set; }
 
         public String id_session { get; private set; }
         public String email { get; private set; }
