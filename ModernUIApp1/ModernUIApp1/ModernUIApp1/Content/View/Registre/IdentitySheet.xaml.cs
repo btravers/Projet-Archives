@@ -27,11 +27,15 @@ namespace ModernUIApp1.Content.View.Registre
     {
         /* SINGLETON */
         public static IdentitySheet IDENTITYSHEET { get; private set; }
+
+        private Dictionary<string, List<AnnotationSheet>> annotations;
         
         /* Constructor */
         public IdentitySheet()
         {
             InitializeComponent();
+
+            annotations = new Dictionary<string, List<AnnotationSheet>>();
 
             IdentitySheet.IDENTITYSHEET = this;
 
@@ -65,15 +69,44 @@ namespace ModernUIApp1.Content.View.Registre
                 
                 if (sheet != null && sheet.id_sheet != 0)
                 {
+                    annotator.Items.Clear();
+                    annotations.Clear();                    
+                    
                     foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values.OrderBy(e => e.type))
                     {
-                        string userName = "";
+                        /*string userName = "";
                         if (annotation.user != "-1")
                         {
                             userName = " (" + annotation.user + ")";
                         }
-                        annotationsText = annotationsText + annotation.ToString() + userName + "\n";
+                        annotationsText = annotationsText + annotation.ToString() + userName + "\n";*/
+                        
+                        List<AnnotationSheet> annotationsUser = null;
+                        if (annotations.ContainsKey(annotation.user))
+                        {
+                            annotationsUser = annotations[annotation.user];
+                        }
+                        else
+                        {
+                            annotationsUser = new List<AnnotationSheet>();
+                            annotations.Add(annotation.user, annotationsUser);
+
+                            ComboBoxItem i = new ComboBoxItem();
+                            i.Tag = annotation.user;
+                            if (annotation.user == "-1")
+                            {
+                                i.Content = "moi";
+                            }
+                            else
+                            {
+                                i.Content = annotation.user;
+                            }
+                            annotator.Items.Add(i);
+                        }
+                        annotationsUser.Add(annotation);
                     }
+
+                    annotator.SelectionChanged += annotator_SelectionChanged;
                 }
                 else
                 {
@@ -85,6 +118,11 @@ namespace ModernUIApp1.Content.View.Registre
                 annotationsText = "Aucune fiche sélectionnée";
             }
             Annotations.Text = annotationsText;
+        }
+
+        void annotator_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)annotator.SelectedItem;
         }
     }
 }
