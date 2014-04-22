@@ -308,6 +308,18 @@
   </data>
   <data name="LinkGetAnnotTable" xml:space="preserve">
     <value>annotator/get_annotation_table/session_id/id_page_table</value>
-    <comment>Linkg get annotation page table</comment>
+    <comment>Link get annotation page table</comment>
+  </data>
+  <data name="LinkAnnotateSheet" xml:space="preserve">
+    <value>annotator/annotate_sheet/session_id/id_sheet/id_type/x/y/text</value>
+    <comment>link to annotate a sheet</comment>
+  </data>
+  <data name="LinkAnnotateTable" xml:space="preserve">
+    <value>annotator/annotate_table/session_id/id_page_table/x/y/height/width/number</value>
+    <comment>link to annotate a table</comment>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>number</value>
+    <comment>refers to "number"</comment>
   </data>
 </root>
