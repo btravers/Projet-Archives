@@ -318,6 +318,14 @@
     <value>annotator/annotate_table/session_id/id_page_table/x/y/height/width/number</value>
     <comment>link to annotate a table</comment>
   </data>
+  <data name="LinkUpdateAnnotationSheet" xml:space="preserve">
+    <value>annotator/update_annotation_sheet/session_id/id_annotation_sheet/id_type/x/y/text</value>
+    <comment>link to update an annotation on a sheet</comment>
+  </data>
+  <data name="LinkUpdateAnnotationTable" xml:space="preserve">
+    <value>annotator/update_annotation_table/session_id/id_annotation_page_table/x/y/height/width/number</value>
+    <comment>link to update an annotation on a table </comment>
+  </data>
   <data name="Number" xml:space="preserve">
     <value>number</value>
     <comment>refers to "number"</comment>
