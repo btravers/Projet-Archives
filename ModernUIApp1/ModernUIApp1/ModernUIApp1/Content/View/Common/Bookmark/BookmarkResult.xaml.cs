@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using FirstFloor.ModernUI.Windows.Controls;
 
 namespace ModernUIApp1.Content.View.Common.Bookmark
 {
@@ -387,7 +388,14 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         /* Remove folder */
         public void removeFolder(BookmarkFolder target)
         {
-            MessageBox.Show("Folder : " + target.label);
+            ModernDialog pop = new ModernDialog();
+
+            pop.Title = "Supprimer un dossier";
+            pop.Content = new Label().Content = "Etes vous sur de vouloir supprimer ce dossier ?";
+            pop.Buttons = new Button[] { pop.OkButton, pop.CancelButton };
+            bool wantIt = (bool)pop.ShowDialog();
+
+            Console.WriteLine(" Bool : " + wantIt);
         }
         /* Remove file */
         public void removeFile(BookmarkFile target)
