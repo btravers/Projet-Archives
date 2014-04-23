@@ -37,7 +37,6 @@ class Annotator
 	public static function annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation)
 	{
 		$idUser = Database::getUser($id_session);
-		$existSheet = Database::existSheet($idSheet);
 		if($idUser == -1) {
 			return array("message" => "user_not_found");
 		} else if(!Database::existSheet($idSheet)) {
@@ -55,7 +54,7 @@ class Annotator
 	 */
 	public static function delete_annotation_table($idAnnotationTable)
 	{
-		if (Database::existAnnotationTable($idAnnotationTable == -1)) {
+		if (!Database::existAnnotationTable($idAnnotationTable)) {
 			return array("message" => "annotation_not_found");
 		} else {
 			Database::exec("DELETE FROM AnnotationPageTable WHERE id_annotation_page_table = ?", array($idAnnotationTable));
@@ -68,7 +67,7 @@ class Annotator
 	 */
 	public static function delete_annotation_sheet($idAnnotationSheet)
 	{
-		if (Database::existAnnotationSheet($idAnnotationSheet) == -1) {
+		if (!Database::existAnnotationSheet($idAnnotationSheet)) {
 			return array("message" => "annotation_not_found");
 		} else {
 			Database::exec("DELETE FROM AnnotationSheet WHERE id_annotation_sheet = ?",array($idAnnotationSheet));
@@ -84,7 +83,7 @@ class Annotator
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
 			return array("message" => "user_not_found");
-		} elseif(Database::existAnnotationTable($idAnnotationTable == -1)) {
+		} else if(!Database::existAnnotationTable($idAnnotationTable)) {
 			return array("message" => "annotation_not_found");
 		} else {
 			Database::exec("UPDATE AnnotationPageTable SET x = ?, y = ?, width = ?, height = ?, id_number = ? WHERE id_annotation_page_table = ?", array($x, $y, $width, $height, $number, $idAnnotationTable));
@@ -101,7 +100,7 @@ class Annotator
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
 			return array("message" => "user_not_found");
-		} elseif (Database::existAnnotationSheet($idAnnotationSheet) == -1) {
+		} else if (!Database::existAnnotationSheet($idAnnotationSheet)) {
 			return array("message" => "annotation_not_found");
 		} else {
 			Database::exec("UPDATE AnnotationSheet SET x = ?, y = ?, id_type = ?, text = ? WHERE id_annotation_sheet = ?", array($x, $y, $type, $annotation, $idAnnotationSheet));
