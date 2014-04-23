@@ -226,11 +226,11 @@
     <comment>refers to "width"</comment>
   </data>
   <data name="X" xml:space="preserve">
-    <value>x</value>
+    <value>posx</value>
     <comment>refers to "x"</comment>
   </data>
   <data name="Y" xml:space="preserve">
-    <value>y</value>
+    <value>posy</value>
     <comment>refers to "y"</comment>
   </data>
   <data name="IdAnnotationSheet" xml:space="preserve">
@@ -311,19 +311,19 @@
     <comment>Link get annotation page table</comment>
   </data>
   <data name="LinkAnnotateSheet" xml:space="preserve">
-    <value>annotator/annotate_sheet/session_id/id_sheet/id_type/x/y/text</value>
+    <value>annotator/annotate_sheet/session_id/id_sheet/id_type/posx/posy/text</value>
     <comment>link to annotate a sheet</comment>
   </data>
   <data name="LinkAnnotateTable" xml:space="preserve">
-    <value>annotator/annotate_table/session_id/id_page_table/x/y/height/width/number</value>
+    <value>annotator/annotate_table/session_id/id_page_table/posx/posy/height/width/number</value>
     <comment>link to annotate a table</comment>
   </data>
   <data name="LinkUpdateAnnotationSheet" xml:space="preserve">
-    <value>annotator/update_annotation_sheet/session_id/id_annotation_sheet/id_type/x/y/text</value>
+    <value>annotator/update_annotation_sheet/session_id/id_annotation_sheet/id_type/posx/posy/text</value>
     <comment>link to update an annotation on a sheet</comment>
   </data>
   <data name="LinkUpdateAnnotationTable" xml:space="preserve">
-    <value>annotator/update_annotation_table/session_id/id_annotation_page_table/x/y/height/width/number</value>
+    <value>annotator/update_annotation_table/session_id/id_annotation_page_table/posx/posy/height/width/number</value>
     <comment>link to update an annotation on a table </comment>
   </data>
   <data name="Number" xml:space="preserve">

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Data.Data.Registre;
+using ModernUIApp1.Handlers.Utils;
 
 namespace ModernUIApp1.Pages
 {

@@ -241,7 +241,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à annotator/annotate_sheet/session_id/id_sheet/id_type/x/y/text.
+        ///   Recherche une chaîne localisée semblable à annotator/annotate_sheet/session_id/id_sheet/id_type/posx/posy/text.
         /// </summary>
         internal static string LinkAnnotateSheet {
             get {
@@ -250,7 +250,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à annotator/annotate_table/session_id/id_page_table/x/y/height/width/number.
+        ///   Recherche une chaîne localisée semblable à annotator/annotate_table/session_id/id_page_table/posx/posy/height/width/number.
         /// </summary>
         internal static string LinkAnnotateTable {
             get {
@@ -412,7 +412,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à annotator/update_annotation_sheet/session_id/id_annotation_sheet/id_type/x/y/text.
+        ///   Recherche une chaîne localisée semblable à annotator/update_annotation_sheet/session_id/id_annotation_sheet/id_type/posx/posy/text.
         /// </summary>
         internal static string LinkUpdateAnnotationSheet {
             get {
@@ -421,7 +421,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à annotator/update_annotation_table/session_id/id_annotation_page_table/x/y/height/width/number.
+        ///   Recherche une chaîne localisée semblable à annotator/update_annotation_table/session_id/id_annotation_page_table/posx/posy/height/width/number.
         /// </summary>
         internal static string LinkUpdateAnnotationTable {
             get {
@@ -601,7 +601,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à x.
+        ///   Recherche une chaîne localisée semblable à posx.
         /// </summary>
         internal static string X {
             get {
@@ -610,7 +610,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à y.
+        ///   Recherche une chaîne localisée semblable à posy.
         /// </summary>
         internal static string Y {
             get {

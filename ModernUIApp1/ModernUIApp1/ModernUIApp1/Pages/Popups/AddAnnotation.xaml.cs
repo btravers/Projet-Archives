@@ -1,5 +1,7 @@
 ﻿using Data.Data.Users.Shortcut;
 using FirstFloor.ModernUI.Windows.Controls;
+using Handlers.Handlers;
+using ModernUIApp1.Handlers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +61,26 @@ namespace ModernUIApp1.Pages.Popups
         public void close_dialog()
         {
             this.Close();
+        }
+
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)typeList.SelectedItem;
+            if (item != null)
+            {
+                AnnotationHandler a = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
+
+                int tag = (int)item.Tag;
+
+                a.createAnnotationSheet(tag, (int) position.X, (int) position.Y, text.Text);
+
+                if (ViewRegister.window != null)
+                {
+                    ViewRegister.window.reload();
+                }
+
+                this.Close();
+            }
         }
     }
 }

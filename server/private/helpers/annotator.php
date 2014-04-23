@@ -23,7 +23,7 @@ class Annotator
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
 			return array("message" => "user_not_found");
-		} elseif(Database::existPageTable($idTable) == -1) {
+		} else if(!Database::existPageTable($idTable)) {
 			return array("message" => "table_page_not_found");
 		} else {			
 			Database::exec("INSERT INTO AnnotationPageTable VALUES ('', ?, ?, ?, ?, ?, ?, ?)", array($idTable, $idUser, $x, $y, $width, $height, $number));
@@ -37,14 +37,15 @@ class Annotator
 	public static function annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation)
 	{
 		$idUser = Database::getUser($id_session);
+		$existSheet = Database::existSheet($idSheet);
 		if($idUser == -1) {
 			return array("message" => "user_not_found");
-		} elseif(Database::existSheet($idSheet) == -1) {
+		} else if(!Database::existSheet($idSheet)) {
 			return array("message" => "sheet_page_not_found");
-		} elseif(Database::existType($idType) == -1) {
+		} else if(!Database::existType($idType)) {
 			return array("message" => "type_not_found");
 		} else {
-			Database::exec("INSERT INTO AnnotationSheet VALUES ('', ?, ?, ?, ?, ?, ?)", array($idSheet, $idTtype, $idUser, $x, $y, $annotation));
+			Database::exec("INSERT INTO AnnotationSheet VALUES ('', ?, ?, ?, ?, ?, ?)", array($idSheet, $idType, $idUser, $x, $y, $annotation));
 			return array("message" => "registered");
 		}
 	}

@@ -141,7 +141,7 @@ namespace Handlers.Handlers
                 return;
 
             //Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkAnnotateSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, sheet.id_sheet.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text));
+            String xmlResponse = Connection.getRequest(LinkResources.LinkAnnotateSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, sheet.id_sheet.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text).Replace(LinkResources.IdType, id_type.ToString()));
         }
 
         public void modifyAnnotationPageTable(int id_annotation_page_table, int x, int y, int height, int width, int id_number)
