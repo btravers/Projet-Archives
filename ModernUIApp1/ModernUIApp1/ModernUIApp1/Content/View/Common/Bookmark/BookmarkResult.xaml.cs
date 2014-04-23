@@ -92,7 +92,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                     return;
 
                 // Allow remove
-                BookmarkToolbar.window.remove.Visibility = Visibility.Visible;
+                remove_on();
 
                 BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
 
@@ -102,8 +102,20 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
             else
             {
-                BookmarkToolbar.window.remove.Visibility = Visibility.Hidden;
+                remove_off();
             }
+        }
+
+        /* Allow remove */
+        private void remove_on()
+        {
+            BookmarkToolbar.window.remove.EllipseStrokeThickness = 15;
+        }
+
+        /* Disable remove */
+        private void remove_off()
+        {
+            BookmarkToolbar.window.remove.EllipseStrokeThickness = 0;
         }
 
         /* Handler called when an item is dropped on the source */
@@ -348,7 +360,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         /* Update the view related to the current folder */
         public void loadCurrentFolder()
         {
-            BookmarkToolbar.window.remove.Visibility = Visibility.Hidden;
+            remove_off();
 
             this.model.clearResult();
             currentUnderFolders.Clear();
@@ -369,6 +381,18 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                     this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, "/Resources/mini_RMM.jpg", file.label, file.id_bookmark_file, "/Pages/ViewTable.xaml"));
                 }
             }
+        }
+
+        /* Remove operations */
+        /* Remove folder */
+        public void removeFolder(BookmarkFolder target)
+        {
+            MessageBox.Show("Folder : " + target.label);
+        }
+        /* Remove file */
+        public void removeFile(BookmarkFile target)
+        {
+            MessageBox.Show("File : " + target.label);
         }
     }
 }

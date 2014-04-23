@@ -27,7 +27,6 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         {
             InitializeComponent();
             window = this;
-            this.remove.Visibility = Visibility.Hidden;
         }
 
         /* Event : Click on the icon home */
@@ -66,14 +65,12 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 if (dataString.Split('/')[0].Equals(BookmarkType.FOLDER.ToString()))
                 { // It's a Folder, update it
                     // Update File, New ParentFolder, Current Folder
-                    BookmarkFolder target = BookmarkResult.window.currentUnderFolders[int.Parse(dataString.Split('/')[1])];
-                    MessageBox.Show(" Folder : " + target.label);
+                    BookmarkResult.window.removeFolder(BookmarkResult.window.currentUnderFolders[int.Parse(dataString.Split('/')[1])]);
                 }
                 else
                 { // It's a File, update it
                     // Update File, New ParentFolder, Current Folder
-                    BookmarkFile target = BookmarkResult.window.currentUnderFiles[int.Parse(dataString.Split('/')[1])];
-                    MessageBox.Show(" File : " + target.label);
+                    BookmarkResult.window.removeFile(BookmarkResult.window.currentUnderFiles[int.Parse(dataString.Split('/')[1])]);
                 }
             }
         }
