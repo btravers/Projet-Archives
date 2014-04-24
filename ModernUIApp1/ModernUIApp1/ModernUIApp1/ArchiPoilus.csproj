@@ -308,6 +308,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Icons\appbar.page.small.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Icons\appbar.shotglass.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

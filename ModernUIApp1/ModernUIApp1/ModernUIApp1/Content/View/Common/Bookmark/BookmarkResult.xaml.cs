@@ -108,18 +108,6 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
-        /* Allow remove */
-        private void remove_on()
-        {
-            BookmarkToolbar.window.remove.EllipseStrokeThickness = 15;
-        }
-
-        /* Disable remove */
-        private void remove_off()
-        {
-            BookmarkToolbar.window.remove.EllipseStrokeThickness = 0;
-        }
-
         /* Handler called when an item is dropped on the source */
         private void item_Drop(object sender, DragEventArgs e)
         {
@@ -183,7 +171,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
-        /* Called if it's a short click */
+        /* Called if it's a short click, (useless)*/
         private void ListBox_ShortClick(Object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
@@ -221,6 +209,26 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                     window.moveToFolder(item.id);
                 }
             }
+        }
+
+        /* Allow remove */
+        private void remove_on()
+        {
+            BookmarkToolbar.window.remove.EllipseStrokeThickness = 15;
+        }
+
+        /* Disable remove */
+        private void remove_off()
+        {
+            BookmarkToolbar.window.remove.EllipseStrokeThickness = 0;
+        }
+
+        #endregion
+
+        #region Rename
+        private void ListBox_DoubleClick(Object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Double click");
         }
         #endregion
 

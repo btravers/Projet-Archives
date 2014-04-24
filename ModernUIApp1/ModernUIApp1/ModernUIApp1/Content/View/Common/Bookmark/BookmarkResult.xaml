@@ -25,9 +25,9 @@
 
                             <Grid Name="allGrid" Style="{StaticResource ContentRoot}" Height="{Binding ActualHeight, ElementName=resultGrid}">
                                 <Grid Name="mainGrid" Style="{StaticResource ContentRoot}">
-                                    <Image Tag="{Binding id}" Height="{Binding ActualHeight, ElementName=mainGrid}" Source="{Binding imagePath}" Margin="0,0,0,5"/>
+                                        <Path Tag="{Binding id}" Width="200" Height="200" Stretch="Fill" Fill="#FF000000" Data="{Binding logoData}"/>
                                 </Grid>
-                                <Label Content="{Binding text}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                            <Label MouseDoubleClick="ListBox_DoubleClick" FontSize="24" Tag="{Binding id}" Content="{Binding text}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                             </Grid>
 
                         </DataTemplate>
