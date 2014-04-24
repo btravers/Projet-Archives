@@ -6,7 +6,7 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              xmlns:l="clr-namespace:ModernUIApp1.Content.View.Common"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="600">
     <UserControl.Resources>
         <Storyboard x:Key="leftAnimation">
             <DoubleAnimation Storyboard.TargetName="panelTrans" Storyboard.TargetProperty="X" BeginTime="0:0:0.0" Duration="0:0:0.5" To="-1500" >
@@ -61,18 +61,18 @@
                 <Canvas Name="overlay" Margin="45,0,45,5" Visibility="{Binding Path=IsChecked, ElementName=annotationsEnable, Converter={StaticResource BoolToVisConverter}}"></Canvas>
             </Grid>
         </ScrollViewer>
-        <Expander Header="Outils" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="300" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
+        <Expander Header="Outils" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="550" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
             <StackPanel Orientation="Horizontal" Background="#252526">
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Contraste" />
-                    <Slider Name="sliderContrast" MinWidth="100" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
+                    <Slider Name="sliderContrast" Width="200" Minimum="-1" Maximum="1" Value="0" Background="Transparent" Margin="10,0,10,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Luminosité" />
-                    <Slider Name="sliderBrightness" MinWidth="100" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
+                    <Slider Name="sliderBrightness" Width="200" Minimum="-1" Maximum="1" Value="0" Background="Transparent" Margin="10,0,10,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                    <CheckBox Name="annotationsEnable" IsChecked="True">Annotations</CheckBox>
+                    <CheckBox Name="annotationsEnable" IsChecked="True" Margin="10,0,10,0">Annotations</CheckBox>
                 </StackPanel>
             </StackPanel>
         </Expander>

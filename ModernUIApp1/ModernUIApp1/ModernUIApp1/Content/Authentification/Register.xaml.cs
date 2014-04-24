@@ -38,6 +38,7 @@ namespace ModernUIApp1.Content.Authentification
                 {
                     // Notify that the user is registered
                     message.Text = ErrorMessagesResources.Register_Success;
+                    message.Foreground = new SolidColorBrush(Colors.Green);
                     this.register.IsEnabled = false;
                     this.email.IsEnabled = false;
                     this.password.IsEnabled = false;

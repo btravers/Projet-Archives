@@ -343,7 +343,8 @@ namespace ModernUIApp1.Content.View.Common
             {
                 sheetHandler.preloadSheets(sheet.id_sheet);
 
-                // TODO download annotations
+                overlay.Children.Clear();
+
                 new Thread(delegate()
                 {
                     AnnotationHandler annotHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
@@ -373,7 +374,7 @@ namespace ModernUIApp1.Content.View.Common
             e.Height = 4;
             e.StrokeThickness = 0.2;
             e.Stroke = new SolidColorBrush(Colors.Blue);
-            e.Fill = new SolidColorBrush(Colors.CornflowerBlue);
+            e.Fill = new SolidColorBrush(Color.FromArgb(100, 100, 149, 237));
             e.Tag = annotation;
             double x = (double)annotation.x / ((BitmapSource)rmmImage.Source).PixelWidth * rmmImage.ActualWidth;
             double y = (double)annotation.y / ((BitmapSource)rmmImage.Source).PixelHeight * rmmImage.ActualHeight;
