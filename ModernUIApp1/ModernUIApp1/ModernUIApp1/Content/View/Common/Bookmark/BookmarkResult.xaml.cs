@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using FirstFloor.ModernUI.Windows.Controls;
+using FirstFloor.ModernUI.Presentation;
 
 namespace ModernUIApp1.Content.View.Common.Bookmark
 {
@@ -388,19 +389,54 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         /* Remove folder */
         public void removeFolder(BookmarkFolder target)
         {
-            ModernDialog pop = new ModernDialog();
+            Popup pop = new Popup("Supprimer un dossier", "Etes vous sur de vouloir supprimer ce dossier ?");
 
-            pop.Title = "Supprimer un dossier";
-            pop.Content = new Label().Content = "Etes vous sur de vouloir supprimer ce dossier ?";
-            pop.Buttons = new Button[] { pop.OkButton, pop.CancelButton };
-            bool wantIt = (bool)pop.ShowDialog();
-
-            Console.WriteLine(" Bool : " + wantIt);
+            if (pop.show())
+            {
+                bhandler.removeFolder(target);
+                currentFolder.rmBookmarkFolder(target);
+                loadCurrentFolder();
+            }
         }
+
         /* Remove file */
         public void removeFile(BookmarkFile target)
         {
-            MessageBox.Show("File : " + target.label);
+            Popup pop = new Popup("Supprimer un fichier", "Etes vous sur de vouloir supprimer ce fichier ?");
+
+            if (pop.show())
+            {
+                bhandler.removeFile(target);
+                currentFolder.rmBookmarkFile(target);
+                loadCurrentFolder();
+            }
+        }
+    }
+
+    /* Class popup for ModernDialog which returns a boolean result with show() method, useful class, could be use outside this class */
+    class Popup
+    {
+        ModernDialog pop;
+
+        public Popup(String title, String content)
+        {
+            pop = new ModernDialog();
+            pop.Title = title;
+            pop.Content = new Label().Content = content;
+            pop.FontSize = 24;
+            pop.OkButton.Click += OkButton_Click;
+            pop.Buttons = new Button[] { pop.OkButton, pop.CancelButton };
+        }
+
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            pop.DialogResult = true;
+            pop.Close();
+        }
+
+        public bool show()
+        {
+            return (bool)pop.ShowDialog();
         }
     }
 }

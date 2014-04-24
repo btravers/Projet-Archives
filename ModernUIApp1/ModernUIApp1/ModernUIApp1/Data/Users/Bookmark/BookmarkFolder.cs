@@ -49,5 +49,17 @@ namespace Data.Data.Users.Bookmark
         {
             bookmarkFiles.Add(new_bookmarkFile.id_bookmark_file, new_bookmarkFile);
         }
+
+        /* Remove a bookmark Folder to the dictionary */
+        public void rmBookmarkFolder(BookmarkFolder rm_bookmarkFolder)
+        {
+            bookmarkFolders.Remove(rm_bookmarkFolder.id_bookmark_folder);
+        }
+
+        /* Remove a bookmark File to the dictionary */
+        public void rmBookmarkFile(BookmarkFile rm_bookmarkFile)
+        {
+            bookmarkFiles.Remove(rm_bookmarkFile.id_bookmark_file);
+        }
     }
 }

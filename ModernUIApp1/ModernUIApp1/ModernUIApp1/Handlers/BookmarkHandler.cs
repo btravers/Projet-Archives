@@ -70,5 +70,17 @@ namespace Handlers.Handlers
         {
             //throw new NotImplementedException();
         }
+
+        /* Remove Folder */
+        public void removeFolder(BookmarkFolder folder)
+        {
+
+        }
+
+        /* Remove File */
+        public void removeFile(BookmarkFile file)
+        {
+
+        }
     }
 }
