@@ -76,11 +76,19 @@ namespace Handlers.Handlers
         {
 
         }
-
         /* Remove File */
         public void removeFile(BookmarkFile file)
         {
 
+        }
+
+        /* Rename Folder (the folder already got the new name (local), update by id) */
+        public void renameFolder(BookmarkFolder folder)
+        {
+        }
+        /* Rename File (the file already got the new name (local), update by id) */
+        public void renameFile(BookmarkFile file)
+        {
         }
     }
 }

@@ -124,7 +124,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
 
             BookmarkResultAdapter item = (BookmarkResultAdapter)listBox.ItemContainerGenerator.ItemFromContainer(dep);
 
-            if (item.type.Equals(BookmarkType.FOLDER)) 
+            if (item.type.Equals(BookmarkType.FOLDER))
             {
                 // If the DataObject contains string data, extract it.
                 if (e.Data.GetDataPresent(DataFormats.StringFormat))
@@ -149,8 +149,8 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                             bhandler.updateBookmarks();
                         }
                         else
-                        { // If it is just open the folder
-                            this.moveToFolder(target.id_bookmark_folder);
+                        { // If it is it's a rename
+                            this.renameFolder(currentFolder.bookmarkFolders[item.id]);
                         }
                     }
                     else
@@ -169,9 +169,27 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                     loadCurrentFolder();
                 }
             }
+            else // FILE
+            {
+                BookmarkFile destination = currentUnderFiles[item.id];
+                // If the DataObject contains string data, extract it.
+                if (e.Data.GetDataPresent(DataFormats.StringFormat))
+                {
+                    string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+                    if (dataString.Split('/')[0].Equals(BookmarkType.FILE.ToString()))
+                    {
+                        BookmarkFile target = currentUnderFiles[int.Parse(dataString.Split('/')[1])];
+
+                        if (destination == target)
+                        {
+                            this.renameFile(currentFolder.bookmarkFiles[item.id]);
+                        }
+                    }
+                }
+            }
         }
 
-        /* Called if it's a short click, (useless)*/
+        /* Called if it's a short click */
         private void ListBox_ShortClick(Object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
@@ -223,13 +241,6 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             BookmarkToolbar.window.remove.EllipseStrokeThickness = 0;
         }
 
-        #endregion
-
-        #region Rename
-        private void ListBox_DoubleClick(Object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Double click");
-        }
         #endregion
 
         #region LongClick operations & handlers (useless)
@@ -350,23 +361,6 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
-        /* Add a new folder to the current folder (REQUEST) */
-        public void addNewFolder(String label)
-        {
-            if (currentFolder == null)
-            {
-                currentFolder = rootFolder;
-            }
-
-            BookmarkFolder tmpFolder = bhandler.newBookmarkFolder(label, currentFolder);
-
-            if (tmpFolder != null)
-            {
-                currentFolder.addBookmarkFolder(tmpFolder);
-                loadCurrentFolder();
-            }
-        }
-
         /* Update the view related to the current folder */
         public void loadCurrentFolder()
         {
@@ -393,11 +387,29 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
 
+        #region Operations which call the bhhandler
+        /* Add a new folder to the current folder (REQUEST) */
+        public void addNewFolder(String label)
+        {
+            if (currentFolder == null)
+            {
+                currentFolder = rootFolder;
+            }
+
+            BookmarkFolder tmpFolder = bhandler.newBookmarkFolder(label, currentFolder);
+
+            if (tmpFolder != null)
+            {
+                currentFolder.addBookmarkFolder(tmpFolder);
+                loadCurrentFolder();
+            }
+        }
+
         /* Remove operations */
         /* Remove folder */
         public void removeFolder(BookmarkFolder target)
         {
-            Popup pop = new Popup("Supprimer un dossier", "Etes vous sur de vouloir supprimer ce dossier ?");
+            Popup pop = new Popup("Supprimer un dossier", "Etes vous sur de vouloir supprimer ce dossier ?", false);
 
             if (pop.show())
             {
@@ -406,11 +418,10 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 loadCurrentFolder();
             }
         }
-
         /* Remove file */
         public void removeFile(BookmarkFile target)
         {
-            Popup pop = new Popup("Supprimer un fichier", "Etes vous sur de vouloir supprimer ce fichier ?");
+            Popup pop = new Popup("Supprimer un fichier", "Etes vous sur de vouloir supprimer ce fichier ?", false);
 
             if (pop.show())
             {
@@ -419,18 +430,83 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 loadCurrentFolder();
             }
         }
+
+        /* Rename operations */
+        /* Rename folder */
+        public void renameFolder(BookmarkFolder target)
+        {
+            Popup pop = new Popup("Renommer un fichier", "Renommer en :", true);
+
+            if (pop.show() && pop.result != null)
+            {
+                target.label = pop.result;
+                bhandler.renameFolder(target);
+                loadCurrentFolder();
+            }
+        }
+        /* Rename folder */
+        public void renameFile(BookmarkFile target)
+        {
+            Popup pop = new Popup("Renommer un fichier", "Renommer en :", true);
+
+            if (pop.show() && pop.result != null)
+            {
+                target.label = pop.result;
+                bhandler.renameFile(target);
+                loadCurrentFolder();
+            }
+        }
+        #endregion
+
     }
 
     /* Class popup for ModernDialog which returns a boolean result with show() method, useful class, could be use outside this class */
     class Popup
     {
         ModernDialog pop;
+        public String result { get; protected set; }
+        bool textbox;
+        TextBox text;
 
-        public Popup(String title, String content)
+        public Popup(String title, String content, bool textbox)
         {
+            this.textbox = textbox;
+
             pop = new ModernDialog();
             pop.Title = title;
-            pop.Content = new Label().Content = content;
+            
+            if (!textbox)
+            {
+                pop.Content = new Label().Content = content;
+            }
+            else
+            {
+                Grid grid = new Grid();
+                grid.Height = 75;
+                grid.Width = 250;
+
+                RowDefinition row1 = new RowDefinition();
+                row1.Height = GridLength.Auto;
+                RowDefinition row2 = new RowDefinition();
+                row2.Height = new GridLength(1, GridUnitType.Star);
+
+                grid.RowDefinitions.Add(row1);
+                grid.RowDefinitions.Add(row2);
+
+                Label lab = new Label();
+                lab.Content = content;
+                Grid.SetRow(lab, 0);
+
+                grid.Children.Add(lab);
+
+                text = new TextBox();
+                Grid.SetRow(text, 1);
+
+                grid.Children.Add(text);
+
+                pop.Content = grid;
+            }
+            
             pop.FontSize = 24;
             pop.OkButton.Click += OkButton_Click;
             pop.Buttons = new Button[] { pop.OkButton, pop.CancelButton };
@@ -439,6 +515,12 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             pop.DialogResult = true;
+
+            if (textbox && text != null)
+            {
+                result = text.Text;
+            }
+
             pop.Close();
         }
 

@@ -13,7 +13,7 @@ namespace Data.Data.Users.Bookmark
         public int id_bookmark_folder { get; protected set; }
         public BookmarkFolder bookmarkFolderParent { get; set; }
 
-        public String label { get; protected set; }
+        public String label { get; set; }
 
         /* Dictionnary contains all BookmarkFolders which refers to the BookmarkFolder */
         public Dictionary<int, BookmarkFolder> bookmarkFolders { get; protected set; }

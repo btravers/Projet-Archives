@@ -14,7 +14,7 @@ namespace Data.Data.Users.Bookmark
         public Sheet id_sheet { get; protected set; }
         public BookmarkFolder bookmarkFolderParent { get; set; }
 
-        public String label { get; protected set; }
+        public String label { get; set; }
 
         /* Constructors */
         public BookmarkFile()

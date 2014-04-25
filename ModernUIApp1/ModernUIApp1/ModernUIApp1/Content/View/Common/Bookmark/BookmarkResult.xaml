@@ -27,7 +27,7 @@
                                 <Grid Name="mainGrid" Style="{StaticResource ContentRoot}">
                                         <Path Tag="{Binding id}" Width="200" Height="200" Stretch="Fill" Fill="#FF000000" Data="{Binding logoData}"/>
                                 </Grid>
-                            <Label MouseDoubleClick="ListBox_DoubleClick" FontSize="24" Tag="{Binding id}" Content="{Binding text}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                            <Label FontSize="24" Tag="{Binding id}" Content="{Binding text}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                             </Grid>
 
                         </DataTemplate>
