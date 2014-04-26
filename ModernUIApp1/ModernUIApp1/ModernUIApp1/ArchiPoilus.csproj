@@ -94,6 +94,7 @@
     <Compile Include="Pages\Popups\DisplayAnnotation.xaml.cs">
       <DependentUpon>DisplayAnnotation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Popups\Popup.cs" />
     <Compile Include="Pages\ViewRegister.xaml.cs">
       <DependentUpon>ViewRegister.xaml</DependentUpon>
     </Compile>
