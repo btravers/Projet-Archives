@@ -378,11 +378,13 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 foreach (BookmarkFolder folder in currentFolder.bookmarkFolders.Values)
                 {
                     currentUnderFolders.Add(folder.id_bookmark_folder, folder);
+                    // TODO update URI and ImagePath
                     this.model.addResult(new BookmarkResultAdapter(BookmarkType.FOLDER, index++, "/Resources/mini_RMM.jpg", folder.label, folder.id_bookmark_folder, "/Pages/ViewTable.xaml"));
                 }
                 foreach (BookmarkFile file in currentFolder.bookmarkFiles.Values)
                 {
                     currentUnderFiles.Add(file.id_bookmark_file, file);
+                    // TODO update URI and ImagePath
                     this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, "/Resources/mini_RMM.jpg", file.label, file.id_bookmark_file, "/Pages/ViewTable.xaml"));
                 }
             }
