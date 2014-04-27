@@ -40,6 +40,10 @@ namespace ModernUIApp1.Content.Authentification
                 // Notify that the user is connected
                 MainWindow.window.userConnected();
                 message.Text = null;
+                disable();
+
+                message.Text = ErrorMessagesResources.Login_Success + Authenticator.AUTHENTICATOR.user.email;
+                message.Foreground = new SolidColorBrush(Colors.Green);
 
                 if (ViewRegister.window != null)
                 {
@@ -50,6 +54,14 @@ namespace ModernUIApp1.Content.Authentification
             {
                 message.Text = ErrorMessagesResources.Login_Failed;
             }
+        }
+
+        public void disable()
+        {
+            Register.window.disable();
+            this.email.IsEnabled = false;
+            this.password.IsEnabled = false;
+            this.login.IsEnabled = false;
         }
     }
 }

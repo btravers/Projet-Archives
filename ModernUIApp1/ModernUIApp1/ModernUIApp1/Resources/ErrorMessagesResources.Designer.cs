@@ -70,6 +70,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous êtes maintenant connecté sous le pseudonyme : .
+        /// </summary>
+        internal static string Login_Success {
+            get {
+                return ResourceManager.GetString("Login_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à L&apos;email que vous avez indiqué n&apos;est pas disponible ou est incorrect..
         /// </summary>
         internal static string Register_Failed {

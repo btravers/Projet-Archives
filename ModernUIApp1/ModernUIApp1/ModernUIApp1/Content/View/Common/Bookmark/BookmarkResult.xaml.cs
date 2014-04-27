@@ -465,7 +465,8 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         public static void SyncColor()
         {
             BookmarkResultAdapter.ColorChanged();
-            window.loadCurrentFolder();
+            if (window != null)
+                window.loadCurrentFolder();
         }
 
     }

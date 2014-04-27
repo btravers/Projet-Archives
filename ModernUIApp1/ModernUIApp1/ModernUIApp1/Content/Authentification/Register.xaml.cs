@@ -22,9 +22,12 @@ namespace ModernUIApp1.Content.Authentification
     /// </summary>
     public partial class Register : UserControl
     {
+        public static Register window;
         public Register()
         {
             InitializeComponent();
+
+            window = this;
         }
 
         private void register_Click(object sender, RoutedEventArgs e)
@@ -39,16 +42,21 @@ namespace ModernUIApp1.Content.Authentification
                     // Notify that the user is registered
                     message.Text = ErrorMessagesResources.Register_Success;
                     message.Foreground = new SolidColorBrush(Colors.Green);
-                    this.register.IsEnabled = false;
-                    this.email.IsEnabled = false;
-                    this.password.IsEnabled = false;
-                    this.check_password.IsEnabled = false;
+                    disable();
                 }
                 else
                 {
                     message.Text = ErrorMessagesResources.Register_Failed;
                 }
             }
+        }
+
+        public void disable()
+        {
+            this.register.IsEnabled = false;
+            this.email.IsEnabled = false;
+            this.password.IsEnabled = false;
+            this.check_password.IsEnabled = false;
         }
     }
 }
