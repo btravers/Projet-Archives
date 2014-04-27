@@ -56,7 +56,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         public BookmarkResult()
         {
             InitializeComponent();
-            
+
 //            resultListBox.AddHandler(UIElement.MouseLeftButtonDownEvent, new MouseButtonEventHandler(ListBox_MouseClickDown), true);
             // DRAG N DROP
             resultListBox.AddHandler(UIElement.MouseLeftButtonUpEvent, new MouseButtonEventHandler(ListBox_ShortClick), true);
@@ -74,7 +74,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             rootFolder = bhandler.getRootBookmarkFolder();
             currentFolder = rootFolder;
 
-            loadCurrentFolder();
+            SyncColor();
         }
 
         #region DragNDrop
@@ -460,6 +460,13 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
             }
         }
         #endregion
+
+        /* Sync color if changed */
+        public static void SyncColor()
+        {
+            BookmarkResultAdapter.ColorChanged();
+            window.loadCurrentFolder();
+        }
 
     }
 

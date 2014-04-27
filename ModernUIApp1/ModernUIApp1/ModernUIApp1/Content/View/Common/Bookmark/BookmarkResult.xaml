@@ -25,11 +25,8 @@
 
                             <Grid Name="allGrid" Style="{StaticResource ContentRoot}" Height="{Binding ActualHeight, ElementName=resultGrid}">
                                 <Grid Name="mainGrid" Style="{StaticResource ContentRoot}">
-                                <Path Tag="{Binding id}" Width="200" Height="200" Stretch="Fill" Data="{Binding logoData}">
-                                    <Shape.Fill>
-                                        <SolidColorBrush Color="{Binding color}"/>
-                                    </Shape.Fill>
-                                </Path>
+                                <Path Tag="{Binding id}" Width="200" Height="200" Stretch="Fill" Fill="{Binding color}" Data="{Binding logoData}"/>
+                                    
                             </Grid>
                             <Label FontSize="24" Tag="{Binding id}" Content="{Binding text}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                             </Grid>

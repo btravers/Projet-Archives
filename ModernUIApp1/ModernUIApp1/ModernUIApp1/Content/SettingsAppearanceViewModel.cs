@@ -1,4 +1,5 @@
 ﻿using FirstFloor.ModernUI.Presentation;
+using ModernUIApp1.Content.View.Common.Bookmark;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,6 +80,8 @@ namespace ModernUIApp1.Content
 
             // and make sure accent color is up-to-date
             this.SelectedAccentColor = AppearanceManager.Current.AccentColor;
+
+            BookmarkResult.SyncColor();
         }
 
         private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
