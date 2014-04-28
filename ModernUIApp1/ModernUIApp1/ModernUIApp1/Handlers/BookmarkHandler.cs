@@ -31,6 +31,7 @@ namespace Handlers.Handlers
             BookmarkFolder.bookmarkFolderRoot = new BookmarkFolder();
 
             /* TEST PART */
+            /*
             BookmarkFolder b1 = new BookmarkFolder(0, BookmarkFolder.bookmarkFolderRoot, "t0");
  //           BookmarkFolder b2 = new BookmarkFolder(1, BookmarkFolder.bookmarkFolderRoot, "t1");
  //           BookmarkFolder b3 = new BookmarkFolder(2, BookmarkFolder.bookmarkFolderRoot, "t2");
@@ -66,6 +67,7 @@ namespace Handlers.Handlers
             b3.addBookmarkFolder(new BookmarkFolder(12, b3, "3.t12"));
             b3.addBookmark(new BookmarkFile(6, new Data.Data.Registre.Sheet(), b3, "3.f0"));
             b3.addBookmark(new BookmarkFile(7, new Data.Data.Registre.Sheet(), b3, "3.f1"));
+             */
             /* END TEST PART */
 
             return BookmarkFolder.bookmarkFolderRoot;
