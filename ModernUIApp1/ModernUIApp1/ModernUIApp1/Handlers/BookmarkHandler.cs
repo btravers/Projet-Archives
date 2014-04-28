@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Data.Users.Bookmark;
+using Data.Data.Registre;
 
 namespace Handlers.Handlers
 {
@@ -15,6 +16,12 @@ namespace Handlers.Handlers
         public BookmarkFolder newBookmarkFolder(String label, BookmarkFolder parent)
         {
             return new BookmarkFolder(dbgTmpInt--, parent, label);
+        }
+
+        /* Return the new folder returned by the server */
+        public static BookmarkFile newBookmarkFile(Sheet sheet, String label)
+        {
+            return new BookmarkFile(dbgTmpInt--, sheet, null, label);
         }
 
         /* Return the root folder by the server with all data loaded (subfolders and subfiles, recursively) */
@@ -62,7 +69,6 @@ namespace Handlers.Handlers
             /* END TEST PART */
 
             return BookmarkFolder.bookmarkFolderRoot;
-
         }
 
         /* Update parent */

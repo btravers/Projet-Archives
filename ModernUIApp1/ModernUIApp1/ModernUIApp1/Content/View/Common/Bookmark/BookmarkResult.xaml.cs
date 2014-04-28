@@ -21,6 +21,8 @@ using System.Windows.Threading;
 using FirstFloor.ModernUI.Windows.Controls;
 using FirstFloor.ModernUI.Presentation;
 using ModernUIApp1.Pages.Popups;
+using Data.Data.Registre;
+using System.IO;
 
 namespace ModernUIApp1.Content.View.Common.Bookmark
 {
@@ -212,7 +214,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 if (item.type.Equals(BookmarkType.FILE))
                 {
                     if (BookmarkResult.window != null && BookmarkResult.window.currentUnderFiles != null && BookmarkResult.window.currentUnderFiles.ContainsKey(item.id))
-                    {
+                    {                     
                         ViewManager.instance.sheet = BookmarkResult.window.currentUnderFiles[item.id].id_sheet;
                     }
 
@@ -221,6 +223,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                         ViewTable.window.reload();
                     }
 
+                    /* TOFIX : The bookmark loaded isnt the wanted one */
                     MainWindow.window.ContentSource = new Uri(item.uri, UriKind.Relative);
                 }
                 else
@@ -379,18 +382,41 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 {
                     currentUnderFolders.Add(folder.id_bookmark_folder, folder);
                     // TODO update URI and ImagePath
-                    this.model.addResult(new BookmarkResultAdapter(BookmarkType.FOLDER, index++, "/Resources/mini_RMM.jpg", folder.label, folder.id_bookmark_folder, "/Pages/ViewTable.xaml"));
+                    this.model.addResult(new BookmarkResultAdapter(BookmarkType.FOLDER, index++, null, folder.label, folder.id_bookmark_folder, "/Pages/ViewTable.xaml"));
                 }
                 foreach (BookmarkFile file in currentFolder.bookmarkFiles.Values)
                 {
                     currentUnderFiles.Add(file.id_bookmark_file, file);
                     // TODO update URI and ImagePath
-                    this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, "/Resources/mini_RMM.jpg", file.label, file.id_bookmark_file, "/Pages/ViewTable.xaml"));
+                    this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, Directory.GetCurrentDirectory() + "/" + file.id_sheet.url, file.label, file.id_bookmark_file, "/Pages/ViewRegister.xaml"));
                 }
             }
         }
 
         #region Operations which call the bhhandler
+
+        /* Add a new file with a sheet */
+        public static void addNewFile(Sheet sheet)
+        {
+            if (sheet != null)
+            {
+                BookmarkFile tmp = BookmarkHandler.newBookmarkFile(sheet, sheet.id_sheet.ToString());
+
+                if (window != null)
+                {
+                    window.rootFolder.addBookmark(tmp);
+                    tmp.bookmarkFolderParent = window.rootFolder;
+
+                    window.loadCurrentFolder();
+                }
+            }
+        }
+        /* Add a new file with a page table pageTable (not supported yet) */
+        public static void addNewFile(PageTable pageTable)
+        {
+            throw new NotImplementedException();
+        }
+
         /* Add a new folder to the current folder (REQUEST) */
         public void addNewFolder(String label)
         {

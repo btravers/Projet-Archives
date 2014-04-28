@@ -61,7 +61,7 @@
                 <Canvas Name="overlay" Margin="45,0,45,5" Visibility="{Binding Path=IsChecked, ElementName=annotationsEnable, Converter={StaticResource BoolToVisConverter}}"></Canvas>
             </Grid>
         </ScrollViewer>
-        <Expander Header="Outils" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="750" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
+        <Expander Header="Outils" ExpandDirection="Up" TextBlock.Foreground="#C1C1C1" Width="750" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
             <StackPanel Orientation="Horizontal" Background="#252526">
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Contraste" />
@@ -75,9 +75,9 @@
                     <CheckBox Name="annotationsEnable" IsChecked="True" Margin="10,0,10,0">Annotations</CheckBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                    <mui:ModernButton Click="OnBookmarkClick" Margin="10,0,10,0"
+                    <mui:ModernButton Click="OnBookmarkClick"
                                       IconData="F1 M 26.9167,38L 31.6667,38L 31.6667,45.9167L 39.5833,45.9167L 39.5833,50.6667L 31.6667,50.6667L 31.6667,58.5833L 26.9167,58.5833L 26.9167,50.6667L 19,50.6667L 19,45.9167L 26.9167,45.9167L 26.9167,38 Z M 17.4167,33.25L 32.9107,33.25L 38,19L 43.0893,33.25L 58.5833,33.25L 45.6798,42.4944L 51.4583,57L 41.1666,50.9461L 41.1666,44.3333L 33.25,44.3333L 33.25,36.4167L 25.3333,36.4167L 25.3333,38.9319L 17.4167,33.25 Z "
-                                      EllipseStrokeThickness="0" IconHeight="20" IconWidth="20"
+                                      EllipseStrokeThickness="0" IconHeight="40" IconWidth="40"
                                       Content="Favori"
                                       />
                 </StackPanel>

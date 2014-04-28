@@ -27,6 +27,7 @@ using Data.Data.Registre.Annotation;
 using System.Windows.Media.Effects;
 using ModernUIApp1.Content.View.Registre;
 using Data.Data;
+using ModernUIApp1.Content.View.Common.Bookmark;
 
 namespace ModernUIApp1.Content.View.Common
 {
@@ -413,7 +414,7 @@ namespace ModernUIApp1.Content.View.Common
         /* Event click on bookmark button */
         public void OnBookmarkClick(object sender, RoutedEventArgs e)
         {
-            // TODO register the sheet into a bookmark
+            BookmarkResult.addNewFile(ViewManager.instance.sheet);
         }
     }
 }
