@@ -409,5 +409,11 @@ namespace ModernUIApp1.Content.View.Common
             displayAnnotationUserControl.setParameters(annotation.text, annotation.type);
             displayAnnotationUserControl.Show();
         }
+
+        /* Event click on bookmark button */
+        public void OnBookmarkClick(object sender, RoutedEventArgs e)
+        {
+            // TODO register the sheet into a bookmark
+        }
     }
 }
