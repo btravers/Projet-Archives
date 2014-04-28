@@ -218,12 +218,11 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                         ViewManager.instance.sheet = BookmarkResult.window.currentUnderFiles[item.id].id_sheet;
                     }
 
-                    if (ViewTable.window != null)
+                    if (ViewRegister.window != null)
                     {
-                        ViewTable.window.reload();
+                        ViewRegister.window.reload();
                     }
 
-                    /* TOFIX : The bookmark loaded isnt the wanted one */
                     MainWindow.window.ContentSource = new Uri(item.uri, UriKind.Relative);
                 }
                 else
