@@ -23,6 +23,8 @@ class Bookmark
 		$id_user = Database::getUser($id_session);
 		if($id_user == -1) {
 			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else if($name == "root") {
+			return array("helper" => "bookmark", "message" => "illegal_operation");
 		} else if(!Database::existBookmarkFolder($id_parent_folder)) {
 			return array("helper" => "bookmark", "message" => "parent_folder_not_found");
 		} else {
@@ -33,7 +35,32 @@ class Bookmark
 			if (count($result) == 0) {
 				return array("helper" => "bookmark", "message" => "creation_error");
 			} else {
-				return array("helper" => "bookmark", "message" => "created", "result" => $result[0][0]);
+				return array("helper" => "bookmark", "message" => "created", "result_id" => $result[0][0]);
+			}
+		}
+	}
+
+	/**
+	 * Creates the root folder for an user
+	 */
+	public static function create_root_folder($id_session)
+	{
+		$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			$result = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND label = 'root'", array($id_user));
+			if (count($result) > 0) {
+				return array("helper" => "bookmark", "message" => "root_already_exists");
+			} else {
+				Database::exec("INSERT INTO BookmarkFolder VALUES ('', ?, '', ?)", array($id_user, "root"));
+
+				$result = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND label = 'root'", array($id_user));
+				if (count($result) == 0) {
+					return array("helper" => "bookmark", "message" => "creation_error");
+				} else {
+					return array("helper" => "bookmark", "message" => "created", "result_id" => $result[0][0]);
+				}
 			}
 		}
 	}
@@ -58,7 +85,7 @@ class Bookmark
 			if (count($result) == 0) {
 				return array("helper" => "bookmark", "message" => "creation_error");
 			} else {
-				return array("helper" => "bookmark", "message" => "created", "result" => $result[0][0]);
+				return array("helper" => "bookmark", "message" => "created", "result_id" => $result[0][0]);
 			}
 		}
 	}
@@ -92,7 +119,26 @@ class Bookmark
 		if (!Database::existBookmarkFolder($id_folder)) {
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else {
-			Database::exec("DELETE FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
+			$result = Database::query("SELECT label FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
+			if ($result[0][0] == "root") {
+				return array("helper" => "bookmark", "message" => "illegal_operation");
+			} else {
+				Database::exec("DELETE FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
+				return array("helper" => "bookmark", "message" => "deleted");
+			}
+		}
+	}
+
+	/**
+	 * Removes the root folder of an user
+	 */
+	public static function remove_root_folder($id_session)
+	{
+		$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			Database::exec("DELETE FROM BookmarkFolder WHERE id_user = ? AND label = 'root'", array($id_user));
 			return array("helper" => "bookmark", "message" => "deleted");
 		}
 	}
