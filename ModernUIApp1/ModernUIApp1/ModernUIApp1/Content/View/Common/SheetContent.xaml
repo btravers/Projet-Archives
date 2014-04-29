@@ -74,13 +74,12 @@
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <CheckBox Name="annotationsEnable" IsChecked="True" Margin="10,0,10,0">Annotations</CheckBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                    <mui:ModernButton Click="OnBookmarkClick"
-                                      IconData="F1 M 26.9167,38L 31.6667,38L 31.6667,45.9167L 39.5833,45.9167L 39.5833,50.6667L 31.6667,50.6667L 31.6667,58.5833L 26.9167,58.5833L 26.9167,50.6667L 19,50.6667L 19,45.9167L 26.9167,45.9167L 26.9167,38 Z M 17.4167,33.25L 32.9107,33.25L 38,19L 43.0893,33.25L 58.5833,33.25L 45.6798,42.4944L 51.4583,57L 41.1666,50.9461L 41.1666,44.3333L 33.25,44.3333L 33.25,36.4167L 25.3333,36.4167L 25.3333,38.9319L 17.4167,33.25 Z "
-                                      EllipseStrokeThickness="0" IconHeight="40" IconWidth="40"
-                                      Content="Favori"
-                                      />
-                </StackPanel>
+                <mui:ModernButton Click="OnBookmarkClick"
+                                  IconData="F1 M 26.9167,38L 31.6667,38L 31.6667,45.9167L 39.5833,45.9167L 39.5833,50.6667L 31.6667,50.6667L 31.6667,58.5833L 26.9167,58.5833L 26.9167,50.6667L 19,50.6667L 19,45.9167L 26.9167,45.9167L 26.9167,38 Z M 17.4167,33.25L 32.9107,33.25L 38,19L 43.0893,33.25L 58.5833,33.25L 45.6798,42.4944L 51.4583,57L 41.1666,50.9461L 41.1666,44.3333L 33.25,44.3333L 33.25,36.4167L 25.3333,36.4167L 25.3333,38.9319L 17.4167,33.25 Z "
+                                  EllipseStrokeThickness="0" IconHeight="40" IconWidth="40"
+                                  Content="Favori"
+                />
+                
             </StackPanel>
         </Expander>
     </Grid>
