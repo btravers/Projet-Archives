@@ -145,4 +145,21 @@ class Database
 		$result = Database::query("SELECT * FROM Shortcut WHERE id_shortcut = ?", array($idShortcut));
 		return (count($result) > 0);
 	}
+
+	/**
+	 * Check if the bookmark folder exists in database
+	 */
+	public static function existBookmarkFolder($idFolder)
+	{
+		$result = Database::query("SELECT * FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($idFolder));
+		return (count($result) > 0);
+	}
+	/**
+	 * Check if the bookmark file exists in database
+	 */
+	public static function existBookmarkFile($idFile)
+	{
+		$result = Database::query("SELECT * FROM BookmarkFile WHERE id_bookmark_file = ?", array($idFile));
+		return (count($result) > 0);
+	}
 }

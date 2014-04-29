@@ -58,6 +58,9 @@ class RequestManager
 			case "shortcut":
 				$helperType = HelperEnum::Shortcut;
 				break;
+			case "bookmark":
+				$helperType = HelperEnum::Bookmark;
+				break;
 			default:
 				$helperType = HelperEnum::Error;
 				$function = Error::HelperNotFound;
