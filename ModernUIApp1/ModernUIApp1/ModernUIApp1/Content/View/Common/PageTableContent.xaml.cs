@@ -21,6 +21,8 @@ using ModernUIApp1.Resources;
 using ModernUIApp1.Handlers.Utils;
 using Data.Data.Registre;
 using Handlers.Utils;
+using Data.Data.Registre.Annotation;
+using Handlers.Handlers;
 
 
 namespace ModernUIApp1.Content.View.Common
@@ -46,11 +48,17 @@ namespace ModernUIApp1.Content.View.Common
 
         Point mouseStartDrag;
 
+        private TableHandler tableHandler;
+
         public PageTableContent()
         {
             InitializeComponent();
 
+            tableHandler = new TableHandler();
+
             PageTableContent.window = this;
+            Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            Arrange(new Rect(0, 0, window.DesiredSize.Width, window.DesiredSize.Height));
 
             scrollViewer.ScrollChanged += OnScrollViewerScrollChanged;
             //scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
@@ -61,18 +69,9 @@ namespace ModernUIApp1.Content.View.Common
 
             scrollViewer.MouseMove += OnMouseMove;            
 
-            rmmImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
+            pageImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
 
-            slider.ValueChanged += OnSliderValueChanged;            
-
-            Ellipse e = new Ellipse();
-            e.Width = 8;
-            e.Height = 8;
-            e.Fill = new SolidColorBrush(Colors.CornflowerBlue);
-            Canvas.SetLeft(e, 20);
-            Canvas.SetTop(e, 20);
-            e.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
-            overlay.Children.Add(e);
+            slider.ValueChanged += OnSliderValueChanged;
 
             reload();
         }
@@ -89,11 +88,13 @@ namespace ModernUIApp1.Content.View.Common
                     {
                         if (File.Exists(pageTable.url))
                         {
-                            rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+                            pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
                         }
                     }
                 );
             }
+
+            onImageChange();
         }        
 
         void OnMouseMove(object sender, MouseEventArgs e)
@@ -241,7 +242,7 @@ namespace ModernUIApp1.Content.View.Common
         {
             if (!mouseMove)
             {
-                Point position = e.MouseDevice.GetPosition(rmmImage);
+                Point position = e.MouseDevice.GetPosition(pageImage);
 
                 Point mouse = Mouse.GetPosition(this);
 
@@ -293,14 +294,14 @@ namespace ModernUIApp1.Content.View.Common
                 PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
                 try
                 {
-                    rmmImage.Visibility = System.Windows.Visibility.Visible;
-                    rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+                    pageImage.Visibility = System.Windows.Visibility.Visible;
+                    pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
 
-                    rmmImage.Visibility = System.Windows.Visibility.Hidden;
+                    pageImage.Visibility = System.Windows.Visibility.Hidden;
                 }
             }
             
@@ -318,14 +319,14 @@ namespace ModernUIApp1.Content.View.Common
                 PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
                 try
                 {
-                    rmmImage.Visibility = System.Windows.Visibility.Visible;
-                    rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+                    pageImage.Visibility = System.Windows.Visibility.Visible;
+                    pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
 
-                    rmmImage.Visibility = System.Windows.Visibility.Hidden;
+                    pageImage.Visibility = System.Windows.Visibility.Hidden;
                 }                
             }
 
@@ -340,13 +341,64 @@ namespace ModernUIApp1.Content.View.Common
             slider.Value = 2;
             sliderContrast.Value = 0;
             sliderBrightness.Value = 0;
+
+            // TODO Appel à displayAnnotations
+            PageTable page = ViewManager.instance.pageTable;
+            if (page != null)
+            {
+                AnnotationHandler annotHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
+                List<AnnotationPageTable> annotations = annotHandler.getAnnotationPageTableByPageTableId(page.id_page_table);
+
+                displayAnnotations(annotations);
+            }
+        }
+
+        public void displayAnnotations(List<AnnotationPageTable> annotations)
+        {
+            if (annotations == null)
+                return;
+
+            overlay.Children.Clear();
+
+            foreach (AnnotationPageTable annotation in annotations)
+                displayAnnotationRectangle(annotation);
+        }
+
+        void displayAnnotationRectangle(AnnotationPageTable annotation)
+        {
+            double padding = 0.2;
+
+            Rectangle r = new Rectangle();
+            r.Width = ((double)annotation.width / ((BitmapSource)pageImage.Source).PixelWidth * pageImage.ActualWidth) - 2 * padding;
+            r.Height = ((double)annotation.height / ((BitmapSource)pageImage.Source).PixelHeight * pageImage.ActualHeight) - 2 * padding;
+            r.StrokeThickness = 0.4;
+            r.Stroke = new SolidColorBrush(Colors.Blue);
+            r.Fill = new SolidColorBrush(Color.FromArgb(100, 101, 156, 239));
+            r.Tag = annotation;
+            double x = ((double)annotation.x / ((BitmapSource)pageImage.Source).PixelWidth * pageImage.ActualWidth) + padding;
+            double y = ((double)annotation.y / ((BitmapSource)pageImage.Source).PixelHeight * pageImage.ActualHeight) + padding;
+            Canvas.SetLeft(r, x);
+            Canvas.SetTop(r, y);
+            r.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
+            overlay.Children.Add(r);
+
+            Console.WriteLine(annotation.id_annotation_page_table + ", x=" + annotation.x + ", y=" + annotation.y + ", w=" + annotation.width + ", h=" + annotation.height);
+            Console.WriteLine("PixW:" + ((BitmapSource)pageImage.Source).PixelWidth + ", PixH=" + ((BitmapSource)pageImage.Source).PixelHeight);
+            Console.WriteLine("ActW:" + pageImage.RenderSize.Width + ", ActH=" + pageImage.RenderSize.Height);
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("click annotation");
+            try
+            {
+                AnnotationPageTable annotation = (AnnotationPageTable)((Rectangle)sender).Tag;
+                Console.WriteLine("id:" + annotation.id_annotation_page_table + ", num:" + annotation.id_number + ", x:" + annotation.x + ", y:" + annotation.y);
+            }
+            catch (System.InvalidCastException ice)
+            {
+                Console.WriteLine(ice.Message);
+            }
         }
-
 
     }
 }
