@@ -354,4 +354,31 @@
     <value>shortcut/get_all_shortcut/id_session</value>
     <comment>Get all the shortcut of an user</comment>
   </data>
+  <data name="LinkBookmarkGetRoot" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkNewFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkNewFolder" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkRemoveFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkRemoveFolder" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkRenameFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkRenameFolder" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkUpdateFileParent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LinkBookmarkUpdateFolderParent" xml:space="preserve">
+    <value />
+  </data>
 </root>
