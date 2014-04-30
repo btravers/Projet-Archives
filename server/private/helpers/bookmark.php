@@ -121,6 +121,17 @@ class Bookmark
 			if ($result[0][0] == -1) {
 				return array("helper" => "bookmark", "message" => "illegal_operation");
 			} else {
+
+				// Sub-files suppression
+				Database::exec("DELETE FROM BookmarkFile WHERE id_bookmark_folder = ?", array($id_folder));
+
+				// Sub-folders suppression
+				$subfolders = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_bookmark_folder_parent = ?", array($id_folder));
+				foreach ($subfolders as $folder) {
+					Bookmark::remove_bookmark_folder($folder[0]);
+				}
+
+				// Folder suppression
 				Database::exec("DELETE FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
 				return array("helper" => "bookmark", "message" => "deleted");
 			}
@@ -128,7 +139,7 @@ class Bookmark
 	}
 
 	/**
-	 * Removes the root folder of an user
+	 * Removes the root folder of an user, and all its sub-folders and files
 	 */
 	public static function remove_root_folder($id_session)
 	{
@@ -136,7 +147,8 @@ class Bookmark
 		if($id_user == -1) {
 			return array("helper" => "bookmark", "message" => "user_not_found");
 		} else {
-			Database::exec("DELETE FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = '-1'", array($id_user));
+			Database::exec("DELETE FROM BookmarkFolder WHERE id_user = ?", array($id_user));
+			Database::exec("DELETE FROM BookmarkFile WHERE id_user = ?", array($id_user));
 			return array("helper" => "bookmark", "message" => "deleted");
 		}
 	}
