@@ -50,7 +50,7 @@
                 <Grid.RenderTransform>
                     <TranslateTransform x:Name="panelTrans" X="0"/>
                 </Grid.RenderTransform>
-                <Image Name="rmmImage" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5">
+                <Image Name="pageImage" Source="/Resources/mini_RMM.jpg" Margin="0,0,0,5">
                     <Image.Effect>
                         <l:BrightContrastEffect 
                             Brightness="{Binding ElementName=sliderBrightness, Path=Value}"
