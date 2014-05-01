@@ -15,6 +15,8 @@ class Bookmark
 		return $function->invokeArgs(NULL, $request->arguments);
 	}
 
+	const ROOT = -1;
+
 	/**
 	 * Creates a new bookmark folder
 	 */
@@ -47,13 +49,13 @@ class Bookmark
 		if($id_user == -1) {
 			return array("helper" => "bookmark", "message" => "user_not_found");
 		} else {
-			$result = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = '-1'", array($id_user));
+			$result = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ?", array($id_user, static::ROOT));
 			if (count($result) > 0) {
 				return array("helper" => "bookmark", "message" => "root_already_exists");
 			} else {
-				Database::exec("INSERT INTO BookmarkFolder VALUES ('', ?, '-1', 'root')", array($id_user));
+				Database::exec("INSERT INTO BookmarkFolder VALUES ('', ?, ?, 'root')", array($id_user, static::ROOT));
 
-				$result = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = '-1'", array($id_user));
+				$result = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ?", array($id_user, static::ROOT));
 				if (count($result) == 0) {
 					return array("helper" => "bookmark", "message" => "creation_error");
 				} else {
@@ -93,7 +95,53 @@ class Bookmark
 	 */
 	public static function get_tree($id_session)
 	{
-		throw new Exception('Not implemented');
+		$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			$root = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ?", array($id_user, static::ROOT));
+			if (count($root) <= 0) {
+				return array("helper" => "bookmark", "message" => "root_not_found");
+			} else {
+				$tree = Bookmark::get_subtree($root[0][0]);
+				return array("helper" => "bookmark", "message" => "ok", "tree" => $tree);
+			}
+		}
+	}
+
+	/**
+	 * Returns the subtree of bookmark folders and files
+	 */
+	private static function get_subtree($id_folder)
+	{
+		$folder = Database::query("SELECT * FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
+		$sub_folders = Database::query("SELECT * FROM BookmarkFolder WHERE id_bookmark_folder_parent = ?", array($id_folder));
+		$sub_files = Database::query("SELECT * FROM BookmarkFile WHERE id_bookmark_folder = ?", array($id_folder));
+		
+		$res = array("id_bookmark_folder" => $folder[0][0],
+					 "id_user" => $folder[0][1],
+					 "id_bookmark_folder_parent" => $folder[0][2],
+					 "label" => $folder[0][3]);
+
+		$file_count = 0;
+		$folder_count = 0;
+		
+		foreach ($sub_files as $file) {
+			$arr = array("id_bookmark_file" => $file[0],
+						 "id_user" => $file[1],
+						 "id_sheet" => $file[2],
+						 "id_bookmark_folder" => $file[3],
+						 "label" => $file[4]);
+			$key = "file" . $file_count++;
+			$res = $res + array($key => $arr);
+		}
+
+		foreach ($sub_folders as $sub_folder) {
+			$key = "folder" . $folder_count++;
+			$res = array_merge($res, array($key => Bookmark::get_subtree($sub_folder[0])));
+		}
+
+		return $res;
 	}
 
 	/**
@@ -118,7 +166,7 @@ class Bookmark
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else {
 			$result = Database::query("SELECT id_bookmark_folder_parent FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
-			if ($result[0][0] == -1) {
+			if ($result[0][0] == static::ROOT) {
 				return array("helper" => "bookmark", "message" => "illegal_operation");
 			} else {
 
