@@ -9,7 +9,7 @@
     
     <Grid Style="{StaticResource ContentRoot}">
             <DockPanel>
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="150,-150,10,10">
                     <mui:ModernFrame Source="/Content/View/Common/Bookmark/BookmarkToolbar.xaml"/>
                 </StackPanel>
 

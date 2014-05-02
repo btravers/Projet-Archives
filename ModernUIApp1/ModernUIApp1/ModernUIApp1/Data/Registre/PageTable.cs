@@ -9,13 +9,14 @@ namespace Data.Data.Registre
 {
     public class PageTable
     {
-        public int id_page_table;
+        public int id_page_table { get; private set; }
         public Register register { get; private set; }
 
         public int page { get; private set; }
         public String url { get; private set; }
         public int size { get; private set; }
-        int width, height;
+        public int width { get; private set; }
+        public int height { get; private set; }
 
         /* Dictionnary contains all annotation which refers to the page table */
         public Dictionary<int, AnnotationPageTable> annotations_page_table { get; private set; }
