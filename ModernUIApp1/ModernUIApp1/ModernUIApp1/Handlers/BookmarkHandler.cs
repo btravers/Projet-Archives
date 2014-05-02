@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Data.Users.Bookmark;
 using Data.Data.Registre;
+using Handlers.Utils;
+using ModernUIApp1.Resources;
 
 namespace Handlers.Handlers
 {
@@ -15,12 +17,18 @@ namespace Handlers.Handlers
         /* Return the new folder returned by the server */
         public BookmarkFolder newBookmarkFolder(String label, BookmarkFolder parent)
         {
+            // Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFolder);
+
             return new BookmarkFolder(dbgTmpInt--, parent, label);
         }
 
         /* Return the new folder returned by the server */
         public static BookmarkFile newBookmarkFile(Sheet sheet, String label)
         {
+            // Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFile);
+
             return new BookmarkFile(dbgTmpInt--, sheet, null, label);
         }
 
@@ -29,6 +37,9 @@ namespace Handlers.Handlers
         {
             // Create the root bookmark folder
             BookmarkFolder.bookmarkFolderRoot = new BookmarkFolder();
+
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkGetRoot);
+
 
             /* TEST PART */
             /*
@@ -76,27 +87,42 @@ namespace Handlers.Handlers
         /* Update parent */
         public void updateBookmarks()
         {
+            // Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFileParent);
+            xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFolderParent);
+
+
             //throw new NotImplementedException();
         }
 
         /* Remove Folder */
         public void removeFolder(BookmarkFolder folder)
         {
+            // Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFolder);
 
         }
         /* Remove File */
         public void removeFile(BookmarkFile file)
         {
+            // Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFile);
 
         }
 
         /* Rename Folder (the folder already got the new name (local), update by id) */
         public void renameFolder(BookmarkFolder folder)
         {
+            // Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFolder);
+
         }
         /* Rename File (the file already got the new name (local), update by id) */
         public void renameFile(BookmarkFile file)
         {
+            // Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFile);
+
         }
     }
 }
