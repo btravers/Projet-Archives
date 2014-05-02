@@ -259,7 +259,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/get_list/session_id.
         /// </summary>
         internal static string LinkBookmarkGetRoot {
             get {

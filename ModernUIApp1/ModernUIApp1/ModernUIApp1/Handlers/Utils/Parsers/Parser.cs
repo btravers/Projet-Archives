@@ -241,12 +241,6 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             return lRes;
         }
 
-
-        public List<BookmarkFile> ParseBookmarkFile()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<PageTable> ParserSearchTable()
         {
             List<PageTable> lRes = new List<PageTable>();
@@ -353,5 +347,76 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             throw new NotImplementedException();
         }
 
+        /* Returns the value of the first node found */
+        private XElement getFirstElement(String element)
+        {
+            return xmlDocument.Descendants().First(n => n.Name == element);
+        }
+
+        /* Return all bookmark folders in a Dictionary */
+        public Dictionary<int, BookmarkFolder> parseBookmarkFolders()
+        {
+            Dictionary<int, BookmarkFolder> folders = new Dictionary<int, BookmarkFolder>();
+
+            try
+            {
+                XElement foldElems = getFirstElement("folders");
+
+                if (foldElems != null)
+                {
+                    foreach (XElement xmlNode in getFirstElement("folders").Elements())
+                    {
+                        int idFolder = int.Parse(xmlNode.Name.ToString().Substring(6));
+                        string label = xmlNode.Element("label").Value;
+                        int idParent = int.Parse(xmlNode.Element("id_bookmark_folder_parent").Value);
+
+                        if (folders.ContainsKey(idParent))
+                            folders.Add(idFolder, new BookmarkFolder(idFolder, folders[idParent], label));
+                        else
+                            folders.Add(idFolder, new BookmarkFolder(idFolder, null, label));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+
+            return folders;
+        }
+
+        /* Return all bookmark files in a Dictionary */
+        public Dictionary<int, BookmarkFile> parseBookmarkFiles(Dictionary<int, BookmarkFolder> folders)
+        {
+            Dictionary<int, BookmarkFile> files = new Dictionary<int, BookmarkFile>();
+
+            try
+            {
+                XElement fileElems = getFirstElement("files");
+
+                if (fileElems != null)
+                {
+                    foreach (XElement xmlNode in fileElems.Elements())
+                    {
+                        int idFolder = int.Parse(xmlNode.Name.ToString().Substring(4));
+                        string label = xmlNode.Element("label").Value;
+                        int idParent = int.Parse(xmlNode.Element("id_bookmark_file").Value);
+                        int idSheet = int.Parse(xmlNode.Element("id_sheet").Value);
+
+                        if (folders.ContainsKey(idParent))
+                            files.Add(idFolder, new BookmarkFile(idFolder, null, folders[idParent], label));
+                        // TODO : WHAT ABOUT THE SHEET ? CONCEPTION PROBLEM : IF THE SHEET ISNT LOADED.
+                        else
+                            files.Add(idFolder, new BookmarkFile(idFolder, null, null, label));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+
+            return files;
+        }
     }
 }

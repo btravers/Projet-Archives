@@ -355,7 +355,8 @@
     <comment>Get all the shortcut of an user</comment>
   </data>
   <data name="LinkBookmarkGetRoot" xml:space="preserve">
-    <value />
+    <value>bookmark/get_list/session_id</value>
+    <comment>link to get all bookmark</comment>
   </data>
   <data name="LinkBookmarkNewFile" xml:space="preserve">
     <value />

@@ -7,6 +7,8 @@ using Data.Data.Users.Bookmark;
 using Data.Data.Registre;
 using Handlers.Utils;
 using ModernUIApp1.Resources;
+using ModernUIApp1.Handlers.Utils;
+using ModernUIApp1.Handlers.Utils.Parsers;
 
 namespace Handlers.Handlers
 {
@@ -38,8 +40,19 @@ namespace Handlers.Handlers
             // Create the root bookmark folder
             BookmarkFolder.bookmarkFolderRoot = new BookmarkFolder();
 
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkGetRoot);
+            if (Authenticator.AUTHENTICATOR.user != null)
+            {
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkGetRoot.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session));
 
+                if (xmlResponse != null)
+                {
+                    Parser parser = new Parser(xmlResponse);
+
+                    parser.parseBookmarkFiles(parser.parseBookmarkFolders()); // TODO : NOT TESTED YET
+
+                    // TODO : to complete
+                }
+            }
 
             /* TEST PART */
             /*
