@@ -91,6 +91,72 @@ class Bookmark
 	}
 
 	/**
+	 * Returns the list of bookmark folders and files
+	 */
+	public static function get_list($id_session)
+	{
+		$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			$folders = Bookmark::get_folders($id_session);
+			$files = Bookmark::get_files($id_session);
+			return array("helper" => "bookmark", "message" => "ok", "folders" => $folders, "files" => $files);
+		}
+	}
+
+	/**
+	 * Returns the list of bookmark folders
+	 */
+	private static function get_folders($id_session)
+	{
+		$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			$folders = Database::query("SELECT * FROM BookmarkFolder WHERE id_user = ?", array($id_user));
+			$res = array();
+
+			foreach ($folders as $folder) {
+				$arr = array("id_bookmark_folder" => $folder[0],
+						 "id_user" => $folder[1],
+						 "id_bookmark_folder_parent" => $folder[2],
+						 "label" => $folder[3]);
+				$key = "folder" . $folder[0];
+				$res[$key] = $arr;
+			}
+
+			return $res;
+		}
+	}
+
+	/**
+	 * Returns the list of bookmark files
+	 */
+	private static function get_files($id_session)
+	{
+		$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			$files = Database::query("SELECT * FROM BookmarkFile WHERE id_user = ?", array($id_user));
+			$res = array();
+
+			foreach ($files as $file) {
+				$arr = array("id_bookmark_file" => $file[0],
+						 "id_user" => $file[1],
+						 "id_sheet" => $file[2],
+						 "id_bookmark_folder" => $file[3],
+						 "label" => $file[4]);
+				$key = "file" . $file[0];
+				$res[$key] = $arr;
+			}
+
+			return $res;
+		}
+	}
+
+	/**
 	 * Returns the tree of bookmark folders and files
 	 */
 	public static function get_tree($id_session)
