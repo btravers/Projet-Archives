@@ -203,8 +203,8 @@ class Bookmark
 		}
 
 		foreach ($sub_folders as $sub_folder) {
-			$key = "folder";// . $folder_count++;
-			$res[$key][] = Bookmark::get_subtree($sub_folder[0]);
+			$key = "folder" . $folder_count++;
+			$res = array_merge($res, array($key => Bookmark::get_subtree($sub_folder[0])));
 		}
 
 		return $res;
