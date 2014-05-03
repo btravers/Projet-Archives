@@ -387,7 +387,15 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 {
                     currentUnderFiles.Add(file.id_bookmark_file, file);
                     // TODO update URI and ImagePath
-                    this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, Directory.GetCurrentDirectory() + "/" + file.id_sheet.url, file.label, file.id_bookmark_file, "/Pages/ViewRegister.xaml"));
+                    
+                    if (file.id_sheet == null)
+                    {
+                        this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, "/Resources/mini_RMM.jpg", file.label, file.id_bookmark_file, "/Pages/ViewRegister.xaml"));
+                    }
+                    else
+                    {
+                        this.model.addResult(new BookmarkResultAdapter(BookmarkType.FILE, index++, Directory.GetCurrentDirectory() + "/" + file.id_sheet.url, file.label, file.id_bookmark_file, "/Pages/ViewRegister.xaml"));
+                    }
                 }
             }
         }

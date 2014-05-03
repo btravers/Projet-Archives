@@ -48,9 +48,39 @@ namespace Handlers.Handlers
                 {
                     Parser parser = new Parser(xmlResponse);
 
-                    parser.parseBookmarkFiles(parser.parseBookmarkFolders()); // TODO : NOT TESTED YET
+                    Dictionary<int, BookmarkFolder> foldersTmp = parser.parseBookmarkFolders();
 
-                    // TODO : to complete
+                    foreach (BookmarkFolder fold in foldersTmp.Values)
+                    {
+                        if (fold.bookmarkFolderParent != null && foldersTmp.ContainsKey(fold.bookmarkFolderParent.id_bookmark_folder))
+                        {
+                            foldersTmp[fold.bookmarkFolderParent.id_bookmark_folder].addBookmarkFolder(fold);
+                        }
+                        else
+                        {
+                            BookmarkFolder.bookmarkFolderRoot.addBookmarkFolder(fold);
+                            fold.bookmarkFolderParent = BookmarkFolder.bookmarkFolderRoot;
+                        }
+
+                        Console.WriteLine("Folder : Parent : " + fold.bookmarkFolderParent.label + " Fils : " + fold.label);
+                    }
+
+                    Dictionary<int, BookmarkFile> fileTmp = parser.parseBookmarkFiles(foldersTmp);
+
+                    foreach (BookmarkFile file in fileTmp.Values)
+                    {
+                        if (file.bookmarkFolderParent != null && foldersTmp.ContainsKey(file.bookmarkFolderParent.id_bookmark_folder))
+                        {
+                            foldersTmp[file.bookmarkFolderParent.id_bookmark_folder].addBookmark(file);
+                        }
+                        else
+                        {
+                            BookmarkFolder.bookmarkFolderRoot.addBookmark(file);
+                            file.bookmarkFolderParent = BookmarkFolder.bookmarkFolderRoot;
+                        }
+
+                        Console.WriteLine("File : Parent : " + file.bookmarkFolderParent.label + " Fils : " + file.label);
+                    }
                 }
             }
 

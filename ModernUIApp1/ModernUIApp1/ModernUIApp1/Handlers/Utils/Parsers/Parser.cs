@@ -400,7 +400,7 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
                     {
                         int idFolder = int.Parse(xmlNode.Name.ToString().Substring(4));
                         string label = xmlNode.Element("label").Value;
-                        int idParent = int.Parse(xmlNode.Element("id_bookmark_file").Value);
+                        int idParent = int.Parse(xmlNode.Element("id_bookmark_folder").Value);
                         int idSheet = int.Parse(xmlNode.Element("id_sheet").Value);
 
                         if (folders.ContainsKey(idParent))
