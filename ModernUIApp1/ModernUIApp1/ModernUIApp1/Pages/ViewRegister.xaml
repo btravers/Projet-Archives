@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d">
+    
     <Grid Style="{StaticResource ContentRoot}">
   
             <DockPanel Margin="-16,-28,-16,-16">

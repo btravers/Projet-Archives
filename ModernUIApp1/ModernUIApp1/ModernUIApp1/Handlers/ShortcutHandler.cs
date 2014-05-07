@@ -14,19 +14,19 @@ namespace Handlers.Handlers
 {
     public class ShortcutHandler
     {
-        public void createShortcut(int field, string text, int idIcon)
+        public void createShortcut(AnnotationType field, string text, int idIcon)
         {
             if(Authenticator.AUTHENTICATOR.user != null)
             {
-                String xmlResponse = Connection.getRequest(LinkResources.LinkAddShortcut.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session.ToString()).Replace(LinkResources.IdType, field.ToString()).Replace(LinkResources.Text, text).Replace(LinkResources.IdIcon, idIcon.ToString()));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkAddShortcut.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdType, field.ToString()).Replace(LinkResources.Text, text).Replace(LinkResources.IdIcon, idIcon.ToString()));
+                Console.Write(Authenticator.AUTHENTICATOR.user.id_session.ToString());
                 if (xmlResponse != null)
-                {
-                    //TODO : Retourner l'id du shortcut crée
-                    //Du coup il faut parser et récuper cette valeur
-                    //Parser parser = new Parser(xmlResponse);
-                    //int idShotcut = parser.parseCreateShortcut()
-                    //Shortcut shortcut = new Shortcut(idShortcut, field, text, idIcon);
-                    Shortcut shortcut = new Shortcut();
+                {                   
+                    //TODO : Parser
+                    Parser parser = new Parser(xmlResponse);
+                    int idShortcut = parser.parseCreateShortcut();
+                    
+                    Shortcut shortcut = new Shortcut(idShortcut, field, text, idIcon);
                     Authenticator.AUTHENTICATOR.user.addShortcut(shortcut);
                 }
                 else 
@@ -43,9 +43,9 @@ namespace Handlers.Handlers
                 String xmlResponse = Connection.getRequest(LinkResources.LinkDeleteShortcut.Replace(LinkResources.IdShortcut, id_shortcut.ToString()));
                 if (xmlResponse != null)
                 {
-                    //TODO : Parser la réponse du serv, ou tester avec le if ci-dessous
+                    //TODO : Parser
                     Parser parser = new Parser(xmlResponse);
-                    if (xmlResponse == "...")
+                    if (parser.parseDeleteShortcut() == "OK")
                         Authenticator.AUTHENTICATOR.user.deleteShortcut(id_shortcut);
                     else
                         throw new Exception("wrong aswer from the server \n");

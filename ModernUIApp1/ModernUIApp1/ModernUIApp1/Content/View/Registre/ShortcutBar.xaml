@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             mc:Ignorable="d" FontSize="17">
+             mc:Ignorable="d" FontSize="17" Width="521.6">
     <Grid Style="{StaticResource ContentRoot}" Margin="-1,-1,0,0">
         <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button  Content="Raccourci 1" Margin="10" />
+                <StackPanel Orientation="Horizontal" Margin="0,0,-0.2,0">
+                    <Button  Content="Nom" Margin="10" />
                     <Button  Content="Raccourci 2" Margin="10" />
-                </StackPanel>
+                <Button  Content="Ajouter un nouveau raccourci..." Margin="10" Click="ClickAddShortcut" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

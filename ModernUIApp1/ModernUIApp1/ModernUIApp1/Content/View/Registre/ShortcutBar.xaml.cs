@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernUIApp1.Pages.Popups;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace ModernUIApp1.Content.View.Registre
     /// </summary>
     public partial class ShortcutBar : UserControl
     {
+
+        AddShortcut addShortcutUserControl;
+
         public ShortcutBar()
         {
             InitializeComponent();
+        }
+
+        private void ClickAddShortcut(object sender, RoutedEventArgs e)
+        {
+            addShortcutUserControl = new AddShortcut();
+            addShortcutUserControl.ShowDialog();
         }
     }
 }

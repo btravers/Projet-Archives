@@ -337,16 +337,6 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             return list;
         }
 
-        public List<Shortcut> parserGetAllShortcut()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int parserCreateShortcut()
-        {
-            throw new NotImplementedException();
-        }
-
         /* Returns the value of the first node found */
         private XElement getFirstElement(String element)
         {
@@ -417,6 +407,23 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             }
 
             return files;
+        }
+
+        public int parseCreateShortcut()
+        {
+            int idShortcut = 0;
+            return idShortcut;
+        }
+
+        public string parseDeleteShortcut()
+        {
+            string repServ = "Shortcut non supprime";
+            return repServ;
+        }
+
+        public List<Shortcut> parserGetAllShortcut()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Data.Data.Users.Shortcut;
 using FirstFloor.ModernUI.Windows.Controls;
 using Handlers.Handlers;
-using ModernUIApp1.Handlers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +19,13 @@ using System.Windows.Shapes;
 namespace ModernUIApp1.Pages.Popups
 {
     /// <summary>
-    /// Logique d'interaction pour AddAnnotation.xaml
+    /// Interaction logic for TabPage1.xaml
     /// </summary>
-    public partial class AddAnnotation : ModernDialog
+    public partial class AddShortcut : ModernDialog
     {
-        // public Window window { get; private set; }
-        public Point position;
-
-        public AddAnnotation(Point position)
+        public AddShortcut()
         {
-            InitializeComponent();
-
-            // this.window = new Window();
-            this.position = position;
-            this.CloseButton.Visibility = Visibility.Hidden;
-
+            InitializeComponent(); 
             foreach (KeyValuePair<int, AnnotationType> type in AnnotationType.types.ToList())
             {
                 ComboBoxItem i = new ComboBoxItem();
@@ -42,23 +33,9 @@ namespace ModernUIApp1.Pages.Popups
                 i.Content = type.Value.label;
                 typeList.Items.Add(i);
             }
-
-            Console.WriteLine(position);
-        }
-
-        public void setParameters(Double left, Double top)
-        {
-            this.Left = left;
-            this.Top = top;
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            //window.Close();
-        }
-
-        public void close_dialog()
         {
             this.Close();
         }
@@ -68,17 +45,17 @@ namespace ModernUIApp1.Pages.Popups
             ComboBoxItem item = (ComboBoxItem)typeList.SelectedItem;
             if (item != null)
             {
-                AnnotationHandler a = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
-
+                //add_shortcut(
                 int tag = (int)item.Tag;
+                AnnotationType annotationType;
+                AnnotationType.types.TryGetValue(tag, out annotationType);
+                ShortcutHandler sh = new ShortcutHandler();
+                sh.createShortcut(annotationType , text.Text, 0);
+                //l'ajouter à l'utilisateur (serveur)
 
-                a.createAnnotationSheet(tag, (int)position.X, (int)position.Y, text.Text);
+                //refraichir barre des raccourcis
 
-                if (ViewRegister.window != null)
-                {
-                    ViewRegister.window.reload();
-                }
-
+                //fermer la fenetre d'ajout de raccourci
                 this.Close();
             }
         }
