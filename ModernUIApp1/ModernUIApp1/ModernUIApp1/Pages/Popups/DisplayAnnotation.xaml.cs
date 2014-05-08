@@ -1,5 +1,7 @@
 ﻿using Data.Data.Users.Shortcut;
 using FirstFloor.ModernUI.Windows.Controls;
+using Handlers.Handlers;
+using ModernUIApp1.Handlers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,7 @@ namespace ModernUIApp1.Pages.Popups
     /// </summary>
     public partial class DisplayAnnotation : ModernDialog
     {
+        private int id_annotation;
 
         public DisplayAnnotation()
         {
@@ -36,8 +39,9 @@ namespace ModernUIApp1.Pages.Popups
             this.Top = top;
         }
 
-        public void setParameters(String annotationText, int annotationType)
+        public void setParameters(int idAnnotation, string annotationText, int annotationType)
         {
+            this.id_annotation = idAnnotation;
             text.Text = annotationText;
             AnnotationType t;
             if(AnnotationType.types.TryGetValue(annotationType, out t))
@@ -51,6 +55,19 @@ namespace ModernUIApp1.Pages.Popups
 
         public void close_dialog()
         {
+            this.Close();
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            AnnotationHandler a = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
+            a.deleteAnnotationSheet(id_annotation);
+
+            if (ViewRegister.window != null)
+            {
+                ViewRegister.window.reload();
+            }
+
             this.Close();
         }
     }

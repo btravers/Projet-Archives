@@ -131,7 +131,7 @@ class Database
 	/**
 	 * Check if the annotation on the sheet exists in database
 	 */
-	public static function existAnnotationTable2($idAnnotationSheet)
+	public static function existAnnotationSheet($idAnnotationSheet)
 	{
 		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
 		return (count($result) > 0);

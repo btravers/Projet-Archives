@@ -21,7 +21,7 @@ namespace ModernUIApp1.Content.View.Registre
     /// </summary>
     public partial class ShortcutBar : UserControl
     {
-
+        /*
         AddShortcut addShortcutUserControl;
 
         public ShortcutBar()
@@ -34,5 +34,6 @@ namespace ModernUIApp1.Content.View.Registre
             addShortcutUserControl = new AddShortcut();
             addShortcutUserControl.ShowDialog();
         }
+        */
     }
 }

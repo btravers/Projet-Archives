@@ -144,6 +144,26 @@ namespace Handlers.Handlers
             String xmlResponse = Connection.getRequest(LinkResources.LinkAnnotateSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdSheet, sheet.id_sheet.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text).Replace(LinkResources.IdType, id_type.ToString()));
         }
 
+        public void deleteAnnotationPageTable(int id_annotation_page_table)
+        {
+            PageTable table = ViewManager.instance.pageTable;
+            if (table == null)
+                return;
+
+            //Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkDeleteAnnotationTable.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdAnnotationPageTable, id_annotation_page_table.ToString()));
+        }
+
+        public void deleteAnnotationSheet(int id_annotation_sheet)
+        {
+            Sheet sheet = ViewManager.instance.sheet;
+            if (sheet == null)
+                return;
+
+            //Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkDeleteAnnotationSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdAnnotationSheet, id_annotation_sheet.ToString()));
+        }
+
         public void modifyAnnotationPageTable(int id_annotation_page_table, int x, int y, int height, int width, int id_number)
         {
             PageTable table = ViewManager.instance.pageTable;
@@ -163,5 +183,6 @@ namespace Handlers.Handlers
             //Request
             String xmlResponse = Connection.getRequest(LinkResources.LinkUpdateAnnotationSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, id_annotation_sheet.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text));
         }
+
     }
 }
