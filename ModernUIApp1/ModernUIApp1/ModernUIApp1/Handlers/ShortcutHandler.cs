@@ -18,7 +18,7 @@ namespace Handlers.Handlers
         {
             if(Authenticator.AUTHENTICATOR.user != null)
             {
-                String xmlResponse = Connection.getRequest(LinkResources.LinkAddShortcut.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdType, field.ToString()).Replace(LinkResources.Text, text).Replace(LinkResources.IdIcon, idIcon.ToString()));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkAddShortcut.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdType, "" + field.id_type).Replace(LinkResources.Text, text).Replace(LinkResources.IdIcon, "" + idIcon));
                 Console.Write(Authenticator.AUTHENTICATOR.user.id_session.ToString());
                 if (xmlResponse != null)
                 {                   

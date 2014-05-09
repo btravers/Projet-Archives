@@ -343,7 +343,7 @@
     <value>id_type</value>
   </data>
   <data name="LinkAddShortcut" xml:space="preserve">
-    <value>shortcut/add_shortcut/id_session/id_type/text/id_icon</value>
+    <value>shortcut/add_shortcut/session_id/id_type/text/id_icon</value>
     <comment>Add a shortcut to an user</comment>
   </data>
   <data name="LinkDeleteShortcut" xml:space="preserve">
@@ -351,7 +351,7 @@
     <comment>Delete a shortcut with the id_shortcut</comment>
   </data>
   <data name="LinkGetAllShortcut" xml:space="preserve">
-    <value>shortcut/get_all_shortcut/id_session</value>
+    <value>shortcut/get_all_shortcut/session_id</value>
     <comment>Get all the shortcut of an user</comment>
   </data>
   <data name="LinkBookmarkGetRoot" xml:space="preserve">
