@@ -365,13 +365,13 @@ namespace ModernUIApp1.Content.View.Common
         }
 
         void displayAnnotationRectangle(AnnotationPageTable annotation)
-        {
-            double padding = 0.2;
+        {            
+            double padding = 0.8;
 
             Rectangle r = new Rectangle();
             r.Width = ((double)annotation.width / ((BitmapSource)pageImage.Source).PixelWidth * pageImage.ActualWidth) - 2 * padding;
             r.Height = ((double)annotation.height / ((BitmapSource)pageImage.Source).PixelHeight * pageImage.ActualHeight) - 2 * padding;
-            r.StrokeThickness = 0.4;
+            r.StrokeThickness = 0.2;
             r.Stroke = new SolidColorBrush(Colors.Blue);
             r.Fill = new SolidColorBrush(Color.FromArgb(100, 101, 156, 239));
             r.Tag = annotation;
