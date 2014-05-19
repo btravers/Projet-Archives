@@ -23,22 +23,33 @@ namespace ModernUIApp1.Content.View.Registre
     public partial class ShortcutBar : UserControl
     {
         AddShortcut addShortcutUserControl;
+        int nbButton;
 
         public ShortcutBar()
         {
             InitializeComponent();
+            nbButton = 2;
         }
 
         private void ClickAddShortcut(object sender, RoutedEventArgs e)
         {
             addShortcutUserControl = new AddShortcut();
             addShortcutUserControl.ShowDialog();
+
+
+            Button newButton = new Button();
+            newButton.Content = "Test";
+            System.Windows.Thickness tn = new Thickness(10);
+            newButton.Margin = tn;
+            ShortcutWrapPanel.Children.Insert(nbButton, newButton);
+            nbButton++;
+            //newButton.Click = "ClickShourcutTest";
         }
 
         private void ClickShortcutName(object sender, RoutedEventArgs e)
         {
             ViewManager.instance.shortcutIsOn = true;
-            ViewManager.instance.annotationShortcut.text = "Nom";
+            ViewManager.instance.annotationShortcut.text = "";
             //4 : Type de Nom
             ViewManager.instance.annotationShortcut.type = 4;
         }
@@ -46,7 +57,7 @@ namespace ModernUIApp1.Content.View.Registre
         private void ClickShortcutFirstName(object sender, RoutedEventArgs e)
         {
             ViewManager.instance.shortcutIsOn = true;
-            ViewManager.instance.annotationShortcut.text = "Prenom";
+            ViewManager.instance.annotationShortcut.text = "";
             //5 : Type de Prenom
             ViewManager.instance.annotationShortcut.type = 5;
         }
