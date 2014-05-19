@@ -371,10 +371,10 @@
     <value />
   </data>
   <data name="LinkBookmarkRenameFile" xml:space="preserve">
-    <value />
+    <value>bookmark/rename_bookmark_file/id_file/new_name</value>
   </data>
   <data name="LinkBookmarkRenameFolder" xml:space="preserve">
-    <value />
+    <value>bookmark/rename_bookmark_folder/id_folder/new_name</value>
   </data>
   <data name="LinkBookmarkUpdateFileParent" xml:space="preserve">
     <value />
@@ -398,12 +398,21 @@
     <value>other</value>
     <comment>refers to "other"</comment>
   </data>
+  <data name="IdFile" xml:space="preserve">
+    <value>id_file</value>
+  </data>
+  <data name="IdFolder" xml:space="preserve">
+    <value>id_folder</value>
+  </data>
   <data name="IdParentFolder" xml:space="preserve">
     <value>id_parent_folder</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>name</value>
     <comment>refers to "name"</comment>
+  </data>
+  <data name="NewName" xml:space="preserve">
+    <value>new_name</value>
   </data>
   <data name="ResultId" xml:space="preserve">
     <value>result_id</value>

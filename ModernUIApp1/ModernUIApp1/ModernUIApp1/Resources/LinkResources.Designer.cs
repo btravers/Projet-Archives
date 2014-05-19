@@ -124,6 +124,24 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à id_file.
+        /// </summary>
+        internal static string IdFile {
+            get {
+                return ResourceManager.GetString("IdFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à id_folder.
+        /// </summary>
+        internal static string IdFolder {
+            get {
+                return ResourceManager.GetString("IdFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à id_icon.
         /// </summary>
         internal static string IdIcon {
@@ -322,7 +340,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/rename_bookmark_file/id_file/new_name.
         /// </summary>
         internal static string LinkBookmarkRenameFile {
             get {
@@ -331,7 +349,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/rename_bookmark_folder/id_folder/new_name.
         /// </summary>
         internal static string LinkBookmarkRenameFolder {
             get {
@@ -606,6 +624,15 @@ namespace ModernUIApp1.Resources {
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à new_name.
+        /// </summary>
+        internal static string NewName {
+            get {
+                return ResourceManager.GetString("NewName", resourceCulture);
             }
         }
         
