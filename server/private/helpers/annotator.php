@@ -115,6 +115,20 @@ class Annotator
 			return array("message" => "updated");
 		}
 	}
+
+	public static function add_or_update_annotation_sheet($id_session, $idAnnotationSheet, $idSheet, $idType, $x, $y, $annotation)
+	{
+		$idUser = Database::getUser($id_session);
+		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
+		if($result[0]["id_user"] == $idUser) {
+			update_annotation_sheet($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation);
+			return array("message" => "updated");
+		} else {
+			annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation);
+			return array("message" => "registered");
+		}
+
+	}
 	
 	public static function get_types()
 	{
