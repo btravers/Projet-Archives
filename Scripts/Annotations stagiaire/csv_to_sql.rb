@@ -51,11 +51,13 @@ def main
 					yTable = yTableMargin + cptLine * height
 					query = "INSERT INTO AnnotationPageTable " \
 						"VALUES (#{idAnnotationPageTable}, #{idPageTable}, #{idUser}, #{xTable}, #{yTable}, #{width}, #{height}, #{idNumber}, #{idSheet});"
+
 					puts query
-				end
 					
-				cptLine = (cptLine+1) % 18
-				cptColumn = (cptLine == 0) ? (cptColumn+1)%4 : cptColumn
+					cptLine = (cptLine+1) % 18
+					cptColumn = (cptLine == 0) ? (cptColumn+1)%4 : cptColumn
+
+				end
 				lastID = idNumber
 			end
 			first = false
