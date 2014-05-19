@@ -382,4 +382,12 @@
   <data name="LinkBookmarkUpdateFolderParent" xml:space="preserve">
     <value />
   </data>
+  <data name="LinkDeleteAnnotationSheet" xml:space="preserve">
+    <value>annotator/delete_annotation_sheet/session_id/id_annotation_sheet</value>
+    <comment>link to delete an annotation on a sheet</comment>
+  </data>
+  <data name="LinkDeleteAnnotationTable" xml:space="preserve">
+    <value>annotator/delete_annotation_page_table/session_id/id_annotation_page_table</value>
+    <comment>link to delete an annotation on a table</comment>
+  </data>
 </root>

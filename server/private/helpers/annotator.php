@@ -52,7 +52,7 @@ class Annotator
 	/**
 	 * Delete an annotation on a Table
 	 */
-	public static function delete_annotation_table($idAnnotationTable)
+	public static function delete_annotation_table($id_session, $idAnnotationTable)
 	{
 		if (!Database::existAnnotationTable($idAnnotationTable)) {
 			return array("message" => "annotation_not_found");
@@ -65,13 +65,21 @@ class Annotator
 	/**
 	 * Delete an annotation on a Sheet
 	 */
-	public static function delete_annotation_sheet($idAnnotationSheet)
+	public static function delete_annotation_sheet($id_session, $idAnnotationSheet)
 	{
-		if (!Database::existAnnotationSheet($idAnnotationSheet)) {
+		$idUser = Database::getUser($id_session);
+		if($idUser == -1) {
+			return array("message" => "user_not_found");
+		} else if (!Database::existAnnotationSheet($idAnnotationSheet)) {
 			return array("message" => "annotation_not_found");
 		} else {
-			Database::exec("DELETE FROM AnnotationSheet WHERE id_annotation_sheet = ?",array($idAnnotationSheet));
-			return array("message" => "deleted");
+			$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ? AND id_user = ?", array($idAnnotationSheet, $idUser));
+			if(count($result) <= 0) {
+				return array("message" => "bad_user");
+			} else {
+				Database::exec("DELETE FROM AnnotationSheet WHERE id_annotation_sheet = ?",array($idAnnotationSheet));
+				return array("message" => "deleted");
+			}
 		}
 	}
 

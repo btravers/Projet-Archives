@@ -6,7 +6,7 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              Title="Annotation" Height="200" Width="482.564" >
-    
+
     <Grid Margin="0,0,0,0">
         <TextBlock Text="Catégorie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="25"/>
         <TextBlock Name="type" HorizontalAlignment="Left" Margin="139,10,0,0" VerticalAlignment="Top" Width="318" FontSize="25"/>
@@ -16,6 +16,7 @@
 
         <!--<Button Name="add" Content="Ajouter" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="122" FontSize="25"/>-->
         <Button Name="close" Content="Fermer" HorizontalAlignment="Left" Margin="343,117,0,0" VerticalAlignment="Top" Width="122" FontSize="25" Click="close_Click"/>
+        <Button Name="delete" Content="Supprimer" HorizontalAlignment="Left" Margin="153,117,0,0" VerticalAlignment="Top" Width="154" FontSize="25" Click="delete_Click"/>
 
     </Grid>
 </mui:ModernDialog>

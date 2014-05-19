@@ -340,6 +340,24 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à annotator/delete_annotation_sheet/session_id/id_annotation_sheet.
+        /// </summary>
+        internal static string LinkDeleteAnnotationSheet {
+            get {
+                return ResourceManager.GetString("LinkDeleteAnnotationSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à annotator/delete_annotation_page_table/session_id/id_annotation_page_table.
+        /// </summary>
+        internal static string LinkDeleteAnnotationTable {
+            get {
+                return ResourceManager.GetString("LinkDeleteAnnotationTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à shortcut/delete_shortcut/id_shortcut.
         /// </summary>
         internal static string LinkDeleteShortcut {
