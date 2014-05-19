@@ -359,10 +359,10 @@
     <comment>link to get all bookmark</comment>
   </data>
   <data name="LinkBookmarkNewFile" xml:space="preserve">
-    <value />
+    <value>bookmark/create_bookmark_file/session_id/id_parent_folder/id_sheet/name</value>
   </data>
   <data name="LinkBookmarkNewFolder" xml:space="preserve">
-    <value />
+    <value>bookmark/create_bookmark_folder/session_id/id_parent_folder/name</value>
   </data>
   <data name="LinkBookmarkRemoveFile" xml:space="preserve">
     <value />
@@ -400,5 +400,16 @@
   </data>
   <data name="LinkGetSheetById" xml:space="preserve">
     <value>browser/get_sheet_by_id/id_sheet/</value>
+  </data>
+  <data name="IdParentFolder" xml:space="preserve">
+    <value>id_parent_folder</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>name</value>
+    <comment>refers to "name"</comment>
+  </data>
+  <data name="ResultId" xml:space="preserve">
+    <value>result_id</value>
+    <comment>refers to "result_id"</comment>
   </data>
 </root>
