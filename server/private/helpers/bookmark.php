@@ -25,9 +25,10 @@ class Bookmark
 		$id_user = Database::getUser($id_session);
 		if($id_user == -1) {
 			return array("helper" => "bookmark", "message" => "user_not_found");
-		} else if(!Database::existBookmarkFolder($id_parent_folder)) {
-			return array("helper" => "bookmark", "message" => "parent_folder_not_found");
 		} else {
+			if($id_parent_folder == -1 || !Database::existBookmarkFolder($id_parent_folder))
+				$id_parent_folder = -1;
+
 			Database::exec("INSERT INTO BookmarkFolder VALUES ('', ?, ?, ?)", array($id_user, $id_parent_folder, $name));
 
 			$query = "SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ? AND label = ?";
@@ -73,11 +74,12 @@ class Bookmark
 		$id_user = Database::getUser($id_session);
 		if($id_user == -1) {
 			return array("helper" => "bookmark", "message" => "user_not_found");
-		} else if(!Database::existBookmarkFolder($id_parent_folder)) {
-			return array("helper" => "bookmark", "message" => "parent_folder_not_found");
 		} else if(!Database::existSheet($id_sheet)) {
 			return array("helper" => "bookmark", "message" => "sheet_not_found");
 		} else {
+			if($id_parent_folder == -1 || !Database::existBookmarkFolder($id_parent_folder))
+				$id_parent_folder = -1;
+
 			Database::exec("INSERT INTO BookmarkFile VALUES ('', ?, ?, ?, ?)", array($id_user, $id_sheet, $id_parent_folder, $name));
 			
 			$query = "SELECT id_bookmark_file FROM BookmarkFile WHERE id_user = ? AND id_sheet = ? AND id_bookmark_folder = ? AND label = ?";
