@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using Data.Data.Registre;
 using Data.Data.Users.Bookmark;
 using Data.Data.Users.Shortcut;
+using ModernUIApp1.Resources;
 
 namespace ModernUIApp1.Handlers.Utils.Parsers
 {
@@ -407,6 +408,20 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             }
 
             return files;
+        }
+
+        /* Returns the result id, if it exists */
+        public int parseResultId()
+        {
+            String stringId = this.getFirstNode(LinkResources.ResultId);
+            int resultId = -1;
+
+            if (stringId != null)
+            {
+                resultId = int.Parse(stringId);
+            }
+
+            return resultId;
         }
 
         public int parseCreateShortcut()

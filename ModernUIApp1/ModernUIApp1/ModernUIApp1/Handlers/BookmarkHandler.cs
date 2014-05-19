@@ -19,19 +19,41 @@ namespace Handlers.Handlers
         /* Return the new folder returned by the server */
         public BookmarkFolder newBookmarkFolder(String label, BookmarkFolder parent)
         {
-            // Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFolder);
+            int tmpInt = dbgTmpInt--;
 
-            return new BookmarkFolder(dbgTmpInt--, parent, label);
+            if (Authenticator.AUTHENTICATOR.user != null)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFolder.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.Name, label).Replace(LinkResources.IdParentFolder, parent.id_bookmark_folder.ToString()));
+
+                if (xmlResponse != null)
+                {
+                    Parser parser = new Parser(xmlResponse);
+                    tmpInt = parser.parseResultId();
+                }
+            }
+
+            return new BookmarkFolder(tmpInt, parent, label);
         }
 
         /* Return the new folder returned by the server */
         public static BookmarkFile newBookmarkFile(Sheet sheet, String label)
         {
-            // Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFile);
+            int tmpInt = dbgTmpInt--;
 
-            return new BookmarkFile(dbgTmpInt--, sheet, null, label);
+            if (Authenticator.AUTHENTICATOR.user != null)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFile.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.Name, label).Replace(LinkResources.IdParentFolder, "-1").Replace(LinkResources.IdSheet, sheet.id_sheet.ToString()));
+
+                if (xmlResponse != null)
+                {
+                    Parser parser = new Parser(xmlResponse);
+                    tmpInt = parser.parseResultId();
+                }
+            }
+
+            return new BookmarkFile(tmpInt, sheet, null, label);
         }
 
         /* Return the root folder by the server with all data loaded (subfolders and subfiles, recursively) */

@@ -151,6 +151,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à id_parent_folder.
+        /// </summary>
+        internal static string IdParentFolder {
+            get {
+                return ResourceManager.GetString("IdParentFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à id_register.
         /// </summary>
         internal static string IdRegister {
@@ -277,7 +286,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/create_bookmark_file/session_id/id_parent_folder/id_sheet/name.
         /// </summary>
         internal static string LinkBookmarkNewFile {
             get {
@@ -286,7 +295,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/create_bookmark_folder/session_id/id_parent_folder/name.
         /// </summary>
         internal static string LinkBookmarkNewFolder {
             get {
@@ -592,6 +601,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à number.
         /// </summary>
         internal static string Number {
@@ -651,6 +669,15 @@ namespace ModernUIApp1.Resources {
         internal static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à result_id.
+        /// </summary>
+        internal static string ResultId {
+            get {
+                return ResourceManager.GetString("ResultId", resourceCulture);
             }
         }
         
