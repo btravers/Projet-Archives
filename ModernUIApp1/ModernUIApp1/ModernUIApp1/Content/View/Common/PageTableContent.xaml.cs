@@ -360,10 +360,10 @@ namespace ModernUIApp1.Content.View.Common
 
         public void displayAnnotations(List<AnnotationPageTable> annotations)
         {
+            overlay.Children.Clear();
+
             if (annotations == null)
                 return;
-
-            overlay.Children.Clear();
 
             foreach (AnnotationPageTable annotation in annotations)
                 displayAnnotationRectangle(annotation);
