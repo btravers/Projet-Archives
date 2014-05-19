@@ -68,7 +68,7 @@ class Finder
 		if($firstname != "") {
 			$argumentsNumber++;
 			$argumentsSql .= "(t.label = 'Prénom' AND a.text LIKE ?)";
-			array_push($argumentsValues, "%$firstname%");
+			array_push($argumentsValues, '%' . $firstname . '%');
 		}
 
 		if($lastname != "") {			
@@ -77,7 +77,7 @@ class Finder
 			}
 			$argumentsNumber++;
 			$argumentsSql .= "(t.label = 'Nom' AND a.text LIKE ?)";
-			array_push($argumentsValues, "%$lastname%");
+			array_push($argumentsValues, '%' . $lastname . '%');
 		}
 
 		if($job != "") {			
@@ -86,7 +86,7 @@ class Finder
 			}
 			$argumentsNumber++;
 			$argumentsSql .= "(t.label = 'Profession' AND a.text LIKE ?)";
-			array_push($argumentsValues, "%$job%");
+			array_push($argumentsValues, '%' . $job . '%');
 		}
 
 		if($regiment != "") {			
@@ -95,12 +95,20 @@ class Finder
 			}
 			$argumentsNumber++;
 			$argumentsSql .= "(t.label = 'Régiment' AND a.text LIKE ?)";
-			array_push($argumentsValues, "%$regiment%");
+			array_push($argumentsValues, '%' . $regiment . '%');
+		}
+		
+		if($other != "") {			
+			if($argumentsNumber > 0) {
+				$argumentsSql .= " OR ";
+			}
+			$argumentsNumber++;
+			$argumentsSql .= "(a.text LIKE ?)";
+			array_push($argumentsValues, '%' . $other . '%');
 		}
 		
 		if($argumentsNumber > 0) {
-			$argumentsSql = " AND (" . $argumentsSql . ") GROUP BY s.id_sheet HAVING COUNT(*) = " . $argumentsNumber;
-			$sql = "SELECT * FROM Register r, AnnotationSheet a, Sheet s, Type t WHERE r.id_register = s.id_register AND a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND year = ? AND location = ? " . $argumentsSql . "  LIMIT 3";
+			$sql = "SELECT * FROM Register r, AnnotationSheet a, Sheet s, Type t WHERE r.id_register = s.id_register AND a.id_sheet = s.id_sheet AND a.id_type = t.id_type AND year = ? AND location = ? AND (" . $argumentsSql . ") GROUP BY s.id_sheet LIMIT 3";
 		} else {
 			$sql = "SELECT * FROM Register r, Sheet s WHERE r.id_register = s.id_register AND year = ? AND location = ? LIMIT 3";
 		}
