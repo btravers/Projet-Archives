@@ -25,6 +25,7 @@ namespace ModernUIApp1.Pages.Popups
     public partial class DisplayAnnotation : ModernDialog
     {
         private int id_annotation;
+        private Point position;
 
         public DisplayAnnotation()
         {
@@ -39,9 +40,10 @@ namespace ModernUIApp1.Pages.Popups
             this.Top = top;
         }
 
-        public void setParameters(int idAnnotation, string annotationText, int annotationType)
+        public void setParameters(int idAnnotation, string annotationText, int annotationType, Point pos)
         {
-            this.id_annotation = idAnnotation;
+            id_annotation = idAnnotation;
+            position = pos;
             text.Text = annotationText;
             AnnotationType t;
             if(AnnotationType.types.TryGetValue(annotationType, out t))
@@ -69,6 +71,13 @@ namespace ModernUIApp1.Pages.Popups
             }
 
             this.Close();
+        }
+
+        private void modify_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyAnnotation modifyAnnotationUserControl = new ModifyAnnotation(id_annotation, type.Text, text.Text, position);
+            this.Close();
+            modifyAnnotationUserControl.Show();
         }
     }
 }

@@ -111,7 +111,7 @@ class Annotator
 		} else if (!Database::existAnnotationSheet($idAnnotationSheet)) {
 			return array("message" => "annotation_not_found");
 		} else {
-			Database::exec("UPDATE AnnotationSheet SET x = ?, y = ?, id_type = ?, text = ? WHERE id_annotation_sheet = ?", array($x, $y, $type, $annotation, $idAnnotationSheet));
+			Database::exec("UPDATE AnnotationSheet SET x = ?, y = ?, id_type = ?, text = ? WHERE id_annotation_sheet = ?", array($x, $y, $idType, $annotation, $idAnnotationSheet));
 			return array("message" => "updated");
 		}
 	}
@@ -121,10 +121,10 @@ class Annotator
 		$idUser = Database::getUser($id_session);
 		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
 		if($result[0]["id_user"] == $idUser) {
-			update_annotation_sheet($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation);
+			annotator::update_annotation_sheet($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation);
 			return array("message" => "updated");
 		} else {
-			annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation);
+			annotator::annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation);
 			return array("message" => "registered");
 		}
 

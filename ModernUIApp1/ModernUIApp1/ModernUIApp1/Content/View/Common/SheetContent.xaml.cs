@@ -419,7 +419,7 @@ namespace ModernUIApp1.Content.View.Common
                 left = annotation.x - SystemParameters.FullPrimaryScreenWidth / 4;
 
             displayAnnotationUserControl.setPosition(left, annotation.y);
-            displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type);
+            displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type, new Point(annotation.x, annotation.y));
             displayAnnotationUserControl.Show();
         }
 
