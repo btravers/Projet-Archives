@@ -178,6 +178,36 @@ class Browser
 			return array("helper" => "browser", "message" => "null");
 		}
 	}
+
+	/**
+	 * Preload request for idSheed
+	 */
+	public static function get_sheet_by_id($idSheet)
+	{			
+		if(!is_numeric($idSheet))
+			return array("helper" => "browser", "message" => "id_sheet_not_numeric");
+		
+		$data = array();
+		
+		$resultRegister = Database::query("SELECT * FROM Sheet WHERE id_sheet = ?", array($idSheet));
+		if(count($resultRegister) > 0) {
+			$idRegister = $resultRegister[0]['id_register'];
+			
+			$resultSheet = Database::query("SELECT * FROM Sheet WHERE id_sheet = ? AND id_register = ?", array($idSheet, $idRegister));
+			foreach ($resultSheet as $sheet)
+			{
+				$idSheet = $sheet['id_sheet'];
+
+				$data[$idSheet]['url'] = $sheet['url'];
+			}
+		}
+		
+		if(count($data) > 0) {
+			return array("helper" => "browser", "message" => "result_found", "result" => $data);
+		} else {
+			return array("helper" => "browser", "message" => "result_not_found");
+		}	
+	}
 	
 	/**
 	 * Preload request for idSheed -1 and +1 for a register
