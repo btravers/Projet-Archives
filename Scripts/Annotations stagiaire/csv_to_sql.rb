@@ -88,12 +88,12 @@ def createToBeAnnotatedArray
 	array[2][1][17] = false
 	array[2][2][12] = false
 	array[2][2][17] = false
-	array[2][3][14] = false
+	array[2][3][4] = false
 	array[2][3][17] = false
 
 	# Picture 4
 	array[3][0][13] = false
-	array[3][0][17], array[3][1][17], array[3][2][17], array[3][3][16] = false
+	array[3][0][17], array[3][1][17], array[3][2][17], array[3][3][17] = false
 
 	# Picture 5
 	array[4][0][0] = false
@@ -123,6 +123,8 @@ def createToBeAnnotatedArray
 	# Picture 9
 	array[8][0][2] = false
 	array[8][0][3] = false
+	array[8][0][4] = false
+	array[8][0][16] = false
 	array[8][0][17] = false
 	array[8][1] = Array.new(18) { false }
 	array[8][2] = Array.new(18) { false }
