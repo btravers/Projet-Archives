@@ -86,6 +86,8 @@ namespace Handlers.Handlers
             {
                 Parser parser = new Parser(xmlResponse);
 
+                sheet.annotations_sheet.Clear();
+
                 // Parse XML
                 foreach (AnnotationSheet a in parser.ParseAnnotationSheet(sheet))
                 {
