@@ -23,6 +23,7 @@ using Data.Data.Registre;
 using Handlers.Utils;
 using Data.Data.Registre.Annotation;
 using Handlers.Handlers;
+using ModernUIApp1.Pages;
 
 
 namespace ModernUIApp1.Content.View.Common
@@ -350,7 +351,6 @@ namespace ModernUIApp1.Content.View.Common
             PageTable page = ViewManager.instance.pageTable;
             if (page != null)
             {
-                Console.WriteLine(page.id_page_table);
                 AnnotationHandler annotHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
                 List<AnnotationPageTable> annotations = annotHandler.getAnnotationPageTableByPageTableId(page.id_page_table);
 
@@ -378,7 +378,7 @@ namespace ModernUIApp1.Content.View.Common
             r.Height = ((double)annotation.height / ((BitmapSource)pageImage.Source).PixelHeight * pageImage.ActualHeight) - 2 * padding;
             r.StrokeThickness = 0.2;
             r.Stroke = new SolidColorBrush(Colors.Blue);
-            r.Fill = new SolidColorBrush(Color.FromArgb(100, 101, 156, 239));
+            r.Fill = new SolidColorBrush(Color.FromArgb(80, 101, 156, 239));
             r.Tag = annotation;
             double x = ((double)annotation.x / ((BitmapSource)pageImage.Source).PixelWidth * pageImage.ActualWidth) + padding;
             double y = ((double)annotation.y / ((BitmapSource)pageImage.Source).PixelHeight * pageImage.ActualHeight) + padding;
@@ -386,10 +386,6 @@ namespace ModernUIApp1.Content.View.Common
             Canvas.SetTop(r, y);
             r.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
             overlay.Children.Add(r);
-
-            //Console.WriteLine(annotation.id_annotation_page_table + ", x=" + annotation.x + ", y=" + annotation.y + ", w=" + annotation.width + ", h=" + annotation.height);
-            //Console.WriteLine("PixW:" + ((BitmapSource)pageImage.Source).PixelWidth + ", PixH=" + ((BitmapSource)pageImage.Source).PixelHeight);
-            //Console.WriteLine("ActW:" + pageImage.RenderSize.Width + ", ActH=" + pageImage.RenderSize.Height);
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
@@ -398,6 +394,27 @@ namespace ModernUIApp1.Content.View.Common
             {
                 AnnotationPageTable annotation = (AnnotationPageTable)((Rectangle)sender).Tag;
                 Console.WriteLine("id:" + annotation.id_annotation_page_table + ", num:" + annotation.id_number + ", x:" + annotation.x + ", y:" + annotation.y);
+
+                SheetHandler sheetHandler = new SheetHandler();
+
+                if (annotation.id_sheet != -1)
+                {
+                    ViewManager.instance.sheet = sheetHandler.getById(annotation.id_sheet);
+
+                    if (ViewManager.instance.sheet != null)
+                    {
+                        if (ViewRegister.window != null)
+                        {
+                            ViewRegister.window.reload();
+                        }
+
+                        MainWindow.window.ContentSource = new Uri("/Pages/ViewRegister.xaml", UriKind.Relative);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Image introuvable...");
+                    }
+                }
             }
             catch (System.InvalidCastException ice)
             {
