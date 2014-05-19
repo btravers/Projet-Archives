@@ -296,6 +296,8 @@ namespace ModernUIApp1.Content.View.Common
                 {
                     pageImage.Visibility = System.Windows.Visibility.Visible;
                     pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+
+                    ViewManager.instance.pageTable = pageTable;
                 }
                 catch (Exception ex)
                 {
@@ -321,6 +323,8 @@ namespace ModernUIApp1.Content.View.Common
                 {
                     pageImage.Visibility = System.Windows.Visibility.Visible;
                     pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+
+                    ViewManager.instance.pageTable = pageTable;
                 }
                 catch (Exception ex)
                 {
@@ -346,6 +350,7 @@ namespace ModernUIApp1.Content.View.Common
             PageTable page = ViewManager.instance.pageTable;
             if (page != null)
             {
+                Console.WriteLine(page.id_page_table);
                 AnnotationHandler annotHandler = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
                 List<AnnotationPageTable> annotations = annotHandler.getAnnotationPageTableByPageTableId(page.id_page_table);
 
@@ -382,9 +387,9 @@ namespace ModernUIApp1.Content.View.Common
             r.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
             overlay.Children.Add(r);
 
-            Console.WriteLine(annotation.id_annotation_page_table + ", x=" + annotation.x + ", y=" + annotation.y + ", w=" + annotation.width + ", h=" + annotation.height);
-            Console.WriteLine("PixW:" + ((BitmapSource)pageImage.Source).PixelWidth + ", PixH=" + ((BitmapSource)pageImage.Source).PixelHeight);
-            Console.WriteLine("ActW:" + pageImage.RenderSize.Width + ", ActH=" + pageImage.RenderSize.Height);
+            //Console.WriteLine(annotation.id_annotation_page_table + ", x=" + annotation.x + ", y=" + annotation.y + ", w=" + annotation.width + ", h=" + annotation.height);
+            //Console.WriteLine("PixW:" + ((BitmapSource)pageImage.Source).PixelWidth + ", PixH=" + ((BitmapSource)pageImage.Source).PixelHeight);
+            //Console.WriteLine("ActW:" + pageImage.RenderSize.Width + ", ActH=" + pageImage.RenderSize.Height);
         }
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
