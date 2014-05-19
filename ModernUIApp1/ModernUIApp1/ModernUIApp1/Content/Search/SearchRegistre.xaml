@@ -33,6 +33,10 @@
 
                     <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,10,0" Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Prénom"/></TextBlock>
                     <TextBox Name="firstname" Grid.Row="1" Grid.Column="1" Width="231" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,5,0,10" TextAlignment="Left"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,10,0" Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Autre"/></TextBlock>
+                    <TextBox Name="other" Grid.Row="3" Grid.Column="0" Width="231" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,5,0,10" TextAlignment="Left"/>
+
                 </Grid>
                 <Button Content="Rechercher" Width="152" Margin="186,0,230,35" Click="Button_Click" />
             </StackPanel>

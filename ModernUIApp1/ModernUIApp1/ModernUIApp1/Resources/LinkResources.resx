@@ -282,7 +282,7 @@
     <value>path</value>
   </data>
   <data name="LinkSearchSheet" xml:space="preserve">
-    <value>finder/search_sheet/year/location/firstname/lastname/job/regiment</value>
+    <value>finder/search_sheet/year/location/firstname/lastname/job/regiment/other</value>
   </data>
   <data name="Firstname" xml:space="preserve">
     <value>firstname</value>
@@ -389,5 +389,13 @@
   <data name="LinkDeleteAnnotationTable" xml:space="preserve">
     <value>annotator/delete_annotation_page_table/session_id/id_annotation_page_table</value>
     <comment>link to delete an annotation on a table</comment>
+  </data>
+  <data name="LinkAddOrUpdateAnnotationSheet" xml:space="preserve">
+    <value>annotator/add_or_update_annotation_sheet/session_id/id_annotation_sheet/id_sheet/id_type/posx/posy/text</value>
+    <comment>link to add or update an annotation (depends of the user)</comment>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>other</value>
+    <comment>refers to "other"</comment>
   </data>
 </root>

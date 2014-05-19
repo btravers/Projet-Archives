@@ -48,7 +48,7 @@ namespace ModernUIApp1.Content
             {
                 SheetHandler sh = new SheetHandler();
 
-                List<Sheet> result = sh.search((int)yearSlider.Value, location.Text, firstname.Text, lastname.Text);
+                List<Sheet> result = sh.search((int)yearSlider.Value, location.Text, firstname.Text, lastname.Text, other.Text);
 
                 SearchResult.window.model.clearResult();
                 SearchRegistre.sheets.Clear();
