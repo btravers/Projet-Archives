@@ -46,6 +46,29 @@ namespace ModernUIApp1.Pages.Popups
             Console.WriteLine(position);
         }
 
+        //Constructeur utile pour les raccourcis (avec champs texte et/ou type deja remplis)
+        public AddAnnotation(Point position, String textSelected, int typeSelected)
+        {
+            InitializeComponent();
+
+            // this.window = new Window();
+            this.position = position;
+            this.CloseButton.Visibility = Visibility.Hidden;
+
+            foreach (KeyValuePair<int, AnnotationType> type in AnnotationType.types.ToList())
+            {
+                ComboBoxItem i = new ComboBoxItem();
+                i.Tag = type.Key;
+                i.Content = type.Value.label;
+                typeList.Items.Add(i);
+
+                if(type.Key == typeSelected)
+                    typeList.SelectedItem = i;
+            }
+
+            text.Text = textSelected;
+        }
+
         public void setParameters(Double left, Double top)
         {
             this.Left = left;

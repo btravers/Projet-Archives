@@ -92,6 +92,7 @@
     <Compile Include="Content\View\Common\PageTableContent.xaml.cs">
       <DependentUpon>PageTableContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Registre\Annotation\AnnotationShortcut.cs" />
     <Compile Include="Handlers\AnnotationHandler.cs" />
     <Compile Include="Handlers\BookmarkHandler.cs" />
     <Compile Include="Handlers\Cache\Cache.cs" />
