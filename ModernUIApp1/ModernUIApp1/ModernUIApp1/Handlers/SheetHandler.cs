@@ -35,6 +35,15 @@ namespace Handlers.Handlers
             return parser.ParserSearchSheet();
         }
 
+        public Sheet getById(int idSheet)
+        {
+            String xmlResponse = Connection.getRequest(ModernUIApp1.Resources.LinkResources.LinkGetSheetById.Replace(ModernUIApp1.Resources.LinkResources.IdSheet, idSheet.ToString()));
+
+            Parser parser = new Parser(xmlResponse);
+
+            return parser.ParserGetSheetById();
+        }
+
         public void preloadSheets(int idSheet)
         {
             new Thread(delegate()

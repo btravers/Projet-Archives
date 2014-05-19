@@ -198,6 +198,7 @@ class Browser
 			{
 				$idSheet = $sheet['id_sheet'];
 
+				$data[$idSheet]['id_sheet'] = $idSheet;
 				$data[$idSheet]['url'] = $sheet['url'];
 			}
 		}
