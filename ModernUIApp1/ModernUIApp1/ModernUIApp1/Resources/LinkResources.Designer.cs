@@ -502,7 +502,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à finder/search_sheet/year/location/firstname/lastname/job/regiment.
+        ///   Recherche une chaîne localisée semblable à finder/search_sheet/year/location/firstname/lastname/job/regiment/other.
         /// </summary>
         internal static string LinkSearchSheet {
             get {
@@ -597,6 +597,15 @@ namespace ModernUIApp1.Resources {
         internal static string Number {
             get {
                 return ResourceManager.GetString("Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à other.
+        /// </summary>
+        internal static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
             }
         }
         

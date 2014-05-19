@@ -26,9 +26,9 @@ namespace Handlers.Handlers
             return parser.ParserTypes();
         }
         
-        public List<Sheet> search(int year, string location, string firstname, string lastname)
+        public List<Sheet> search(int year, string location, string firstname, string lastname, string other)
         {
-            String xmlResponse = Connection.getRequest(ModernUIApp1.Resources.LinkResources.LinkSearchSheet.Replace(ModernUIApp1.Resources.LinkResources.Year, "" + year).Replace(ModernUIApp1.Resources.LinkResources.Location, location).Replace(ModernUIApp1.Resources.LinkResources.Firstname, firstname).Replace(ModernUIApp1.Resources.LinkResources.Lastname, lastname).Replace(ModernUIApp1.Resources.LinkResources.Job, "").Replace(ModernUIApp1.Resources.LinkResources.Regiment, ""));
+            String xmlResponse = Connection.getRequest(ModernUIApp1.Resources.LinkResources.LinkSearchSheet.Replace(ModernUIApp1.Resources.LinkResources.Year, "" + year).Replace(ModernUIApp1.Resources.LinkResources.Location, location).Replace(ModernUIApp1.Resources.LinkResources.Firstname, firstname).Replace(ModernUIApp1.Resources.LinkResources.Lastname, lastname).Replace(ModernUIApp1.Resources.LinkResources.Job, "").Replace(ModernUIApp1.Resources.LinkResources.Regiment, "").Replace(ModernUIApp1.Resources.LinkResources.Other, other));
             
             Parser parser = new Parser(xmlResponse);
 

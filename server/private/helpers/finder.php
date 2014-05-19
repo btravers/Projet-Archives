@@ -54,7 +54,7 @@ class Finder
 	/**
 	 * Search a sheet by year, location, firstname, lastname, job, regiment
 	 */
-	public static function search_sheet($year, $location, $firstname, $lastname, $job, $regiment)
+	public static function search_sheet($year, $location, $firstname, $lastname, $job, $regiment, $other)
 	{
 		if(!is_numeric($year))
 			return array("helper" => "finder", "message" => "year_not_numeric");
