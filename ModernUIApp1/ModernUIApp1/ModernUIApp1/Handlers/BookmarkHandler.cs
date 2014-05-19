@@ -21,7 +21,7 @@ namespace Handlers.Handlers
         {
             int tmpInt = dbgTmpInt--;
 
-            if (Authenticator.AUTHENTICATOR.user != null)
+            if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
                 String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFolder.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.Name, label).Replace(LinkResources.IdParentFolder, parent.id_bookmark_folder.ToString()));
@@ -41,7 +41,7 @@ namespace Handlers.Handlers
         {
             int tmpInt = dbgTmpInt--;
 
-            if (Authenticator.AUTHENTICATOR.user != null)
+            if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
                 String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkNewFile.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.Name, label).Replace(LinkResources.IdParentFolder, "-1").Replace(LinkResources.IdSheet, sheet.id_sheet.ToString()));
@@ -62,7 +62,7 @@ namespace Handlers.Handlers
             // Create the root bookmark folder
             BookmarkFolder.bookmarkFolderRoot = new BookmarkFolder();
 
-            if (Authenticator.AUTHENTICATOR.user != null)
+            if (Authenticator.AUTHENTICATOR.connected)
             {
                 String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkGetRoot.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session));
 
@@ -178,16 +178,20 @@ namespace Handlers.Handlers
         /* Rename Folder (the folder already got the new name (local), update by id) */
         public void renameFolder(BookmarkFolder folder)
         {
-            // Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFolder);
-
+            if (Authenticator.AUTHENTICATOR.connected)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFolder.Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()).Replace(LinkResources.NewName, folder.label));
+            }
         }
         /* Rename File (the file already got the new name (local), update by id) */
         public void renameFile(BookmarkFile file)
         {
-            // Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFile);
-
+            if (Authenticator.AUTHENTICATOR.connected)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFile.Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()).Replace(LinkResources.NewName, file.label));
+            }
         }
     }
 }
