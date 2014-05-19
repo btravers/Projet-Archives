@@ -457,6 +457,15 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à browser/get_sheet_by_id/id_sheet/.
+        /// </summary>
+        internal static string LinkGetSheetById {
+            get {
+                return ResourceManager.GetString("LinkGetSheetById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à browser/get_sheets/idRegister/idUser/start/end.
         /// </summary>
         internal static string LinkGetSheets {

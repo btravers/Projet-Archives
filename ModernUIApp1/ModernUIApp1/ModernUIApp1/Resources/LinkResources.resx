@@ -398,6 +398,9 @@
     <value>other</value>
     <comment>refers to "other"</comment>
   </data>
+  <data name="LinkGetSheetById" xml:space="preserve">
+    <value>browser/get_sheet_by_id/id_sheet/</value>
+  </data>
   <data name="IdFile" xml:space="preserve">
     <value>id_file</value>
   </data>

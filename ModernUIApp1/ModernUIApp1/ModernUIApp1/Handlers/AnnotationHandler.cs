@@ -183,7 +183,17 @@ namespace Handlers.Handlers
                 return;
 
             //Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkUpdateAnnotationSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdPageTable, id_annotation_sheet.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text));
+            String xmlResponse = Connection.getRequest(LinkResources.LinkUpdateAnnotationSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdAnnotationSheet, id_annotation_sheet.ToString()).Replace(LinkResources.IdType, id_type.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text));
+        }
+
+        public void addOrModifyAnnotationSheet(int id_annotation_sheet, int id_type, int x, int y, String text)
+        {
+            Sheet sheet = ViewManager.instance.sheet;
+            if (sheet == null)
+                return;
+
+            //Request
+            String xmlResponse = Connection.getRequest(LinkResources.LinkAddOrUpdateAnnotationSheet.Replace(LinkResources.SessionId, user.id_session.ToString()).Replace(LinkResources.IdAnnotationSheet, id_annotation_sheet.ToString()).Replace(LinkResources.IdSheet, sheet.id_sheet.ToString()).Replace(LinkResources.IdType, id_type.ToString()).Replace(LinkResources.X, x.ToString()).Replace(LinkResources.Y, y.ToString()).Replace(LinkResources.Text, text));
         }
 
     }

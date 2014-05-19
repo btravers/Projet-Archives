@@ -234,23 +234,19 @@ class Bookmark
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else {
 			$result = Database::query("SELECT id_bookmark_folder_parent FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
-			if ($result[0][0] == static::ROOT) {
-				return array("helper" => "bookmark", "message" => "illegal_operation");
-			} else {
 
-				// Sub-files suppression
-				Database::exec("DELETE FROM BookmarkFile WHERE id_bookmark_folder = ?", array($id_folder));
+			// Sub-files suppression
+			Database::exec("DELETE FROM BookmarkFile WHERE id_bookmark_folder = ?", array($id_folder));
 
-				// Sub-folders suppression
-				$subfolders = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_bookmark_folder_parent = ?", array($id_folder));
-				foreach ($subfolders as $folder) {
-					Bookmark::remove_bookmark_folder($folder[0]);
-				}
-
-				// Folder suppression
-				Database::exec("DELETE FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
-				return array("helper" => "bookmark", "message" => "deleted");
+			// Sub-folders suppression
+			$subfolders = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_bookmark_folder_parent = ?", array($id_folder));
+			foreach ($subfolders as $folder) {
+				Bookmark::remove_bookmark_folder($folder[0]);
 			}
+
+			// Folder suppression
+			Database::exec("DELETE FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
+			return array("helper" => "bookmark", "message" => "deleted");
 		}
 	}
 

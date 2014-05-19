@@ -279,6 +279,32 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
             return lRes;
         }
 
+        /* Parse the response to get_sheet_by_id */
+        public Sheet ParserGetSheetById()
+        {
+            Sheet res = new Sheet();
+
+            try
+            {
+                XElement xmlResponse = xmlDocument.Element("response");
+                XElement xmlResult = xmlResponse.Element("result");
+
+                foreach (XElement xmlNode in xmlResult.Elements())
+                {
+                    int idSheet = int.Parse(xmlNode.Element("id_sheet").Value);
+                    string url = xmlNode.Element("url").Value;
+
+                    res = new Sheet(idSheet, url);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+
+            return res;
+        }
+
         public List<Sheet> ParserSearchSheet()
         {
             List<Sheet> lRes = new List<Sheet>();

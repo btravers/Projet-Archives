@@ -28,6 +28,7 @@ using System.Windows.Media.Effects;
 using ModernUIApp1.Content.View.Registre;
 using Data.Data;
 using ModernUIApp1.Content.View.Common.Bookmark;
+using ModernUIApp1.Data.Registre.Annotation;
 
 namespace ModernUIApp1.Content.View.Common
 {
@@ -78,6 +79,9 @@ namespace ModernUIApp1.Content.View.Common
 
             slider.ValueChanged += OnSliderValueChanged;
             slider.Value = 2;
+
+            ViewManager.instance.shortcutIsOn = false;
+            ViewManager.instance.annotationShortcut = new AnnotationShortcut();
 
             reload();
         }
@@ -253,7 +257,15 @@ namespace ModernUIApp1.Content.View.Common
                     addAnnotationUserControl.close_dialog();
                 }
 
-                addAnnotationUserControl = new AddAnnotation(position);
+                Console.Write(ViewManager.instance.shortcutIsOn + "\n");
+
+                if (ViewManager.instance.shortcutIsOn == true)
+                {
+                    ViewManager.instance.shortcutIsOn = false;
+                    addAnnotationUserControl = new AddAnnotation(position, ViewManager.instance.annotationShortcut.text, ViewManager.instance.annotationShortcut.type);
+                }
+                else
+                    addAnnotationUserControl = new AddAnnotation(position);
                 // addAnnotationUserControl.window.Title = "Ajouter une annotation";
 
                 Double left;
@@ -407,7 +419,7 @@ namespace ModernUIApp1.Content.View.Common
                 left = annotation.x - SystemParameters.FullPrimaryScreenWidth / 4;
 
             displayAnnotationUserControl.setPosition(left, annotation.y);
-            displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type);
+            displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type, new Point(annotation.x, annotation.y));
             displayAnnotationUserControl.Show();
         }
 

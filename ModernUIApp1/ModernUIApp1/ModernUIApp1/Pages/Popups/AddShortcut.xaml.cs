@@ -25,7 +25,8 @@ namespace ModernUIApp1.Pages.Popups
     {
         public AddShortcut()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            this.CloseButton.Visibility = Visibility.Hidden;
             foreach (KeyValuePair<int, AnnotationType> type in AnnotationType.types.ToList())
             {
                 ComboBoxItem i = new ComboBoxItem();

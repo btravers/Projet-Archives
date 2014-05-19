@@ -16,7 +16,8 @@
 
         <!--<Button Name="add" Content="Ajouter" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="122" FontSize="25"/>-->
         <Button Name="close" Content="Fermer" HorizontalAlignment="Left" Margin="343,117,0,0" VerticalAlignment="Top" Width="122" FontSize="25" Click="close_Click"/>
-        <Button Name="delete" Content="Supprimer" HorizontalAlignment="Left" Margin="153,117,0,0" VerticalAlignment="Top" Width="154" FontSize="25" Click="delete_Click"/>
+        <Button Name="delete" Content="Supprimer" HorizontalAlignment="Left" Margin="166,117,0,0" VerticalAlignment="Top" Width="154" FontSize="25" Click="delete_Click"/>
+        <Button Name="modify" Content="Modifier" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="130" FontSize="25" Click="modify_Click"/>
 
     </Grid>
 </mui:ModernDialog>
