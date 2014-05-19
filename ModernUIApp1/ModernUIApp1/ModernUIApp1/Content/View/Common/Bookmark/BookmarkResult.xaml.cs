@@ -149,7 +149,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                             destination.addBookmarkFolder(target);
                             currentFolder.bookmarkFolders.Remove(target.id_bookmark_folder);
                             // Update in server
-                            bhandler.updateBookmarks();
+                            bhandler.updateBookmarkFolder(target);
                         }
                         else
                         { // If it is it's a rename
@@ -165,7 +165,7 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                         destination.addBookmark(target);
                         currentFolder.bookmarkFiles.Remove(target.id_bookmark_file);
                         // Update in server
-                        bhandler.updateBookmarks();
+                        bhandler.updateBookmarkFile(target);
                     }
 
                     // Reload the current folder

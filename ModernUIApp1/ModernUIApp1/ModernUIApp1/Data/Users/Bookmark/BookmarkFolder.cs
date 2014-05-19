@@ -41,13 +41,15 @@ namespace Data.Data.Users.Bookmark
         /* Add a bookmarkFolder to the dictionary */
         public void addBookmarkFolder(BookmarkFolder new_bookmarkFolder)
         {
-            bookmarkFolders.Add(new_bookmarkFolder.id_bookmark_folder, new_bookmarkFolder);
+            if (!bookmarkFolders.ContainsKey(new_bookmarkFolder.id_bookmark_folder))
+                bookmarkFolders.Add(new_bookmarkFolder.id_bookmark_folder, new_bookmarkFolder);
         }
 
         /* Add a bookmarkFile to the dictionary */
         public void addBookmark(BookmarkFile new_bookmarkFile)
         {
-            bookmarkFiles.Add(new_bookmarkFile.id_bookmark_file, new_bookmarkFile);
+            if (!bookmarkFiles.ContainsKey(new_bookmarkFile.id_bookmark_file))
+                bookmarkFiles.Add(new_bookmarkFile.id_bookmark_file, new_bookmarkFile);
         }
 
         /* Remove a bookmark Folder to the dictionary */

@@ -150,29 +150,43 @@ namespace Handlers.Handlers
         }
 
         /* Update parent */
-        public void updateBookmarks()
+        public void updateBookmarkFile(BookmarkFile file)
         {
-            // Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFileParent);
-            xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFolderParent);
-
-
-            //throw new NotImplementedException();
+            if (Authenticator.AUTHENTICATOR.connected)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFileParent.Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()).Replace(LinkResources.IdParentFolder, file.bookmarkFolderParent.id_bookmark_folder.ToString()));
+            }
         }
+
+        /* Update parent */
+        public void updateBookmarkFolder(BookmarkFolder folder)
+        {
+            if (Authenticator.AUTHENTICATOR.connected)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFolderParent.Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()).Replace(LinkResources.IdParentFolder, folder.bookmarkFolderParent.id_bookmark_folder.ToString()));
+            }
+        }
+
 
         /* Remove Folder */
         public void removeFolder(BookmarkFolder folder)
         {
-            // Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFolder);
-
+            if (Authenticator.AUTHENTICATOR.connected)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFolder.Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()));
+            }
         }
         /* Remove File */
         public void removeFile(BookmarkFile file)
         {
-            // Request
-            String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFile);
-
+            if (Authenticator.AUTHENTICATOR.connected)
+            {
+                // Request
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFile.Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()));
+            }
         }
 
         /* Rename Folder (the folder already got the new name (local), update by id) */
