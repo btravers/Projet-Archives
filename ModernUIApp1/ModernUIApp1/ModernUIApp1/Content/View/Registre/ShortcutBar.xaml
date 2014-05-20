@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d"
-             FontSize="17" >
-    <Grid Style="{StaticResource ContentRoot}" Margin="-1,-1,0,0" Width="605">
+             FontSize="17"
+             d:DesignWidth="1000">
+    <Grid Style="{StaticResource ContentRoot}" Margin="-1,-1,0,0" Width="1000" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <WrapPanel Name="ShortcutWrapPanel">
             
                 <Button Content="Nom" Margin="10" Click="ClickShortcutName"/>

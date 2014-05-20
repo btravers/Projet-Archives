@@ -60,15 +60,15 @@
                 <Canvas Name="overlay" Height="220"></Canvas>
             </Grid>
         </ScrollViewer>
-        <Expander Header="Outils" ExpandDirection="Down" TextBlock.Foreground="#C1C1C1" Width="200" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,0,0,0">
+        <Expander Header="Outils" ExpandDirection="Up" TextBlock.Foreground="#C1C1C1" Width="400" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,-50,0,0">
             <StackPanel Orientation="Horizontal" Background="#252526">
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Contraste" />
-                    <Slider Name="sliderContrast" MinWidth="100" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
+                    <Slider Name="sliderContrast" MinWidth="200" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label  Content="Luminosité" />
-                    <Slider Name="sliderBrightness" MinWidth="100" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
+                    <Slider Name="sliderBrightness" MinWidth="200" Minimum="-1" Maximum="1" Value="0" Background="Transparent"/>
                 </StackPanel>
             </StackPanel>
         </Expander>
