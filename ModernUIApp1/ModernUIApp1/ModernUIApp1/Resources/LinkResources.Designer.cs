@@ -322,7 +322,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/remove_bookmark_file/id_file.
         /// </summary>
         internal static string LinkBookmarkRemoveFile {
             get {
@@ -331,7 +331,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/remove_bookmark_folder/id_folder.
         /// </summary>
         internal static string LinkBookmarkRemoveFolder {
             get {
@@ -358,7 +358,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/update_parent_bookmark_file/id_file/id_parent_file.
         /// </summary>
         internal static string LinkBookmarkUpdateFileParent {
             get {
@@ -367,7 +367,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à bookmark/update_parent_bookmark_folder/id_folder/id_parent_folder.
         /// </summary>
         internal static string LinkBookmarkUpdateFolderParent {
             get {
