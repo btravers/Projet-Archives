@@ -31,7 +31,7 @@ class Bookmark
 
 			Database::exec("INSERT INTO BookmarkFolder VALUES ('', ?, ?, ?)", array($id_user, $id_parent_folder, $name));
 
-			$query = "SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ? AND label = ?";
+			$query = "SELECT MAX(id_bookmark_folder) FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ? AND label = ?";
 			$result = Database::query($query, array($id_user, $id_parent_folder, $name));
 			if (count($result) == 0) {
 				return array("helper" => "bookmark", "message" => "creation_error");
@@ -56,7 +56,7 @@ class Bookmark
 			} else {
 				Database::exec("INSERT INTO BookmarkFolder VALUES ('', ?, ?, 'root')", array($id_user, static::ROOT));
 
-				$result = Database::query("SELECT id_bookmark_folder FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ?", array($id_user, static::ROOT));
+				$result = Database::query("SELECT MAX(id_bookmark_folder) FROM BookmarkFolder WHERE id_user = ? AND id_bookmark_folder_parent = ?", array($id_user, static::ROOT));
 				if (count($result) == 0) {
 					return array("helper" => "bookmark", "message" => "creation_error");
 				} else {
@@ -82,12 +82,12 @@ class Bookmark
 
 			Database::exec("INSERT INTO BookmarkFile VALUES ('', ?, ?, ?, ?)", array($id_user, $id_sheet, $id_parent_folder, $name));
 			
-			$query = "SELECT id_bookmark_file FROM BookmarkFile WHERE id_user = ? AND id_sheet = ? AND id_bookmark_folder = ? AND label = ?";
+			$query = "SELECT MAX(id_bookmark_file) FROM BookmarkFile WHERE id_user = ? AND id_sheet = ? AND id_bookmark_folder = ? AND label = ?";
 			$result = Database::query($query, array($id_user, $id_sheet, $id_parent_folder, $name));
 			if (count($result) == 0) {
 				return array("helper" => "bookmark", "message" => "creation_error");
 			} else {
-				return array("helper" => "bookmark", "message" => "created", "result_id" => $result[0][0]);
+				return array("helper" => "bookmark", "message" => "created", "result_id" => $result[count($result)-1][0]);
 			}
 		}
 	}
