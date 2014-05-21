@@ -14,7 +14,7 @@
         <mui:ModernTab Layout="List" SelectedSource="/Content/Search/SearchTable.xaml" Grid.Row="0" FontSize="17">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="table" Source="/Content/Search/SearchTable.xaml" />
-                <mui:Link DisplayName="registre" Source="/Content/Search/SearchRegistre.xaml" />
+                <mui:Link DisplayName="fiche" Source="/Content/Search/SearchRegistre.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
 

@@ -13,7 +13,7 @@
                 <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Année"/></TextBlock>
                 <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Name ="yearValue" Text="1878"/></TextBlock>
                 <Slider Name="yearSlider" Minimum="1867" IsSnapToTickEnabled="True" SmallChange="1" Maximum="1918" Value="1878" TickPlacement="BottomRight" Background="Transparent"/>
-                <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Commune"/></TextBlock>
+                <TextBlock Style="{StaticResource Heading2}" ><Run Language="fr-fr" Text="Commune*"/></TextBlock>
                 <TextBox Name="location" Width="231" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2" TextAlignment="Left" Text="saint-malo"/>
                 <Separator />
                 <Grid>
