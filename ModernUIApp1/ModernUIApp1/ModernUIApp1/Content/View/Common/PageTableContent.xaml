@@ -58,7 +58,8 @@
                     </Image.Effect>
                 </Image>
                 <Canvas Name="overlay" Height="220"></Canvas>
-            </Grid>
+                <TextBlock Name="noImageError" Text="Pas d'image disponible" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="#C1C1C1"/>
+        </Grid>
         </ScrollViewer>
         <Expander Header="Outils" ExpandDirection="Up" TextBlock.Foreground="#C1C1C1" Width="400" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,-50,0,0">
             <StackPanel Orientation="Horizontal" Background="#252526">

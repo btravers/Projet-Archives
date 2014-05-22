@@ -296,26 +296,30 @@ namespace ModernUIApp1.Content.View.Common
 
         void animNext_Completed(object sender, EventArgs e)
         {
+            overlay.Children.Clear();
+            
             if (ViewManager.instance.pageTables != null && ViewManager.instance.indexPageTables + 1 < ViewManager.instance.pageTables.Count)
             {
                 ViewManager.instance.indexPageTables++;
                 PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
                 try
                 {
+                    noImageError.Visibility = Visibility.Hidden;
                     pageImage.Visibility = System.Windows.Visibility.Visible;
                     pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
 
                     ViewManager.instance.pageTable = pageTable;
+
+                    onImageChange();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
 
                     pageImage.Visibility = System.Windows.Visibility.Hidden;
+                    noImageError.Visibility = Visibility.Visible;
                 }
-            }
-            
-            onImageChange();
+            }            
             
             Storyboard anim = (Storyboard)this.Resources["backNextAnimation"];
             anim.Begin();
@@ -323,26 +327,30 @@ namespace ModernUIApp1.Content.View.Common
 
         void animPrevious_Completed(object sender, EventArgs e)
         {
+            overlay.Children.Clear();
+
             if (ViewManager.instance.pageTables != null && ViewManager.instance.indexPageTables - 1 >= 0)
             {
                 ViewManager.instance.indexPageTables--;
                 PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
                 try
                 {
+                    noImageError.Visibility = Visibility.Hidden;
                     pageImage.Visibility = System.Windows.Visibility.Visible;
                     pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
 
                     ViewManager.instance.pageTable = pageTable;
+
+                    onImageChange();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
 
                     pageImage.Visibility = System.Windows.Visibility.Hidden;
+                    noImageError.Visibility = Visibility.Visible;
                 }                
             }
-
-            onImageChange();
 
             Storyboard anim = (Storyboard)this.Resources["backPreviousAnimation"];
             anim.Begin();
