@@ -44,10 +44,12 @@ namespace ModernUIApp1.Content.View.Common
         Point? lastCenterPositionOnTarget;
         Point? lastMousePositionOnTarget;
         Point? lastDragPoint;
-        AddAnnotation addAnnotationUserControl;
+        AddAnnotationTable addAnnotationUserControl;
         Boolean mouseMove;
 
         Point mouseStartDrag;
+
+        Point positionTopLeft;
 
         private TableHandler tableHandler;
 
@@ -247,33 +249,62 @@ namespace ModernUIApp1.Content.View.Common
         {
             if (!mouseMove)
             {
-                Point position = e.MouseDevice.GetPosition(pageImage);
-
                 Point mouse = Mouse.GetPosition(this);
 
-                if (addAnnotationUserControl != null)
+                if (positionTopLeft.X == -1 || positionTopLeft.Y == -1)
                 {
-                    addAnnotationUserControl.close_dialog();
-                }
+                    if (addAnnotationUserControl == null || !addAnnotationUserControl.IsVisible)
+                    {
+                        positionTopLeft = e.MouseDevice.GetPosition(pageImage);
 
-                addAnnotationUserControl = new AddAnnotation(position);
-                // addAnnotationUserControl.window.Title = "Ajouter une annotation";
+                        Ellipse ell = new Ellipse();
+                        ell.Width = 2;
+                        ell.Height = 2;
+                        ell.StrokeThickness = 0.2;
+                        ell.Stroke = new SolidColorBrush(Colors.Blue);
+                        ell.Fill = new SolidColorBrush(Color.FromArgb(100, 100, 149, 237));
+                        double x = positionTopLeft.X;
+                        double y = positionTopLeft.Y;
+                        Canvas.SetLeft(ell, x);
+                        Canvas.SetTop(ell, y);
+                        overlay.Children.Add(ell);
 
-                Double left;
-
-                if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2)
-                {
-                    left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
+                        positionTopLeft.X = (int)(positionTopLeft.X * ((BitmapSource)pageImage.Source).PixelWidth / pageImage.ActualWidth);
+                        positionTopLeft.Y = (int)(positionTopLeft.Y * ((BitmapSource)pageImage.Source).PixelHeight / pageImage.ActualHeight); 
+                    }
                 }
                 else
                 {
-                    left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
-                }
+                    Point positionBottomRight = e.MouseDevice.GetPosition(overlay);
+                    positionBottomRight.X = (int)(positionBottomRight.X * ((BitmapSource)pageImage.Source).PixelWidth / pageImage.ActualWidth);
+                    positionBottomRight.Y = (int)(positionBottomRight.Y * ((BitmapSource)pageImage.Source).PixelHeight / pageImage.ActualHeight); 
 
-                if (Authenticator.AUTHENTICATOR.connected)
-                {
-                    addAnnotationUserControl.setParameters(left, mouse.Y);
-                    addAnnotationUserControl.Show();
+                    if (addAnnotationUserControl != null)
+                    {
+                        addAnnotationUserControl.close_dialog();
+                    }
+
+                    addAnnotationUserControl = new AddAnnotationTable(positionTopLeft, positionBottomRight);
+
+                    Double left;
+
+                    if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2)
+                    {
+                        left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
+                    }
+                    else
+                    {
+                        left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
+                    }
+
+                    if (Authenticator.AUTHENTICATOR.connected)
+                    {
+                        addAnnotationUserControl.setParameters(left, mouse.Y);
+                        addAnnotationUserControl.Show();
+                    }
+
+                    positionTopLeft = new Point(-1, -1);
+                    reload();
                 }
 
                 /*
@@ -291,6 +322,7 @@ namespace ModernUIApp1.Content.View.Common
             else
             {
                 mouseMove = false;
+                positionTopLeft = new Point(-1, -1);
             }
         }
 
