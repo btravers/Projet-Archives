@@ -91,6 +91,10 @@ namespace ModernUIApp1.Content.View.Common
                         {
                             pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
                         }
+                    },
+                    () =>
+                    {
+
                     }
                 );
             }
@@ -406,21 +410,12 @@ namespace ModernUIApp1.Content.View.Common
 
                     if (ViewManager.instance.sheet != null)
                     {
+                        if (ViewRegister.window != null)
+                        {
+                            ViewRegister.window.reload();
+                        }
 
-                        FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, ViewManager.instance.sheet.url.Replace("/", "-")), ViewManager.instance.sheet.url,
-                        () =>
-                            {
-                                if (File.Exists(ViewManager.instance.sheet.url))
-                                {
-                                    if (ViewRegister.window != null)
-                                    {
-                                        ViewRegister.window.reload();
-                                    }
-
-                                    MainWindow.window.ContentSource = new Uri("/Pages/ViewRegister.xaml", UriKind.Relative);
-                                }
-                            }
-                        );                        
+                        MainWindow.window.ContentSource = new Uri("/Pages/ViewRegister.xaml", UriKind.Relative);      
                     }
                     else
                     {

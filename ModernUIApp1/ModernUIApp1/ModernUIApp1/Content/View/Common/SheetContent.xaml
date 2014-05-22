@@ -59,6 +59,7 @@
                     </Image.Effect>
                 </Image>
                 <Canvas Name="overlay" Margin="45,0,45,5" Visibility="{Binding Path=IsChecked, ElementName=annotationsEnable, Converter={StaticResource BoolToVisConverter}}"></Canvas>
+                <TextBlock Name="noImageError" Text="Pas d'image disponible" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="#C1C1C1"/>
             </Grid>
         </ScrollViewer>
         <Expander Header="Outils" ExpandDirection="Up" TextBlock.Foreground="#C1C1C1" Width="750" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,-50,0,0">

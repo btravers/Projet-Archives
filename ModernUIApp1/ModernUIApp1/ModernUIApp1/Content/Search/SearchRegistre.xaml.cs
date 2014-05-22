@@ -79,6 +79,10 @@ namespace ModernUIApp1.Content
                             {
                                 SearchResult.window.model.sort();
                             }
+                        },
+                        () =>
+                        {
+
                         }
                         );
                     }

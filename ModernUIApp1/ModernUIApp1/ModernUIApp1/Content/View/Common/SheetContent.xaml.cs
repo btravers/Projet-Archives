@@ -91,13 +91,20 @@ namespace ModernUIApp1.Content.View.Common
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
             {
+                noImageError.Visibility = Visibility.Hidden;
                 FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, sheet.url.Replace("/", "-")), sheet.url,
                     () =>
                     {
                         if (File.Exists(sheet.url))
                         {
-                            rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + sheet.url, UriKind.Absolute));
+                            rmmImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + sheet.url, UriKind.Absolute));                            
+                            rmmImage.Visibility = Visibility.Visible;
                         }
+                    },
+                    () =>
+                    {
+                        rmmImage.Visibility = Visibility.Hidden;
+                        noImageError.Visibility = Visibility.Visible;
                     }
                 );
             }

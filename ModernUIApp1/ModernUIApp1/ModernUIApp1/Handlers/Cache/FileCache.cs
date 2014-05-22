@@ -26,7 +26,7 @@ namespace ModernUIApp1.Handlers.Utils
             private set { cacheFile = value; }
         }
 
-        public void downloadFile(string url, string filePath, Action callback)
+        public void downloadFile(string url, string filePath, Action successCallback, Action errorCallback)
         {
             if (!File.Exists(filePath))
             {
@@ -39,7 +39,7 @@ namespace ModernUIApp1.Handlers.Utils
                 webClient.DownloadFileCompleted += delegate
                 {
                     FileInfo f = new FileInfo(filePath);
-                    if (f.Length == 0)
+                    if (File.Exists(filePath) && f.Length == 0)
                     {
                         try
                         {
@@ -49,17 +49,19 @@ namespace ModernUIApp1.Handlers.Utils
                         {
                             Console.WriteLine(e.StackTrace);
                         }
+
+                        errorCallback();
                     }
                     else
                     {
-                        callback();
+                        successCallback();
                     }
                 };
             }
             else
             {
                 FileInfo f = new FileInfo(filePath);
-                if (f.Length == 0)
+                if (File.Exists(filePath) && f.Length == 0)
                 {
                     try
                     {
@@ -69,10 +71,12 @@ namespace ModernUIApp1.Handlers.Utils
                     {
                         Console.WriteLine(e.StackTrace);
                     }
+
+                    errorCallback();
                 }
                 else
                 {
-                    callback();
+                    successCallback();
                 }
             }
         }
