@@ -282,7 +282,7 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
         /* Parse the response to get_sheet_by_id */
         public Sheet ParserGetSheetById()
         {
-            Sheet res = new Sheet();
+            Sheet res = null;
 
             try
             {

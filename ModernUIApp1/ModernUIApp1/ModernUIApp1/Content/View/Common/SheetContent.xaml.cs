@@ -279,8 +279,11 @@ namespace ModernUIApp1.Content.View.Common
                     left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
                 }
 
-                addAnnotationUserControl.setParameters(left, mouse.Y);
-                addAnnotationUserControl.Show();
+                if (Authenticator.AUTHENTICATOR.connected)
+                {
+                    addAnnotationUserControl.setParameters(left, mouse.Y);
+                    addAnnotationUserControl.Show();
+                }
 /*
                 addAnnotationUserControl.window.Top = mouse.Y;
                 addAnnotationUserControl.window.Width = addAnnotationUserControl.Width + 25;

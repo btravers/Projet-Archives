@@ -32,6 +32,12 @@ namespace ModernUIApp1.Pages.Popups
             InitializeComponent();
 
             this.CloseButton.Visibility = Visibility.Hidden;
+
+            if (!Authenticator.AUTHENTICATOR.connected)
+            {
+                modify.Visibility = Visibility.Hidden;
+                delete.Visibility = Visibility.Hidden;
+            }
         }
 
         public void setPosition(Double left, Double top)

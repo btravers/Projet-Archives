@@ -266,8 +266,11 @@ namespace ModernUIApp1.Content.View.Common
                     left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
                 }
 
-                addAnnotationUserControl.setParameters(left, mouse.Y);
-                addAnnotationUserControl.Show();
+                if (Authenticator.AUTHENTICATOR.connected)
+                {
+                    addAnnotationUserControl.setParameters(left, mouse.Y);
+                    addAnnotationUserControl.Show();
+                }
 
                 /*
                                 addAnnotationUserControl.window.Top = mouse.Y;
@@ -403,12 +406,21 @@ namespace ModernUIApp1.Content.View.Common
 
                     if (ViewManager.instance.sheet != null)
                     {
-                        if (ViewRegister.window != null)
-                        {
-                            ViewRegister.window.reload();
-                        }
 
-                        MainWindow.window.ContentSource = new Uri("/Pages/ViewRegister.xaml", UriKind.Relative);
+                        FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, ViewManager.instance.sheet.url.Replace("/", "-")), ViewManager.instance.sheet.url,
+                        () =>
+                            {
+                                if (File.Exists(ViewManager.instance.sheet.url))
+                                {
+                                    if (ViewRegister.window != null)
+                                    {
+                                        ViewRegister.window.reload();
+                                    }
+
+                                    MainWindow.window.ContentSource = new Uri("/Pages/ViewRegister.xaml", UriKind.Relative);
+                                }
+                            }
+                        );                        
                     }
                     else
                     {
