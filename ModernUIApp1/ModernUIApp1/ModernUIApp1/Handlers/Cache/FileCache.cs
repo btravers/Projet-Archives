@@ -50,12 +50,30 @@ namespace ModernUIApp1.Handlers.Utils
                             Console.WriteLine(e.StackTrace);
                         }
                     }
-                    callback();
+                    else
+                    {
+                        callback();
+                    }
                 };
             }
             else
             {
-                callback();
+                FileInfo f = new FileInfo(filePath);
+                if (f.Length == 0)
+                {
+                    try
+                    {
+                        File.Delete(filePath);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                }
+                else
+                {
+                    callback();
+                }
             }
         }
     }
