@@ -25,8 +25,21 @@ class Annotator
 			return array("message" => "user_not_found");
 		} else if(!Database::existPageTable($idTable)) {
 			return array("message" => "table_page_not_found");
-		} else {			
-			Database::exec("INSERT INTO AnnotationPageTable VALUES ('', ?, ?, ?, ?, ?, ?, ?)", array($idTable, $idUser, $x, $y, $width, $height, $number));
+		} else {
+			$query = "SELECT Sheet.id_sheet FROM PageTable, Sheet, AnnotationSheet "
+					. "WHERE id_page_table = ? "
+					. "AND PageTable.id_register = Sheet.id_register "
+					. "AND Sheet.id_sheet = AnnotationSheet.id_sheet "
+					. "AND id_type = 3 "
+					. "AND AnnotationSheet.text = ?";
+			$result = Database::query($query, array($idTable, $number));
+
+			$idSheet = -1;
+			if (count($result) > 0) {
+				$idSheet = $result[0][0];
+			}
+
+			Database::exec("INSERT INTO AnnotationPageTable VALUES ('', ?, ?, ?, ?, ?, ?, ?, ?)", array($idTable, $idUser, $x, $y, $width, $height, $number, $idSheet));
 			return array("message" => "registered");
 		}
 	}
