@@ -1,7 +1,9 @@
-﻿using Data.Data.Users.Shortcut;
+﻿using Data.Data;
+using Data.Data.Users.Shortcut;
 using FirstFloor.ModernUI.Windows.Controls;
 using Handlers.Handlers;
 using ModernUIApp1.Content.View.Registre;
+using ModernUIApp1.Handlers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,7 @@ namespace ModernUIApp1.Pages.Popups
     public partial class AddShortcut : ModernDialog
     {
         private ShortcutBar sb;
+
         public AddShortcut(ShortcutBar sb)
         {
             InitializeComponent();
@@ -53,10 +56,16 @@ namespace ModernUIApp1.Pages.Popups
                 AnnotationType annotationType;
                 AnnotationType.types.TryGetValue(tag, out annotationType);
                 ShortcutHandler sh = new ShortcutHandler();
-                //ajouter le raccourcis à l'utilisateur (serveur)
-                sh.createShortcut(annotationType , text.Text, 0);
+                //ajoute le raccourci à l'utilisateur (serveur)
+                int shortcutId = sh.createShortcut(annotationType , text.Text, 0);
 
-                sb.AddButton(text.Text, tag);
+                //ajoute le raccourci à l'utilisateur (client)
+                Shortcut sc = new Shortcut(shortcutId, annotationType, text.Text, 0);
+
+                //supprime tous les raccourcis de la barre de raccourcis
+                sb.ClearShortcutBar();
+                //charge tous les raccourcis de l'utilisateur via la bdd
+                sb.LoadShortcutBar();
 
                 this.Close();
             }

@@ -44,18 +44,20 @@ namespace Data.Data
             this.status = status;
         }
 
-        public void addShortcut(Shortcut shortcut)
+        /*public void addShortcut(Shortcut shortcut)
         {
             shortcutList.Add(shortcut);
+            Console.WriteLine("add : "+shortcut.default_text);
         }
         
-        public void deleteShortcut(int id_shortcut)
+        public void deleteShortcut(int shortcutId)
         {
             foreach (Shortcut shortcut in shortcutList)
             {
-                if (shortcut.id_shortcut == id_shortcut)
+                Console.WriteLine("suppr : "+shortcut.default_text);
+                if (shortcut.id_shortcut == shortcutId)
                     shortcutList.Remove(shortcut);
             }
-        }
+        }*/
     }
 }

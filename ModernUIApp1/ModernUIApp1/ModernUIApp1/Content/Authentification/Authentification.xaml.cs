@@ -64,6 +64,10 @@ namespace ModernUIApp1.Content.Authentification
                 enable();
                 message.Text = ErrorMessagesResources.Logout_Success;
                 message.Foreground = new SolidColorBrush(Colors.Green);
+                if (ViewRegister.window != null)
+                {
+                    ViewRegister.window.reload();
+                }
             }
             else
             {

@@ -10,10 +10,10 @@
     <Grid Style="{StaticResource ContentRoot}" Margin="-1,-1,0,0" Width="1000" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <WrapPanel Name="ShortcutWrapPanel">
             
-            <Button Content="Nom" Margin="10" Click="ClickShortcutName"/>
-            <Button Content="Prenom" Margin="10" Click="ClickShortcutFirstName"/>
-            <Button Content="Supprimer un raccourci..." Margin="10" Click="ClickDeleteShortcut"/>
-            <Button Content="Ajouter un nouveau raccourci..." Margin="10" Click="ClickAddShortcut"/>
+            <Button Name="Nom" Content="Nom" Margin="10" Click="ClickShortcutName"/>
+            <Button Name="Prenom" Content="Prenom" Margin="10" Click="ClickShortcutFirstName"/>
+            <Button Name="Suppr" Content="Supprimer un raccourci..." Margin="10" Click="ClickDeleteShortcut"/>
+            <Button Name="Ajout"  Content="Ajouter un nouveau raccourci..." Margin="10" Click="ClickAddShortcut"/>
             
             </WrapPanel>
     </Grid>

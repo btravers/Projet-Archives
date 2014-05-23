@@ -1,6 +1,7 @@
 ﻿using Data.Data.Users.Shortcut;
 using FirstFloor.ModernUI.Windows.Controls;
 using Handlers.Handlers;
+using ModernUIApp1.Content.View.Registre;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,9 @@ namespace ModernUIApp1.Pages.Popups
     /// </summary>
     public partial class DeleteShortcut : ModernDialog
     {
-        public DeleteShortcut()
+        private ShortcutBar sb;
+
+        public DeleteShortcut(ShortcutBar sb)
         {
             InitializeComponent();
             this.CloseButton.Visibility = Visibility.Hidden;
@@ -37,6 +40,7 @@ namespace ModernUIApp1.Pages.Popups
                 i.Content = shortcut.default_text;
                 shortcutListBox.Items.Add(i);
             }
+            this.sb = sb;
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -52,7 +56,8 @@ namespace ModernUIApp1.Pages.Popups
                 int tag = (int)item.Tag;
                 ShortcutHandler sh = new ShortcutHandler();
                 sh.deleteShortcut(tag);
-
+                sb.ClearShortcutBar();
+                sb.LoadShortcutBar();
                 this.Close();
             }
         }

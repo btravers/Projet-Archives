@@ -1,4 +1,5 @@
-﻿using ModernUIApp1.Content.View.Common;
+﻿using Data.Data.Users.Shortcut;
+using ModernUIApp1.Content.View.Common;
 using ModernUIApp1.Content.View.Registre;
 using ModernUIApp1.Handlers.Utils;
 using System;
@@ -29,6 +30,7 @@ namespace ModernUIApp1.Pages
         {
             InitializeComponent();
 
+
             ViewRegister.window = this;
 
             reload();
@@ -52,6 +54,13 @@ namespace ModernUIApp1.Pages
                 if (identitySheet != null)
                 {
                     identitySheet.reload();
+                }
+
+                ShortcutBar shortcutbar = ShortcutBar.SHORTCUTBAR;
+                if (shortcutbar != null)
+                {
+                    shortcutbar.ClearShortcutBar();
+                    shortcutbar.LoadShortcutBar();
                 }
             }
         }

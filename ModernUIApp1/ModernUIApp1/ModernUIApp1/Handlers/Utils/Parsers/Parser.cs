@@ -456,19 +456,43 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
 
         public int parseCreateShortcut()
         {
-            int idShortcut = 0;
+            int idShortcut = int.Parse(getFirstElement("id_shortcut").Value);
             return idShortcut;
         }
 
         public string parseDeleteShortcut()
         {
-            string repServ = "Shortcut non supprime";
-            return repServ;
+            String message = getFirstElement("message").Value;
+            return message;
         }
 
         public List<Shortcut> parserGetAllShortcut()
         {
-            throw new NotImplementedException();
+            List<Shortcut> shortcutList = new List<Shortcut>();
+
+            try
+            {
+                XElement xmlResponse = xmlDocument.Element("response");
+                XElement xmlResult = xmlResponse.Element("result");
+
+                foreach (XElement xmlNode in xmlResult.Elements())
+                {
+                    int id_shortcut = int.Parse(xmlNode.Element("id_shortcut").Value);
+                    int id_type = int.Parse(xmlNode.Element("id_type").Value);
+                    string default_text = xmlNode.Element("default_text").Value;
+                    int id_icon = int.Parse(xmlNode.Element("id_icon").Value);
+
+                    AnnotationType annotationType;
+                    AnnotationType.types.TryGetValue(id_type, out annotationType);
+
+                    shortcutList.Add(new Shortcut(id_shortcut, annotationType, default_text, id_icon));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            return shortcutList;
         }
     }
 }
