@@ -82,9 +82,6 @@
     <Compile Include="Content\View\Common\Bookmark\BookmarkToolbar.xaml.cs">
       <DependentUpon>BookmarkToolbar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\View\Common\Bookmark\PopAddFolder.xaml.cs">
-      <DependentUpon>PopAddFolder.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Content\View\Common\BrightContrastEffect.cs" />
     <Compile Include="Content\View\Common\SheetContent.xaml.cs">
       <DependentUpon>SheetContent.xaml</DependentUpon>
@@ -171,10 +168,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Content\View\Common\Bookmark\BookmarkToolbar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Content\View\Common\Bookmark\PopAddFolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
