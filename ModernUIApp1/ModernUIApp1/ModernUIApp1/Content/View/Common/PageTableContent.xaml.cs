@@ -60,8 +60,7 @@ namespace ModernUIApp1.Content.View.Common
             tableHandler = new TableHandler();
 
             PageTableContent.window = this;
-            Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            Arrange(new Rect(0, 0, window.DesiredSize.Width, window.DesiredSize.Height));
+            
 
             scrollViewer.ScrollChanged += OnScrollViewerScrollChanged;
             //scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
@@ -94,6 +93,11 @@ namespace ModernUIApp1.Content.View.Common
                         if (File.Exists(pageTable.url))
                         {
                             pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
+
+                            Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                            Arrange(new Rect(0, 0, window.DesiredSize.Width, window.DesiredSize.Height));
+
+                            onImageChange();
                         }
                     },
                     () =>
@@ -101,9 +105,7 @@ namespace ModernUIApp1.Content.View.Common
 
                     }
                 );
-            }
-
-            onImageChange();
+            }            
         }        
 
         void OnMouseMove(object sender, MouseEventArgs e)
