@@ -117,6 +117,9 @@
     <Compile Include="Pages\Popups\ModifyAnnotation.xaml.cs">
       <DependentUpon>ModifyAnnotation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Popups\DisplayAnnotationTable.xaml.cs">
+      <DependentUpon>DisplayAnnotationTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Popups\Popup.cs" />
     <Compile Include="Pages\ViewRegister.xaml.cs">
       <DependentUpon>ViewRegister.xaml</DependentUpon>
@@ -284,6 +287,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Popups\ModifyAnnotation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Popups\DisplayAnnotationTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

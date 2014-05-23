@@ -60,7 +60,7 @@ namespace ModernUIApp1.Content.View.Common
             tableHandler = new TableHandler();
 
             PageTableContent.window = this;
-            
+
 
             scrollViewer.ScrollChanged += OnScrollViewerScrollChanged;
             //scrollViewer.MouseLeftButtonUp += OnMouseLeftButtonUp;
@@ -69,7 +69,7 @@ namespace ModernUIApp1.Content.View.Common
 
             scrollViewer.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
 
-            scrollViewer.MouseMove += OnMouseMove;            
+            scrollViewer.MouseMove += OnMouseMove;
 
             pageImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
 
@@ -83,7 +83,7 @@ namespace ModernUIApp1.Content.View.Common
             //slider.Value = 2;
 
             noImageError.Visibility = Visibility.Hidden;
-            
+
             if (ViewManager.instance.pageTables != null)
             {
                 PageTable pageTable = ViewManager.instance.pageTables[ViewManager.instance.indexPageTables];
@@ -105,8 +105,8 @@ namespace ModernUIApp1.Content.View.Common
 
                     }
                 );
-            }            
-        }        
+            }
+        }
 
         void OnMouseMove(object sender, MouseEventArgs e)
         {
@@ -129,7 +129,7 @@ namespace ModernUIApp1.Content.View.Common
                     scrollViewer.Cursor = Cursors.SizeAll;
                 }
 
-                
+
             }
         }
 
@@ -337,7 +337,7 @@ namespace ModernUIApp1.Content.View.Common
         void animNext_Completed(object sender, EventArgs e)
         {
             overlay.Children.Clear();
-            
+
             if (ViewManager.instance.pageTables != null && ViewManager.instance.indexPageTables + 1 < ViewManager.instance.pageTables.Count)
             {
                 ViewManager.instance.indexPageTables++;
@@ -359,8 +359,8 @@ namespace ModernUIApp1.Content.View.Common
                     pageImage.Visibility = System.Windows.Visibility.Hidden;
                     noImageError.Visibility = Visibility.Visible;
                 }
-            }            
-            
+            }
+
             Storyboard anim = (Storyboard)this.Resources["backNextAnimation"];
             anim.Begin();
         }
@@ -389,7 +389,7 @@ namespace ModernUIApp1.Content.View.Common
 
                     pageImage.Visibility = System.Windows.Visibility.Hidden;
                     noImageError.Visibility = Visibility.Visible;
-                }                
+                }
             }
 
             Storyboard anim = (Storyboard)this.Resources["backPreviousAnimation"];
@@ -424,7 +424,7 @@ namespace ModernUIApp1.Content.View.Common
         }
 
         void displayAnnotationRectangle(AnnotationPageTable annotation)
-        {            
+        {
             double padding = 0.8;
 
             Rectangle r = new Rectangle();
@@ -444,49 +444,11 @@ namespace ModernUIApp1.Content.View.Common
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
         {
-            try
-            {
-                AnnotationPageTable annotation = (AnnotationPageTable)((Rectangle)sender).Tag;
-                Console.WriteLine("id:" + annotation.id_annotation_page_table + ", num:" + annotation.id_number + ", x:" + annotation.x + ", y:" + annotation.y);
+            AnnotationPageTable annotation = (AnnotationPageTable)((Rectangle)sender).Tag;
+            Console.WriteLine("id:" + annotation.id_annotation_page_table + ", num:" + annotation.id_number + ", x:" + annotation.x + ", y:" + annotation.y);
 
-                SheetHandler sheetHandler = new SheetHandler();
-
-                if (annotation.id_sheet != -1)
-                {
-                    ViewManager.instance.sheet = sheetHandler.getById(annotation.id_sheet);
-
-                    if (ViewManager.instance.sheet != null)
-                    {
-                        FileCache.instance.downloadFile(Connection.ROOT_URL + "/" + ModernUIApp1.Resources.LinkResources.LinkPrintFile.Replace(ModernUIApp1.Resources.LinkResources.Path, ViewManager.instance.sheet.url.Replace("/", "-")), ViewManager.instance.sheet.url,
-                            () =>
-                            {
-                                if (File.Exists(ViewManager.instance.sheet.url))
-                                {
-                                    if (ViewRegister.window != null)
-                                    {
-                                        ViewRegister.window.reload();
-                                    }
-
-                                    MainWindow.window.ContentSource = new Uri("/Pages/ViewRegister.xaml", UriKind.Relative);      
-                                }
-                            },
-                            () =>
-                            {
-                                MessageBox.Show("L'image n'est pas disponible.", "Opération impossible");
-                            }
-                        );                        
-                    }
-                    else
-                    {
-                        Console.WriteLine("Image introuvable...");
-                    }
-                }
-            }
-            catch (System.InvalidCastException ice)
-            {
-                Console.WriteLine(ice.Message);
-            }
+            DisplayAnnotationTable displayAnnotationTableUserControl = new DisplayAnnotationTable(annotation);
+            displayAnnotationTableUserControl.Show();
         }
-
     }
 }

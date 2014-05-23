@@ -385,7 +385,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à annotator/delete_annotation_page_table/session_id/id_annotation_page_table.
+        ///   Recherche une chaîne localisée semblable à annotator/delete_annotation_table/session_id/id_annotation_page_table.
         /// </summary>
         internal static string LinkDeleteAnnotationTable {
             get {

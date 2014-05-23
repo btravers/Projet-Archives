@@ -387,7 +387,7 @@
     <comment>link to delete an annotation on a sheet</comment>
   </data>
   <data name="LinkDeleteAnnotationTable" xml:space="preserve">
-    <value>annotator/delete_annotation_page_table/session_id/id_annotation_page_table</value>
+    <value>annotator/delete_annotation_table/session_id/id_annotation_page_table</value>
     <comment>link to delete an annotation on a table</comment>
   </data>
   <data name="LinkAddOrUpdateAnnotationSheet" xml:space="preserve">
