@@ -10,7 +10,6 @@ using System.Collections.ObjectModel;
 using ModernUIApp1.Pages;
 using ModernUIApp1.Handlers.Utils;
 using Data.Data.Registre;
-using ModernUIApp1.Content.Bookmark;
 
 namespace ModernUIApp1.Content.View.Common.Bookmark
 {
@@ -74,45 +73,6 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 {
                     this.selectedResult = value;
                     OnPropertyChanged("SelectedResult");
-/*
-                    if (this.selectedResult != null)
-                    {
-                        if (this.selectedResult.type.Equals(BookmarkType.FILE))
-                        {
-                            if (BookmarkResult.window != null && BookmarkResult.window.currentUnderFiles != null && BookmarkResult.window.currentUnderFiles.ContainsKey(this.selectedResult.id))
-                            {
-                                ViewManager.instance.sheet = BookmarkResult.window.currentUnderFiles[this.selectedResult.id].id_sheet;
-
-                                /* TODO : same for sheet so ?
-                                List<PageTable> list = new List<PageTable>();
-                                int index = 0;
-                                foreach (KeyValuePair<int, PageTable> pair in SearchTable.pagesTable.ToList().OrderBy(o => o.Key))
-                                {
-                                    list.Add(pair.Value);
-                                    if (this.selectedResult.id == pair.Key)
-                                    {
-                                        ViewManager.instance.indexPageTables = index;
-                                    }
-
-                                    index++;
-                                }
-                                ViewManager.instance.pageTables = list;
-                                */
-/*                            }
-
-                            if (ViewTable.window != null)
-                            {
-                                ViewTable.window.reload();
-                            }
-
-                            MainWindow.window.ContentSource = new Uri(this.selectedResult.uri, UriKind.Relative);
-                        }
-                        else
-                        {
-                            BookmarkResult.window.moveToFolder(this.selectedResult.id);
-                        }
-                    }
- */
                 }
             }
         }

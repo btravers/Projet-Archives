@@ -147,10 +147,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\View\Common\Bookmark\BookmarkCell.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Content\View\Common\Bookmark\BookmarkResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,9 +208,6 @@
     </Compile>
     <Compile Include="Content\Authentification\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Content\View\Common\Bookmark\BookmarkCell.xaml.cs">
-      <DependentUpon>BookmarkCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\View\Common\Bookmark\BookmarkResult.xaml.cs">
       <DependentUpon>BookmarkResult.xaml</DependentUpon>
