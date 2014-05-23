@@ -45,11 +45,11 @@ class Shortcut
 			$resultShortcut = Database::query("SELECT * FROM Shortcut WHERE id_user = ?", array($id_user));
 			foreach ($resultShortcut as $shortcut)
 			{
-				$data['id_shortcut'] = $shortcut['id_shortcut'];
-				$data['id_user'] = $shortcut['id_user'];
-				$data['id_type'] = $shortcut['id_type'];
-				$data['default_text'] = $shortcut['default_text'];
-				$data['id_icon'] = $shortcut['id_icon'];
+				$idShortcut = $shortcut['id_shortcut'];
+				$data[$idShortcut]['id_shortcut'] = $shortcut['id_shortcut'];
+				$data[$idShortcut]['id_type'] = $shortcut['id_type'];
+				$data[$idShortcut]['default_text'] = $shortcut['default_text'];
+				$data[$idShortcut]['id_icon'] = $shortcut['id_icon'];
 			}
 			if(count($resultShortcut) > 0) {
 				return array("helper" => "shortcut", "message" => "result_found", "result" => $data);
