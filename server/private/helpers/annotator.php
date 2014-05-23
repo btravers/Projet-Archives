@@ -79,7 +79,10 @@ class Annotator
 	 */
 	public static function delete_annotation_table($id_session, $idAnnotationTable)
 	{
-		if (!Database::existAnnotationTable($idAnnotationTable)) {
+		$idUser = Database::getUser($id_session);
+		if($idUser == -1) {
+			return array("helper" => "annotator", "message" => "user_not_found");
+		} else if (!Database::existAnnotationTable($idAnnotationTable)) {
 			return array("helper" => "annotator", "message" => "annotation_not_found");
 		} else {
 			Database::exec("DELETE FROM AnnotationPageTable WHERE id_annotation_page_table = ?", array($idAnnotationTable));
@@ -144,13 +147,17 @@ class Annotator
 	public static function add_or_update_annotation_sheet($id_session, $idAnnotationSheet, $idSheet, $idType, $x, $y, $annotation)
 	{
 		$idUser = Database::getUser($id_session);
-		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
-		if($result[0]["id_user"] == $idUser) {
-			annotator::update_annotation_sheet($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation);
-			return array("helper" => "annotator", "message" => "updated");
+		if($idUser == -1) {
+			return array("helper" => "annotator", "message" => "user_not_found");
 		} else {
-			annotator::annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation);
-			return array("helper" => "annotator", "message" => "registered");
+			$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
+			if($result[0]["id_user"] == $idUser) {
+				annotator::update_annotation_sheet($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation);
+				return array("helper" => "annotator", "message" => "updated");
+			} else {
+				annotator::annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation);
+				return array("helper" => "annotator", "message" => "registered");
+			}
 		}
 
 	}
