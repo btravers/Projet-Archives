@@ -37,13 +37,22 @@ class Shortcut
 	
 	public static function get_all_shortcut($id_session)
 	{
+		$data = array();
 		$id_user = Database::getUser($id_session);
 		if($id_user == -1) {
 			return array("helper" => "shortcut", "message" => "user_not_found");
 		} else {
-			$result = Database::query("SELECT * FROM Shortcut WHERE id_user = ?", array($id_user));
-			if(count($result) > 0) {
-				return array("helper" => "shortcut", "message" => "result_found", "result" => $result);
+			$resultShortcut = Database::query("SELECT * FROM Shortcut WHERE id_user = ?", array($id_user));
+			foreach ($resultShortcut as $shortcut)
+			{
+				$data['id_shortcut'] = $shortcut['id_shortcut'];
+				$data['id_user'] = $shortcut['id_user'];
+				$data['id_type'] = $shortcut['id_type'];
+				$data['default_text'] = $shortcut['default_text'];
+				$data['id_icon'] = $shortcut['id_icon'];
+			}
+			if(count($resultShortcut) > 0) {
+				return array("helper" => "shortcut", "message" => "result_found", "result" => $data);
 			} else {
 				return array("helper" => "shortcut", "message" => "result_not_found");
 			}
