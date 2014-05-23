@@ -399,8 +399,8 @@ namespace ModernUIApp1.Content.View.Common
             e.Stroke = new SolidColorBrush(Colors.Blue);
             e.Fill = new SolidColorBrush(Color.FromArgb(100, 100, 149, 237));
             e.Tag = annotation;
-            double x = (double)annotation.x / ((BitmapSource)rmmImage.Source).PixelWidth * rmmImage.ActualWidth;
-            double y = (double)annotation.y / ((BitmapSource)rmmImage.Source).PixelHeight * rmmImage.ActualHeight;
+            double x = (double)annotation.x / ((BitmapSource)rmmImage.Source).PixelWidth * rmmImage.ActualWidth - 1;
+            double y = (double)annotation.y / ((BitmapSource)rmmImage.Source).PixelHeight * rmmImage.ActualHeight - 2;
             Canvas.SetLeft(e, x);
             Canvas.SetTop(e, y);
             e.MouseLeftButtonUp += OnMouseLeftButtonUpAnnotation;
