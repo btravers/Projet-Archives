@@ -188,12 +188,14 @@ namespace ModernUIApp1.Handlers.Utils
 
                 String response = Connection.getRequest(request);
                 Console.WriteLine(response);
+                user = defaultUser;
+                connected = false;
+
+                return true;
             }
 
-            user = defaultUser;
-            connected = false;
-
-            return true;
+            return false;
+            
         }
     }
 }

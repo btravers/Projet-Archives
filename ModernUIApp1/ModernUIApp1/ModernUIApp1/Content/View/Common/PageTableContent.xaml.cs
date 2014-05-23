@@ -81,7 +81,7 @@ namespace ModernUIApp1.Content.View.Common
 
         public void reload()
         {
-            slider.Value = 2;
+            //slider.Value = 2;
 
             noImageError.Visibility = Visibility.Hidden;
             
@@ -253,11 +253,11 @@ namespace ModernUIApp1.Content.View.Common
             {
                 Point mouse = Mouse.GetPosition(this);
 
-                if (positionTopLeft.X == -1 || positionTopLeft.Y == -1)
+                if (Authenticator.AUTHENTICATOR.connected)
                 {
-                    if (addAnnotationUserControl == null || !addAnnotationUserControl.IsVisible)
+                    if ((positionTopLeft.X == -1 || positionTopLeft.Y == -1) && (addAnnotationUserControl == null || !addAnnotationUserControl.IsVisible))
                     {
-                        positionTopLeft = e.MouseDevice.GetPosition(pageImage);
+                        positionTopLeft = e.MouseDevice.GetPosition(overlay);
 
                         Ellipse ell = new Ellipse();
                         ell.Width = 2;
@@ -265,48 +265,52 @@ namespace ModernUIApp1.Content.View.Common
                         ell.StrokeThickness = 0.2;
                         ell.Stroke = new SolidColorBrush(Colors.Blue);
                         ell.Fill = new SolidColorBrush(Color.FromArgb(100, 100, 149, 237));
-                        double x = positionTopLeft.X;
-                        double y = positionTopLeft.Y;
+                        double x = positionTopLeft.X - ell.Width / 2;
+                        double y = positionTopLeft.Y - ell.Height / 2;
                         Canvas.SetLeft(ell, x);
                         Canvas.SetTop(ell, y);
                         overlay.Children.Add(ell);
 
                         positionTopLeft.X = (int)(positionTopLeft.X * ((BitmapSource)pageImage.Source).PixelWidth / pageImage.ActualWidth);
-                        positionTopLeft.Y = (int)(positionTopLeft.Y * ((BitmapSource)pageImage.Source).PixelHeight / pageImage.ActualHeight); 
-                    }
-                }
-                else
-                {
-                    Point positionBottomRight = e.MouseDevice.GetPosition(overlay);
-                    positionBottomRight.X = (int)(positionBottomRight.X * ((BitmapSource)pageImage.Source).PixelWidth / pageImage.ActualWidth);
-                    positionBottomRight.Y = (int)(positionBottomRight.Y * ((BitmapSource)pageImage.Source).PixelHeight / pageImage.ActualHeight); 
-
-                    if (addAnnotationUserControl != null)
-                    {
-                        addAnnotationUserControl.close_dialog();
-                    }
-
-                    addAnnotationUserControl = new AddAnnotationTable(positionTopLeft, positionBottomRight);
-
-                    Double left;
-
-                    if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2)
-                    {
-                        left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
+                        positionTopLeft.Y = (int)(positionTopLeft.Y * ((BitmapSource)pageImage.Source).PixelHeight / pageImage.ActualHeight);
                     }
                     else
                     {
-                        left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
-                    }
+                        Point positionBottomRight = e.MouseDevice.GetPosition(overlay);
+                        positionBottomRight.X = (int)(positionBottomRight.X * ((BitmapSource)pageImage.Source).PixelWidth / pageImage.ActualWidth);
+                        positionBottomRight.Y = (int)(positionBottomRight.Y * ((BitmapSource)pageImage.Source).PixelHeight / pageImage.ActualHeight);
 
-                    if (Authenticator.AUTHENTICATOR.connected)
-                    {
-                        addAnnotationUserControl.setParameters(left, mouse.Y);
-                        addAnnotationUserControl.Show();
-                    }
+                        if (addAnnotationUserControl != null)
+                        {
+                            addAnnotationUserControl.close_dialog();
+                        }
 
-                    positionTopLeft = new Point(-1, -1);
-                    reload();
+                        if ((int)positionTopLeft.X < (int)positionBottomRight.X && (int)positionTopLeft.Y < (int)positionBottomRight.Y)
+                        {
+                            addAnnotationUserControl = new AddAnnotationTable(positionTopLeft, positionBottomRight);
+
+                            Double left;
+
+                            if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2)
+                            {
+                                left = mouse.X + SystemParameters.FullPrimaryScreenWidth / 8;
+                            }
+                            else
+                            {
+                                left = mouse.X - SystemParameters.FullPrimaryScreenWidth / 4;
+                            }
+
+                            addAnnotationUserControl.setParameters(left, mouse.Y);
+                            addAnnotationUserControl.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Le second point doit être situé en bas à droite du premier.", "Opération impossible");
+                            reload();
+                        }
+
+                        positionTopLeft = new Point(-1, -1);
+                    }
                 }
 
                 /*
@@ -392,11 +396,10 @@ namespace ModernUIApp1.Content.View.Common
 
         void onImageChange()
         {
-            slider.Value = 2;
+            //slider.Value = 2;
             sliderContrast.Value = 0;
             sliderBrightness.Value = 0;
 
-            // TODO Appel à displayAnnotations
             PageTable page = ViewManager.instance.pageTable;
             if (page != null)
             {

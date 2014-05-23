@@ -51,6 +51,14 @@ namespace ModernUIApp1.Content.Authentification
             }
         }
 
+        public void enable()
+        {
+            this.register.IsEnabled = true;
+            this.email.IsEnabled = true;
+            this.password.IsEnabled = true;
+            this.check_password.IsEnabled = true;
+        }
+
         public void disable()
         {
             this.register.IsEnabled = false;

@@ -39,7 +39,7 @@
     </UserControl.Resources>
 
     <Grid Style="{StaticResource ContentRoot}" Margin="0">
-        <Slider Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider" Margin="0,24,0,0" />
+        <Slider Orientation="Vertical" HorizontalAlignment="Left" Minimum="1" x:Name="slider" Margin="0,24,0,0" Value="2" />
         <ScrollViewer Name="scrollViewer" Grid.Column="0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" Margin="22,24,0,0">
             <Grid Name="grid" Width="300" Height="300" RenderTransformOrigin="0.5,0.5">
                 <Grid.LayoutTransform>
