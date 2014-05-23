@@ -10,6 +10,7 @@ using Data.Data.Registre;
 using Data.Data.Users.Bookmark;
 using Data.Data.Users.Shortcut;
 using ModernUIApp1.Resources;
+using Handlers.Handlers;
 
 namespace ModernUIApp1.Handlers.Utils.Parsers
 {
@@ -420,11 +421,14 @@ namespace ModernUIApp1.Handlers.Utils.Parsers
                         int idParent = int.Parse(xmlNode.Element("id_bookmark_folder").Value);
                         int idSheet = int.Parse(xmlNode.Element("id_sheet").Value);
 
+                        // Test a soluce
+                        Sheet tmpSheet = new SheetHandler().getById(idSheet);
+
                         if (folders.ContainsKey(idParent))
-                            files.Add(idFolder, new BookmarkFile(idFolder, null, folders[idParent], label));
+                            files.Add(idFolder, new BookmarkFile(idFolder, tmpSheet, folders[idParent], label));
                         // TODO : WHAT ABOUT THE SHEET ? CONCEPTION PROBLEM : IF THE SHEET ISNT LOADED.
                         else
-                            files.Add(idFolder, new BookmarkFile(idFolder, null, null, label));
+                            files.Add(idFolder, new BookmarkFile(idFolder, tmpSheet, null, label));
                     }
                 }
             }

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Data.Data.Users.Bookmark;
+using ModernUIApp1.Pages.Popups;
 
 namespace ModernUIApp1.Content.View.Common.Bookmark
 {
@@ -50,7 +51,12 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
         /* Event : Click on the icon newfolder, open a dialog / popup */
         public void newfolder_click(object sender, RoutedEventArgs e)
         {
-            new PopAddFolder().ShowDialog();
+            Popup addFolder = new Popup("Nouveau dossier","Nom :", true);
+
+            if (addFolder.show())
+            {
+                BookmarkResult.window.addNewFolder(addFolder.result);
+            }
         }
 
         /* Handler when an item is dropped on the remove icon */

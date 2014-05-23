@@ -59,6 +59,8 @@ namespace ModernUIApp1.Pages.Popups
 
             pop.FontSize = 24;
             pop.OkButton.Click += OkButton_Click;
+            pop.OkButton.Content = "Valider";
+            pop.CancelButton.Content = "Annuler";
             pop.Buttons = new Button[] { pop.OkButton, pop.CancelButton };
         }
 
