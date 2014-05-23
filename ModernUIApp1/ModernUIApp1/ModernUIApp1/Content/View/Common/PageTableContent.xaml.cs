@@ -81,7 +81,7 @@ namespace ModernUIApp1.Content.View.Common
 
         public void reload()
         {
-            slider.Value = 2;
+            //slider.Value = 2;
 
             noImageError.Visibility = Visibility.Hidden;
             
@@ -396,11 +396,10 @@ namespace ModernUIApp1.Content.View.Common
 
         void onImageChange()
         {
-            slider.Value = 2;
+            //slider.Value = 2;
             sliderContrast.Value = 0;
             sliderBrightness.Value = 0;
 
-            // TODO Appel à displayAnnotations
             PageTable page = ViewManager.instance.pageTable;
             if (page != null)
             {

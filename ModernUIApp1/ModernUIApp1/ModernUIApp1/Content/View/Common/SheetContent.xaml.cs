@@ -356,7 +356,7 @@ namespace ModernUIApp1.Content.View.Common
 
         void onImageChange()
         {
-            slider.Value = 2;
+            //slider.Value = 2;
             sliderContrast.Value = 0;
             sliderBrightness.Value = 0;
             annotationsEnable.IsChecked = true;
