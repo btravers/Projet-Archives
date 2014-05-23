@@ -23,6 +23,7 @@ namespace ModernUIApp1.Content.View.Registre
     public partial class ShortcutBar : UserControl
     {
         AddShortcut addShortcutUserControl;
+        DeleteShortcut deleteShortcutUserControl;
         int nbButton;
 
         public ShortcutBar()
@@ -31,19 +32,46 @@ namespace ModernUIApp1.Content.View.Registre
             nbButton = 2;
         }
 
+
+        private void ClickAllShortcut(object sender, RoutedEventArgs e)
+        {
+            //recupere les parametres
+            var myParameters = (string[])((Button)sender).Tag;
+            string text = myParameters[0];
+            string stringType = myParameters[1];
+            int intType = int.Parse(stringType);
+
+            ViewManager.instance.shortcutIsOn = true;
+            ViewManager.instance.annotationShortcut.text = text;
+            ViewManager.instance.annotationShortcut.type = intType;
+        }
+
+
         private void ClickAddShortcut(object sender, RoutedEventArgs e)
         {
-            addShortcutUserControl = new AddShortcut();
+            addShortcutUserControl = new AddShortcut(this);
             addShortcutUserControl.ShowDialog();
+        }
 
-
+        public void AddButton(String text, int intType)
+        {
             Button newButton = new Button();
-            newButton.Content = "Test";
+            newButton.Content = text;
+            String stringType = intType.ToString();
+            //permet de passer des parametres a un evenement
+            newButton.Tag = new string[] { text, stringType };
             System.Windows.Thickness tn = new Thickness(10);
             newButton.Margin = tn;
+            RoutedEventHandler eventHandler = new RoutedEventHandler(ClickAllShortcut);
+            newButton.Click += eventHandler;
             ShortcutWrapPanel.Children.Insert(nbButton, newButton);
             nbButton++;
-            //newButton.Click = "ClickShourcutTest";
+        }
+
+        private void ClickDeleteShortcut(object sender, RoutedEventArgs e)
+        {
+            deleteShortcutUserControl = new DeleteShortcut();
+            deleteShortcutUserControl.ShowDialog();
         }
 
         private void ClickShortcutName(object sender, RoutedEventArgs e)

@@ -67,8 +67,11 @@ namespace Handlers.Handlers
                     Parser parser = new Parser(xmlResponse);
                     
                     //get all shortcut : return parser.parserGetAllShortcut()
-                    List<Shortcut> sc = new List<Shortcut>();
-                    return sc;
+                    List<Shortcut> shortcutList = new List<Shortcut>();
+
+                    
+
+                    return shortcutList;
                 }
                 else
                     throw new Exception("xmlResponse in getAllShortcut is null \n");

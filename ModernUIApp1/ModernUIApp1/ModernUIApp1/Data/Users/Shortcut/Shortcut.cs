@@ -11,7 +11,7 @@ namespace Data.Data.Users.Shortcut
         public int id_shortcut { get; private set; }
         AnnotationType type;
 
-        String default_text;
+        public String default_text {get; private set; }
         int id_icon;
 
         /* Constructors */
