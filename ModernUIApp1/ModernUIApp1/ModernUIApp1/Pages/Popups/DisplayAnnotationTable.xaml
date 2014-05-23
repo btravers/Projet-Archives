@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
-             Title="Modifier une annotation" Height="248" Width="531.564" >
+             Title="Afficher une annotation" Height="248" Width="531.564" >
 
     <Grid Margin="0,0,2,6">
         <Grid.ColumnDefinitions>

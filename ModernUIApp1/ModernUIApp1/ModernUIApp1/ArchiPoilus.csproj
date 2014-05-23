@@ -111,17 +111,20 @@
     <Compile Include="Pages\Popups\DeleteShortcut.xaml.cs">
       <DependentUpon>DeleteShortcut.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Popups\DisplayAnnotation.xaml.cs">
-      <DependentUpon>DisplayAnnotation.xaml</DependentUpon>
+    <Compile Include="Pages\Popups\DisplayAnnotationSheet.xaml.cs">
+      <DependentUpon>DisplayAnnotationSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Popups\AddShortcut.xaml.cs">
       <DependentUpon>AddShortcut.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Popups\ModifyAnnotation.xaml.cs">
-      <DependentUpon>ModifyAnnotation.xaml</DependentUpon>
+    <Compile Include="Pages\Popups\ModifyAnnotationSheet.xaml.cs">
+      <DependentUpon>ModifyAnnotationSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Popups\DisplayAnnotationTable.xaml.cs">
       <DependentUpon>DisplayAnnotationTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\ModifyAnnotationTable.xaml.cs">
+      <DependentUpon>ModifyAnnotationTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Popups\Popup.cs" />
     <Compile Include="Pages\ViewRegister.xaml.cs">
@@ -130,8 +133,8 @@
     <Compile Include="Pages\ViewTable.xaml.cs">
       <DependentUpon>ViewTable.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Popups\AddAnnotation.xaml.cs">
-      <DependentUpon>AddAnnotation.xaml</DependentUpon>
+    <Compile Include="Pages\Popups\AddAnnotationSheet.xaml.cs">
+      <DependentUpon>AddAnnotationSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\ErrorMessagesResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -285,7 +288,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Popups\DisplayAnnotation.xaml">
+    <Page Include="Pages\Popups\DisplayAnnotationSheet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -293,11 +296,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Popups\ModifyAnnotation.xaml">
+    <Page Include="Pages\Popups\ModifyAnnotationSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Popups\DisplayAnnotationTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Popups\ModifyAnnotationTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -309,7 +316,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Popups\AddAnnotation.xaml">
+    <Page Include="Pages\Popups\AddAnnotationSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -48,8 +48,8 @@ namespace ModernUIApp1.Content.View.Common
         Point? lastCenterPositionOnTarget;
         Point? lastMousePositionOnTarget;
         Point? lastDragPoint;
-        AddAnnotation addAnnotationUserControl;
-        DisplayAnnotation displayAnnotationUserControl;
+        AddAnnotationSheet addAnnotationUserControl;
+        DisplayAnnotationSheet displayAnnotationUserControl;
         Boolean mouseMove;
 
         Point mouseStartDrag;
@@ -269,10 +269,10 @@ namespace ModernUIApp1.Content.View.Common
                 if (ViewManager.instance.shortcutIsOn == true)
                 {
                     ViewManager.instance.shortcutIsOn = false;
-                    addAnnotationUserControl = new AddAnnotation(position, ViewManager.instance.annotationShortcut.text, ViewManager.instance.annotationShortcut.type);
+                    addAnnotationUserControl = new AddAnnotationSheet(position, ViewManager.instance.annotationShortcut.text, ViewManager.instance.annotationShortcut.type);
                 }
                 else
-                    addAnnotationUserControl = new AddAnnotation(position);
+                    addAnnotationUserControl = new AddAnnotationSheet(position);
                 // addAnnotationUserControl.window.Title = "Ajouter une annotation";
 
                 Double left;
@@ -423,7 +423,7 @@ namespace ModernUIApp1.Content.View.Common
                     displayAnnotationUserControl.close_dialog();
                 }
 
-                displayAnnotationUserControl = new DisplayAnnotation();
+                displayAnnotationUserControl = new DisplayAnnotationSheet();
 
                 Double left;
 

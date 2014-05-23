@@ -58,6 +58,9 @@ namespace ModernUIApp1.Pages.Popups
 
         private void modify_Click(object sender, RoutedEventArgs e)
         {
+            ModifyAnnotationTable modifyAnnotationTableUserControl = new ModifyAnnotationTable(annotation);
+            this.Close();
+            modifyAnnotationTableUserControl.Show();
         }
 
         private void access_Click(object sender, RoutedEventArgs e)
@@ -101,6 +104,7 @@ namespace ModernUIApp1.Pages.Popups
             {
                 Console.WriteLine(ice.Message);
             }
+            this.Close();
         }
     }
         
