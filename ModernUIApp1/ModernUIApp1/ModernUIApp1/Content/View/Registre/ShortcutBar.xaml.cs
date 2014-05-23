@@ -78,8 +78,8 @@ namespace ModernUIApp1.Content.View.Registre
             ShortcutWrapPanel.Children.Clear();
             if (Authenticator.AUTHENTICATOR.isConnected())
             {
-                ShortcutWrapPanel.Children.Insert(0, Nom);
                 ShortcutWrapPanel.Children.Insert(0, Prenom);
+                ShortcutWrapPanel.Children.Insert(0, Nom);
                 nbButton = 2;
                 ShortcutWrapPanel.Children.Insert(nbButton, Ajout);
                 ShortcutWrapPanel.Children.Insert(nbButton, Suppr);
