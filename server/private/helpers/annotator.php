@@ -22,9 +22,9 @@ class Annotator
 	{
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
-			return array("message" => "user_not_found");
+			return array("helper" => "annotator", "message" => "user_not_found");
 		} else if(!Database::existPageTable($idTable)) {
-			return array("message" => "table_page_not_found");
+			return array("helper" => "annotator", "message" => "table_page_not_found");
 		} else {
 			$query = "SELECT Sheet.id_sheet FROM PageTable, Sheet, AnnotationSheet "
 					. "WHERE id_page_table = ? "
@@ -40,7 +40,13 @@ class Annotator
 			}
 
 			Database::exec("INSERT INTO AnnotationPageTable VALUES ('', ?, ?, ?, ?, ?, ?, ?, ?)", array($idTable, $idUser, $x, $y, $width, $height, $number, $idSheet));
-			return array("message" => "registered");
+			
+			$result = Database::query("SELECT * FROM AnnotationPageTable WHERE id_page_table = ? AND id_user = ? AND x = ? AND y = ? AND width = ? AND height = ? AND id_number = ? AND id_sheet = ?", array($idTable, $idUser, $x, $y, $width, $height, $number, $idSheet));
+			if (count($result) == 0) {
+				return array("helper" => "annotator", "message" => "registration_error");
+			} else {
+				return array("helper" => "annotator", "message" => "registered");
+			}
 		}
 	}
 
@@ -51,14 +57,20 @@ class Annotator
 	{
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
-			return array("message" => "user_not_found");
+			return array("helper" => "annotator", "message" => "user_not_found");
 		} else if(!Database::existSheet($idSheet)) {
-			return array("message" => "sheet_page_not_found");
+			return array("helper" => "annotator", "message" => "sheet_page_not_found");
 		} else if(!Database::existType($idType)) {
-			return array("message" => "type_not_found");
+			return array("helper" => "annotator", "message" => "type_not_found");
 		} else {
 			Database::exec("INSERT INTO AnnotationSheet VALUES ('', ?, ?, ?, ?, ?, ?)", array($idSheet, $idType, $idUser, $x, $y, $annotation));
-			return array("message" => "registered");
+			
+			$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_sheet = ? AND id_user = ? AND id_type = ? AND y = ? AND text = ?", array($idSheet, $idType, $idUser, $x, $y, $annotation));
+			if (count($result) == 0) {
+				return array("helper" => "annotator", "message" => "registration_error");
+			} else {
+				return array("helper" => "annotator", "message" => "registered");
+			}
 		}
 	}
 
@@ -68,10 +80,10 @@ class Annotator
 	public static function delete_annotation_table($id_session, $idAnnotationTable)
 	{
 		if (!Database::existAnnotationTable($idAnnotationTable)) {
-			return array("message" => "annotation_not_found");
+			return array("helper" => "annotator", "message" => "annotation_not_found");
 		} else {
 			Database::exec("DELETE FROM AnnotationPageTable WHERE id_annotation_page_table = ?", array($idAnnotationTable));
-			return array("message" => "deleted");
+			return array("helper" => "annotator", "message" => "deleted");
 		}
 	}
 
@@ -82,16 +94,16 @@ class Annotator
 	{
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
-			return array("message" => "user_not_found");
+			return array("helper" => "annotator", "message" => "user_not_found");
 		} else if (!Database::existAnnotationSheet($idAnnotationSheet)) {
-			return array("message" => "annotation_not_found");
+			return array("helper" => "annotator", "message" => "annotation_not_found");
 		} else {
 			$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ? AND id_user = ?", array($idAnnotationSheet, $idUser));
 			if(count($result) <= 0) {
-				return array("message" => "bad_user");
+				return array("helper" => "annotator", "message" => "bad_user");
 			} else {
 				Database::exec("DELETE FROM AnnotationSheet WHERE id_annotation_sheet = ?",array($idAnnotationSheet));
-				return array("message" => "deleted");
+				return array("helper" => "annotator", "message" => "deleted");
 			}
 		}
 	}
@@ -103,12 +115,12 @@ class Annotator
 	{
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
-			return array("message" => "user_not_found");
+			return array("helper" => "annotator", "message" => "user_not_found");
 		} else if(!Database::existAnnotationTable($idAnnotationTable)) {
-			return array("message" => "annotation_not_found");
+			return array("helper" => "annotator", "message" => "annotation_not_found");
 		} else {
 			Database::exec("UPDATE AnnotationPageTable SET x = ?, y = ?, width = ?, height = ?, id_number = ? WHERE id_annotation_page_table = ?", array($x, $y, $width, $height, $number, $idAnnotationTable));
-			return array("message" => "updated");
+			return array("helper" => "annotator", "message" => "updated");
 		}
 	}
 
@@ -120,12 +132,12 @@ class Annotator
 	{
 		$idUser = Database::getUser($id_session);
 		if($idUser == -1) {
-			return array("message" => "user_not_found");
+			return array("helper" => "annotator", "message" => "user_not_found");
 		} else if (!Database::existAnnotationSheet($idAnnotationSheet)) {
-			return array("message" => "annotation_not_found");
+			return array("helper" => "annotator", "message" => "annotation_not_found");
 		} else {
 			Database::exec("UPDATE AnnotationSheet SET x = ?, y = ?, id_type = ?, text = ? WHERE id_annotation_sheet = ?", array($x, $y, $idType, $annotation, $idAnnotationSheet));
-			return array("message" => "updated");
+			return array("helper" => "annotator", "message" => "updated");
 		}
 	}
 
@@ -135,10 +147,10 @@ class Annotator
 		$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet));
 		if($result[0]["id_user"] == $idUser) {
 			annotator::update_annotation_sheet($id_session, $idAnnotationSheet, $idType, $x, $y, $annotation);
-			return array("message" => "updated");
+			return array("helper" => "annotator", "message" => "updated");
 		} else {
 			annotator::annotate_sheet($id_session, $idSheet, $idType, $x, $y, $annotation);
-			return array("message" => "registered");
+			return array("helper" => "annotator", "message" => "registered");
 		}
 
 	}
