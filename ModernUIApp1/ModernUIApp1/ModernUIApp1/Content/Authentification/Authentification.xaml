@@ -18,6 +18,7 @@
                     <PasswordBox Name="password"  Margin="154,0,0,0" FontSize="17"/>
                 </Grid>
                 <Button x:Name="login" Content="S'identifier" Width="170" Click="login_Click" Margin="0,50,0,0" FontSize="17"/>
+                <Button x:Name="logout" Content="Se déconnecter" Width="170" Click="logout_Click" Margin="0,50,0,0" FontSize="17"/>
                 <Label FontSize="17" Padding="10, 10, 10, 10" Margin="10" Foreground="Red">
                     <AccessText x:Name="message" TextWrapping="WrapWithOverflow">
                     </AccessText>

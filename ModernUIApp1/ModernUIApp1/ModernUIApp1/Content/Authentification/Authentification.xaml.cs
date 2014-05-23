@@ -28,6 +28,7 @@ namespace ModernUIApp1.Content.Authentification
         public Authentification()
         {
             InitializeComponent();
+            this.logout.IsEnabled = false;
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
@@ -56,12 +57,39 @@ namespace ModernUIApp1.Content.Authentification
             }
         }
 
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            if (Authenticator.AUTHENTICATOR.logout())
+            {
+                enable();
+                message.Text = ErrorMessagesResources.Logout_Success;
+                message.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            else
+            {
+                message.Text = ErrorMessagesResources.Logout_Failed;
+                message.Foreground = new SolidColorBrush(Colors.Red);
+            }
+        }
+
+        public void enable()
+        {
+            Register.window.enable();
+            this.email.IsEnabled = true;
+            this.email.Text = null;
+            this.password.IsEnabled = true;
+            this.password.Password = null;
+            this.login.IsEnabled = true;
+            this.logout.IsEnabled = false;
+        }
+
         public void disable()
         {
             Register.window.disable();
             this.email.IsEnabled = false;
             this.password.IsEnabled = false;
             this.login.IsEnabled = false;
+            this.logout.IsEnabled = true;
         }
     }
 }
