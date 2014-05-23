@@ -88,8 +88,6 @@ namespace ModernUIApp1.Content.View.Common
 
         public void reload()
         {
-            mouseMove = false;
-
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
             {
@@ -358,6 +356,8 @@ namespace ModernUIApp1.Content.View.Common
 
         void onImageChange()
         {
+            mouseMove = false;
+
             //slider.Value = 2;
             sliderContrast.Value = 0;
             sliderBrightness.Value = 0;

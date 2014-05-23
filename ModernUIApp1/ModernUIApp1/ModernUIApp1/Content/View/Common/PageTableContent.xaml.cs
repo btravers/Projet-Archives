@@ -81,8 +81,6 @@ namespace ModernUIApp1.Content.View.Common
 
         public void reload()
         {
-            mouseMove = false;
-            
             noImageError.Visibility = Visibility.Hidden;
 
             if (ViewManager.instance.pageTables != null)
@@ -399,6 +397,8 @@ namespace ModernUIApp1.Content.View.Common
 
         void onImageChange()
         {
+            mouseMove = false;
+
             //slider.Value = 2;
             sliderContrast.Value = 0;
             sliderBrightness.Value = 0;
