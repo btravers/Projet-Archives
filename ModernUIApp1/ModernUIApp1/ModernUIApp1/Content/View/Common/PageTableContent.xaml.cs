@@ -81,7 +81,9 @@ namespace ModernUIApp1.Content.View.Common
 
         public void reload()
         {
-            slider.Value = 2;            
+            slider.Value = 2;
+
+            noImageError.Visibility = Visibility.Hidden;
             
             if (ViewManager.instance.pageTables != null)
             {

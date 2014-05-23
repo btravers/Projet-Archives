@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -15,7 +16,12 @@ namespace Handlers.Utils
     public class Connection
     {
         // Website, contains the root
-        public const String ROOT_URL = "http://archipoilus.4estgump.org/";
+        public static String ROOT_URL = "";
+
+        static Connection() {
+            var appSettings = ConfigurationManager.AppSettings;
+            ROOT_URL = appSettings["server"] ?? "";
+        }
 
         /* Encryption for URLs */
         private static String URLEncryption(String url)
