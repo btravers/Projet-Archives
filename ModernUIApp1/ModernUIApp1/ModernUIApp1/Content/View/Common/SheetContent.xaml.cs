@@ -87,7 +87,9 @@ namespace ModernUIApp1.Content.View.Common
         }
 
         public void reload()
-        {        
+        {
+            mouseMove = false;
+
             Sheet sheet = ViewManager.instance.sheet;
             if (sheet != null)
             {
@@ -411,26 +413,29 @@ namespace ModernUIApp1.Content.View.Common
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
         {
-            AnnotationSheet annotation = (AnnotationSheet) ((Ellipse)sender).Tag;
-            Console.WriteLine("id:" + annotation.id_annotations_sheet + ", ty:" + annotation.type + ", tx:" + annotation.text);
-
-            if (displayAnnotationUserControl != null)
+            if (!mouseMove)
             {
-                displayAnnotationUserControl.close_dialog();
+                AnnotationSheet annotation = (AnnotationSheet)((Ellipse)sender).Tag;
+                Console.WriteLine("id:" + annotation.id_annotations_sheet + ", ty:" + annotation.type + ", tx:" + annotation.text);
+
+                if (displayAnnotationUserControl != null)
+                {
+                    displayAnnotationUserControl.close_dialog();
+                }
+
+                displayAnnotationUserControl = new DisplayAnnotation();
+
+                Double left;
+
+                if (annotation.x < SystemParameters.FullPrimaryScreenWidth / 2)
+                    left = annotation.x + SystemParameters.FullPrimaryScreenWidth / 8;
+                else
+                    left = annotation.x - SystemParameters.FullPrimaryScreenWidth / 4;
+
+                displayAnnotationUserControl.setPosition(left, annotation.y);
+                displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type, new Point(annotation.x, annotation.y));
+                displayAnnotationUserControl.Show();
             }
-
-            displayAnnotationUserControl = new DisplayAnnotation();
-
-            Double left;
-
-            if (annotation.x < SystemParameters.FullPrimaryScreenWidth / 2)
-                left = annotation.x + SystemParameters.FullPrimaryScreenWidth / 8;
-            else
-                left = annotation.x - SystemParameters.FullPrimaryScreenWidth / 4;
-
-            displayAnnotationUserControl.setPosition(left, annotation.y);
-            displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type, new Point(annotation.x, annotation.y));
-            displayAnnotationUserControl.Show();
         }
 
         /* Event click on bookmark button */

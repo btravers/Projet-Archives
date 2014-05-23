@@ -74,14 +74,15 @@ namespace ModernUIApp1.Content.View.Common
             pageImage.MouseLeftButtonUp += OnMouseLeftButtonUpImage;
 
             slider.ValueChanged += OnSliderValueChanged;
+            slider.Value = 2;
 
             reload();
         }
 
         public void reload()
         {
-            //slider.Value = 2;
-
+            mouseMove = false;
+            
             noImageError.Visibility = Visibility.Hidden;
 
             if (ViewManager.instance.pageTables != null)
@@ -444,11 +445,14 @@ namespace ModernUIApp1.Content.View.Common
 
         void OnMouseLeftButtonUpAnnotation(object sender, MouseButtonEventArgs e)
         {
-            AnnotationPageTable annotation = (AnnotationPageTable)((Rectangle)sender).Tag;
-            Console.WriteLine("id:" + annotation.id_annotation_page_table + ", num:" + annotation.id_number + ", x:" + annotation.x + ", y:" + annotation.y);
+            if (!mouseMove)
+            {
+                AnnotationPageTable annotation = (AnnotationPageTable)((Rectangle)sender).Tag;
+                Console.WriteLine("id:" + annotation.id_annotation_page_table + ", num:" + annotation.id_number + ", x:" + annotation.x + ", y:" + annotation.y);
 
-            DisplayAnnotationTable displayAnnotationTableUserControl = new DisplayAnnotationTable(annotation);
-            displayAnnotationTableUserControl.Show();
+                DisplayAnnotationTable displayAnnotationTableUserControl = new DisplayAnnotationTable(annotation);
+                displayAnnotationTableUserControl.Show();
+            }
         }
     }
 }
