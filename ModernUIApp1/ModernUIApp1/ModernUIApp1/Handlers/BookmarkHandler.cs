@@ -115,7 +115,7 @@ namespace Handlers.Handlers
             if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
-                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFileParent.Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()).Replace(LinkResources.IdParentFolder, file.bookmarkFolderParent.id_bookmark_folder.ToString()));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFileParent.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()).Replace(LinkResources.IdParentFolder, file.bookmarkFolderParent.id_bookmark_folder.ToString()));
             }
         }
 
@@ -125,7 +125,7 @@ namespace Handlers.Handlers
             if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
-                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFolderParent.Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()).Replace(LinkResources.IdParentFolder, folder.bookmarkFolderParent.id_bookmark_folder.ToString()));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkUpdateFolderParent.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()).Replace(LinkResources.IdParentFolder, folder.bookmarkFolderParent.id_bookmark_folder.ToString()));
             }
         }
 
@@ -136,7 +136,7 @@ namespace Handlers.Handlers
             if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
-                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFolder.Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFolder.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()));
             }
         }
         /* Remove File */
@@ -145,7 +145,7 @@ namespace Handlers.Handlers
             if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
-                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFile.Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRemoveFile.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()));
             }
         }
 
@@ -155,7 +155,7 @@ namespace Handlers.Handlers
             if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
-                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFolder.Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()).Replace(LinkResources.NewName, folder.label));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFolder.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdFolder, folder.id_bookmark_folder.ToString()).Replace(LinkResources.NewName, folder.label));
             }
         }
         /* Rename File (the file already got the new name (local), update by id) */
@@ -164,7 +164,7 @@ namespace Handlers.Handlers
             if (Authenticator.AUTHENTICATOR.connected)
             {
                 // Request
-                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFile.Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()).Replace(LinkResources.NewName, file.label));
+                String xmlResponse = Connection.getRequest(LinkResources.LinkBookmarkRenameFile.Replace(LinkResources.SessionId, Authenticator.AUTHENTICATOR.user.id_session).Replace(LinkResources.IdFile, file.id_bookmark_file.ToString()).Replace(LinkResources.NewName, file.label));
             }
         }
     }

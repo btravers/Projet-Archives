@@ -215,22 +215,31 @@ class Bookmark
 	/**
 	 * Removes a bookmark file
 	 */
-	public static function remove_bookmark_file($id_file)
+	public static function remove_bookmark_file($id_session, $id_file)
 	{
-		if (!Database::existBookmarkFile($id_file)) {
+	$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			if (!Database::existBookmarkFile($id_file)) {
 			return array("helper" => "bookmark", "message" => /* 404 */ "file_not_found");
 		} else {
 			Database::exec("DELETE FROM BookmarkFile WHERE id_bookmark_file = ?", array($id_file));
 			return array("helper" => "bookmark", "message" => "deleted");
+			}
 		}
 	}
 
 	/**
 	 * Removes a bookmark folder
 	 */
-	public static function remove_bookmark_folder($id_folder)
+	public static function remove_bookmark_folder($id_session, $id_folder)
 	{
-		if (!Database::existBookmarkFolder($id_folder)) {
+	$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			if (!Database::existBookmarkFolder($id_folder)) {
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else {
 			$result = Database::query("SELECT id_bookmark_folder_parent FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
@@ -247,6 +256,7 @@ class Bookmark
 			// Folder suppression
 			Database::exec("DELETE FROM BookmarkFolder WHERE id_bookmark_folder = ?", array($id_folder));
 			return array("helper" => "bookmark", "message" => "deleted");
+			}
 		}
 	}
 
@@ -268,56 +278,76 @@ class Bookmark
 	/**
 	 * Updates the parent folder of a bookmark file
 	 */
-	public static function update_parent_bookmark_file($id_file, $new_id_folder)
+	public static function update_parent_bookmark_file($id_session, $id_file, $new_id_folder)
 	{
-		if (!Database::existBookmarkFile($id_file)) {
+	$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			if (!Database::existBookmarkFile($id_file)) {
 			return array("helper" => "bookmark", "message" => "file_not_found");
 		} else if (!Database::existBookmarkFolder($new_id_folder)) {
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else {
 			Database::exec("UPDATE BookmarkFile SET id_bookmark_folder = ? WHERE id_bookmark_file = ?", array($new_id_folder, $id_file));
 			return array("helper" => "bookmark", "message" => "updated");
+			}
 		}
 	}
 
 	/**
 	 * Updates the parent folder of a bookmark folder
 	 */
-	public static function update_parent_bookmark_folder($id_folder, $new_id_parent)
+	public static function update_parent_bookmark_folder($id_session, $id_folder, $new_id_parent)
 	{
-		if (!Database::existBookmarkFolder($id_folder)) {
+	$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			if (!Database::existBookmarkFolder($id_folder)) {
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else if (!Database::existBookmarkFolder($new_id_parent)) {
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else {
 			Database::exec("UPDATE BookmarkFolder SET id_bookmark_folder_parent = ? WHERE id_bookmark_folder = ?", array($new_id_parent, $id_folder));
 			return array("helper" => "bookmark", "message" => "updated");
+			}
 		}
 	}
 
 	/**
 	 * Renames a bookmark file
 	 */
-	public static function rename_bookmark_file($id_file, $name)
+	public static function rename_bookmark_file($id_session, $id_file, $name)
 	{
-		if (!Database::existBookmarkFile($id_file)) {
+		$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			if (!Database::existBookmarkFile($id_file)) {
 			return array("helper" => "bookmark", "message" => "file_not_found");
 		} else {
 			Database::exec("UPDATE BookmarkFile SET label = ? WHERE id_bookmark_file = ?", array($name, $id_file));
 			return array("helper" => "bookmark", "message" => "updated");
+			}
 		}
 	}
 
 	/**
 	 * Renames a bookmark folder
 	 */
-	public static function rename_bookmark_folder($id_folder, $name)
+	public static function rename_bookmark_folder($id_session, $id_folder, $name)
 	{
-		if (!Database::existBookmarkFolder($id_folder)) {
+	$id_user = Database::getUser($id_session);
+		if($id_user == -1) {
+			return array("helper" => "bookmark", "message" => "user_not_found");
+		} else {
+			if (!Database::existBookmarkFolder($id_folder)) {
 			return array("helper" => "bookmark", "message" => "folder_not_found");
 		} else {
 			Database::exec("UPDATE BookmarkFolder SET label = ? WHERE id_bookmark_folder = ?", array($name, $id_folder));
 			return array("helper" => "bookmark", "message" => "updated");
+			}
 		}
 	}
 

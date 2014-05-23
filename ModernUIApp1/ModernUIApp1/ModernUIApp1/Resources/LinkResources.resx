@@ -365,22 +365,22 @@
     <value>bookmark/create_bookmark_folder/session_id/id_parent_folder/name</value>
   </data>
   <data name="LinkBookmarkRemoveFile" xml:space="preserve">
-    <value>bookmark/remove_bookmark_file/id_file</value>
+    <value>bookmark/remove_bookmark_file/session_id/id_file</value>
   </data>
   <data name="LinkBookmarkRemoveFolder" xml:space="preserve">
-    <value>bookmark/remove_bookmark_folder/id_folder</value>
+    <value>bookmark/remove_bookmark_folder/session_id/id_folder</value>
   </data>
   <data name="LinkBookmarkRenameFile" xml:space="preserve">
-    <value>bookmark/rename_bookmark_file/id_file/new_name</value>
+    <value>bookmark/rename_bookmark_file/session_id/id_file/new_name</value>
   </data>
   <data name="LinkBookmarkRenameFolder" xml:space="preserve">
-    <value>bookmark/rename_bookmark_folder/id_folder/new_name</value>
+    <value>bookmark/rename_bookmark_folder/session_id/id_folder/new_name</value>
   </data>
   <data name="LinkBookmarkUpdateFileParent" xml:space="preserve">
-    <value>bookmark/update_parent_bookmark_file/id_file/id_parent_file</value>
+    <value>bookmark/update_parent_bookmark_file/session_id/id_file/id_parent_folder</value>
   </data>
   <data name="LinkBookmarkUpdateFolderParent" xml:space="preserve">
-    <value>bookmark/update_parent_bookmark_folder/id_folder/id_parent_folder</value>
+    <value>bookmark/update_parent_bookmark_folder/session_id/id_folder/id_parent_folder</value>
   </data>
   <data name="LinkDeleteAnnotationSheet" xml:space="preserve">
     <value>annotator/delete_annotation_sheet/session_id/id_annotation_sheet</value>
