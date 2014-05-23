@@ -1,7 +1,6 @@
 ﻿using Data.Data.Users.Shortcut;
 using FirstFloor.ModernUI.Windows.Controls;
 using Handlers.Handlers;
-using ModernUIApp1.Content.View.Registre;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,21 +21,22 @@ namespace ModernUIApp1.Pages.Popups
     /// <summary>
     /// Interaction logic for TabPage1.xaml
     /// </summary>
-    public partial class AddShortcut : ModernDialog
+    public partial class DeleteShortcut : ModernDialog
     {
-        private ShortcutBar sb;
-        public AddShortcut(ShortcutBar sb)
+        public DeleteShortcut()
         {
             InitializeComponent();
             this.CloseButton.Visibility = Visibility.Hidden;
-            foreach (KeyValuePair<int, AnnotationType> type in AnnotationType.types.ToList())
+            ShortcutHandler shortcutHandler = new ShortcutHandler();
+            List<Shortcut> shortcutList = new List<Shortcut>();
+            shortcutList = shortcutHandler.getAllShortcut();
+            foreach (Shortcut shortcut in shortcutList)
             {
                 ComboBoxItem i = new ComboBoxItem();
-                i.Tag = type.Key;
-                i.Content = type.Value.label;
-                typeList.Items.Add(i);
+                i.Tag = shortcut.id_shortcut;
+                i.Content = shortcut.default_text;
+                shortcutListBox.Items.Add(i);
             }
-            this.sb = sb;
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -44,19 +44,14 @@ namespace ModernUIApp1.Pages.Popups
             this.Close();
         }
 
-        private void add_Click(object sender, RoutedEventArgs e)
+        private void DeleteShortcutClick(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem item = (ComboBoxItem)typeList.SelectedItem;
+            ComboBoxItem item = (ComboBoxItem)shortcutListBox.SelectedItem;
             if (item != null)
             {
                 int tag = (int)item.Tag;
-                AnnotationType annotationType;
-                AnnotationType.types.TryGetValue(tag, out annotationType);
                 ShortcutHandler sh = new ShortcutHandler();
-                //ajouter le raccourcis à l'utilisateur (serveur)
-                sh.createShortcut(annotationType , text.Text, 0);
-
-                sb.AddButton(text.Text, tag);
+                sh.deleteShortcut(tag);
 
                 this.Close();
             }

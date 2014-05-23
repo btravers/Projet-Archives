@@ -108,6 +108,9 @@
     <Compile Include="Pages\Popups\AddAnnotationTable.xaml.cs">
       <DependentUpon>AddAnnotationTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Popups\DeleteShortcut.xaml.cs">
+      <DependentUpon>DeleteShortcut.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Popups\DisplayAnnotation.xaml.cs">
       <DependentUpon>DisplayAnnotation.xaml</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
     </Compile>
     <Compile Include="Content\SettingsAppearanceViewModel.cs" />
     <Page Include="Pages\Popups\AddAnnotationTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Popups\DeleteShortcut.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
