@@ -63,9 +63,24 @@ class Annotator
 		} else if(!Database::existType($idType)) {
 			return array("helper" => "annotator", "message" => "type_not_found");
 		} else {
+			// Updates page table annotations if idType is matricule number
+			if($idType == 3) {
+				$query = "SELECT AnnotationPageTable.id_annotation_page_table FROM PageTable, Sheet, AnnotationPageTable "
+					. "WHERE Sheet.id_sheet = ? "
+					. "AND PageTable.id_register = Sheet.id_register "
+					. "AND PageTable.id_page_table = AnnotationPageTable.id_page_table "
+					. "AND AnnotationPageTable.id_number = ? "
+					. "AND AnnotationPageTable.id_sheet = '-1'";
+
+				$result = Database::query($query, array($idSheet, $annotation));
+				foreach ($result as $annotationPageTable) {
+					Database::exec("UPDATE AnnotationPageTable SET id_sheet = ? WHERE id_annotation_page_table = ?", array($idSheet, $annotationPageTable[0]));
+				}
+			}
+
 			Database::exec("INSERT INTO AnnotationSheet VALUES ('', ?, ?, ?, ?, ?, ?)", array($idSheet, $idType, $idUser, $x, $y, $annotation));
 			
-			$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_sheet = ? AND id_user = ? AND id_type = ? AND y = ? AND text = ?", array($idSheet, $idType, $idUser, $x, $y, $annotation));
+			$result = Database::query("SELECT * FROM AnnotationSheet WHERE id_sheet = ? AND id_user = ? AND id_type = ? AND x = ? AND y = ? AND text = ?", array($idSheet, $idUser, $idType, $x, $y, $annotation));
 			if (count($result) == 0) {
 				return array("helper" => "annotator", "message" => "registration_error");
 			} else {
