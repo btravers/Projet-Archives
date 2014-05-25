@@ -137,7 +137,21 @@ class Annotator
 		} else if(!Database::existAnnotationTable($idAnnotationTable)) {
 			return array("helper" => "annotator", "message" => "annotation_not_found");
 		} else {
-			Database::exec("UPDATE AnnotationPageTable SET x = ?, y = ?, width = ?, height = ?, id_number = ? WHERE id_annotation_page_table = ?", array($x, $y, $width, $height, $number, $idAnnotationTable));
+			$query = "SELECT Sheet.id_sheet FROM PageTable, Sheet, AnnotationSheet, AnnotationPageTable "
+					. "WHERE AnnotationPageTable.id_annotation_page_table = ? "
+					. "AND PageTable.id_page_table = AnnotationPageTable.id_page_table "
+					. "AND PageTable.id_register = Sheet.id_register "
+					. "AND Sheet.id_sheet = AnnotationSheet.id_sheet "
+					. "AND id_type = 3 "
+					. "AND AnnotationSheet.text = ?";
+			$result = Database::query($query, array($idAnnotationTable, $number));
+
+			$idSheet = -1;
+			if (count($result) > 0) {
+				$idSheet = $result[0][0];
+			}
+
+			Database::exec("UPDATE AnnotationPageTable SET x = ?, y = ?, width = ?, height = ?, id_number = ?, id_sheet = ? WHERE id_annotation_page_table = ?", array($x, $y, $width, $height, $number, $idSheet, $idAnnotationTable));
 			return array("helper" => "annotator", "message" => "updated");
 		}
 	}
@@ -154,6 +168,52 @@ class Annotator
 		} else if (!Database::existAnnotationSheet($idAnnotationSheet)) {
 			return array("helper" => "annotator", "message" => "annotation_not_found");
 		} else {
+			if($idType == 3) {
+				// Destroys/replaces the link with AnnotationPageTable
+				$query = "SELECT AnnotationPageTable.id_annotation_page_table FROM PageTable, Sheet, AnnotationPageTable, AnnotationSheet "
+					. "WHERE AnnotationSheet.id_annotation_sheet = ? "
+					. "AND Sheet.id_sheet = AnnotationSheet.id_sheet "
+					. "AND PageTable.id_register = Sheet.id_register "
+					. "AND PageTable.id_page_table = AnnotationPageTable.id_page_table "
+					. "AND AnnotationPageTable.id_sheet = AnnotationSheet.id_sheet";
+
+				$result = Database::query($query, array($idAnnotationSheet));
+				foreach ($result as $annotationPageTable) {
+					$query = "SELECT Sheet.id_sheet FROM PageTable, Sheet, AnnotationSheet, AnnotationPageTable "
+						. "WHERE AnnotationPageTable.id_annotation_page_table = ? "
+						. "AND PageTable.id_page_table = AnnotationPageTable.id_page_table "
+						. "AND PageTable.id_register = Sheet.id_register "
+						. "AND Sheet.id_sheet = AnnotationSheet.id_sheet "
+						. "AND AnnotationSheet.id_annotation_sheet != ? "
+						. "AND AnnotationSheet.id_type = 3 "
+						. "AND AnnotationSheet.text = AnnotationPageTable.id_number";
+					$result = Database::query($query, array($annotationPageTable[0], $idAnnotationSheet));
+
+					$idSheet = -1;
+					if (count($result) > 0) {
+						$idSheet = $result[0][0];
+					}
+
+					Database::exec("UPDATE AnnotationPageTable SET id_sheet = ? WHERE id_annotation_page_table = ?", array($idSheet, $annotationPageTable[0]));
+				}
+
+
+				// Creates a link with the AnnotationPageTable
+				$query = "SELECT AnnotationPageTable.id_annotation_page_table FROM PageTable, Sheet, AnnotationPageTable, AnnotationSheet "
+					. "WHERE AnnotationSheet.id_annotation_sheet = ? "
+					. "AND Sheet.id_sheet = AnnotationSheet.id_sheet "
+					. "AND PageTable.id_register = Sheet.id_register "
+					. "AND PageTable.id_page_table = AnnotationPageTable.id_page_table "
+					. "AND AnnotationPageTable.id_number = ? "
+					. "AND AnnotationPageTable.id_sheet = '-1'";
+
+				$idSheet = Database::query("SELECT id_sheet FROM AnnotationSheet WHERE id_annotation_sheet = ?", array($idAnnotationSheet))[0][0];
+				$result = Database::query($query, array($idAnnotationSheet, $annotation));
+				foreach ($result as $annotationPageTable) {
+					Database::exec("UPDATE AnnotationPageTable SET id_sheet = ? WHERE id_annotation_page_table = ?", array($idSheet, $annotationPageTable[0]));
+				}
+			}
+
 			Database::exec("UPDATE AnnotationSheet SET x = ?, y = ?, id_type = ?, text = ? WHERE id_annotation_sheet = ?", array($x, $y, $idType, $annotation, $idAnnotationSheet));
 			return array("helper" => "annotator", "message" => "updated");
 		}
