@@ -74,15 +74,25 @@ namespace ModernUIApp1.Pages.Popups
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            AnnotationHandler a = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
-            a.deleteAnnotationSheet(id_annotation);
+            Popup pop = new Popup("Suppression d'une annotation", "Êtes vous certain de vouloir supprimer cette annotation ?", false);
 
-            if (ViewRegister.window != null)
+            if (pop.show())
             {
-                ViewRegister.window.reload();
-            }
+                this.Close();
+                MainWindow.window.Activate();
 
-            this.Close();
+                AnnotationHandler a = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
+                a.deleteAnnotationSheet(id_annotation);
+
+                if (ViewRegister.window != null)
+                {
+                    ViewRegister.window.reload();
+                }
+            }
+            else
+            {
+                MainWindow.window.Activate();
+            }
         }
 
         private void modify_Click(object sender, RoutedEventArgs e)

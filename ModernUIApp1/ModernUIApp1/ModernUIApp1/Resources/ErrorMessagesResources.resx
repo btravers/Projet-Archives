@@ -134,7 +134,7 @@
     <comment>Called when logout success</comment>
   </data>
   <data name="Register_Failed" xml:space="preserve">
-    <value>L'email que vous avez indiqué n'est pas disponible ou est incorrect.</value>
+    <value>L'identifiant que vous avez indiqué n'est pas disponible ou est incorrect.</value>
     <comment>Called when a user email exists</comment>
   </data>
   <data name="Register_Password_Not_Correspond" xml:space="preserve">

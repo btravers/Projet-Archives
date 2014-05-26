@@ -97,7 +97,7 @@ namespace ModernUIApp1.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à L&apos;email que vous avez indiqué n&apos;est pas disponible ou est incorrect..
+        ///   Recherche une chaîne localisée semblable à L&apos;identifiant que vous avez indiqué n&apos;est pas disponible ou est incorrect..
         /// </summary>
         internal static string Register_Failed {
             get {

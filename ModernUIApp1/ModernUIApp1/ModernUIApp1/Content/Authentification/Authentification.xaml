@@ -23,6 +23,7 @@
                     <AccessText x:Name="message" TextWrapping="WrapWithOverflow">
                     </AccessText>
                 </Label>
+                <Image Height="200" Width="200" Source="/Resources/Icons/logo archives.png"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
