@@ -286,7 +286,21 @@ namespace ModernUIApp1.Content.View.Common
                             addAnnotationUserControl.close_dialog();
                         }
 
-                        if ((int)positionTopLeft.X < (int)positionBottomRight.X && (int)positionTopLeft.Y < (int)positionBottomRight.Y)
+                        Double left;
+                        addAnnotationUserControl = new AddAnnotationTable(positionTopLeft, positionBottomRight);
+                        if (mouse.X < SystemParameters.FullPrimaryScreenWidth / 2 )
+                        {
+                            left = Math.Min(mouse.X, positionTopLeft.X) + SystemParameters.FullPrimaryScreenWidth / 8;
+                        }
+                        else
+                        {
+                            left = Math.Min(mouse.X, positionTopLeft.X) - SystemParameters.FullPrimaryScreenWidth / 4;
+                        }
+
+                        addAnnotationUserControl.setParameters(left, mouse.Y);
+                        addAnnotationUserControl.Show();
+
+                        /*if ((int)positionTopLeft.X < (int)positionBottomRight.X && (int)positionTopLeft.Y < (int)positionBottomRight.Y)
                         {
                             addAnnotationUserControl = new AddAnnotationTable(positionTopLeft, positionBottomRight);
 
@@ -308,7 +322,7 @@ namespace ModernUIApp1.Content.View.Common
                         {
                             MessageBox.Show("Le second point doit être situé en bas à droite du premier.", "Opération impossible");
                             reload();
-                        }
+                        }*/
 
                         positionTopLeft = new Point(-1, -1);
                     }

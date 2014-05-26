@@ -79,12 +79,15 @@ namespace ModernUIApp1.Pages.Popups
             {
                 AnnotationHandler a = new AnnotationHandler(Authenticator.AUTHENTICATOR.user);
 
-                int width = (int)(positionBottomRight.X - positionTopLeft.X);
-                int height = (int)(positionBottomRight.Y - positionTopLeft.Y);
+                int x = (int)Math.Min(positionTopLeft.X, positionBottomRight.X);
+                int y = (int)Math.Min(positionTopLeft.Y, positionBottomRight.Y);
+
+                int width = (int)Math.Abs(positionBottomRight.X - positionTopLeft.X);
+                int height = (int)Math.Abs(positionBottomRight.Y - positionTopLeft.Y);
 
                 try
                 {
-                    a.createAnnotationPageTable((int)positionTopLeft.X, (int)positionTopLeft.Y, width, height, int.Parse(text.Text));
+                    a.createAnnotationPageTable(x, y, width, height, int.Parse(text.Text));
                 }
                 catch (Exception)
                 {
