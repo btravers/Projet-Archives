@@ -94,7 +94,7 @@ namespace ModernUIApp1.Content.View.Common
                             pageImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/" + pageTable.url, UriKind.Absolute));
 
                             Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-                            Arrange(new Rect(0, 0, window.DesiredSize.Width, window.DesiredSize.Height));
+                            Arrange(new Rect(0, 0, window.ActualWidth, window.ActualHeight));
 
                             onImageChange();
                         }

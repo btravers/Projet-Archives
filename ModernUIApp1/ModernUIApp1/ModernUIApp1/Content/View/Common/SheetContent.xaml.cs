@@ -398,8 +398,16 @@ namespace ModernUIApp1.Content.View.Common
             e.Width = 4;
             e.Height = 4;
             e.StrokeThickness = 0.2;
-            e.Stroke = new SolidColorBrush(Colors.Blue);
-            e.Fill = new SolidColorBrush(Color.FromArgb(100, 100, 149, 237));
+            if (annotation.user == "-1")
+            {
+                e.Stroke = new SolidColorBrush(Colors.Blue);
+                e.Fill = new SolidColorBrush(Color.FromArgb(100, 100, 149, 237));
+            }
+            else
+            {
+                e.Stroke = new SolidColorBrush(Colors.Red);
+                e.Fill = new SolidColorBrush(Color.FromArgb(100, 255, 20, 36));
+            }            
             e.Tag = annotation;
             double x = (double)annotation.x / ((BitmapSource)rmmImage.Source).PixelWidth * rmmImage.ActualWidth - 1;
             double y = (double)annotation.y / ((BitmapSource)rmmImage.Source).PixelHeight * rmmImage.ActualHeight - 2;
@@ -433,7 +441,7 @@ namespace ModernUIApp1.Content.View.Common
                     left = annotation.x - SystemParameters.FullPrimaryScreenWidth / 4;
 
                 displayAnnotationUserControl.setPosition(left, annotation.y);
-                displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type, new Point(annotation.x, annotation.y));
+                displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type, new Point(annotation.x, annotation.y), annotation.user);
                 displayAnnotationUserControl.Show();
             }
         }

@@ -46,7 +46,7 @@ namespace ModernUIApp1.Pages.Popups
             this.Top = top;
         }
 
-        public void setParameters(int idAnnotation, string annotationText, int annotationType, Point pos)
+        public void setParameters(int idAnnotation, string annotationText, int annotationType, Point pos, string user)
         {
             id_annotation = idAnnotation;
             position = pos;
@@ -54,6 +54,12 @@ namespace ModernUIApp1.Pages.Popups
             AnnotationType t;
             if(AnnotationType.types.TryGetValue(annotationType, out t))
                 type.Text = t.label;
+
+            if (user != "-1")
+            {
+                this.Title += " par " + user;
+            }
+            
         }
 
         private void close_Click(object sender, RoutedEventArgs e)

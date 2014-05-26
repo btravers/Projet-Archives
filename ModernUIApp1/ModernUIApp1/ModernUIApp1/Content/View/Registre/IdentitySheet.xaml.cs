@@ -59,6 +59,9 @@ namespace ModernUIApp1.Content.View.Registre
                     
                     ComboBoxItem defaultItem = null;
 
+                    List<AnnotationSheet> annotationsAll = new List<AnnotationSheet>();
+                    annotations.Add("-2", annotationsAll);
+
                     foreach (AnnotationSheet annotation in sheet.annotations_sheet.Values.OrderBy(e => e.type))
                     {                        
                         List<AnnotationSheet> annotationsUser = null;
@@ -88,10 +91,16 @@ namespace ModernUIApp1.Content.View.Registre
                                     defaultItem = i;
                             }
                             annotator.Items.Add(i);
-                        }
+                        }                        
 
                         annotationsUser.Add(annotation);
+                        annotationsAll.Add(annotation);
                     }
+
+                    ComboBoxItem allItem = new ComboBoxItem();
+                    allItem.Tag = "-2";
+                    allItem.Content = "Tout le monde";
+                    annotator.Items.Add(allItem);
 
                     annotator.SelectionChanged -= annotator_SelectionChanged;
                     annotator.SelectionChanged += annotator_SelectionChanged;
