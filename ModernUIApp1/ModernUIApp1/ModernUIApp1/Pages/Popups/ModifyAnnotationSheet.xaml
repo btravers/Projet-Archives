@@ -19,8 +19,7 @@
         <ComboBox Name="typeList" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" Width="290" FontSize="25" Grid.Column="1" Height="39"/>
 
         <Button Name="cancel" Content="Annuler" HorizontalAlignment="Left" Margin="175,117,0,0" VerticalAlignment="Top" Width="135" FontSize="25" Click="cancel_Click" Grid.Column="1" Height="43"/>
-        <Button Name="validate" Content="Valider" HorizontalAlignment="Left" Margin="20,117,0,0" VerticalAlignment="Top" Width="135" FontSize="25" Click="validate_Click" Grid.Column="1" Height="43"/>
-        <Button Name="changePos" Content="Position" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="135" FontSize="25" Click="changePos_Click" Height="43"/>
+        <Button Name="validate" Content="Valider" HorizontalAlignment="Left" Margin="20,117,0,0" VerticalAlignment="Top" Width="135" FontSize="25" Click="validate_Click" Height="43"/>
 
     </Grid>
 </mui:ModernDialog>
