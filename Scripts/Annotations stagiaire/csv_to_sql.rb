@@ -16,11 +16,12 @@ def main
 
 		toBeAnnotatedArray = createToBeAnnotatedArray
 		cptColumn, cptLine = 0, 0
+		lastTable = -1
 
 		#puts toBeAnnotatedArray.inspect
 
 		first = true
-		CSV.foreach(csvFile) do |row|
+		CSV.foreach(csvFile) do |row| # row = [pathSheet, matNum, name, pathTable]
 			unless(first)
 
 				imgName = "Fiches/" + row[0] + ".JPG"
@@ -40,7 +41,13 @@ def main
 				#puts query
 
 				unless idNumber == lastID
-					while(!toBeAnnotatedArray[row[3][-1..-1].to_i-1][cptColumn][cptLine])
+					idTable = row[3][-1..-1].to_i-1
+					if idTable != lastTable
+						cptLine = 0
+						cptColumn = 0
+					end
+
+					while(!toBeAnnotatedArray[idTable][cptColumn][cptLine])
 						cptLine = (cptLine+1) % 18
 						cptColumn = (cptLine == 0) ? (cptColumn+1)%4 : cptColumn
 					end
@@ -56,7 +63,7 @@ def main
 					
 					cptLine = (cptLine+1) % 18
 					cptColumn = (cptLine == 0) ? (cptColumn+1)%4 : cptColumn
-
+					lastTable = idTable					
 				end
 				lastID = idNumber
 			end
@@ -95,6 +102,7 @@ def createToBeAnnotatedArray
 
 	# Picture 4
 	array[3][0][13] = false
+	array[3][3][16] = false
 	array[3][0][17], array[3][1][17], array[3][2][17], array[3][3][17] = false
 
 	# Picture 5
