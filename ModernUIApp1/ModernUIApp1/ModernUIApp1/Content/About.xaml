@@ -8,8 +8,8 @@
     <Grid>
         <ScrollViewer>
             <StackPanel MinWidth="200">
-                <TextBlock Text="ABOUT" Style="{StaticResource Heading2}" />
-                <TextBlock Text="TODO: provide information about the software" Margin="0,0,0,8" TextWrapping="Wrap" />
+                <TextBlock Text="À propos" Style="{StaticResource Heading2}" />
+                <TextBlock Text="ArchiPoilus vous a été proposé par un groupe d'étudiants de 4ème année de l'INSA de Rennes." Margin="0,0,0,8" TextWrapping="Wrap" />
             </StackPanel>
         </ScrollViewer>
     </Grid>
