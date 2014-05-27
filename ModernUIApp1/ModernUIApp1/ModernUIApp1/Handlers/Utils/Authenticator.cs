@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using ModernUIApp1.Content.View.Common.Bookmark;
 
 namespace ModernUIApp1.Handlers.Utils
 {
@@ -165,6 +166,9 @@ namespace ModernUIApp1.Handlers.Utils
                 // Debug
                 Console.WriteLine("Session id returned : " + user.id_session);
 
+                if (BookmarkResult.window != null)
+                    BookmarkResult.window.connect();
+
                 return true;
             } // Else
             else 
@@ -190,6 +194,9 @@ namespace ModernUIApp1.Handlers.Utils
                 Console.WriteLine(response);
                 user = defaultUser;
                 connected = false;
+
+                if (BookmarkResult.window != null)
+                    BookmarkResult.window.disconnect();
 
                 return true;
             }
