@@ -54,6 +54,7 @@ namespace ModernUIApp1.Content.Authentification
             else
             {
                 message.Text = ErrorMessagesResources.Login_Failed;
+                message.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
 

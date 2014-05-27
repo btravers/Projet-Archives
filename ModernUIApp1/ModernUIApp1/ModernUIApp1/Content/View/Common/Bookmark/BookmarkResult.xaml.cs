@@ -502,6 +502,28 @@ namespace ModernUIApp1.Content.View.Common.Bookmark
                 window.loadCurrentFolder();
         }
 
+        /* Function called when disconnected */
+        public void disconnect()
+        {
+            rootFolder = new BookmarkFolder();
+            previousFolder = null;
+            currentFolder = rootFolder;
+            currentUnderFiles.Clear();
+            currentUnderFolders.Clear();
+            model.clearResult();
+        }
+
+        /* Function called when connected */
+        public void connect()
+        {
+            if (bhandler == null)
+                bhandler = new BookmarkHandler();
+
+            rootFolder = bhandler.getRootBookmarkFolder();
+            currentFolder = rootFolder;
+
+            this.loadCurrentFolder();
+        }
     }
 
 }
