@@ -58,6 +58,7 @@ namespace ModernUIApp1.Pages.Popups
             if (user != "-1")
             {
                 this.Title += " par " + user;
+                modify.Content = "Importer";
             }
             
         }
