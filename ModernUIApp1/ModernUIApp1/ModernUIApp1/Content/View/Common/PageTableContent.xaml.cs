@@ -76,6 +76,12 @@ namespace ModernUIApp1.Content.View.Common
             slider.ValueChanged += OnSliderValueChanged;
             slider.Value = 2;
 
+            scaleTransform.ScaleX = 2;
+            scaleTransform.ScaleY = 2;
+
+            var centerOfViewport = new Point(scrollViewer.ViewportWidth / 2, scrollViewer.ViewportHeight / 2);
+            lastCenterPositionOnTarget = scrollViewer.TranslatePoint(centerOfViewport, grid);
+
             reload();
         }
 
