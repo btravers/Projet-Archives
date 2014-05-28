@@ -473,6 +473,7 @@ namespace ModernUIApp1.Content.View.Common
                 DisplayAnnotationTable displayAnnotationTableUserControl = new DisplayAnnotationTable(annotation);
                 displayAnnotationTableUserControl.Show();
             }
+            mouseMove = false;
         }
     }
 }

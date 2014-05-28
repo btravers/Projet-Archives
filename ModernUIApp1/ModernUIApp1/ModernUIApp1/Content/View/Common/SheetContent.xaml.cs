@@ -450,6 +450,7 @@ namespace ModernUIApp1.Content.View.Common
                 displayAnnotationUserControl.setParameters(annotation.id_annotations_sheet, annotation.text, annotation.type, new Point(annotation.x, annotation.y), annotation.user);
                 displayAnnotationUserControl.Show();
             }
+            mouseMove = false;
         }
 
         /* Event click on bookmark button */
