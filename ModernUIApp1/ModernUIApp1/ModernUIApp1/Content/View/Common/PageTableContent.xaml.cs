@@ -121,7 +121,7 @@ namespace ModernUIApp1.Content.View.Common
                 scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - dX);
                 scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - dY);
 
-                if (dX != 0 || dY != 0)
+                if (Math.Abs(dX) > 1 || Math.Abs(dY) > 1)
                 {
                     mouseMove = true;
 
